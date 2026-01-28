@@ -1,0 +1,70 @@
+/* =========================
+   CONTAINER
+========================= */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* =========================
+   TÍTULOS
+========================= */
+.section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  text-align: center;
+  color: var(--amarelo);
+  margin-bottom: 40px;
+}
+
+/* =========================
+   CARDS
+========================= */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.card {
+  background: var(--branco);
+  color: #222;
+  padding: 30px;
+  border-radius: var(--radius);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+.card.highlight {
+  border-left: 6px solid var(--amarelo);
+}
+
+/* =========================
+   GALERIA
+========================= */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: var(--radius);
+}
+
+/* =========================
+   ANIMAÇÃO
+========================= */
+.fade-up {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: all .8s ease;
+}
+
+.fade-up.active {
+  opacity: 1;
+  transform: translateY(0);
+}
