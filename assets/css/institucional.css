@@ -1,0 +1,80 @@
+/* =========================
+   TEMA INSTITUCIONAL
+========================= */
+body {
+  background: var(--azul-escuro);
+  color: var(--branco);
+}
+
+/* =========================
+   HEADER
+========================= */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: var(--header-altura);
+  background: var(--azul-escuro);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 50px;
+  z-index: 1000;
+}
+
+header img {
+  height: 70px;
+  filter: drop-shadow(0 0 6px rgba(255,255,255,0.3));
+}
+
+nav a {
+  color: var(--branco);
+  margin-left: 30px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* =========================
+   SEÇÕES
+========================= */
+section {
+  padding: 120px 10%;
+}
+
+/* =========================
+   HOME
+========================= */
+#home {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+#home img {
+  width: 300px;
+  margin-bottom: 20px;
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+@media (max-width: 768px) {
+
+  header {
+    position: relative;
+    height: auto;
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  nav {
+    margin-top: 10px;
+  }
+
+  section {
+    padding: 80px 6%;
+  }
+}
