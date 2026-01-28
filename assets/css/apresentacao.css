@@ -123,16 +123,27 @@ scroll-margin-top: 10px; /* altura do menu */
 /* links */
 .apresentacao .menu a {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 14px;
 
-  color: #f2c94c; /* COR ÚNICA */
+  color: #f2c94c;
   text-decoration: none;
   font-weight: 600;
 
-  white-space: nowrap;
   opacity: 0.9;
   transition: opacity 0.2s;
+}
+
+/* texto com quebra */
+.apresentacao .menu .text {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+
+  max-width: 160px;
+  line-height: 1.25;
+
+  white-space: normal;     /* permite quebrar */
+  word-break: break-word;  /* quebra palavras longas */
 }
 
 .apresentacao .menu a:hover {
