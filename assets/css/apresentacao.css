@@ -89,34 +89,81 @@ scroll-margin-top: 10px; /* altura do menu */
 }
 
 /* ===============================
-   MENU LATERAL – TESTE FORÇADO
+   MENU LATERAL SLIM COM ÍCONES
 =============================== */
 .apresentacao .menu {
   position: fixed;
   top: 0;
   left: 0;
 
-  width: 220px;
+  width: 72px;
   height: 100vh;
 
-  background: #0b3c5d;
+  background: rgba(11, 60, 93, 0.94);
+  backdrop-filter: blur(10px);
 
   display: flex;
   flex-direction: column;
-  padding: 40px 20px;
+  align-items: center;
 
+  padding: 30px 10px;
+  gap: 26px;
+
+  transition: width 0.3s ease;
   z-index: 9999;
 }
 
-.apresentacao .menu a {
-  color: #fff;
-  text-decoration: none;
-  margin-bottom: 20px;
-  font-weight: 600;
+/* abre no hover */
+.apresentacao .menu:hover {
+  width: 260px; /* maior por causa dos textos longos */
+  align-items: flex-start;
+  padding-left: 22px;
 }
 
+/* links */
+.apresentacao .menu a {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+
+  white-space: nowrap;
+  opacity: 0.85;
+  transition: opacity 0.3s;
+}
+
+.apresentacao .menu a:hover {
+  opacity: 1;
+}
+
+/* ícones */
+.apresentacao .menu .icon {
+  font-size: 1.35rem;
+  width: 28px;
+  text-align: center;
+}
+
+/* texto oculto */
+.apresentacao .menu .text {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+/* texto aparece no hover */
+.apresentacao .menu:hover .text {
+  opacity: 1;
+}
+
+/* desloca conteúdo */
 .apresentacao section {
-  padding-left: 240px;
+  padding-left: 120px;
+}
+
+.apresentacao .menu:hover ~ section {
+  padding-left: 280px;
 }
 
 /* =================================
