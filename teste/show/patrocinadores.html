@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Engrenados Baja Uniube • Apresentação</title>
+      <style>
+         /* ==================================================
+         VARIÁVEIS
+         ==================================================*/
+         :root {
+         --azul: #0b3c5d;
+         --azul-claro: #e9f1f8;
+         --cinza: #f4f6f8;
+         --amarelo: #f2c94c;
+         --branco: #ffffff;
+         }
+         /* ==================================================
+         RESET
+         ==================================================*/
+         * {
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+         font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+         }
+         html { scroll-behavior: smooth; }
+         body { background: var(--cinza); color: #222; }
+         /* ==================================================
+         MENU FLUTUANTE
+         ==================================================*/
+         .menu {
+         position: fixed;
+         top: 20px;
+         left: 50%;
+         transform: translateX(-50%);
+         background: rgba(255,255,255,0.9);
+         backdrop-filter: blur(8px);
+         padding: 12px 30px;
+         border-radius: 40px;
+         display: flex;
+         gap: 25px;
+         z-index: 999;
+         box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+         transition: all .3s ease;
+         }
+         .menu a {
+         text-decoration: none;
+         color: var(--azul);
+         font-weight: 600;
+         font-size: .95rem;
+         }
+         .menu.scrolled {
+         background: rgba(11,60,93,.95);
+         }
+         .menu.scrolled a {
+         color: var(--branco);
+         }
+         .menu a:hover {
+         color: var(--amarelo);
+         }
+         /* ==================================================
+         ESTRUTURA
+         ==================================================*/
+section {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+         /* ==================================================
+         TIPOGRAFIA
+         ==================================================*/
+         h1 {
+         font-size: 3.6rem;
+         text-transform: uppercase;
+         letter-spacing: 2px;
+         color: var(--branco);
+         }
+         h2 {
+         font-size: 2.4rem;
+         margin-bottom: 25px;
+         color: var(--azul);
+         text-transform: uppercase;
+         text-align: center;
+         }
+         h3 {
+         font-size: 1.15rem;
+         margin-bottom: 10px;
+         color: var(--azul);
+         text-transform: uppercase;
+         }
+         p {
+         font-size: 1.1rem;
+         line-height: 1.7;
+         max-width: 900px;
+         margin: 0 auto;
+         }
+         /* ==================================================
+         HERO
+         ==================================================*/
+         .hero {
+         position: relative;
+         height: 100vh;
+         overflow: hidden;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         text-align: center;
+         color: #fff;
+         }
+         .hero video {
+         position: absolute;
+         inset: 0;
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+         z-index: 1;
+         }
+         .hero .overlay {
+         position: absolute;
+         inset: 0;
+         background: rgba(0, 0, 0, 0.55); /* transparência */
+         z-index: 2;
+         }
+         .hero-content {
+         position: relative;
+         z-index: 3;
+         max-width: 900px;
+         padding: 20px;
+         }
+         /* ==================================================
+         FUNDOS
+         ==================================================*/
+         .light { background: var(--branco); }
+         .soft { background: var(--azul-claro); }
+         .mid  { background: #f0f5fa; }
+         /* ==================================================
+         CARDS
+         ==================================================*/
+         .cards {
+         display: grid;
+         grid-template-columns: repeat(3, 1fr);
+         gap: 30px;
+         margin-top: 40px;
+         }
+         @media (max-width: 1000px) {
+         .cards {
+         grid-template-columns: repeat(2, 1fr);
+         }
+         }
+         @media (max-width: 600px) {
+         .cards {
+         grid-template-columns: 1fr;
+         }
+         }
+         .card {
+         background: #ffffff;
+         padding: 30px;
+         border-radius: 16px;
+         box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+         }
+         .card h3 {
+         color: #0b3c5d;
+         margin-bottom: 10px;
+         }
+         .card.highlight {
+         border-left: 6px solid #f2c94c;
+         }
+         /* ==================================================
+         GALERIA
+         ==================================================*/
+         .gallery {
+         display: grid;
+         grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+         gap: 25px;
+         margin-top: 40px;
+         }
+         .gallery img {
+         width: 100%;
+         border-radius: 14px;
+         box-shadow: 0 10px 25px rgba(0,0,0,.12);
+         }
+         /* ==================================================
+         PATROCINADORES
+         ==================================================*/
+         .sponsors {
+         display: grid;
+         grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+         gap: 30px;
+         margin-top: 40px;
+         }
+         .sponsor {
+         height: 120px;
+         background: var(--branco);
+         border-radius: 14px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         font-weight: bold;
+         box-shadow: 0 8px 20px rgba(0,0,0,.1);
+         }
+         /* ==================================================
+         FINAL
+         ==================================================*/
+         .final {
+         background: linear-gradient(135deg, var(--azul), #082436);
+         color: var(--branco);
+         text-align: center;
+         }
+
+         .final h2 {
+         color: var(--amarelo);
+         letter-spacing: 2px;
+         }
+
+         /* ==================================================
+         ANIMAÇÕES SEGURAS
+         ==================================================*/
+         .fade-up {
+         opacity: 0;
+         transform: translateY(25px);
+         transition: all .8s ease;
+         }
+         .fade-up.active {
+         opacity: 1;
+         transform: translateY(0);
+         }
+         /* ==================================================
+         RESPONSIVO
+         ==================================================*/
+         @media (max-width:900px) {
+         h1 { font-size: 2.4rem; }
+         h2 { font-size: 2rem; }
+         section { padding: 100px 0; }
+         }
+      </style>
+   </head>
+   <body>
+      <nav class="menu">
+         <a href="#home">Início</a>
+         <a href="#about">Quem Somos</a>
+         <a href="#sectors">Setores</a>
+         <a href="#gallery">Desenvolvimento</a>
+         <a href="#sponsors">Parcerias</a>
+      </nav>
+      <section id="home" class="hero">
+         <video autoplay muted loop playsinline>
+            <source src="https://cdn.pixabay.com/video/2024/11/20/242283_tiny.mp4" type="video/mp4">
+         </video>
+         <div class="overlay"></div>
+         <div class="hero-content">
+            <img src="assets/img/logo.png" alt="Engrenados Baja Uniube">
+            <h1>Engrenados Baja Uniube</h1>
+            <p>Engenharia, Inovação e Performance Off-Road</p>
+         </div>
+      </section>
+      <section id="about" class="light">
+         <div class="container">
+            <h2 class="fade-up">Quem Somos</h2>
+            <p class="fade-up">
+               A Engrenados Baja Uniube é uma equipe de competição universitária que desenvolve um veículo off-road
+               para o Baja SAE, unindo engenharia, gestão e tecnologia.
+            </p>
+         </div>
+      </section>
+      <section id="sectors" class="soft">
+  <div class="container">
+    <h2>Setores Técnicos</h2>
+         <div class="cards fade-up">
+            <div class="card">
+               <h3>Projetos</h3>
+               <p>Integração técnica, CAD, simulações e validações.</p>
+            </div>
+            <div class="card">
+               <h3>Suspensão & Direção</h3>
+               <p>Estabilidade, controle e absorção de impactos.</p>
+            </div>
+            <div class="card">
+               <h3>Motor & Transmissão</h3>
+               <p>Desempenho, confiabilidade e eficiência.</p>
+            </div>
+            <div class="card">
+               <h3>Chassi & Freio</h3>
+               <p>Estrutura, segurança e sistemas de frenagem.</p>
+            </div>
+            <div class="card">
+               <h3>Elétrica</h3>
+               <p>Sistemas elétricos, sensores e segurança.</p>
+            </div>
+            <div class="card highlight">
+               <h3>TI – Nosso Diferencial</h3>
+               <p>Telemetria, dados, automação e sistemas internos.</p>
+            </div>
+         </div>
+      </section>
+      <section id="gallery" class="mid">
+         <div class="container">
+            <h2 class="fade-up">Desenvolvimento</h2>
+            <p class="fade-up">
+               O desenvolvimento do veículo Baja SAE envolve diversas etapas, desde a concepção do projeto
+               até a validação em campo. Cada fase é conduzida com critérios técnicos, análise de dados e
+               integração entre os setores da equipe.
+            </p>
+            <p class="fade-up" style="margin-top:15px;">
+               Utilizamos ferramentas de engenharia, testes práticos e tecnologia da informação para garantir
+               evolução contínua, confiabilidade e desempenho competitivo dentro e fora da pista.
+            </p>
+            <div class="gallery fade-up">
+               <img src="https://via.placeholder.com/600x400?text=Projeto+CAD" />
+               <img src="https://via.placeholder.com/600x400?text=Fabricação+e+Montagem" />
+               <img src="https://via.placeholder.com/600x400?text=Testes+e+Validação" />
+            </div>
+         </div>
+      </section>
+      <section id="sponsors" class="light">
+         <div class="container">
+            <h2>Parceria & Patrocínio</h2>
+            <p> A Engrenados Baja Uniube é um projeto que conecta engenharia, tecnologia e formação profissional. Ao apoiar a equipe, sua empresa se associa a um ambiente de inovação, aprendizado prático e desenvolvimento de soluções reais. </p>
+            <h3 style="margin-top:40px;">Por que ser nosso parceiro?</h3>
+            <div class="cards">
+               <div class="card">
+                  <h3>Visibilidade de Marca</h3>
+                  <p> Exposição em competições regionais e nacionais, mídias digitais, materiais institucionais e apresentações oficiais da equipe. </p>
+               </div>
+               <div class="card">
+                  <h3>Inovação & Tecnologia</h3>
+                  <p> Associação direta a um projeto que aplica engenharia prática, tecnologia da informação, telemetria e análise de dados. </p>
+               </div>
+               <div class="card">
+                  <h3>Formação de Talentos</h3>
+                  <p> Contato direto com futuros engenheiros e profissionais de TI preparados para os desafios do mercado. </p>
+               </div>
+            </div>
+            <h3 style="margin-top:50px;">Nosso Diferencial Tecnológico</h3>
+            <p> O setor de Tecnologia da Informação é a cereja do bolo da Engrenados Baja Uniube. Utilizamos dados, sistemas e automação para apoiar decisões técnicas, otimizar recursos e elevar o desempenho do projeto. </p>
+            <div class="cards">
+               <div class="card" style="border-left:6px solid var(--amarelo);">
+                  <h3>Tecnologia Aplicada</h3>
+                  <p> Telemetria, dashboards, coleta e análise de dados para evolução contínua do veículo. </p>
+               </div>
+               <div class="card">
+                  <h3>Gestão Profissional</h3>
+                  <p> Organização, documentação técnica, controle de processos e integração entre setores. </p>
+               </div>
+               <div class="card">
+                  <h3>Evolução Contínua</h3>
+                  <p> Uso estratégico de dados para reduzir falhas, melhorar desempenho e apoiar decisões. </p>
+               </div>
+            </div>
+            <h3 style="margin-top:50px;">Junte-se a nós</h3>
+            <p> Não buscamos apenas patrocínio financeiro, mas parcerias estratégicas com empresas que acreditam na educação prática, inovação e desenvolvimento tecnológico. </p>
+            <div class="sponsors">
+               <div class="sponsor">Sua marca aqui</div>
+               <div class="sponsor">Sua marca aqui</div>
+               <div class="sponsor">Sua marca aqui</div>
+               <div class="sponsor">Sua marca aqui</div>
+            </div>
+         </div>
+      </section>
+      <section class="final">
+         <div class="container">
+            <h2>Mais que uma Equipe, um Projeto de Futuro</h2>
+            <p> A Engrenados Baja Uniube representa a união entre engenharia, tecnologia e gestão aplicada. Nosso projeto vai além da competição: formamos profissionais preparados para desafios reais e desenvolvemos soluções com método, dados e inovação. </p>
+            <p style="margin-top:20px;"> Com um forte diferencial em Tecnologia da Informação, utilizamos dados, sistemas e análise técnica para evoluir continuamente nosso veículo e nossa equipe — exatamente como acontece na indústria. </p>
+            <p style="margin-top:20px; font-weight:600;"> Convidamos sua empresa a fazer parte dessa trajetória, investindo em educação prática, inovação tecnológica e no futuro da engenharia brasileira. </p>
+            <footer>
+               <p style="margin-top:30px;"> Engrenados Baja Uniube • Rumo ao Baja SAE 2026 </p>
+               <p style="margin-top:10px; font-size:0.95rem; opacity:0.8;">   </p>
+            </footer>
+         </div>
+      </section>
+      <script>
+         /* ===== Animações ===== */
+         const items = document.querySelectorAll('.fade-up');
+         
+         const observer = new IntersectionObserver(entries => {
+           entries.forEach(entry => {
+             if (entry.isIntersecting) {
+               entry.target.classList.add('active');
+             }
+           });
+         }, { threshold: 0.15 });
+         
+         items.forEach(item => observer.observe(item));
+         
+         /* ===== Menu muda ao scroll ===== */
+         const menu = document.querySelector('.menu');
+         
+         window.addEventListener('scroll', () => {
+           if (window.scrollY > 120) {
+             menu.classList.add('scrolled');
+           } else {
+             menu.classList.remove('scrolled');
+           }
+         });
+      </script>
+   </body>
+</html>
