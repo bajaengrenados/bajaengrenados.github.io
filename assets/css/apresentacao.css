@@ -85,7 +85,7 @@ margin-bottom: 20px;
 AJUSTE DE SCROLL PARA MENU FIXO
 ================================================== */
 section {
-scroll-margin-top: 10px; /* altura do menu */
+scroll-margin-top: 0px; /* altura do menu */
 }
 
 /* ===============================
