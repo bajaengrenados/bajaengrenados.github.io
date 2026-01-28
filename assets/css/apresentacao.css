@@ -70,6 +70,17 @@
          letter-spacing: 2px;
          }
          /* ==================================================
+         LOGO – CAPA DAS APRESENTAÇÕES
+         ================================================== */
+
+         .hero-content .logo-apresentacao {
+          width: 280px;        /* ajuste aqui */
+          max-width: 80%;
+          margin-bottom: 20px;
+          }
+
+
+         /* ==================================================
          RESPONSIVO
          ==================================================*/
          @media (max-width:900px) {
