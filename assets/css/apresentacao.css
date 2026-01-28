@@ -89,106 +89,82 @@ scroll-margin-top: 10px; /* altura do menu */
 }
 
 /* ===============================
-   MENU LATERAL SLIM COM ÍCONES
+   MENU LATERAL SLIM – ÍCONES FIXOS
 =============================== */
 .apresentacao .menu {
   position: fixed;
   top: 0;
   left: 0;
 
-  width: 72px;
+  width: 68px;
   height: 100vh;
 
-  background: rgba(11, 60, 93, 0.94);
-  backdrop-filter: blur(10px);
+  background: rgba(11, 60, 93, 0.96);
+  backdrop-filter: blur(8px);
 
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  padding: 30px 10px;
+  padding: 26px 10px;
   gap: 26px;
 
-  transition: width 0.3s ease;
   z-index: 9999;
+  transition: width 0.25s ease;
 }
 
 /* abre no hover */
 .apresentacao .menu:hover {
-  width: 260px; /* maior por causa dos textos longos */
+  width: 240px;
   align-items: flex-start;
-  padding-left: 22px;
+  padding-left: 20px;
 }
 
 /* links */
 .apresentacao .menu a {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
 
-  color: #fff;
+  color: #f2c94c; /* COR ÚNICA */
   text-decoration: none;
   font-weight: 600;
 
   white-space: nowrap;
-  opacity: 0.85;
-  transition: opacity 0.3s;
+  opacity: 0.9;
+  transition: opacity 0.2s;
 }
 
 .apresentacao .menu a:hover {
   opacity: 1;
 }
 
-/* ícones */
+/* ÍCONES – SEMPRE VISÍVEIS */
 .apresentacao .menu .icon {
-  font-size: 1.35rem;
+  font-size: 1.4rem;
   width: 28px;
   text-align: center;
+  color: #f2c94c;
 }
 
-/* texto oculto */
+/* texto escondido */
 .apresentacao .menu .text {
   opacity: 0;
   transition: opacity 0.2s ease;
 }
 
-/* texto aparece no hover */
+/* texto aparece no hover do menu */
 .apresentacao .menu:hover .text {
   opacity: 1;
 }
 
-/* desloca conteúdo */
+/* conteúdo afastado do menu */
 .apresentacao section {
-  padding-left: 120px;
+  padding-left: 110px;
 }
 
 .apresentacao .menu:hover ~ section {
-  padding-left: 280px;
-}
-
-/* =================================
-DESLOCA CONTEÚDO PARA O LADO
-================================= */
-.apresentacao section {
-padding-left: 260px;
-}
-
-/* =====================================
-BOTÃO HAMBÚRGUER (MOBILE)
-===================================== */
-.menu-toggle {
-display: none;
-position: fixed;
-top: 20px;
-left: 20px;
-z-index: 1100;
-background: #f2c94c;
-color: #0b3c5d;
-border: none;
-border-radius: 8px;
-padding: 10px 14px;
-font-size: 1.4rem;
-cursor: pointer;
+  padding-left: 260px;
 }
 
 /* =====================================
