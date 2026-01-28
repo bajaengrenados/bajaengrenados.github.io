@@ -1,51 +1,64 @@
-/* =========================
-   VARIÁVEIS GLOBAIS
-========================= */
-:root {
-  /* Cores institucionais */
-  --azul-escuro: #090F34;
-  --azul: #0b3c5d;
-  --azul-claro: #1f3c88;
-  --amarelo: #FFD700;
-  --branco: #ffffff;
-  --preto: #000000;
-  --cinza-claro: #f4f6f8;
-
-  /* Tipografia */
-  --fonte-titulo: 'Archivo Black', sans-serif;
-  --fonte-texto: 'Open Sans', sans-serif;
-
-  /* Layout */
-  --radius: 12px;
-  --header-altura: 80px;
-}
-
-/* =========================
-   RESET
-========================= */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: var(--fonte-texto);
-  line-height: 1.6;
-}
-
-/* =========================
-   TIPOGRAFIA BASE
-========================= */
-h1, h2, h3 {
-  font-family: var(--fonte-titulo);
-  text-transform: uppercase;
-}
-
-p {
-  font-size: 1.05rem;
-}
+         /* ==================================================
+         VARIÁVEIS
+         ==================================================*/
+         :root {
+         --azul: #0b3c5d;
+         --azul-claro: #e9f1f8;
+         --cinza: #f4f6f8;
+         --amarelo: #f2c94c;
+         --branco: #ffffff;
+         }
+         /* ==================================================
+         RESET
+         ==================================================*/
+         * {
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+         font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+         }
+         html { scroll-behavior: smooth; }
+         body { background: var(--cinza); color: #222; }
+        /* ==================================================
+         ESTRUTURA
+         ==================================================*/
+         section {
+         min-height: 100svh;
+         display: flex;
+         align-items: center;
+         }
+         .container {
+         width: 100%;
+         max-width: 1200px;
+         margin: 0 auto;
+         padding-left: 24px;
+         padding-right: 24px;
+         }
+         /* ==================================================
+         TIPOGRAFIA
+         ==================================================*/
+         h1 {
+         font-size: 3.6rem;
+         text-transform: uppercase;
+         letter-spacing: 2px;
+         color: var(--branco);
+         }
+         h2 {
+         font-size: 2.4rem;
+         margin-bottom: 25px;
+         color: var(--azul);
+         text-transform: uppercase;
+         text-align: center;
+         }
+         h3 {
+         font-size: 1.15rem;
+         margin-bottom: 10px;
+         color: var(--azul);
+         text-transform: uppercase;
+         }
+         p {
+         font-size: 1.1rem;
+         line-height: 1.7;
+         max-width: 900px;
+         margin: 0 auto;
+         }
