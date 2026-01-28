@@ -1,51 +1,56 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
    <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Engrenados Baja Uniube • Apresentação</title>
-
-<link rel="stylesheet" href="/assets/css/apresentacao.css">
-<link rel="stylesheet" href="/assets/css/base.css">
-<link rel="stylesheet" href="/assets/css/components.css">
-
-    
+      <link rel="stylesheet" href="/assets/css/apresentacao.css">
+      <link rel="stylesheet" href="/assets/css/base.css">
+      <link rel="stylesheet" href="/assets/css/components.css">
    </head>
+
    <body class="apresentacao">
 
+      <!-- ------------------------------------------------------------------- -->
+      <!-- ------------------------------------------------------------------- -->
+      <!-- MENU -->
+      <!-- ------------------------------------------------------------------- -->
+      <!-- ------------------------------------------------------------------- -->
+
       <button class="menu-toggle" aria-label="Abrir menu">☰</button>
-
       <nav class="menu">
-  <a href="#home">
-    <span class="icon">🏁</span>
-    <span class="text">Início</span>
-  </a>
+         <a href="#home">
+         <span class="icon">🏁</span>
+         <span class="text">Início</span>
+         </a>
+         <a href="#about">
+         <span class="icon">👥</span>
+         <span class="text">Quem Somos</span>
+         </a>
+         <a href="#sectors">
+         <span class="icon">⚙️</span>
+         <span class="text">Como a Equipe Funciona</span>
+         </a>
+         <a href="#gallery">
+         <span class="icon">🛠️</span>
+         <span class="text">Aprendizado na Prática</span>
+         </a>
+         <a href="#sponsors">
+         <span class="icon">🤝</span>
+         <span class="text">Por que Entrar para a Engrenados?</span>
+         </a>
+         <a href="#final">
+         <span class="icon">🏁</span>
+         <span class="text">Encerramento</span>
+         </a>
+      </nav>
 
-  <a href="#about">
-    <span class="icon">👥</span>
-    <span class="text">Quem Somos</span>
-  </a>
-
-  <a href="#sectors">
-    <span class="icon">⚙️</span>
-    <span class="text">Como a Equipe Funciona</span>
-  </a>
-
-  <a href="#gallery">
-    <span class="icon">🛠️</span>
-    <span class="text">Aprendizado na Prática</span>
-  </a>
-
-  <a href="#sponsors">
-    <span class="icon">🤝</span>
-    <span class="text">Por que Entrar para a Engrenados?</span>
-  </a>
-
-  <a href="#final">
-    <span class="icon">🏁</span>
-    <span class="text">Encerramento</span>
-  </a>
-</nav>
+      <!-- ------------------------------------------------------------------- -->
+      <!-- ------------------------------------------------------------------- -->
+      <!-- HOME -->
+      <!-- ------------------------------------------------------------------- -->
+      <!-- ------------------------------------------------------------------- -->
 
       <section id="home" class="hero">
          <video autoplay muted loop playsinline>
@@ -60,7 +65,7 @@
       </section>
       <section id="about" class="light">
          <div class="container">
-            <h2 class="fade-up">Quem Somos</h2>
+            <h2>Quem Somos</h2>
             <p class="fade-up">
                A Engrenados Baja Uniube é uma equipe de competição universitária formada por alunos dos cursos de Engenharia e Tecnologia da Informação. Nosso desafio é projetar, construir e competir com um veículo off-road no Baja SAE, unindo conhecimento técnico, trabalho em equipe e muita prática.
             </p>
@@ -69,6 +74,13 @@
             </p>
          </div>
       </section>
+
+      <!-- ------------------------------------------------------------------- -->
+      <!-- ------------------------------------------------------------------- -->
+      <!-- COMO A EQUIPE FUNCIONA -->
+      <!-- ------------------------------------------------------------------- -->
+      <!-- ------------------------------------------------------------------- -->
+
       <section id="sectors" class="soft">
          <div class="container">
          <h2>Como a Equipe Funciona</h2>
@@ -102,6 +114,13 @@
             </div>
          </div>
       </section>
+
+      <!-- ------------------------------------------------------------------- -->
+      <!-- ------------------------------------------------------------------- -->
+      <!-- APRENDIZADO NA PRATICA -->
+      <!-- ------------------------------------------------------------------- -->
+      <!-- ------------------------------------------------------------------- -->
+
       <section id="gallery" class="mid">
          <div class="container">
             <h2 class="fade-up">Aprendizado na Prática</h2>
@@ -119,6 +138,13 @@
             </div>
          </div>
       </section>
+
+      <!-- ------------------------------------------------------------------- -->
+      <!-- ------------------------------------------------------------------- -->
+      <!-- POR QUE ENTRAR PARA A ENGRENADOS -->
+      <!-- ------------------------------------------------------------------- -->
+      <!-- ------------------------------------------------------------------- -->
+
       <section id="sponsors" class="light">
          <div class="container">
          <h2>Por que Entrar para a Engrenados?</h2>
@@ -142,6 +168,12 @@
             </div>
          </div>
       </section>
+
+      <!-- ------------------------------------------------------------------- -->
+      <!-- ------------------------------------------------------------------- -->
+      <!-- FINAL -->
+      <!-- ------------------------------------------------------------------- -->
+      <!-- ------------------------------------------------------------------- -->
       <section class="final">
          <div class="container">
             <h2>Seu Próximo Passo Começa Aqui</h2>
@@ -155,6 +187,13 @@
             </footer>
          </div>
       </section>
+
+      <!-- ------------------------------------------------------------------- -->
+      <!-- ------------------------------------------------------------------- -->
+      <!-- SCRIPTS -->
+      <!-- ------------------------------------------------------------------- -->
+      <!-- ------------------------------------------------------------------- -->
+
       <script>
          /* ===== Animações ===== */
          const items = document.querySelectorAll('.fade-up');
@@ -179,20 +218,20 @@
              menu.classList.remove('scrolled');
            }
          });
-
-const toggle = document.querySelector('.menu-toggle');
-  const menu = document.querySelector('.menu');
-
-  toggle.addEventListener('click', () => {
-    menu.classList.toggle('open');
-  });
-
-  // Fecha o menu ao clicar em um link
-  document.querySelectorAll('.menu a').forEach(link => {
-    link.addEventListener('click', () => {
-      menu.classList.remove('open');
-    });
-  });
+         
+         const toggle = document.querySelector('.menu-toggle');
+         const menu = document.querySelector('.menu');
+         
+         toggle.addEventListener('click', () => {
+         menu.classList.toggle('open');
+         });
+         
+         // Fecha o menu ao clicar em um link
+         document.querySelectorAll('.menu a').forEach(link => {
+         link.addEventListener('click', () => {
+         menu.classList.remove('open');
+         });
+         });
       </script>
    </body>
 </html>
