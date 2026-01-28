@@ -1,191 +1,185 @@
-         /* ==================================================
-         MENU FLUTUANTE
-         ==================================================*/
-         .menu {
-         position: fixed;
-         top: 0px;
-         left: 50%;
-         transform: translateX(-50%);
-         background: rgba(255,255,255,0.9);
-         backdrop-filter: blur(8px);
-         padding: 12px 30px;
-         border-radius: 40px;
-         display: flex;
-         gap: 25px;
-         z-index: 999;
-         box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-         transition: all .3s ease;
-         }
-         .menu a {
-         text-decoration: none;
-         color: var(--azul);
-         font-weight: 600;
-         font-size: .95rem;
-         }
-         .menu.scrolled {
-         background: rgba(11,60,93,.95);
-         }
-         .menu.scrolled a {
-         color: var(--branco);
-         }
-         .menu a:hover {
-         color: var(--amarelo);
-         }
- 
-         /* ==================================================
-         FUNDOS
-         ==================================================*/
-         .light { background: var(--branco); }
-         .soft { background: var(--azul-claro); }
-         .mid  { background: #f0f5fa; }
-         /* ==================================================
-         PATROCINADORES
-         ==================================================*/
-         .sponsors {
-         display: grid;
-         grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
-         gap: 30px;
-         margin-top: 40px;
-         }
-         .sponsor {
-         height: 120px;
-         background: var(--branco);
-         border-radius: 14px;
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         font-weight: bold;
-         box-shadow: 0 8px 20px rgba(0,0,0,.1);
-         }
-         /* ==================================================
-         FINAL
-         ==================================================*/
-         .final {
-         background: linear-gradient(135deg, var(--azul), #082436);
-         color: var(--branco);
-         text-align: center;
-         }
-         .final h2 {
-         color: var(--amarelo);
-         letter-spacing: 2px;
-         }
-         /* ==================================================
-         LOGO – CAPA DAS APRESENTAÇÕES
-         ================================================== */
-
-         .hero-content .logo-apresentacao {
-          width: 280px;        /* ajuste aqui */
-          max-width: 80%;
-          margin-bottom: 20px;
-          }
 /* ==================================================
-   AJUSTE DE SCROLL PARA MENU FIXO
-================================================== */
+MENU FLUTUANTE
+==================================================*/
+/*.menu {
+position: fixed;
+top: 0px;
+left: 50%;
+transform: translateX(-50%);
+background: rgba(255,255,255,0.9);
+backdrop-filter: blur(8px);
+padding: 12px 30px;
+border-radius: 40px;
+display: flex;
+gap: 25px;
+z-index: 999;
+box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+transition: all .3s ease;
+}
+.menu a {
+text-decoration: none;
+color: var(--azul);
+font-weight: 600;
+font-size: .95rem;
+}
+.menu.scrolled {
+background: rgba(11,60,93,.95);
+}
+.menu.scrolled a {
+color: var(--branco);
+}
+.menu a:hover {
+color: var(--amarelo);
+}*/
 
-section {
-  scroll-margin-top: 100px; /* altura do menu */
+/* ==================================================
+FUNDOS
+==================================================*/
+.light { background: var(--branco); }
+.soft { background: var(--azul-claro); }
+.mid  { background: #f0f5fa; }
+
+/* ==================================================
+PATROCINADORES
+==================================================*/
+.sponsors {
+display: grid;
+grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+gap: 30px;
+margin-top: 40px;
+}
+.sponsor {
+height: 120px;
+background: var(--branco);
+border-radius: 14px;
+display: flex;
+align-items: center;
+justify-content: center;
+font-weight: bold;
+box-shadow: 0 8px 20px rgba(0,0,0,.1);
 }
 
-/* ================================
-   MENU LATERAL – APRESENTAÇÕES
-================================ */
+/* ==================================================
+FINAL
+==================================================*/
+.final {
+background: linear-gradient(135deg, var(--azul), #082436);
+color: var(--branco);
+text-align: center;
+}
+.final h2 {
+color: var(--amarelo);
+letter-spacing: 2px;
+}
+
+/* ==================================================
+LOGO – CAPA DAS APRESENTAÇÕES
+================================================== */
+.hero-content .logo-apresentacao {
+width: 280px;        /* ajuste aqui */
+max-width: 80%;
+margin-bottom: 20px;
+}
+
+/* ==================================================
+AJUSTE DE SCROLL PARA MENU FIXO
+================================================== */
+section {
+scroll-margin-top: 10px; /* altura do menu */
+}
+
+/* ===============================
+   MENU LATERAL – TESTE FORÇADO
+=============================== */
 .apresentacao .menu {
   position: fixed;
   top: 0;
   left: 0;
+
   width: 220px;
   height: 100vh;
 
+  background: #0b3c5d;
+
   display: flex;
   flex-direction: column;
-  gap: 18px;
-
   padding: 40px 20px;
 
-  background: rgba(11, 60, 93, 0.95);
-  backdrop-filter: blur(10px);
-
-  z-index: 1000;
+  z-index: 9999;
 }
 
-/* links */
 .apresentacao .menu a {
   color: #fff;
   text-decoration: none;
+  margin-bottom: 20px;
   font-weight: 600;
 }
 
+.apresentacao section {
+  padding-left: 240px;
+}
+
 /* =================================
-   DESLOCA CONTEÚDO PARA O LADO
+DESLOCA CONTEÚDO PARA O LADO
 ================================= */
 .apresentacao section {
-  padding-left: 260px;
+padding-left: 260px;
 }
 
-
 /* =====================================
-   BOTÃO HAMBÚRGUER (MOBILE)
+BOTÃO HAMBÚRGUER (MOBILE)
 ===================================== */
 .menu-toggle {
-  display: none;
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  z-index: 1100;
-
-  background: #f2c94c;
-  color: #0b3c5d;
-  border: none;
-  border-radius: 8px;
-  padding: 10px 14px;
-  font-size: 1.4rem;
-  cursor: pointer;
+display: none;
+position: fixed;
+top: 20px;
+left: 20px;
+z-index: 1100;
+background: #f2c94c;
+color: #0b3c5d;
+border: none;
+border-radius: 8px;
+padding: 10px 14px;
+font-size: 1.4rem;
+cursor: pointer;
 }
 
 /* =====================================
-   MOBILE
+MOBILE
 ===================================== */
 @media (max-width: 900px) {
-
-  .menu-toggle {
-    display: block;
-  }
-
-  .apresentacao .menu {
-    position: fixed;
-    inset: 0;
-    height: 100vh;
-    width: 100%;
-
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    background: rgba(11, 60, 93, 0.97);
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
-  }
-
-  .apresentacao .menu.open {
-    transform: translateX(0);
-  }
-
-  .apresentacao .menu a {
-    font-size: 1.5rem;
-    margin: 15px 0;
-  }
-
-  .apresentacao section {
-    padding-left: 0;
-  }
+.menu-toggle {
+display: block;
+}
+.apresentacao .menu {
+position: fixed;
+inset: 0;
+height: 100vh;
+width: 100%;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+background: rgba(11, 60, 93, 0.97);
+transform: translateX(-100%);
+transition: transform 0.3s ease;
+}
+.apresentacao .menu.open {
+transform: translateX(0);
+}
+.apresentacao .menu a {
+font-size: 1.5rem;
+margin: 15px 0;
+}
+.apresentacao section {
+padding-left: 0;
+}
 }
 
-
-         /* ==================================================
-         RESPONSIVO
-         ==================================================*/
-         @media (max-width:900px) {
-         h1 { font-size: 2.4rem; }
-         h2 { font-size: 2rem; }
-         section { padding: 100px 0; }
-         }
+/* ==================================================
+RESPONSIVO
+==================================================*/
+@media (max-width:900px) {
+h1 { font-size: 2.4rem; }
+h2 { font-size: 2rem; }
+section { padding: 100px 0; }
+}
