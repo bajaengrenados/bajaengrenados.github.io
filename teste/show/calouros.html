@@ -12,7 +12,8 @@
     
    </head>
    <body>
-      <nav class="menu">
+      <button class="menu-toggle" aria-label="Abrir menu">☰</button>
+      <nav class="apresentacao">
          <a href="#home">Início</a>
          <a href="#about">Quem Somos</a>
          <a href="#sectors">Setores</a>
@@ -152,6 +153,20 @@
              menu.classList.remove('scrolled');
            }
          });
+
+const toggle = document.querySelector('.menu-toggle');
+  const menu = document.querySelector('.menu');
+
+  toggle.addEventListener('click', () => {
+    menu.classList.toggle('open');
+  });
+
+  // Fecha o menu ao clicar em um link
+  document.querySelectorAll('.menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      menu.classList.remove('open');
+    });
+  });
       </script>
    </body>
 </html>
