@@ -1,0 +1,51 @@
+/* =========================
+   VARIÁVEIS GLOBAIS
+========================= */
+:root {
+  /* Cores institucionais */
+  --azul-escuro: #090F34;
+  --azul: #0b3c5d;
+  --azul-claro: #1f3c88;
+  --amarelo: #FFD700;
+  --branco: #ffffff;
+  --preto: #000000;
+  --cinza-claro: #f4f6f8;
+
+  /* Tipografia */
+  --fonte-titulo: 'Archivo Black', sans-serif;
+  --fonte-texto: 'Open Sans', sans-serif;
+
+  /* Layout */
+  --radius: 12px;
+  --header-altura: 80px;
+}
+
+/* =========================
+   RESET
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--fonte-texto);
+  line-height: 1.6;
+}
+
+/* =========================
+   TIPOGRAFIA BASE
+========================= */
+h1, h2, h3 {
+  font-family: var(--fonte-titulo);
+  text-transform: uppercase;
+}
+
+p {
+  font-size: 1.05rem;
+}
