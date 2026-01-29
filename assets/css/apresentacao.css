@@ -152,6 +152,27 @@ FADE-UP (ANIMAÇÃO SEGURA)
   }
 }
 
+/* estado padrão: visível */
+.fade-up {
+  opacity: 1;
+  transform: none;
+}
+
+/* animação só no desktop */
+@media (min-width: 900px) {
+  .fade-up {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: all 0.8s ease;
+  }
+
+  .fade-up.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
 /* ==================================================
 MOBILE
 ================================================== */
