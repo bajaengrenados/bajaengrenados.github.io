@@ -6,6 +6,9 @@ HERO
   height: 100vh;
   overflow: hidden;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: var(--branco);
 }
 
@@ -25,7 +28,9 @@ HERO
 
 .hero-content {
   position: relative;
-  z-index: 2;
+  z-index: 3;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .logo-apresentacao {
