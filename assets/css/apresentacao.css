@@ -283,3 +283,29 @@ MENU MOBILE
     padding-left: 0 !important;
   }
 }
+
+/* ==================================================
+MOBILE – CARDS EM COLUNA
+================================================== */
+@media (max-width: 900px) {
+
+  .cards {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  /* evita qualquer vazamento lateral */
+  body {
+    overflow-x: hidden;
+  }
+}
+
+.card,
+.cards {
+  max-width: 100%;
+}
