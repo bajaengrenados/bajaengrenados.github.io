@@ -64,11 +64,21 @@ MENU LATERAL
   text-decoration: none;
   font-weight: 600;
   color: var(--amarelo);
+  align-items: center;
 }
 
 .apresentacao .menu .icon {
+  font-family: 'Material Symbols Rounded';
+  font-size: 24px;
   width: 28px;
-  font-size: 1.4rem;
+  text-align: center;
+  color: var(--amarelo);
+
+  font-variation-settings:
+    'FILL' 1,
+    'wght' 500,
+    'GRAD' 0,
+    'opsz' 24;
 }
 
 .apresentacao .menu .text {
