@@ -133,11 +133,17 @@ MENU LATERAL SLIM COM ÍCONES
 }
 
 /* ==================================================
-FADE-UP (ANIMAÇÃO SEGURA)
-================================================== */
+ANIMAÇÕES SEGURAS
+==================================================*/
 .fade-up {
-  opacity: 1;
-  transform: none;
+opacity: 0;
+transform: translateY(25px);
+transition: all .8s ease;
+}
+
+.fade-up.active {
+opacity: 1;
+transform: translateY(0);
 }
 
 @media (min-width: 900px) {
@@ -146,26 +152,6 @@ FADE-UP (ANIMAÇÃO SEGURA)
     transform: translateY(25px);
     transition: all 0.8s ease;
   }
-  .fade-up.active {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* estado padrão: visível */
-.fade-up {
-  opacity: 1;
-  transform: none;
-}
-
-/* animação só no desktop */
-@media (min-width: 900px) {
-  .fade-up {
-    opacity: 0;
-    transform: translateY(25px);
-    transition: all 0.8s ease;
-  }
-
   .fade-up.active {
     opacity: 1;
     transform: translateY(0);
