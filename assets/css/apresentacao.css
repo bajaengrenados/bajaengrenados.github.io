@@ -240,10 +240,15 @@ MENU MOBILE
     font-size: 30px;
   }
 
-  /* menu lateral mobile */
+  /* MENU ACOMPANHA A PÁGINA */
   .apresentacao .menu {
+    position: absolute;          /* <<< chave */
+    top: 0;
+    left: 0;
+
     width: 85%;
     max-width: 320px;
+    min-height: 100vh;
 
     transform: translateX(-100%);
     transition: transform .3s ease;
@@ -256,7 +261,7 @@ MENU MOBILE
     transform: translateX(0);
   }
 
-  /* links sempre abertos */
+  /* links sempre visíveis */
   .apresentacao .menu .text {
     opacity: 1;
     max-width: 100%;
@@ -264,14 +269,8 @@ MENU MOBILE
     color: var(--branco);
   }
 
-  .apresentacao .menu .icon {
-    color: var(--branco);
-  }
-
   .apresentacao .menu a {
-    height: auto;
-    padding: 12px 0;
-    font-size: 1rem;
+    padding: 14px 0;
   }
 
   .apresentacao .menu a:hover .icon,
@@ -279,9 +278,8 @@ MENU MOBILE
     color: var(--amarelo);
   }
 
-  /* conteúdo não empurra */
+  /* conteúdo NÃO empurra */
   .apresentacao main {
     padding-left: 0 !important;
   }
 }
-
