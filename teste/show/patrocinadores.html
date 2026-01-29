@@ -4,253 +4,59 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Engrenados Baja Uniube • Apresentação</title>
-      <style>
-         /* ==================================================
-         VARIÁVEIS
-         ==================================================*/
-         :root {
-         --azul: #0b3c5d;
-         --azul-claro: #e9f1f8;
-         --cinza: #f4f6f8;
-         --amarelo: #f2c94c;
-         --branco: #ffffff;
-         }
-         /* ==================================================
-         RESET
-         ==================================================*/
-         * {
-         margin: 0;
-         padding: 0;
-         box-sizing: border-box;
-         font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
-         }
-         html { scroll-behavior: smooth; }
-         body { background: var(--cinza); color: #222; }
-         /* ==================================================
-         MENU FLUTUANTE
-         ==================================================*/
-         .menu {
-         position: fixed;
-         top: 20px;
-         left: 50%;
-         transform: translateX(-50%);
-         background: rgba(255,255,255,0.9);
-         backdrop-filter: blur(8px);
-         padding: 12px 30px;
-         border-radius: 40px;
-         display: flex;
-         gap: 25px;
-         z-index: 999;
-         box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-         transition: all .3s ease;
-         }
-         .menu a {
-         text-decoration: none;
-         color: var(--azul);
-         font-weight: 600;
-         font-size: .95rem;
-         }
-         .menu.scrolled {
-         background: rgba(11,60,93,.95);
-         }
-         .menu.scrolled a {
-         color: var(--branco);
-         }
-         .menu a:hover {
-         color: var(--amarelo);
-         }
-         /* ==================================================
-         ESTRUTURA
-         ==================================================*/
-section {
-  min-height: 100svh;
-  display: flex;
-  align-items: center;
-}
 
-.container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding-left: 24px;
-  padding-right: 24px;
-}
-         /* ==================================================
-         TIPOGRAFIA
-         ==================================================*/
-         h1 {
-         font-size: 3.6rem;
-         text-transform: uppercase;
-         letter-spacing: 2px;
-         color: var(--branco);
-         }
-         h2 {
-         font-size: 2.4rem;
-         margin-bottom: 25px;
-         color: var(--azul);
-         text-transform: uppercase;
-         text-align: center;
-         }
-         h3 {
-         font-size: 1.15rem;
-         margin-bottom: 10px;
-         color: var(--azul);
-         text-transform: uppercase;
-         }
-         p {
-         font-size: 1.1rem;
-         line-height: 1.7;
-         max-width: 900px;
-         margin: 0 auto;
-         }
-         /* ==================================================
-         HERO
-         ==================================================*/
-         .hero {
-         position: relative;
-         height: 100vh;
-         overflow: hidden;
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         text-align: center;
-         color: #fff;
-         }
-         .hero video {
-         position: absolute;
-         inset: 0;
-         width: 100%;
-         height: 100%;
-         object-fit: cover;
-         z-index: 1;
-         }
-         .hero .overlay {
-         position: absolute;
-         inset: 0;
-         background: rgba(0, 0, 0, 0.55); /* transparência */
-         z-index: 2;
-         }
-         .hero-content {
-         position: relative;
-         z-index: 3;
-         max-width: 900px;
-         padding: 20px;
-         }
-         /* ==================================================
-         FUNDOS
-         ==================================================*/
-         .light { background: var(--branco); }
-         .soft { background: var(--azul-claro); }
-         .mid  { background: #f0f5fa; }
-         /* ==================================================
-         CARDS
-         ==================================================*/
-         .cards {
-         display: grid;
-         grid-template-columns: repeat(3, 1fr);
-         gap: 30px;
-         margin-top: 40px;
-         }
-         @media (max-width: 1000px) {
-         .cards {
-         grid-template-columns: repeat(2, 1fr);
-         }
-         }
-         @media (max-width: 600px) {
-         .cards {
-         grid-template-columns: 1fr;
-         }
-         }
-         .card {
-         background: #ffffff;
-         padding: 30px;
-         border-radius: 16px;
-         box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-         }
-         .card h3 {
-         color: #0b3c5d;
-         margin-bottom: 10px;
-         }
-         .card.highlight {
-         border-left: 6px solid #f2c94c;
-         }
-         /* ==================================================
-         GALERIA
-         ==================================================*/
-         .gallery {
-         display: grid;
-         grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-         gap: 25px;
-         margin-top: 40px;
-         }
-         .gallery img {
-         width: 100%;
-         border-radius: 14px;
-         box-shadow: 0 10px 25px rgba(0,0,0,.12);
-         }
-         /* ==================================================
-         PATROCINADORES
-         ==================================================*/
-         .sponsors {
-         display: grid;
-         grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
-         gap: 30px;
-         margin-top: 40px;
-         }
-         .sponsor {
-         height: 120px;
-         background: var(--branco);
-         border-radius: 14px;
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         font-weight: bold;
-         box-shadow: 0 8px 20px rgba(0,0,0,.1);
-         }
-         /* ==================================================
-         FINAL
-         ==================================================*/
-         .final {
-         background: linear-gradient(135deg, var(--azul), #082436);
-         color: var(--branco);
-         text-align: center;
-         }
+      <link rel="stylesheet" href="/assets/css/apresentacao.css">
+      <link rel="stylesheet" href="/assets/css/base.css">
+      <link rel="stylesheet" href="/assets/css/components.css">
 
-         .final h2 {
-         color: var(--amarelo);
-         letter-spacing: 2px;
-         }
+      <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet">
 
-         /* ==================================================
-         ANIMAÇÕES SEGURAS
-         ==================================================*/
-         .fade-up {
-         opacity: 0;
-         transform: translateY(25px);
-         transition: all .8s ease;
-         }
-         .fade-up.active {
-         opacity: 1;
-         transform: translateY(0);
-         }
-         /* ==================================================
-         RESPONSIVO
-         ==================================================*/
-         @media (max-width:900px) {
-         h1 { font-size: 2.4rem; }
-         h2 { font-size: 2rem; }
-         section { padding: 100px 0; }
-         }
-      </style>
+
    </head>
-   <body>
-      <nav class="menu">
-         <a href="#home">Início</a>
-         <a href="#about">Quem Somos</a>
-         <a href="#sectors">Setores</a>
-         <a href="#gallery">Desenvolvimento</a>
-         <a href="#sponsors">Parcerias</a>
-      </nav>
+   <body class="apresentacao">
+
+      <!-- ------------------------------------------------------------------- -->
+      <!-- ------------------------------------------------------------------- -->
+      <!-- MENU -->
+      <!-- ------------------------------------------------------------------- -->
+      <!-- ------------------------------------------------------------------- -->
+
+
+<button class="menu-toggle">
+  <span class="material-symbols-rounded">menu</span>
+</button>
+
+<nav class="menu">
+  <a href="#home">
+    <span class="icon material-symbols-rounded">home</span>
+    <span class="text">Início</span>
+  </a>
+  <a href="#about">
+    <span class="icon material-symbols-rounded">groups</span>
+    <span class="text">Quem Somos</span>
+  </a>
+  <a href="#sectors">
+    <span class="icon material-symbols-rounded">settings</span>
+    <span class="text">Setores</span>
+  </a>
+  <a href="#gallery">
+    <span class="icon material-symbols-rounded">engineering</span>
+    <span class="text">Desenvolvimento</span>
+  </a>
+  <a href="#sponsors">
+    <span class="icon material-symbols-rounded">handshake</span>
+    <span class="text">Parcerias</span>
+  </a>
+</nav>
+
+<main>
+
+      <!-- ------------------------------------------------------------------- -->
+      <!-- ------------------------------------------------------------------- -->
+      <!-- HOME -->
+      <!-- ------------------------------------------------------------------- -->
+      <!-- ------------------------------------------------------------------- -->
+
       <section id="home" class="hero">
          <video autoplay muted loop playsinline>
             <source src="https://cdn.pixabay.com/video/2024/11/20/242283_tiny.mp4" type="video/mp4">
@@ -262,6 +68,14 @@ section {
             <p>Engenharia, Inovação e Performance Off-Road</p>
          </div>
       </section>
+
+      <!-- ------------------------------------------------------------------- -->
+      <!-- ------------------------------------------------------------------- -->
+      <!-- QUEM SOMOS -->
+      <!-- ------------------------------------------------------------------- -->
+      <!-- ------------------------------------------------------------------- -->
+
+
       <section id="about" class="light">
          <div class="container">
             <h2 class="fade-up">Quem Somos</h2>
@@ -271,6 +85,14 @@ section {
             </p>
          </div>
       </section>
+
+      <!-- ------------------------------------------------------------------- -->
+      <!-- ------------------------------------------------------------------- -->
+      <!-- SETORES TÉCNICOS -->
+      <!-- ------------------------------------------------------------------- -->
+      <!-- ------------------------------------------------------------------- -->
+
+
       <section id="sectors" class="soft">
   <div class="container">
     <h2>Setores Técnicos</h2>
@@ -301,6 +123,14 @@ section {
             </div>
          </div>
       </section>
+
+      <!-- ------------------------------------------------------------------- -->
+      <!-- ------------------------------------------------------------------- -->
+      <!-- DESENVOLVIMENTO -->
+      <!-- ------------------------------------------------------------------- -->
+      <!-- ------------------------------------------------------------------- -->
+
+
       <section id="gallery" class="mid">
          <div class="container">
             <h2 class="fade-up">Desenvolvimento</h2>
@@ -320,6 +150,14 @@ section {
             </div>
          </div>
       </section>
+
+      <!-- ------------------------------------------------------------------- -->
+      <!-- ------------------------------------------------------------------- -->
+      <!-- PARCERIA E PATROCÍNIO -->
+      <!-- ------------------------------------------------------------------- -->
+      <!-- ------------------------------------------------------------------- -->
+
+
       <section id="sponsors" class="light">
          <div class="container">
             <h2>Parceria & Patrocínio</h2>
@@ -365,6 +203,14 @@ section {
             </div>
          </div>
       </section>
+
+      <!-- ------------------------------------------------------------------- -->
+      <!-- ------------------------------------------------------------------- -->
+      <!-- FINAL -->
+      <!-- ------------------------------------------------------------------- -->
+      <!-- ------------------------------------------------------------------- -->
+
+
       <section class="final">
          <div class="container">
             <h2>Mais que uma Equipe, um Projeto de Futuro</h2>
@@ -377,30 +223,37 @@ section {
             </footer>
          </div>
       </section>
+
+</main>
       <script>
-         /* ===== Animações ===== */
-         const items = document.querySelectorAll('.fade-up');
-         
-         const observer = new IntersectionObserver(entries => {
-           entries.forEach(entry => {
-             if (entry.isIntersecting) {
-               entry.target.classList.add('active');
-             }
-           });
-         }, { threshold: 0.15 });
-         
-         items.forEach(item => observer.observe(item));
-         
-         /* ===== Menu muda ao scroll ===== */
-         const menu = document.querySelector('.menu');
-         
-         window.addEventListener('scroll', () => {
-           if (window.scrollY > 120) {
-             menu.classList.add('scrolled');
-           } else {
-             menu.classList.remove('scrolled');
-           }
-         });
-      </script>
+  /* ===== Animações ===== */
+  const items = document.querySelectorAll('.fade-up');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  items.forEach(item => observer.observe(item));
+
+  /* ===== Menu mobile ===== */
+  const toggle = document.querySelector('.menu-toggle');
+  const menu = document.querySelector('.menu');
+
+  toggle.addEventListener('click', () => {
+    menu.classList.toggle('open');
+  });
+
+  /* Fecha o menu ao clicar em um link */
+  document.querySelectorAll('.menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      menu.classList.remove('open');
+    });
+  });
+</script>
+
    </body>
 </html>
