@@ -151,6 +151,10 @@ TEXTO DO MENU
   opacity: 1;
   max-width: 160px;
   white-space: normal;
+  color: var(--branco);
+}
+
+.apresentacao .menu a:hover .text {
   color: var(--amarelo);
 }
 
