@@ -97,6 +97,18 @@ MENU LATERAL
   opacity: 1;
 }
 
+/* conteúdo começa colado */
+.apresentacao section {
+  padding-left: 68px;
+  transition: padding-left .25s ease;
+}
+
+/* só afasta quando menu abre */
+.apresentacao .menu:hover ~ section {
+  padding-left: 240px;
+}
+
+
 /* ==================================================
 LAYOUT CORRETO
 ================================================== */
