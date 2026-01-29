@@ -51,10 +51,11 @@ MENU LATERAL
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 26px 10px;
-  gap: 26px;
+  padding: 18px 8px;
+  gap: 14px;
   z-index: 9999;
   transition: width .25s ease;
+  box-shadow: 8px 0 25px rgba(0,0,0,0.25);
 }
 
 .apresentacao .menu:hover {
@@ -68,8 +69,14 @@ MENU LATERAL
   gap: 14px;
   text-decoration: none;
   font-weight: 600;
-  color: var(--amarelo);
+  color: var(--branco);
   align-items: center;
+  height: 40px;
+  justify-content: center;
+}
+
+.apresentacao .menu:hover a {
+  justify-content: flex-start;
 }
 
 .apresentacao .menu .icon {
@@ -77,7 +84,7 @@ MENU LATERAL
   font-size: 28px;
   width: 28px;
   text-align: center;
-  color: var(--amarelo);
+  color: var(--branco);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -109,8 +116,14 @@ MENU LATERAL
   visibility: visible;
   opacity: 1;
   max-width: 160px;
+  color: var(--amarelo);
 }
 
+.apresentacao .menu:hover .icon {
+  color: var(--amarelo);
+}
+
+/*
 /* conteúdo começa colado */
 .apresentacao section {
   padding-left: 68px;
@@ -120,6 +133,15 @@ MENU LATERAL
 /* só afasta quando menu abre */
 .apresentacao .menu:hover ~ section {
   padding-left: 240px;
+}
+*/
+
+.apresentacao .container {
+  padding-left: 110px;
+}
+
+.apresentacao .menu:hover ~ section .container {
+  padding-left: 260px;
 }
 
 
