@@ -72,6 +72,16 @@ MENU LATERAL SOBREPOSTO
   padding-left: 18px;
 }
 
+.apresentacao main {
+  padding-left: 70px;
+  transition: padding-left .25s ease;
+}
+
+.apresentacao .menu:hover ~ main {
+  padding-left: 240px;
+}
+
+
 /* ==================================================
 LINKS DO MENU
 ================================================== */
