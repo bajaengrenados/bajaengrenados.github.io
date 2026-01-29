@@ -207,3 +207,81 @@ PDF – REMOVE MENU
     display: none !important;
   }
 }
+
+/* ==================================================
+MENU MOBILE
+================================================== */
+@media (max-width: 900px) {
+
+  /* botão hamburger */
+  .menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: fixed;
+    top: 16px;
+    left: 16px;
+
+    width: 44px;
+    height: 44px;
+
+    background: rgba(11,60,93,.95);
+    color: var(--branco);
+
+    border: none;
+    border-radius: 10px;
+
+    z-index: 10001;
+    cursor: pointer;
+  }
+
+  .menu-toggle span {
+    font-size: 30px;
+  }
+
+  /* menu lateral mobile */
+  .apresentacao .menu {
+    width: 85%;
+    max-width: 320px;
+
+    transform: translateX(-100%);
+    transition: transform .3s ease;
+
+    align-items: flex-start;
+    padding: 80px 20px;
+  }
+
+  .apresentacao .menu.open {
+    transform: translateX(0);
+  }
+
+  /* links sempre abertos */
+  .apresentacao .menu .text {
+    opacity: 1;
+    max-width: 100%;
+    white-space: normal;
+    color: var(--branco);
+  }
+
+  .apresentacao .menu .icon {
+    color: var(--branco);
+  }
+
+  .apresentacao .menu a {
+    height: auto;
+    padding: 12px 0;
+    font-size: 1rem;
+  }
+
+  .apresentacao .menu a:hover .icon,
+  .apresentacao .menu a:hover .text {
+    color: var(--amarelo);
+  }
+
+  /* conteúdo não empurra */
+  .apresentacao main {
+    padding-left: 0 !important;
+  }
+}
+
