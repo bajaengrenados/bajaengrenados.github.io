@@ -5,10 +5,10 @@ HERO
   position: relative;
   height: 100vh;
   overflow: hidden;
-  text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
   color: var(--branco);
 }
 
@@ -31,185 +31,71 @@ HERO
   z-index: 3;
   max-width: 900px;
   margin: 0 auto;
+  padding: 20px;
 }
 
 .logo-apresentacao {
-  width: 280px;
+  width: 260px;
   max-width: 80%;
   margin-bottom: 20px;
 }
 
 /* ==================================================
-MENU LATERAL
+MENU LATERAL SOBREPOSTO
 ================================================== */
 .apresentacao .menu {
   position: fixed;
-  inset: 0 auto 0 0;
-  width: 70px;
+  top: 0;
+  left: 0;
+
+  width: 64px;
+  height: 100vh;
+
   background: rgba(11,60,93,.96);
   backdrop-filter: blur(8px);
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 18px 8px;
-  gap: 14px;
+
+  padding: 20px 6px;
+  gap: 10px;
+
   z-index: 9999;
   transition: width .25s ease;
-  box-shadow: 8px 0 25px rgba(0,0,0,0.25);
 }
 
+/* expande por cima */
 .apresentacao .menu:hover {
-  width: 240px;
+  width: 220px;
   align-items: flex-start;
-  padding-left: 20px;
+  padding-left: 18px;
 }
 
+/* ==================================================
+LINKS DO MENU
+================================================== */
 .apresentacao .menu a {
   display: flex;
-  gap: 14px;
+  align-items: center;
+  gap: 12px;
+
+  height: 36px;
+  width: 100%;
+
   text-decoration: none;
   font-weight: 600;
   color: var(--branco);
-  align-items: center;
-  height: 40px;
-  justify-content: center;
+
+  opacity: .95;
+  transition: opacity .2s ease;
 }
 
-.apresentacao .menu:hover a {
-  justify-content: flex-start;
-}
-
-.apresentacao .menu .icon {
-  font-family: 'Material Symbols Rounded';
-  font-size: 28px;
-  width: 28px;
-  text-align: center;
-  color: var(--branco);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 1.4rem;
-  line-height: 1;
-
-  font-variation-settings:
-    'FILL' 1,
-    'wght' 500,
-    'GRAD' 0,
-    'opsz' 24;
-}
-
-.apresentacao .menu .text {
-  visibility: hidden;
-  opacity: 0;
-
-  max-width: 0;
-  overflow: hidden;
-
-  white-space: normal;
-  word-break: break-word;
-
-  transition: opacity .2s ease, max-width .25s ease;
-}
-
-.apresentacao .menu:hover .text {
-  visibility: visible;
+.apresentacao .menu a:hover {
   opacity: 1;
-  max-width: 160px;
-  color: var(--amarelo);
-}
-
-.apresentacao .menu:hover .icon {
-  color: var(--amarelo);
-}
-
-/*
-/* conteúdo começa colado */
-.apresentacao section {
-  padding-left: 68px;
-  transition: padding-left .25s ease;
-}
-
-/* só afasta quando menu abre */
-.apresentacao .menu:hover ~ section {
-  padding-left: 240px;
-}
-*/
-
-.apresentacao .container {
-  padding-left: 110px;
-}
-
-.apresentacao .menu:hover ~ section .container {
-  padding-left: 260px;
-}
-
-
-/* ==================================================
-LAYOUT CORRETO
-================================================== */
-.apresentacao main {
-  padding-left: 110px;
-  transition: padding-left .25s ease;
-}
-
-.apresentacao .menu:hover ~ main {
-  padding-left: 260px;
 }
 
 /* ==================================================
-FINAL
+ÍCONES (BRANCO → AMARELO)
 ================================================== */
-.final {
-  background: linear-gradient(135deg, var(--azul), #082436);
-  color: var(--branco);
-  text-align: center;
-}
-
-.final h2 {
-  color: var(--amarelo);
-}
-
-/* ==================================================
-MOBILE
-================================================== */
-.menu-toggle {
-  display: none;
-}
-
-@media (max-width: 900px) {
-  .menu-toggle {
-    display: block;
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    z-index: 10000;
-  }
-
-  .apresentacao .menu {
-    width: 100%;
-    transform: translateX(-100%);
-  }
-
-  .apresentacao .menu.open {
-    transform: translateX(0);
-  }
-
-  .apresentacao main {
-    padding-left: 0;
-  }
-}
-
-/* ==================================================
-PDF
-================================================== */
-@media print {
-  .menu,
-  .menu-toggle {
-    display: none !important;
-  }
-
-  main {
-    padding-left: 0 !important;
-  }
-}
+.apresentacao .menu .
