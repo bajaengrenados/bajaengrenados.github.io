@@ -215,46 +215,36 @@ MENU MOBILE
 
   /* botão hamburger */
   .menu-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: none;
+  position: fixed;
+  top: 20px;
+  left: 20px;
 
-    position: fixed;
-    top: 16px;
-    left: 16px;
+  z-index: 20000; /* MUITO importante */
+  background: rgba(11,60,93,.95);
+  color: var(--branco);
 
-    width: 44px;
-    height: 44px;
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
 
-    background: rgba(11,60,93,.95);
-    color: var(--branco);
+  font-size: 22px;
+  cursor: pointer;
+}
 
-    border: none;
-    border-radius: 10px;
-
-    z-index: 10001;
-    cursor: pointer;
-  }
-
-  .menu-toggle span {
-    font-size: 30px;
-  }
 
   /* MENU ACOMPANHA A PÁGINA */
-  .apresentacao .menu {
-    position: absolute;          /* <<< chave */
-    top: 0;
-    left: 0;
+ .apresentacao .menu {
+    position: fixed;
+    inset: 0;
 
-    width: 85%;
-    max-width: 320px;
-    min-height: 100vh;
+    width: 100%;
+    height: 100vh;
 
+    z-index: 15000;
     transform: translateX(-100%);
     transition: transform .3s ease;
-
-    align-items: flex-start;
-    padding: 80px 20px;
   }
 
   .apresentacao .menu.open {
