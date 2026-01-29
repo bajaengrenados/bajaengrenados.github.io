@@ -18,33 +18,37 @@
       <!-- ------------------------------------------------------------------- -->
       <!-- ------------------------------------------------------------------- -->
 
-      <button class="menu-toggle" aria-label="Abrir menu">☰</button>
-      <nav class="menu">
-         <a href="#home">
-         <span class="icon">🏁</span>
-         <span class="text">Início</span>
-         </a>
-         <a href="#about">
-         <span class="icon">👥</span>
-         <span class="text">Quem Somos</span>
-         </a>
-         <a href="#sectors">
-         <span class="icon">⚙️</span>
-         <span class="text">Como a Equipe Funciona</span>
-         </a>
-         <a href="#gallery">
-         <span class="icon">🛠️</span>
-         <span class="text">Aprendizado na Prática</span>
-         </a>
-         <a href="#sponsors">
-         <span class="icon">🤝</span>
-         <span class="text">Por que Entrar para a Engrenados?</span>
-         </a>
-         <a href="#final">
-         <span class="icon">🏁</span>
-         <span class="text">Encerramento</span>
-         </a>
-      </nav>
+ <button class="menu-toggle" aria-label="Abrir menu">☰</button>
+
+<nav class="menu">
+  <a href="#home">
+    <span class="icon">🏁</span>
+    <span class="text">Início</span>
+  </a>
+  <a href="#about">
+    <span class="icon">👥</span>
+    <span class="text">Quem Somos</span>
+  </a>
+  <a href="#sectors">
+    <span class="icon">⚙️</span>
+    <span class="text">Como a Equipe Funciona</span>
+  </a>
+  <a href="#gallery">
+    <span class="icon">🛠️</span>
+    <span class="text">Aprendizado na Prática</span>
+  </a>
+  <a href="#sponsors">
+    <span class="icon">🤝</span>
+    <span class="text">Por que Entrar para a Engrenados?</span>
+  </a>
+  <a href="#final">
+    <span class="icon">🏁</span>
+    <span class="text">Encerramento</span>
+  </a>
+</nav>
+
+      
+      <main>
 
       <!-- ------------------------------------------------------------------- -->
       <!-- ------------------------------------------------------------------- -->
@@ -189,50 +193,42 @@
          </div>
       </section>
 
+      </main>
+
       <!-- ------------------------------------------------------------------- -->
       <!-- ------------------------------------------------------------------- -->
       <!-- SCRIPTS -->
       <!-- ------------------------------------------------------------------- -->
       <!-- ------------------------------------------------------------------- -->
 
-      <script>
-         /* ===== Animações ===== */
-         const items = document.querySelectorAll('.fade-up');
-         
-         const observer = new IntersectionObserver(entries => {
-           entries.forEach(entry => {
-             if (entry.isIntersecting) {
-               entry.target.classList.add('active');
-             }
-           });
-         }, { threshold: 0.15 });
-         
-         items.forEach(item => observer.observe(item));
-         
-         /* ===== Menu muda ao scroll ===== */
-         const menu = document.querySelector('.menu');
-         
-         window.addEventListener('scroll', () => {
-           if (window.scrollY > 120) {
-             menu.classList.add('scrolled');
-           } else {
-             menu.classList.remove('scrolled');
-           }
-         });
-         
-         const toggle = document.querySelector('.menu-toggle');
-         const menu = document.querySelector('.menu');
-         
-         toggle.addEventListener('click', () => {
-         menu.classList.toggle('open');
-         });
-         
-         // Fecha o menu ao clicar em um link
-         document.querySelectorAll('.menu a').forEach(link => {
-         link.addEventListener('click', () => {
-         menu.classList.remove('open');
-         });
-         });
-      </script>
+<script>
+  /* ===== Animações ===== */
+  const items = document.querySelectorAll('.fade-up');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  items.forEach(item => observer.observe(item));
+
+  /* ===== Menu mobile ===== */
+  const toggle = document.querySelector('.menu-toggle');
+  const menu = document.querySelector('.menu');
+
+  toggle.addEventListener('click', () => {
+    menu.classList.toggle('open');
+  });
+
+  /* Fecha o menu ao clicar em um link */
+  document.querySelectorAll('.menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      menu.classList.remove('open');
+    });
+  });
+</script>
    </body>
 </html>
