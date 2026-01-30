@@ -172,84 +172,51 @@ FINAL
 }
 
 /* ==================================================
-MOBILE
+MOBILE – CONFIGURAÇÃO FINAL
 ================================================== */
-.menu-toggle {
-  display: none;
-}
-
 @media (max-width: 900px) {
+
+  /* ===== RESET GERAL ===== */
+  html, body {
+    overflow-x: hidden;
+  }
+
+  /* ===== BOTÃO MENU ===== */
   .menu-toggle {
-    display: block;
+    display: flex;
     position: fixed;
-    top: 20px;
-    left: 20px;
-    z-index: 10000;
+    top: 14px;
+    left: 14px;
+
+    width: 40px;
+    height: 40px;
+
+    background: rgba(11,60,93,.95);
+    color: var(--branco);
+    border: none;
+    border-radius: 12px;
+
+    font-size: 22px;
+    cursor: pointer;
+
+    z-index: 15000;
   }
 
+  /* ===== MENU MOBILE ===== */
   .apresentacao .menu {
-    width: 100%;
-    transform: translateX(-100%);
-    transition: transform .3s ease;
-  }
-
-  .apresentacao .menu.open {
-    transform: translateX(0);
-  }
-}
-
-/* ==================================================
-PDF – REMOVE MENU
-================================================== */
-@media print {
-  .menu,
-  .menu-toggle {
-    display: none !important;
-  }
-}
-
-/* ==================================================
-MENU MOBILE
-================================================== */
-@media (max-width: 900px) {
-
-  /* botão hamburger */
-  .menu-toggle {
-  display: flex;
-  position: fixed;
-  top: 5px;
-  left: 5px;
-
-  z-index: 1200; /* MUITO importante */
-  background: rgba(11,60,93,.95);
-  color: var(--branco);
-
-  border: none;
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
-
-  font-size: 22px;
-  cursor: pointer;
-}
-
- /* se o botão tiver padding exagerado */
-  .menu-toggle button,
-  .menu-toggle {
-    padding: 10px;
-  }
-
-  /* MENU ACOMPANHA A PÁGINA */
- .apresentacao .menu {
     position: fixed;
     inset: 0;
 
     width: 100%;
     height: 100vh;
 
-    z-index: 15000;
+    background: rgba(11,60,93,.97);
+    backdrop-filter: blur(8px);
+
     transform: translateX(-100%);
     transition: transform .3s ease;
+
+    z-index: 14000;
   }
 
   .apresentacao .menu.open {
@@ -265,7 +232,7 @@ MENU MOBILE
   }
 
   .apresentacao .menu a {
-    padding: 14px 0;
+    padding: 14px 10px;
   }
 
   .apresentacao .menu a:hover .icon,
@@ -273,61 +240,36 @@ MENU MOBILE
     color: var(--amarelo);
   }
 
-  /* conteúdo NÃO empurra */
-  .apresentacao main {
-    padding-left: 0 !important;
+  /* ===== CONTEÚDO ===== */
+  main {
+    padding-top: 70px;
   }
 
-  .sidebar {
-    position: fixed;
-    left: 0;
-    top: 0;
-    transform: translateX(-100%);
+  /* ===== HERO ===== */
+  .hero {
+    min-height: calc(100vh - 70px);
+    height: auto;
   }
 
-  .sidebar.open {
-    transform: translateX(0);
-  }
-}
-
-/* ==================================================
-MOBILE – CARDS EM COLUNA
-================================================== */
-@media (max-width: 900px) {
-
-  .cards,
-  .cards-container,
-  .apresentacao-cards {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+  .hero-content {
+    padding: 20px;
   }
 
-  .card {
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
-  }
-}
-
-/* ==================================================
-MOBILE – CORREÇÃO DEFINITIVA DOS CARDS
-================================================== */
-@media (max-width: 900px) {
-
-  /* trava layout geral */
-  body {
-    overflow-x: hidden;
+  .hero-content img {
+    width: 160px;
+    max-width: 70%;
   }
 
-  section,
-  .container {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
+  .hero-content h1 {
+    font-size: 1.9rem;
+    line-height: 1.2;
   }
 
-  /* cards SEMPRE em coluna */
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  /* ===== CARDS ===== */
   .cards {
     display: flex !important;
     flex-direction: column !important;
@@ -339,48 +281,14 @@ MOBILE – CORREÇÃO DEFINITIVA DOS CARDS
     max-width: 100%;
     margin: 0 auto;
   }
-
 }
 
-
-@media (max-width: 900px) {
-  main {
-    padding-top: 70px;
-  }
-
-  body {
-    padding-top: 70px;
-  }
-}
-
-
-@media (max-width: 900px) {
-  .hero {
-    min-height: calc(100vh - 70px);
-    height: auto;
+/* ==================================================
+PDF – REMOVE MENU
+================================================== */
+@media print {
+  .menu,
+  .menu-toggle {
+    display: none !important;
   }
 }
-
-@media (max-width: 900px) {
-
-  .hero-content img {
-    width: 180px;
-    max-width: 70%;
-  }
-
-  .hero-content h1 {
-    font-size: 2rem;
-    line-height: 1.2;
-  }
-
-  .hero-content p {
-    font-size: 1rem;
-  }
-}
-
-html, body {
-  overflow-x: hidden;
-}
-
-
-
