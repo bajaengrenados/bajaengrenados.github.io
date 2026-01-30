@@ -211,28 +211,33 @@ PDF – REMOVE MENU
 /* ==================================================
 MENU MOBILE
 ================================================== */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
 
   /* botão hamburger */
   .menu-toggle {
   display: flex;
   position: fixed;
-  top: 16px;
-  left: 16px;
+  top: 5px;
+  left: 5px;
 
   z-index: 1200; /* MUITO importante */
   background: rgba(11,60,93,.95);
   color: var(--branco);
 
   border: none;
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   border-radius: 12px;
 
   font-size: 22px;
   cursor: pointer;
 }
 
+ /* se o botão tiver padding exagerado */
+  .menu-toggle button,
+  .menu-toggle {
+    padding: 10px;
+  }
 
   /* MENU ACOMPANHA A PÁGINA */
  .apresentacao .menu {
@@ -275,17 +280,20 @@ MENU MOBILE
 
   .sidebar {
     position: fixed;
-    top: 0;
     left: 0;
-    height: 100vh;
-    z-index: 1100;
+    top: 0;
+    transform: translateX(-100%);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
   }
 }
 
 /* ==================================================
 MOBILE – CARDS EM COLUNA
 ================================================== */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
 
   .cards,
   .cards-container,
@@ -301,3 +309,36 @@ MOBILE – CARDS EM COLUNA
     box-sizing: border-box;
   }
 }
+
+/* ==================================================
+MOBILE – CORREÇÃO DEFINITIVA DOS CARDS
+================================================== */
+@media (max-width: 900px) {
+
+  /* trava layout geral */
+  body {
+    overflow-x: hidden;
+  }
+
+  section,
+  .container {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* cards SEMPRE em coluna */
+  .cards {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+}
+
