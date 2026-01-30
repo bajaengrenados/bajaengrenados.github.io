@@ -79,3 +79,74 @@ html, body {
   max-width: 100%;
   overflow-x: hidden;
 }
+
+
+.parceiros-carousel{
+  width:100%;
+  overflow:hidden;
+  margin-top:40px;
+}
+
+.parceiros-track{
+  display:flex;
+  align-items:center;
+  gap:60px;
+  width:fit-content;
+  animation: parceirosScroll 28s linear infinite;
+}
+
+.parceiro-logo{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.parceiro-logo img{
+  width:180px;
+  height:120px;
+  object-fit:contain;
+
+  filter:grayscale(100%);
+  border:2px solid rgba(255,215,0,1);
+  border-radius:12px;
+  background:#000;
+  padding:12px;
+
+  transition:0.4s ease;
+}
+
+.parceiro-logo:hover img{
+  filter:grayscale(0%);
+  transform:scale(1.12);
+  border-color:#FFD700;
+}
+
+/* Placeholder "Sua marca aqui" */
+.parceiro-logo.placeholder{
+  width:180px;
+  height:120px;
+  border:2px dashed #FFD700;
+  border-radius:12px;
+  color:#FFD700;
+  font-weight:600;
+  text-transform:uppercase;
+}
+
+/* Animação */
+@keyframes parceirosScroll{
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Mobile */
+@media (max-width: 900px){
+  .parceiros-track{
+    gap:40px;
+  }
+
+  .parceiro-logo img,
+  .parceiro-logo.placeholder{
+    width:140px;
+    height:90px;
+  }
+}
