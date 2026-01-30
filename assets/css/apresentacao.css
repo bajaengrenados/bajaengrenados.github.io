@@ -342,3 +342,9 @@ MOBILE – CORREÇÃO DEFINITIVA DOS CARDS
 
 }
 
+
+@media (max-width: 900px) {
+  main {
+    padding-top: 70px;
+  }
+}
