@@ -52,6 +52,26 @@ HERO
   margin-bottom: 20px;
 }
 
+
+/* ==================================================
+GALLERY
+================================================== */
+.gallery {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.gallery img {
+  height: 350px;
+  width: auto;
+  max-width: 100%;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+
 /* ==================================================
 MENU LATERAL SOBREPOSTO
 ================================================== */
@@ -310,5 +330,11 @@ MOBILE – CONFIGURAÇÃO FINAL LIMPA
     max-width: 100%;
     margin: 0 auto;
   }
+
+  /* ===== GALLEY ===== */
+  .gallery img {
+    height: 220px;
+  }
+
 
 }
