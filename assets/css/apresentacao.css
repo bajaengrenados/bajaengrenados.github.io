@@ -211,16 +211,16 @@ PDF – REMOVE MENU
 /* ==================================================
 MENU MOBILE
 ================================================== */
-@media (max-width: 900px) {
+@media (max-width: 768px) {
 
   /* botão hamburger */
   .menu-toggle {
-  display: none;
+  display: flex;
   position: fixed;
-  top: 20px;
-  left: 20px;
+  top: 16px;
+  left: 16px;
 
-  z-index: 20000; /* MUITO importante */
+  z-index: 1200; /* MUITO importante */
   background: rgba(11,60,93,.95);
   color: var(--branco);
 
@@ -272,30 +272,32 @@ MENU MOBILE
   .apresentacao main {
     padding-left: 0 !important;
   }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 1100;
+  }
 }
 
 /* ==================================================
 MOBILE – CARDS EM COLUNA
 ================================================== */
-@media (max-width: 900px) {
+@media (max-width: 768px) {
 
-  .cards {
+  .cards,
+  .cards-container,
+  .apresentacao-cards {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 16px;
   }
 
   .card {
     width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
-
-  /* evita qualquer vazamento lateral */
-  body {
-    overflow-x: hidden;
-  }
-}
-
-.card,
-.cards {
-  max-width: 100%;
 }
