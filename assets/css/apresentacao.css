@@ -211,25 +211,27 @@ MOBILE – CONFIGURAÇÃO FINAL
   }
 
   /* ===== MENU MOBILE ===== */
+    /* MENU MOBILE SOBREPOSTO */
   .apresentacao .menu {
     position: fixed;
     inset: 0;
 
-    width: 100%;
+    width: 100vw;
     height: 100vh;
 
-    background: rgba(11,60,93,.97);
+    background: rgba(11,60,93,.96);
     backdrop-filter: blur(8px);
 
     transform: translateX(-100%);
     transition: transform .3s ease;
 
-    z-index: 14000;
+    z-index: 15000;
   }
 
   .apresentacao .menu.open {
     transform: translateX(0);
   }
+
 
   /* links sempre visíveis */
   .apresentacao .menu .text {
@@ -251,8 +253,9 @@ MOBILE – CONFIGURAÇÃO FINAL
 
   /* ===== HERO ===== */
   .hero {
-    min-height: calc(100vh - 70px);
-    height: auto;
+    height: 100vh;
+    min-height: 100vh;
+    width: 100vw;
   }
 
   .hero-content {
