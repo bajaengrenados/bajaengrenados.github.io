@@ -347,4 +347,40 @@ MOBILE – CORREÇÃO DEFINITIVA DOS CARDS
   main {
     padding-top: 70px;
   }
+
+  body {
+    padding-top: 70px;
+  }
 }
+
+
+@media (max-width: 900px) {
+  .hero {
+    min-height: calc(100vh - 70px);
+    height: auto;
+  }
+}
+
+@media (max-width: 900px) {
+
+  .hero-content img {
+    width: 180px;
+    max-width: 70%;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
+
+
