@@ -153,27 +153,7 @@ section {
 
 /* BAJA */
 #baja{
-    background:rgba(0,0,0,0.85);
-}
-
-#baja h2{
-    font-family:"Archivo Black", sans-serif;
-    font-size:42px;
-    color:#FFD700;
-    text-align:center;
-    margin-bottom:20px;
-}
-
-#baja p{
-    max-width:900px;
-    margin:0 auto 40px;
-    text-align:center;
-    font-size:18px;
-}
-
-/* BAJA */
-#baja{
-    background:rgba(0,0,0,0.85);
+    background:rgba(0, 204, 255, 0.85);
 }
 
 #baja h2{
@@ -193,7 +173,7 @@ section {
 
 /* PROJETO */
 #projeto{
-    background:rgba(0,0,0,0.85);
+    background:rgba(53, 55, 150, 0.85);
 }
 
 #projeto h2{
