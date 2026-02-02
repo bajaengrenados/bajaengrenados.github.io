@@ -22,6 +22,11 @@ CARDS
   box-shadow: 0 10px 25px rgba(0,0,0,.1);
 }
 
+.card h3 {
+  color: #0b3c5d;
+  margin-bottom: 10px;
+}
+
 .card.highlight {
   border-left: 6px solid var(--amarelo);
 }
@@ -46,9 +51,16 @@ GALERIA
 ANIMAÇÕES SEGURAS
 ================================================== */
 .fade-up {
-  opacity: 1;
-  transform: none;
+  opacity: 0;
+  transform: translateY(25px);
+  transition: all .8s ease;
 }
+
+.fade-up.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 
 .fade-up.animate {
   opacity: 0;
@@ -65,14 +77,16 @@ ANIMAÇÕES SEGURAS
   width:100%;
   overflow:hidden;
   margin-top:40px;
+  position:relative;
 }
 
 .parceiros-track{
   display:flex;
   align-items:center;
-  gap:60px;
-  width:fit-content;
-  animation: parceirosScroll 28s linear infinite;
+  gap:80px;
+  animation: parceirosScroll 30s linear infinite;
+  will-change: transform;
+  width: fit-content;
 }
 
 .parceiro-logo{
@@ -93,6 +107,7 @@ ANIMAÇÕES SEGURAS
   padding:12px;
 
   transition:0.4s ease;
+  opacity:1;
 }
 
 .parceiro-logo:hover img{
