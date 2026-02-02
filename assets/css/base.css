@@ -16,7 +16,7 @@ RESET
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Open Sans', 'Segoe UI', Arial, sans-serif;
+  font-family: 'Open Sans', 'Segoe UI', Arial, sans-serif, 'Montserrat';
 }
 
 html {
@@ -42,7 +42,8 @@ section {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 16px;
+  padding-left: 24px;
+  padding-right: 24px;
 }
 
 /* ==================================================
