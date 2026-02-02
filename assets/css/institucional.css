@@ -1,92 +1,76 @@
-body{
-    font-family:"Open Sans", sans-serif;
-    background:url("https://www.gmnbt.com/assets/images/baja-pennsylvania-cornell.jpg") no-repeat center center fixed;
-    background-size:cover;
-    color:#fff;
-}
-
+/* ==================================================
+   TEMA INSTITUCIONAL – INDEX
+   (Não depende de base.css ou components.css)
+================================================== */
 
 /* =========================
-   TEMA INSTITUCIONAL
+   BODY
 ========================= */
-
-/* Aplica tema só nas seções */
-section.light {
-  background: var(--cinza);
-  color: #222;
-}
-
-section.mid {
-  background: var(--azul-claro);
-  color: #222;
-}
-
-section.dark {
-  background: var(--azul);
-  color: var(--branco);
+body {
+  font-family: "Open Sans", sans-serif;
+  background: url("https://www.gmnbt.com/assets/images/baja-pennsylvania-cornell.jpg")
+    no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
 }
 
 /* =========================
    HEADER
 ========================= */
-
 :root {
-  --header-altura: 90px;
+  --header-altura: 80px;
 }
 
-header{
-    position:fixed;
-    top:0;
-    width:100%;
-    height:80px;
-    background:#e9f1f8; /* sólido, sem transparência */
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 50px;
-    z-index:1000;
-    box-shadow:0 2px 10px rgba(0,0,0,0.5); /* sombra sutil */
-}
-header img{
-    height:65px;
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: var(--header-altura);
+  background: var(--azul-claro);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 50px;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,.5);
 }
 
-nav a{
-    color:hsl(204, 79%, 20%);
-    margin-left:35px;
-    text-decoration:none;
-    font-weight:600;
-    position:relative;
-    transition: color 0.3s ease;
+header img {
+  height: 65px;
 }
 
-nav a::after{
-    content:"";
-    position:absolute;
-    bottom:0;
-    left:50%;
-    width:0;
-    height:2px;
-    background:#FFD700;
-    transition: width 0.3s ease;
-    transform:translateX(-50%);
-}
-nav a:hover::after{
-    width:100%;
+nav a {
+  color: var(--azul);
+  margin-left: 35px;
+  text-decoration: none;
+  font-weight: 600;
+  position: relative;
+  transition: color .3s;
 }
 
-nav a:hover{
-    color:#FFD700;
+nav a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--amarelo);
+  transition: .3s;
+  transform: translateX(-50%);
 }
 
-nav a:hover::after{
-    width:100%;
+nav a:hover {
+  color: var(--amarelo);
+}
+
+nav a:hover::after {
+  width: 100%;
 }
 
 /* =========================
-   SEÇÕES (AJUSTE ÂNCORA)
+   AJUSTE DE ÂNCORA
 ========================= */
-
 section {
   scroll-margin-top: var(--header-altura);
 }
@@ -94,429 +78,154 @@ section {
 /* =========================
    HOME
 ========================= */
-
-/* HOME */
-#home{
-    position:relative;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
+#home {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
-#home video{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    z-index:-2;
+#home video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
 }
 
-#home::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:rgba(255,255,255,0.75);
-    z-index:-1;
+#home::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,.75);
+  z-index: -1;
 }
 
-#home img{
-    width:350px;
-    margin-bottom:20px;
+#home img {
+  width: 420px;
 }
 
-#home h1{
-    font-family:"Archivo Black", sans-serif;
-    font-size:48px;
+/* =========================
+   TÍTULOS PADRÃO
+========================= */
+.section-title {
+  font-family: "Archivo Black", sans-serif;
+  font-size: 48px;
+  text-align: center;
+  color: var(--amarelo);
+  margin-bottom: 50px;
+  text-transform: uppercase;
 }
 
-/* QUEM SOMOS */
-#quem-somos{
-    background:rgba(0,0,0,0.85);
+/* =========================
+   QUEM SOMOS
+========================= */
+#quem-somos {
+  background: rgba(0,0,0,.85);
+  padding: 120px 10%;
 }
 
-#quem-somos h2{
-    font-family:"Archivo Black", sans-serif;
-    font-size:42px;
-    color:#FFD700;
-    text-align:center;
-    margin-bottom:20px;
+#quem-somos p {
+  max-width: 900px;
+  margin: 0 auto 40px;
+  text-align: center;
+  font-size: 18px;
 }
 
-#quem-somos p{
-    max-width:900px;
-    margin:0 auto 40px;
-    text-align:center;
-    font-size:18px;
+/* =========================
+   BAJA
+========================= */
+#baja {
+  background: rgba(11,60,93,.85); /* var(--azul) */
+  padding: 120px 10%;
 }
 
-/* BAJA */
-#baja{
-    background:rgba(0, 204, 255, 0.85);
+/* =========================
+   PROJETO
+========================= */
+#projeto {
+  background: rgba(244,246,248,.85); /* var(--cinza) */
+  color: #222;
+  padding: 120px 10%;
 }
 
-#baja h2{
-    font-family:"Archivo Black", sans-serif;
-    font-size:42px;
-    color:#FFD700;
-    text-align:center;
-    margin-bottom:20px;
+#projeto .section-title {
+  color: var(--azul);
 }
 
-#baja p{
-    max-width:900px;
-    margin:0 auto 40px;
-    text-align:center;
-    font-size:18px;
-}
-
-/* PROJETO */
-#projeto{
-    background:rgba(53, 55, 150, 0.85);
-}
-
-#projeto h2{
-    font-family:"Archivo Black", sans-serif;
-    font-size:42px;
-    color:#FFD700;
-    text-align:center;
-    margin-bottom:20px;
-}
-
-#projeto p{
-    max-width:900px;
-    margin:0 auto 40px;
-    text-align:center;
-    font-size:18px;
-}
-
-
-/* Seção Competições */
+/* =========================
+   COMPETIÇÕES
+========================= */
 #competicoes {
-    background: rgba(9,15,52,0.85);
-    padding: 100px 10%;
-    color: #fff;
-    font-family: 'Open Sans', sans-serif;
+  background: rgba(9,15,52,.85);
+  padding: 120px 10%;
 }
 
-#competicoes h2 {
-    text-align: center;
-    color: #FFD700;
-    margin-bottom: 40px;
+/* =========================
+   TÍTULOS
+========================= */
+#titulos {
+  background: rgba(233,241,248,.85); /* var(--azul-claro) */
+  color: #222;
+  padding: 120px 10%;
 }
 
-/* Caixa da contagem regressiva estilo esportivo */
-#countdown {
-    background: #0d1b2acc;
-    padding: 30px 40px;
-    border-radius: 12px;
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    max-width: 600px;
-    margin: 40px auto 0;
-    flex-wrap: wrap;
-    border: 2px solid #FFD700;
+#titulos .section-title {
+  color: var(--azul);
 }
 
-/* Título dentro da caixa */
-.countdown-title {
-    width: 100%;
-    text-align: center;
-    font-size: 24px;
-    font-weight: bold;
-    color: #FFD700;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
+/* =========================
+   MÍDIA
+========================= */
+#midia {
+  background: rgba(0,0,0,.85);
+  padding: 120px 10%;
 }
 
-/* Blocos da contagem */
-.countdown-item {
-    background: #000000cc;
-    padding: 15px 20px;
-    border-radius: 10px;
-    text-align: center;
-    min-width: 110px;
-    border: 3px solid #FFD700;
+/* =========================
+   PARCEIROS
+========================= */
+#parceiros {
+  background: rgba(0,0,0,.85);
+  padding: 120px 10%;
+  text-align: center;
 }
 
-.countdown-item div:first-child {
-    font-size: 14px;
-    color: #FFD700;
-    margin-bottom: 6px;
+.parceiros-texto {
+  max-width: 900px;
+  margin: 0 auto 40px;
+  font-size: 18px;
 }
 
-.countdown-item div:last-child {
-    font-size: 36px;
-    font-weight: bold;
-    color: #fff;
+/* =========================
+   CONTATO
+========================= */
+.contato-section {
+  background: rgba(9,15,52,.85);
+  padding: 120px 8%;
 }
 
-/* Linha de separação */
-#competicoes hr {
-    border: 2px solid #FFD700;
-    margin: 40px auto;
-    width: 100%;
-}
-
-/* TITULO */
-#titulos{
-    background:rgba(0,0,0,0.85);
-}
-
-#titulos h2{
-    font-family:"Archivo Black", sans-serif;
-    font-size:42px;
-    color:#FFD700;
-    text-align:center;
-    margin-bottom:20px;
-}
-
-#titulos p{
-    max-width:900px;
-    margin:0 auto 40px;
-    text-align:center;
-    font-size:18px;
-}
-
-/* MÍDIAS */
-#midia{
-    background:rgba(0,0,0,0.85);
-}
-
-#midia h2{
-    font-family:"Archivo Black", sans-serif;
-    font-size:42px;
-    color:#FFD700;
-    text-align:center;
-    margin-bottom:20px;
-}
-
-#midia p{
-    max-width:900px;
-    margin:0 auto 40px;
-    text-align:center;
-    font-size:18px;
-}
-
-/* PARCEIROS */
-#parceiros{
-    background:rgba(0,0,0,0.85);
-    text-align:center;
-    overflow:hidden;
-}
-
-.parceiros-texto{
-    max-width:900px;
-    margin:0 auto 40px;
-    font-size:18px;
-}
-
-/* CARROSSEL */
-.parceiros-carousel{
-    width:100%;
-    overflow:hidden;
-    position:relative;
-}
-
-.parceiros-track{
-    display:flex;
-    align-items:center;
-    gap:80px;
-    animation: parceirosScroll 30s linear infinite;
-    will-change: transform;
-}
-
-.parceiro-logo img{
-    width:200px;
-    height:200px;
-    object-fit:cover;
-    filter:grayscale(100%);
-    opacity:1;
-    border:2px solid rgba(255,215,0,1);
-    border-radius:12px;
-    background:#000;
-    transition:0.4s ease;
-}
-
-.parceiro-logo:hover img{
-    filter:grayscale(0%);
-    opacity:1;
-    transform:scale(1.15);
-    border-color:#FFD700;
-    background:rgba(255,255,255,0.08);
-}
-
-.parceiros-track{
-    display:flex;
-    align-items:center;
-    gap:80px;
-    width:fit-content;
-    animation: parceirosScroll 30s linear infinite;
-}
-
-@keyframes parceirosScroll{
-    from{
-        transform: translateX(0);
-    }
-    to{
-        transform: translateX(-50%);
-    }
-}
-
-/* SEÇÃO */
-.contato-section{
-    padding:80px 8%;
-    background: rgba(9,15,52,0.85);
-}
-
-/* GRID */
-.contato-container{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:40px;
-    align-items:stretch;
-}
-
-/* FORMULÁRIO */
-.contato-form-box{
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-}
-
-.contato-form{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:14px;
-}
-
-.contato-form textarea{
-    grid-column:1 / -1;
-    height:90px;
-    resize:none;
-}
-
-.contato-form input,
-.contato-form textarea{
-    padding:12px;
-    border-radius:6px;
-    border:none;
-    background:#1a1a1a;
-    color:#fff;
-}
-
-.contato-form button{
-    grid-column:1 / -1;
-    padding:12px;
-    border:none;
-    border-radius:6px;
-    background:#ff3c00;
-    color:#fff;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-/* ÍCONES */
-.social-icons{
-    margin-top:14px;
-    display:flex;
-    justify-content:center;
-    gap:14px;
-}
-
-.social-icons a{
-    width:36px;
-    height:36px;
-    border-radius:50%;
-    background:rgba(255,255,255,0.1);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    transition:0.3s;
-}
-
-.social-icons a:hover{
-    background:#ff3c00;
-}
-
-.social-icons i{
-    font-size:18px;
-    color:#fff;
-}
-
-/* MAPA */
-.contato-mapa iframe{
-    width:100%;
-    height:100%;
-    min-height:320px;
-    border-radius:12px;
-    border:none;
-}
-
-
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 .site-footer {
   background: var(--azul);
   color: var(--branco);
   padding: 50px 10% 20px;
 }
 
-.footer-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-}
-
-.footer-col h4 {
-  margin-bottom: 15px;
-  color: var(--amarelo);
-  font-size: 1.1rem;
-}
-
-.footer-col p {
-  font-size: 0.95rem;
-  line-height: 1.6;
-}
-
-.footer-col a {
-  display: block;
-  color: var(--branco);
-  text-decoration: none;
-  margin-bottom: 8px;
-  font-size: 0.95rem;
-  opacity: 0.85;
-  transition: .2s;
-}
-
-.footer-col a:hover {
-  opacity: 1;
-  color: var(--amarelo);
-}
-
-.footer-bottom {
-  text-align: center;
-  margin-top: 40px;
-  font-size: 0.85rem;
-  opacity: 0.7;
-}
-
-
-
-
-
 /* =========================
    RESPONSIVO
 ========================= */
-
 @media (max-width: 768px) {
 
   header {
-    height: auto;
     position: sticky;
     flex-direction: column;
+    height: auto;
     padding: 16px;
   }
 
@@ -530,12 +239,14 @@ section {
 
   nav a {
     margin: 0;
-    font-size: 0.9rem;
+    font-size: .9rem;
   }
 
-  .footer-container {
-    grid-template-columns: 1fr;
-    text-align: center;
+  .section-title {
+    font-size: 36px;
+  }
+
+  #home img {
+    width: 300px;
   }
 }
-
