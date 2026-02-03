@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Telemetria • Engrenados Baja</title>
+  
+
+<style>
+:root {
+  --bg: #0b0f14;
+  --panel: #11161c;
+  --border: #1f2933;
+  --text: #d1d5db;
+  --muted: #6b7280;
+  --ok: #22c55e;
+  --warn: #f59e0b;
+  --crit: #ef4444;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.topbar {
+  background: #020617;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+}
+
+.topbar span {
+  color: var(--muted);
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.status-dot.ok {
+  background: var(--ok);
+}
+
+main {
+  padding: 20px;
+  display: grid;
+  gap: 20px;
+}
+
+.grid {
+  display: grid;
+  gap: 16px;
+}
+
+.gauges {
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.controls {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.charts {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 14px;
+}
+
+.label {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.gauge {
+  font-size: 26px;
+  margin-top: 8px;
+}
+
+.gauge.ok {
+  color: var(--ok);
+}
+
+.gauge.warn {
+  color: var(--warn);
+}
+
+.gauge.crit {
+  color: var(--crit);
+}
+
+.bar {
+  height: 10px;
+  background: #1f2933;
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 8px 0;
+}
+
+.bar div {
+  height: 100%;
+  background: var(--ok);
+}
+
+.bar.red div {
+  background: var(--crit);
+}
+
+.chart {
+  height: 260px;
+}
+
+.health ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.health li {
+  font-size: 13px;
+  padding: 4px 0;
+}
+
+.health li.ok {
+  color: var(--ok);
+}
+
+.health li.warn {
+  color: var(--warn);
+}
+
+.health li.crit {
+  color: var(--crit);
+}
+</style>
+
+</head>
+
+<body>
+
+<header class="topbar">
+  <div>
+    <strong>Engrenados Baja</strong>
+    <span> / Telemetria Operacional</span>
+  </div>
+  <div class="topbar-right">
+    <span class="status-dot ok"></span> Sistema Online
+  </div>
+</header>
+
+<main>
+
+  <!-- GAUGES / STATUS -->
+  <section class="grid gauges">
+
+    <div class="panel">
+      <span class="label">RPM</span>
+      <div class="gauge">3.200</div>
+    </div>
+
+    <div class="panel">
+      <span class="label">Velocidade</span>
+      <div class="gauge">28 km/h</div>
+    </div>
+
+    <div class="panel">
+      <span class="label">Temp. Motor</span>
+      <div class="gauge ok">92 °C</div>
+    </div>
+
+    <div class="panel">
+      <span class="label">Temp. CVT</span>
+      <div class="gauge warn">98 °C</div>
+    </div>
+
+    <div class="panel">
+      <span class="label">Combustível</span>
+      <div class="gauge">65 %</div>
+    </div>
+
+    <div class="panel">
+      <span class="label">Tensão</span>
+      <div class="gauge ok">12.4 V</div>
+    </div>
+
+  </section>
+
+  <!-- CONTROLES -->
+  <section class="grid controls">
+
+    <div class="panel">
+      <span class="label">Acelerador</span>
+      <div class="bar">
+        <div style="width:45%"></div>
+      </div>
+      <small>45 %</small>
+    </div>
+
+    <div class="panel">
+      <span class="label">Freio</span>
+      <div class="bar red">
+        <div style="width:12%"></div>
+      </div>
+      <small>12 %</small>
+    </div>
+
+    <div class="panel">
+      <span class="label">Volante</span>
+      <div class="gauge">-18 °</div>
+    </div>
+
+    <div class="panel">
+      <span class="label">Inclinação</span>
+      <div class="gauge">7 °</div>
+    </div>
+
+  </section>
+
+  <!-- GRÁFICOS -->
+  <section class="grid charts">
+
+    <div class="panel chart">
+      <span class="label">Temperatura do Motor</span>
+      <canvas></canvas>
+    </div>
+
+    <div class="panel chart">
+      <span class="label">RPM</span>
+      <canvas></canvas>
+    </div>
+
+  </section>
+
+  <!-- SAÚDE DO SISTEMA -->
+  <section class="panel health">
+    <span class="label">Saúde do Sistema</span>
+
+    <ul>
+      <li class="ok">ESP32 Carro — ONLINE</li>
+      <li class="ok">ESP32 Box — ONLINE</li>
+      <li class="ok">LoRa — OK</li>
+      <li class="warn">Sensor Pressão Freio — atraso</li>
+    </ul>
+  </section>
+
+</main>
+
+</body>
+</html>
