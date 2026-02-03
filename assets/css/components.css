@@ -3,7 +3,8 @@ FUNDOS
 ================================================== */
 .light { background: var(--branco); }
 .soft  { background: var(--azul-claro); }
-.mid   { background: #f0f5fa; }
+.mid   { background: #9EBEF0; }
+.dark  { background: var(--azul-marinho);}
 
 /* ==================================================
 CARDS
