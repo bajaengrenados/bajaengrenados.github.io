@@ -6,7 +6,7 @@ html, body {
 }
 
 section:not(.hero) {
-  margin-bottom: 40px;
+  padding-bottom: 40px;
 }
 
 
@@ -15,7 +15,8 @@ HERO
 ================================================== */
 .hero {
   position: relative;
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -30,6 +31,11 @@ HERO
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.hero,
+.hero * {
+  box-sizing: border-box;
 }
 
 .hero .overlay {
