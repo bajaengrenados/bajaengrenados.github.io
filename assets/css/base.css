@@ -2,10 +2,11 @@
 VARIÁVEIS GLOBAIS
 ================================================== */
 :root {
-  --azul: #0b3c5d;
-  --azul-claro: #e9f1f8;
+  --azul: #0000FF;
+  --azul-claro: #6699FF;
+  --azul-marinho: #090F34;
   --cinza: #f4f6f8;
-  --amarelo: #f2c94c;
+  --amarelo: #ffd700;
   --branco: #ffffff;
 }
 
