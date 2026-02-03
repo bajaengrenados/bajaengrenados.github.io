@@ -20,7 +20,7 @@ body{
    HEADER
 ================================================== */
 :root{
-  --header-altura: 80px;
+  --header-altura: 60px;
 }
 
 header{
@@ -38,7 +38,7 @@ header{
 }
 
 header img{
-  height: 65px;
+  height: 50px;
 }
 
 nav a{
