@@ -2,10 +2,11 @@
 VARIÁVEIS GLOBAIS
 ================================================== */
 :root {
-  --azul: #0b3c5d;
-  --azul-claro: #e9f1f8;
+  --azul: #0000FF;
+  --azul-claro: #6699FF;
+  --azul-marinho: #090F34;
   --cinza: #f4f6f8;
-  --amarelo: #f2c94c;
+  --amarelo: #ffd700;
   --branco: #ffffff;
 }
 
@@ -16,7 +17,7 @@ RESET
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Open Sans', 'Segoe UI', Arial, sans-serif;
+  font-family: 'Open Sans', 'Segoe UI', Arial, sans-serif, 'Montserrat';
 }
 
 html {
@@ -34,15 +35,15 @@ ESTRUTURA BASE
 ================================================== */
 section {
   min-height: 100svh;
-  display: flex;
-  align-items: center;
+  padding: 0; /* ou nada */
 }
 
 .container {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 16px;
+  padding-left: 24px;
+  padding-right: 24px;
 }
 
 /* ==================================================
@@ -56,7 +57,7 @@ h1 {
 h2 {
   font-size: 2.3rem;
   margin-bottom: 25px;
-  color: var(--azul);
+  color: var(--azul-marinho);
   text-align: center;
   text-transform: uppercase;
 }
@@ -64,7 +65,7 @@ h2 {
 h3 {
   font-size: 1.15rem;
   margin-bottom: 10px;
-  color: var(--azul);
+  color: var(--azul-marinho);
   text-transform: uppercase;
 }
 

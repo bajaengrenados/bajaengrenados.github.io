@@ -6,7 +6,7 @@ html, body {
 }
 
 section:not(.hero) {
-  margin-bottom: 40px;
+  padding-bottom: 40px;
 }
 
 
@@ -15,13 +15,17 @@ HERO
 ================================================== */
 .hero {
   position: relative;
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100svh;
+  margin: 0;
+  padding: 0;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   text-align: center;
   color: var(--branco);
+  overflow: hidden;
 }
 
 .hero video {
@@ -41,8 +45,12 @@ HERO
 .hero-content {
   position: relative;
   z-index: 3;
-  max-width: 900px;
-  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
   padding: 20px;
 }
 

@@ -3,7 +3,8 @@ FUNDOS
 ================================================== */
 .light { background: var(--branco); }
 .soft  { background: var(--azul-claro); }
-.mid   { background: #f0f5fa; }
+.mid   { background: #9EBEF0; }
+.dark  { background: var(--azul-marinho);}
 
 /* ==================================================
 CARDS
@@ -17,9 +18,16 @@ CARDS
 
 .card {
   background: var(--branco);
+  color: #222;
   padding: 30px;
   border-radius: 16px;
   box-shadow: 0 10px 25px rgba(0,0,0,.1);
+}
+
+.card h3 {
+  color: #0b3c5d;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
 .card.highlight {
@@ -46,9 +54,16 @@ GALERIA
 ANIMAÇÕES SEGURAS
 ================================================== */
 .fade-up {
-  opacity: 1;
-  transform: none;
+  opacity: 0;
+  transform: translateY(25px);
+  transition: all .8s ease;
 }
+
+.fade-up.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 
 .fade-up.animate {
   opacity: 0;
@@ -65,46 +80,52 @@ ANIMAÇÕES SEGURAS
   width:100%;
   overflow:hidden;
   margin-top:40px;
+  position:relative;
 }
 
 .parceiros-track{
   display:flex;
   align-items:center;
-  gap:60px;
-  width:fit-content;
-  animation: parceirosScroll 28s linear infinite;
+  gap:80px;
+  animation: parceirosScroll 30s linear infinite;
+  will-change: transform;
+  width: fit-content;
 }
 
 .parceiro-logo{
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  width: 240px;
+  height: 135px;
+
+  background: #000;
+  border: 2px solid #FFD700;
+  border-radius: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
 }
 
 .parceiro-logo img{
-  width:180px;
-  height:120px;
-  object-fit:contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 
-  filter:grayscale(100%);
-  border:2px solid rgba(255,215,0,1);
-  border-radius:12px;
-  background:#000;
-  padding:12px;
-
-  transition:0.4s ease;
+  filter: grayscale(100%);
+  transition: 0.4s ease;
 }
 
 .parceiro-logo:hover img{
-  filter:grayscale(0%);
-  transform:scale(1.12);
-  border-color:#FFD700;
+  filter: grayscale(0%);
+  transform: scale(1.08);
 }
+
 
 /* Placeholder "Sua marca aqui" */
 .parceiro-logo.placeholder{
-  width:180px;
-  height:120px;
+  width:240px;
+  height:135px;
   border:2px dashed #FFD700;
   border-radius:12px;
   color:#FFD700;
