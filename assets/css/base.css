@@ -34,8 +34,7 @@ ESTRUTURA BASE
 ================================================== */
 section {
   min-height: 100svh;
-  display: flex;
-  align-items: center;
+  padding: 0; /* ou nada */
 }
 
 .container {
