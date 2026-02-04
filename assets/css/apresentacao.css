@@ -202,7 +202,7 @@ TEXTO DO MENU
 FINAL
 ================================================== */
 .final {
-  background: linear-gradient(135deg, var(--azul), #082436);
+  background: var(--azul);
   color: var(--branco);
   text-align: center;
 }
