@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Telemetria • Engrenados Baja</title>
+<style>
+/* =====================================================
+   VARIÁVEIS GLOBAIS (CORES / TEMA)
+===================================================== */
+:root {
+  --bg: #0b0f14;
+  --panel: #11161c;
+  --border: #1f2933;
+  --text: #d1d5db;
+  --muted: #6b7280;
+
+  --ok: #22c55e;
+  --warn: #f59e0b;
+  --crit: #ef4444;
+}
+
+/* =====================================================
+   RESET E CONFIGURAÇÕES BÁSICAS
+===================================================== */
+* {
+  box-sizing: border-box;
+  font-family: system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* =====================================================
+   TOPO / STATUS DO SISTEMA
+===================================================== */
+.topbar {
+  background: #020617;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+}
+
+.topbar span {
+  color: var(--muted);
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.status-dot.ok {
+  background: var(--ok);
+}
+
+/* =====================================================
+   LAYOUT GERAL
+===================================================== */
+main {
+  padding: 20px;
+  display: grid;
+  gap: 20px;
+}
+
+.grid {
+  display: grid;
+  gap: 16px;
+}
+
+.gauges { grid-template-columns: repeat(6, 1fr); }
+.controls { grid-template-columns: repeat(4, 1fr); }
+.charts { grid-template-columns: repeat(3, 1fr); }
+
+/* =====================================================
+   PAINEL PADRÃO
+===================================================== */
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 14px;
+}
+
+.label {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* =====================================================
+   GAUGES SEMICIRCULARES (TEMP MOTOR / CVT)
+===================================================== */
+.gauge-panel {
+  text-align: center;
+}
+
+.gauge {
+  width: 100%;
+  max-width: 220px;
+  margin: 10px auto 0;
+}
+
+.gauge-bg {
+  fill: none;
+  stroke: #1f2933;
+  stroke-width: 12;
+}
+
+.gauge-value {
+  fill: none;
+  stroke: var(--ok);
+  stroke-width: 12;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.6s ease, stroke 0.4s ease;
+}
+
+.gauge-value.warn { stroke: var(--warn); }
+.gauge-value.crit { stroke: var(--crit); }
+
+.gauge-value-text {
+  font-size: 22px;
+  margin-top: -10px;
+}
+
+/* =====================================================
+   RPM — TACÔMETRO
+===================================================== */
+.rpm-panel {
+  text-align: center;
+}
+
+.tachometer {
+  position: relative;
+  width: 220px;
+  margin: 0 auto;
+}
+
+.tachometer svg { width: 100%; }
+
+.rpm {
+  fill: none;
+  stroke-width: 12;
+  stroke-linecap: round;
+}
+
+.rpm.green { stroke: var(--ok); }
+.rpm.yellow { stroke: var(--warn); }
+.rpm.red { stroke: var(--crit); }
+
+#rpmNeedle {
+  stroke: #e5e7eb;
+  stroke-width: 3;
+  transform-origin: 100px 100px;
+  transform: rotate(-90deg);
+  transition: transform 0.4s ease;
+}
+
+.needle-center { fill: #e5e7eb; }
+
+.rpm-value {
+  position: absolute;
+  width: 100%;
+  bottom: 5px;
+  text-align: center;
+  font-size: 26px;
+}
+
+/* =====================================================
+   VELOCIDADE — GAUGE RADIAL
+===================================================== */
+.speed-radial-panel {
+  text-align: center;
+  position: relative;
+}
+
+.speed-radial {
+  width: 180px;
+  margin: 10px auto;
+  transform: rotate(-90deg);
+}
+
+.speed-bg {
+  fill: none;
+  stroke: #1f2933;
+  stroke-width: 12;
+}
+
+.speed-progress {
+  fill: none;
+  stroke: #38bdf8;
+  stroke-width: 12;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.6s ease;
+}
+
+.speed-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -45%);
+  text-align: center;
+}
+
+.speed-center span {
+  font-size: 36px;
+  font-weight: 600;
+
+}
+
+.speed-center small {
+  display: block;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* =====================================================
+   COMBUSTÍVEL
+===================================================== */
+.fuel-panel {
+  text-align: center;
+}
+
+.fuel-wrapper {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.fuel-bar {
+  width: 32px;
+  height: 160px;
+  background: #1f2933;
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.fuel-bar div {
+  width: 100%;
+  background: var(--ok);
+  transition: height 0.6s ease, background 0.4s ease;
+}
+
+.fuel-info {
+  text-align: left;
+  font-size: 15px;
+}
+
+.fuel-info strong {
+  font-size: 26px;
+}
+
+.fuel-time {
+  margin-top: 6px;
+  font-size: 14px;
+}
+
+.fuel-meta {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* =====================================================
+   PEDAIS (ACELERADOR / FREIO)
+===================================================== */
+.pedal-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.pedal-bar {
+  height: 14px;
+  background: #1f2933;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.pedal-bar div {
+  height: 100%;
+  width: 0%;
+  transition: width 0.4s ease;
+}
+
+.pedal-bar.throttle div {
+  background: linear-gradient(to right, var(--ok), #16a34a);
+}
+
+.pedal-bar.brake div {
+  background: linear-gradient(to right, var(--crit), #b91c1c);
+}
+
+.pedal-value {
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* =====================================================
+   VOLANTE (ÂNGULO)
+===================================================== */
+.steering-panel {
+  text-align: center;
+}
+
+.steering-svg {
+  width: 180px;
+  margin: 10px auto;
+}
+
+.steering-bg {
+  fill: none;
+  stroke: #1f2933;
+  stroke-width: 6;
+}
+
+.steering-zero {
+  stroke: var(--muted);
+  stroke-width: 2;
+  stroke-dasharray: 4;
+}
+
+.steering-needle {
+  stroke: var(--ok);
+  stroke-width: 4;
+  stroke-linecap: round;
+  transform-origin: 100px 100px;
+  transition: transform 0.4s ease, stroke 0.3s ease;
+}
+
+.steering-value {
+  font-size: 22px;
+  margin-top: -6px;
+}
+
+/* =====================================================
+   INCLINAÇÃO
+===================================================== */
+.tilt-panel {
+  text-align: center;
+}
+
+.tilt-svg {
+  width: 180px;
+  margin: 10px auto;
+}
+
+.tilt-bg {
+  fill: none;
+  stroke: #1f2933;
+  stroke-width: 6;
+}
+
+.tilt-zero {
+  stroke: var(--muted);
+  stroke-width: 2;
+  stroke-dasharray: 4;
+}
+
+.tilt-needle {
+  stroke: #38bdf8;
+  stroke-width: 4;
+  stroke-linecap: round;
+  transform-origin: 100px 100px;
+  transition: transform 0.4s ease, stroke 0.3s ease;
+}
+
+.tilt-value {
+  font-size: 22px;
+  margin-top: -6px;
+}
+
+/* =====================================================
+   FREIO — PRESSÃO EM H
+===================================================== */
+.brake-pressure-panel {
+  text-align: center;
+}
+
+.brake-h {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 12px;
+}
+
+.brake-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.brake-bar {
+  width: 26px;
+  height: 100px;
+  background: #1f2933;
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.brake-bar div {
+  width: 100%;
+  background: var(--crit);
+  transition: height 0.4s ease;
+}
+
+.brake-center {
+  width: 26px;
+  height: 6px;
+  background: var(--muted);
+  margin-bottom: 70px;
+}
+
+/* =====================================================
+   BATERIA
+===================================================== */
+.battery-panel {
+  text-align: center;
+}
+
+.battery-bar {
+  height: 14px;
+  background: #1f2933;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.battery-bar div {
+  height: 100%;
+  width: 0%;
+  background: var(--ok);
+  transition: width 0.4s ease, background 0.3s ease;
+}
+
+.battery-value {
+  margin-top: 6px;
+  font-size: 22px;
+}
+	
+/* =====================================================
+   SAÚDE DO SISTEMA
+===================================================== */
+.health ul {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+}
+
+.health li {
+  font-size: 13px;
+  padding: 6px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Indicador visual (bolinha) */
+.health li::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* Estados */
+.health li.ok {
+  color: var(--ok);
+}
+
+.health li.ok::before {
+  background: var(--ok);
+}
+
+.health li.warn {
+  color: var(--warn);
+}
+
+.health li.warn::before {
+  background: var(--warn);
+}
+
+.health li.crit {
+  color: var(--crit);
+}
+
+.health li.crit::before {
+  background: var(--crit);
+}
+
+	
+.chart {
+  height: 260px;
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+}
+
+
+</style>
+
+</head>
+
+<body>
+<header class="topbar">
+  <div> <strong>Engrenados Baja</strong> <span> / Telemetria Operacional</span> </div>
+  <div class="topbar-right"> <span class="status-dot ok"></span> Sistema Online </div>
+</header>
+<main>
+
+  <!-- =====================================================
+       BLOCO 1 — GAUGES PRINCIPAIS / STATUS DO VEÍCULO
+       (RPM, Velocidade, Temperaturas, Combustível, Bateria)
+  ====================================================== -->
+  <section class="grid gauges">
+
+    <!-- RPM / TACÔMETRO -->
+    <div class="panel rpm-panel">
+      <span class="label">RPM</span>
+
+      <div class="tachometer">
+        <svg viewBox="0 0 200 120">
+
+          <!-- Faixa verde (regime ideal) -->
+          <path d="M20 100 A80 80 0 0 1 140 40" class="rpm green" />
+
+          <!-- Faixa amarela (atenção) -->
+          <path d="M140 40 A80 80 0 0 1 170 70" class="rpm yellow" />
+
+          <!-- Faixa vermelha (crítico) -->
+          <path d="M170 70 A80 80 0 0 1 180 100" class="rpm red" />
+
+          <!-- Ponteiro -->
+          <line x1="100" y1="100" x2="100" y2="30" id="rpmNeedle" />
+          <circle cx="100" cy="100" r="5" class="needle-center" />
+        </svg>
+
+        <!-- Valor numérico -->
+        <div class="rpm-value">
+          <span id="rpmValue">3200</span>
+          <small>RPM</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- VELOCIDADE — GAUGE RADIAL -->
+    <div class="panel speed-radial-panel">
+      <span class="label">Velocidade</span>
+
+      <svg viewBox="0 0 200 200" class="speed-radial">
+
+        <!-- Fundo -->
+        <circle cx="100" cy="100" r="90" class="speed-bg" />
+
+        <!-- Progresso -->
+        <circle
+          cx="100"
+          cy="100"
+          r="90"
+          class="speed-progress"
+          stroke-dasharray="565"
+          stroke-dashoffset="565"
+          id="speedArc"
+        />
+      </svg>
+
+      <!-- Valor central -->
+      <div class="speed-center">
+        <span id="speedValue">0</span>
+        <small>km/h</small>
+      </div>
+    </div>
+
+    <!-- TEMPERATURA DO MOTOR -->
+    <div class="panel gauge-panel">
+      <span class="label">Temp. Motor</span>
+
+      <svg viewBox="0 0 200 100" class="gauge">
+        <path d="M10 100 A90 90 0 0 1 190 100" class="gauge-bg" />
+        <path
+          d="M10 100 A90 90 0 0 1 190 100"
+          class="gauge-value"
+          stroke-dasharray="283"
+          stroke-dashoffset="283"
+          id="tempMotorArc"
+        />
+      </svg>
+
+      <div class="gauge-value-text">
+        <span id="tempMotorValue">92</span> °C
+      </div>
+    </div>
+
+    <!-- TEMPERATURA DO CVT -->
+    <div class="panel gauge-panel">
+      <span class="label">Temp. CVT</span>
+
+      <svg viewBox="0 0 200 100" class="gauge">
+        <path d="M10 100 A90 90 0 0 1 190 100" class="gauge-bg" />
+        <path
+          d="M10 100 A90 90 0 0 1 190 100"
+          class="gauge-value"
+          stroke-dasharray="283"
+          stroke-dashoffset="283"
+          id="tempCVTArc"
+        />
+      </svg>
+
+      <div class="gauge-value-text">
+        <span id="tempCVTValue">--</span> °C
+      </div>
+    </div>
+
+    <!-- COMBUSTÍVEL -->
+    <div class="panel fuel-panel">
+      <span class="label">Combustível</span>
+
+      <div class="fuel-wrapper">
+
+        <!-- Barra vertical -->
+        <div class="fuel-bar">
+          <div id="fuelLevel"></div>
+        </div>
+
+        <!-- Informações -->
+        <div class="fuel-info">
+          <div><strong id="fuelPercent">65</strong> %</div>
+          <div><span id="fuelLiters">3.68</span> L</div>
+          <div class="fuel-time">
+            ⏱ <span id="fuelTime">0h 59min</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Metadados -->
+      <div class="fuel-meta">
+        <small>Capacidade: 5,67 L</small><br />
+        <small>Consumo médio: 3,7 L/h</small>
+      </div>
+    </div>
+
+    <!-- BATERIA -->
+    <div class="panel battery-panel">
+      <span class="label">Tensão da Bateria</span>
+
+      <div class="battery-bar">
+        <div id="batteryLevel"></div>
+      </div>
+
+      <div class="battery-value">
+        <span id="batteryValue">12.4</span> V
+      </div>
+    </div>
+
+  </section>
+
+  <!-- =====================================================
+       BLOCO 2 — CONTROLES DO PILOTO
+       (Acelerador, Freio, Volante, Inclinação)
+  ====================================================== -->
+  <section class="grid controls">
+
+    <!-- ACELERADOR -->
+    <div class="panel pedal-panel">
+      <span class="label">Acelerador</span>
+
+      <div class="pedal-bar throttle">
+        <div id="throttleBar"></div>
+      </div>
+
+      <div class="pedal-value">
+        <span id="throttleValue">0</span> %
+      </div>
+	  <span class="label"> ----------------------------------------------------------- </span>
+	  
+	  <!-- FREIO -->
+	  <span class="label">Freio</span>
+
+      <div class="pedal-bar brake">
+        <div id="brakeBar"></div>
+      </div>
+
+      <div class="pedal-value">
+        <span id="brakeValue">0</span> %
+      </div>
+		
+	  <span class="label"> ----------------------------------------------------------- </span>
+	  
+		<!-- PRESSÃO DE FREIO (FORMATO H) -->
+	  <span class="label">Pressão de Freio</span>
+
+      <div class="brake-h">
+
+        <!-- Dianteira -->
+        <div class="brake-side">
+          <div class="brake-bar">
+            <div id="frontBrakeBar"></div>
+          </div>
+          <small>Dianteira</small>
+          <strong><span id="frontBrakeValue">0</span> bar</strong>
+        </div>
+
+        <!-- Centro do H -->
+        <div class="brake-center"></div>
+
+        <!-- Traseira -->
+        <div class="brake-side">
+          <div class="brake-bar">
+            <div id="rearBrakeBar"></div>
+          </div>
+          <small>Traseira</small>
+          <strong><span id="rearBrakeValue">0</span> bar</strong>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- VAZIO -->
+    <div class="panel pedal-panel">
+      <span class="label">Vazio</span>
+
+    </div>
+
+    <!-- ÂNGULO DO VOLANTE -->
+    <div class="panel steering-panel">
+      <span class="label">Ângulo do Volante</span>
+
+      <svg viewBox="0 0 200 200" class="steering-svg">
+        <circle cx="100" cy="100" r="90" class="steering-bg" />
+        <line x1="100" y1="20" x2="100" y2="180" class="steering-zero" />
+        <line
+          x1="100"
+          y1="100"
+          x2="100"
+          y2="25"
+          id="steeringNeedle"
+          class="steering-needle"
+        />
+      </svg>
+
+      <div class="steering-value">
+        <span id="steeringValue">0</span> °
+      </div>
+    </div>
+
+    <!-- INCLINAÇÃO DO VEÍCULO -->
+    <div class="panel tilt-panel">
+      <span class="label">Inclinação do Veículo</span>
+
+      <svg viewBox="0 0 200 200" class="tilt-svg">
+        <circle cx="100" cy="100" r="90" class="tilt-bg" />
+        <line x1="100" y1="20" x2="100" y2="180" class="tilt-zero" />
+        <line
+          x1="100"
+          y1="100"
+          x2="100"
+          y2="25"
+          id="tiltNeedle"
+          class="tilt-needle"
+        />
+      </svg>
+
+      <div class="tilt-value">
+        <span id="tiltValue">0</span> °
+      </div>
+    </div>
+
+  </section>
+
+  <!-- =====================================================
+       BLOCO 3 — GRÁFICOS E DISTRIBUIÇÕES
+  ====================================================== -->
+  <section class="grid charts">
+
+    <!-- GRÁFICO VELOCIDADE × TEMPO -->
+    <div class="panel chart">
+      <span class="label">Velocidade x Tempo</span>
+      <canvas id="speedChart"></canvas>
+    </div>
+
+
+    <!-- VAZIO -->
+    <div class="panel pedal-panel">
+      <span class="label">Vazio</span>
+
+    </div>
+	
+	<!-- VAZIO -->
+    <div class="panel pedal-panel">
+      <span class="label">Vazio</span>
+
+    </div>
+
+  </section>
+
+  <!-- =====================================================
+       BLOCO 4 — SAÚDE DO SISTEMA
+  ====================================================== -->
+  <section class="panel health">
+    <span class="label">Saúde do Sistema</span>
+
+    <ul>
+      <li class="ok">ESP32 Carro — ONLINE</li>
+      <li class="ok">ESP32 Box — ONLINE</li>
+      <li class="ok">LoRa — OK</li>
+      <li class="warn">Sensor Pressão Freio — atraso</li>
+    </ul>
+  </section>
+
+</main>
+
+	
+
+<script>
+/* ===========================
+   CONFIGURAÇÕES GERAIS
+=========================== */
+const MAX_RPM = 3600;
+const MAX_SPEED = 60;
+const ARC_TEMP = 283;
+const SPEED_ARC = 565;
+
+const TANK_CAPACITY = 5.67;
+const FUEL_CONSUMPTION = 3.7;
+
+const MIN_VOLTAGE = 11.0;
+const MAX_VOLTAGE = 13.0;
+
+const MAX_BRAKE_PRESSURE = 60;
+const MAX_STEERING = 180;
+const MAX_TILT = 30;
+	
+const PADDING_TOP = 10;
+const PADDING_BOTTOM = 20;
+
+/* ===========================
+   TEMPERATURA (Motor / CVT)
+=========================== */
+function updateTemp(value, max, arcId, textId) {
+  value = Math.max(0, Math.min(value, max));
+  const percent = value / max;
+  const offset = ARC_TEMP - ARC_TEMP * percent;
+
+  const arc = document.getElementById(arcId);
+  arc.style.strokeDashoffset = offset;
+  arc.classList.remove("warn", "crit");
+
+  if (value > max * 0.9) arc.classList.add("crit");
+  else if (value > max * 0.75) arc.classList.add("warn");
+
+  document.getElementById(textId).innerText = value;
+}
+
+let tempMotor = 92;
+let tempCVT = 85;
+
+setInterval(() => {
+  tempMotor += Math.random() * 3 - 1.5;
+  tempCVT += Math.random() * 2 - 1;
+
+  updateTemp(Math.round(tempMotor), 130, "tempMotorArc", "tempMotorValue");
+  updateTemp(Math.round(tempCVT), 120, "tempCVTArc", "tempCVTValue");
+}, 1200);
+
+/* ===========================
+   RPM
+=========================== */
+function updateRPM(rpm) {
+  rpm = Math.max(800, Math.min(rpm, 4200));
+  const angle = -90 + (rpm / MAX_RPM) * 180;
+
+  document.getElementById("rpmNeedle").style.transform =
+    `rotate(${angle}deg)`;
+  document.getElementById("rpmValue").innerText = rpm;
+}
+
+let rpm = 2500;
+setInterval(() => {
+  rpm += Math.random() * 400 - 200;
+  updateRPM(Math.round(rpm));
+}, 1200);
+
+/* ===========================
+   VELOCIDADE (RADIAL)
+=========================== */
+function updateSpeed(speed) {
+  speed = Math.max(0, Math.min(MAX_SPEED, speed));
+  const percent = speed / MAX_SPEED;
+  const offset = SPEED_ARC - SPEED_ARC * percent;
+
+  document.getElementById("speedArc").style.strokeDashoffset = offset;
+  document.getElementById("speedValue").innerText = speed;
+}
+
+let speed = 0;
+setInterval(() => {
+  speed += Math.random() * 6 - 2;
+  updateSpeed(Math.round(speed));
+}, 700);
+
+/* ===========================
+   COMBUSTÍVEL
+=========================== */
+function updateFuel(percent) {
+  percent = Math.max(0, Math.min(percent, 100));
+
+  const liters = (percent / 100) * TANK_CAPACITY;
+  const hours = liters / FUEL_CONSUMPTION;
+  const minutes = Math.floor(hours * 60);
+
+  document.getElementById("fuelLevel").style.height = percent + "%";
+  document.getElementById("fuelPercent").innerText = percent;
+  document.getElementById("fuelLiters").innerText = liters.toFixed(2);
+  document.getElementById("fuelTime").innerText =
+    `${Math.floor(minutes / 60)}h ${minutes % 60}min`;
+}
+
+let fuel = 80;
+setInterval(() => {
+  fuel -= Math.random() * 1.5;
+  updateFuel(Math.round(fuel));
+}, 2000);
+
+/* ===========================
+   PEDAIS
+=========================== */
+function updatePedal(value, barId, textId) {
+  value = Math.max(0, Math.min(value, 100));
+  document.getElementById(barId).style.width = value + "%";
+  document.getElementById(textId).innerText = value;
+}
+
+let throttle = 0;
+let brake = 0;
+
+setInterval(() => {
+  throttle = Math.random() * 100;
+  brake = Math.random() * 60;
+
+  updatePedal(Math.round(throttle), "throttleBar", "throttleValue");
+  updatePedal(Math.round(brake), "brakeBar", "brakeValue");
+}, 1200);
+
+/* ===========================
+   VOLANTE
+=========================== */
+function updateSteering(angle) {
+  angle = Math.max(-MAX_STEERING, Math.min(MAX_STEERING, angle));
+  const rotation = (angle / MAX_STEERING) * 180;
+
+  const needle = document.getElementById("steeringNeedle");
+  needle.style.transform = `rotate(${rotation}deg)`;
+  document.getElementById("steeringValue").innerText = angle;
+
+  needle.style.stroke =
+    Math.abs(angle) > 140 ? "#ef4444" :
+    Math.abs(angle) > 90 ? "#f59e0b" : "#22c55e";
+}
+
+let steering = 0;
+setInterval(() => {
+  steering += Math.random() * 30 - 15;
+  updateSteering(Math.round(steering));
+}, 700);
+
+/* ===========================
+   INCLINAÇÃO
+=========================== */
+function updateTilt(angle) {
+  angle = Math.max(-MAX_TILT, Math.min(MAX_TILT, angle));
+  const rotation = (angle / MAX_TILT) * 90;
+
+  const needle = document.getElementById("tiltNeedle");
+  needle.style.transform = `rotate(${rotation}deg)`;
+  document.getElementById("tiltValue").innerText = angle;
+
+  needle.style.stroke =
+    Math.abs(angle) > 20 ? "#ef4444" :
+    Math.abs(angle) > 15 ? "#f59e0b" : "#38bdf8";
+}
+
+let tilt = 0;
+setInterval(() => {
+  tilt += Math.random() * 6 - 3;
+  updateTilt(Math.round(tilt));
+}, 800);
+
+/* ===========================
+   FREIO (H)
+=========================== */
+function updateBrake(front, rear) {
+  front = Math.min(front, MAX_BRAKE_PRESSURE);
+  rear = Math.min(rear, MAX_BRAKE_PRESSURE);
+
+  document.getElementById("frontBrakeBar").style.height =
+    (front / MAX_BRAKE_PRESSURE) * 100 + "%";
+  document.getElementById("rearBrakeBar").style.height =
+    (rear / MAX_BRAKE_PRESSURE) * 100 + "%";
+
+  document.getElementById("frontBrakeValue").innerText = Math.round(front);
+  document.getElementById("rearBrakeValue").innerText = Math.round(rear);
+}
+
+setInterval(() => {
+  const front = Math.random() * 55;
+  const rear = front * (0.6 + Math.random() * 0.3);
+  updateBrake(front, rear);
+}, 900);
+
+/* ===========================
+   BATERIA
+=========================== */
+function updateBattery(voltage) {
+  voltage = Math.max(MIN_VOLTAGE, Math.min(MAX_VOLTAGE, voltage));
+  const percent =
+    ((voltage - MIN_VOLTAGE) / (MAX_VOLTAGE - MIN_VOLTAGE)) * 100;
+
+  const bar = document.getElementById("batteryLevel");
+  bar.style.width = percent + "%";
+  document.getElementById("batteryValue").innerText = voltage.toFixed(1);
+
+  bar.style.background =
+    voltage < 11.8 ? "#ef4444" :
+    voltage < 12.2 ? "#f59e0b" : "#22c55e";
+}
+
+let voltage = 12.6;
+setInterval(() => {
+  voltage += Math.random() * 0.2 - 0.1;
+  updateBattery(voltage);
+}, 1500);
+	
+/* ===========================
+   GRÁFICO — VELOCIDADE × TEMPO
+=========================== */
+function createSpeedChart(canvasId) {
+  const canvas = document.getElementById(canvasId);
+  const ctx = canvas.getContext("2d");
+
+  canvas.width = canvas.offsetWidth;
+  canvas.height = canvas.offsetHeight;
+
+  const data = [];
+
+  return function update(value) {
+    if (data.length >= 60) data.shift();
+    data.push(Math.min(value, MAX_SPEED));
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    /* linha base */
+    ctx.strokeStyle = "#1f2933";
+    ctx.beginPath();
+    ctx.moveTo(0, canvas.height - PADDING_BOTTOM);
+    ctx.lineTo(canvas.width, canvas.height - PADDING_BOTTOM);
+    ctx.stroke();
+
+    /* linha velocidade */
+    ctx.strokeStyle = "#38bdf8";
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+
+    const usableHeight =
+      canvas.height - PADDING_TOP - PADDING_BOTTOM;
+
+    data.forEach((v, i) => {
+      const x = (i / (data.length - 1)) * canvas.width;
+      const y =
+        canvas.height -
+        PADDING_BOTTOM -
+        (v / MAX_SPEED) * usableHeight;
+
+      i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+    });
+
+    ctx.stroke();
+  };
+}
+
+	
+const updateSpeedChart = createSpeedChart("speedChart");
+
+setInterval(() => {
+  updateSpeedChart(speed);
+}, 700);
+
+</script>
+
+
+</body>
+</html>
