@@ -3,6 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Telemetria • Engrenados Baja</title>
+	
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="16x16"  href="/assets/img/favicon.png">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+	
 <style>
 /* =====================================================
    VARIÁVEIS GLOBAIS (CORES / TEMA)
@@ -511,6 +517,129 @@ main {
 canvas {
   width: 100%;
   height: 100%;
+}
+
+/* ===========================
+   RESPONSIVO - BASE
+=========================== */
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+main {
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+/* ===========================
+   TELAS GRANDES (>= 1400px)
+=========================== */
+@media (min-width: 1400px) {
+  .gauges {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  .controls {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .charts {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ===========================
+   NOTEBOOK (1024px - 1399px)
+=========================== */
+@media (max-width: 1399px) {
+  .gauges {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .controls {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .charts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ===========================
+   TABLET (768px - 1023px)
+=========================== */
+@media (max-width: 1023px) {
+  .gauges {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .controls {
+    grid-template-columns: 1fr;
+  }
+
+  .charts {
+    grid-template-columns: 1fr;
+  }
+
+  .panel {
+    padding: 12px;
+  }
+}
+
+/* ===========================
+   CELULAR (<= 767px)
+=========================== */
+@media (max-width: 767px) {
+  header.topbar {
+    flex-direction: column;
+    gap: 6px;
+    text-align: center;
+  }
+
+  .gauges,
+  .controls,
+  .charts {
+    grid-template-columns: 1fr;
+  }
+
+  .tachometer,
+  .speed-radial,
+  .steering-svg,
+  .tilt-svg {
+    width: 150px;
+  }
+
+  .gauge {
+    max-width: 160px;
+  }
+
+  .fuel-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .fuel-info {
+    text-align: center;
+  }
+
+  .rpm-value,
+  .speed-center span {
+    font-size: 22px;
+  }
+}
+
+.steering-panel,
+.tilt-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.steering-panel .label,
+.tilt-panel .label {
+  text-align: center;
+  width: 100%;
 }
 
 
