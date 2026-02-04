@@ -331,7 +331,7 @@ MOBILE – CONFIGURAÇÃO FINAL LIMPA
   .cards {
     display: flex !important;
     flex-direction: column !important;
-    gap: 20px;
+    gap: 10px;
   }
 
   .card {
