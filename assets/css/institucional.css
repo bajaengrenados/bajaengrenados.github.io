@@ -135,27 +135,25 @@ section p{
 /* ==================================================
    QUEM SOMOS
 ================================================== */
-#quem-somos{
-  background: rgba(0,0,0,.5);
-}
-
-/* CARROSSEL MEMBROS */
 .carousel-container{
   overflow: hidden;
   max-width: 1200px;
   margin: 0 auto;
-  padding:0 10px;
+  padding: 0 10px;
 }
 
 .carousel-track{
   display: flex;
-  gap: 10px;
   transition: transform .6s ease;
 }
 
 .member{
-  flex: 0 0 calc((100% / 5) - 8px);
+  flex: 0 0 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
+  padding: 0 5px;
 }
 
 .member img{
@@ -173,31 +171,8 @@ section p{
 }
 
 .member span{
+  display: block;
   font-size: 14px;
-  color: var(--amarelo);
-}
-
-.carousel-buttons{
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-top: 25px;
-}
-
-.carousel-buttons button{
-  background: transparent;
-  border: 1px solid rgba(255,255,255,.6);
-  color: var(--branco);
-  padding: 6px 18px;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: .3s;
-  font-weight:600;
-  font-size:14px;
-}
-
-.carousel-buttons button:hover{
-  border-color: var(--amarelo);
   color: var(--amarelo);
 }
 
