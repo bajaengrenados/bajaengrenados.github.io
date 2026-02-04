@@ -139,7 +139,6 @@ section p{
   overflow: hidden;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 10px;
 }
 
 .carousel-track{
@@ -149,11 +148,13 @@ section p{
 
 .member{
   flex: 0 0 20%;
+  box-sizing: border-box;   /* 🔥 ISSO resolve */
+  padding: 0 8px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 0 5px;
 }
 
 .member img{
@@ -301,6 +302,21 @@ section p{
   max-width:900px;
   margin:0 auto 40px;
   font-size:18px;
+}
+
+.btn-parceiro {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #25D366;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.btn-parceiro:hover {
+  background-color: #1ebe5d;
 }
 
 /* ==================================================
