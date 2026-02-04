@@ -847,8 +847,8 @@ const MAX_BRAKE_PRESSURE = 60;
 const MAX_STEERING = 180;
 const MAX_TILT = 30;
 	
-const PADDING_TOP = 10;
-const PADDING_BOTTOM = 20;
+const PADDING_TOP = 12;
+const PADDING_BOTTOM = 22;
 
 /* ===========================
    TEMPERATURA (Motor / CVT)
@@ -1059,33 +1059,41 @@ function createSpeedChart(canvasId) {
 
   const data = [];
 
+
   return function update(value) {
+    value = Math.max(0, Math.min(value, MAX_SPEED));
+
     if (data.length >= 60) data.shift();
-    data.push(Math.min(value, MAX_SPEED));
+    data.push(value);
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     /* linha base */
+    const Y_MAX = canvas.height - PADDING_BOTTOM;
+    const Y_MIN = PADDING_TOP;
+
     ctx.strokeStyle = "#1f2933";
     ctx.beginPath();
-    ctx.moveTo(0, canvas.height - PADDING_BOTTOM);
-    ctx.lineTo(canvas.width, canvas.height - PADDING_BOTTOM);
+    ctx.moveTo(0, Y_MAX);
+    ctx.lineTo(canvas.width, Y_MAX);
     ctx.stroke();
 
-    /* linha velocidade */
+    /* linha da velocidade */
     ctx.strokeStyle = "#38bdf8";
     ctx.lineWidth = 2;
     ctx.beginPath();
 
-    const usableHeight =
-      canvas.height - PADDING_TOP - PADDING_BOTTOM;
+    const usableHeight = Y_MAX - Y_MIN;
 
     data.forEach((v, i) => {
       const x = (i / (data.length - 1)) * canvas.width;
-      const y =
-        canvas.height -
-        PADDING_BOTTOM -
+
+      let y =
+        Y_MAX -
         (v / MAX_SPEED) * usableHeight;
+
+      /* CLAMP FINAL — ISSO GARANTE */
+      y = Math.max(Y_MIN, Math.min(Y_MAX, y));
 
       i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
     });
@@ -1093,6 +1101,7 @@ function createSpeedChart(canvasId) {
     ctx.stroke();
   };
 }
+
 
 	
 const updateSpeedChart = createSpeedChart("speedChart");
