@@ -51,7 +51,7 @@ HERO
   align-items: center;
   justify-content: center;
 
-  padding: 20px;
+  padding: 0px;
 }
 
 .logo-apresentacao {
@@ -98,7 +98,7 @@ MENU LATERAL SOBREPOSTO
   flex-direction: column;
   align-items: center;
 
-  padding: 20px 6px;
+  padding: 0px 0px;
   gap: 10px;
 
   z-index: 9999;
@@ -128,7 +128,7 @@ LINKS DO MENU
 .apresentacao .menu a {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 20px;
 
   height: 36px;
   width: 100%;
@@ -331,7 +331,7 @@ MOBILE – CONFIGURAÇÃO FINAL LIMPA
   .cards {
     display: flex !important;
     flex-direction: column !important;
-    gap: 10px;
+    gap: 20px;
   }
 
   .card {
