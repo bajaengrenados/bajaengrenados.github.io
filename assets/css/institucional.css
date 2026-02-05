@@ -126,6 +126,11 @@ section{
   max-width: 100%;
   animation: pulse 2.5s infinite;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
   background: linear-gradient(
     90deg, var(--azul-marinho), var(--azul));
 
@@ -149,11 +154,11 @@ section{
 }
 
 .banner-text {
-  font-size: 1rem;
+  font-size: 2rem;
 }
 
 .banner-cta {
-  font-weight: 700;
+  font-size: 1.5rem;
 }
 
 @keyframes pulse {
