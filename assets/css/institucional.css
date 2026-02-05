@@ -285,35 +285,44 @@ section p{
    MIDIA
 ================================================== */
 #midia{
-  background: rgba(220,220,220,.5); /* var(--cinza) */
+  background: rgba(220,220,220,.5);
   color: #222;
-	
-.insta-grid{
+}
+
+/* GRID */
+#midia .insta-grid{
   display:grid;
   grid-template-columns:repeat(3, 1fr);
   gap:6px;
+
+  max-height:450px;
+  overflow-y:auto;
+  padding-right:4px;
+  align-content:start;
 }
 
-.insta-post{
+/* POST */
+#midia .insta-post{
   position:relative;
   width:100%;
-  aspect-ratio:1 / 1; /* quadrado tipo Instagram */
+  aspect-ratio:1 / 1;
   overflow:hidden;
   background:#000;
   cursor:pointer;
 }
 
-.insta-post img,
-.insta-post video{
+#midia .insta-post img,
+#midia .insta-post video{
   width:100%;
   height:100%;
   object-fit:cover;
   pointer-events:none;
+  display:block;
 }
 
-/* Ícone de play nos vídeos */
-.insta-post.video::after{
-  content:"?";
+/* Ícone play */
+#midia .insta-post.video::after{
+  content:">";
   position:absolute;
   top:50%;
   left:50%;
@@ -321,9 +330,9 @@ section p{
   font-size:40px;
   color:white;
   opacity:0.8;
-  pointer-events:none;
 }
 
+/* MODAL */
 .insta-modal{
   position:fixed;
   inset:0;
@@ -344,7 +353,7 @@ section p{
 .insta-modal-content video{
   max-width:100%;
   max-height:100%;
-  object-fit:contain; /* respeita vertical/horizontal */
+  object-fit:contain;
 }
 
 .close{
@@ -355,13 +364,8 @@ section p{
   color:white;
   cursor:pointer;
 }
-	#midia .insta-grid{
-  max-height:450px;          /* controla quantos previews aparecem */
-  overflow-y:auto;
-  padding-right:4px;         /* evita cortar conteúdo pelo scroll */
-}
 
-/* Scroll mais bonito (Chrome / Edge) */
+/* Scroll bonito */
 #midia .insta-grid::-webkit-scrollbar{
   width:6px;
 }
@@ -373,18 +377,6 @@ section p{
 
 #midia .insta-grid::-webkit-scrollbar-track{
   background:transparent;
-}
-/* ~450px ? umas 2 linhas
-   ~600px ? 3 linhas
-   ~800px ? 4 linhas */
-
-	#midia .insta-grid{
-  display:grid;
-  grid-template-columns:repeat(3, 1fr);
-  gap:6px;
-  align-content:start; /* importante para scroll */
-}
-
 }
 
 /* ==================================================
