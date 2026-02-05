@@ -303,7 +303,7 @@ section p{
   max-width:900px;
   margin:20px auto 0;
 
-  max-height:620px;           /* 2 linhas visíveis */
+  max-height:350px;           /* 2 linhas visíveis */
   overflow-y:auto;
   align-content:start;
   padding-right:4px;
