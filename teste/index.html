@@ -429,15 +429,50 @@
       Acompanhe a evolução da equipe, bastidores, testes e eventos.
     </p>
 
-    <div class="insta-grid">
-      <img src="/assets/insta/1.jpg">
-      <img src="/assets/insta/2.jpg">
-      <video autoplay muted loop src="/assets/insta/reel1.mp4"></video>
-      <img src="/assets/insta/3.jpg">
-      <img src="/assets/insta/4.jpg">
-      <img src="/assets/insta/5.jpg">
-    </div>
+<div class="insta-grid">
+
+  <div class="insta-post" onclick="openModal('img','/assets/media/modelo_3d.jpeg')">
+    <img src="/assets/media/modelo_3d.jpeg">
   </div>
+
+  <div class="insta-post" onclick="openModal('img','/assets/media/equipe_entec.jpeg')">
+    <img src="/assets/media/equipe_entec.jpeg">
+  </div>
+
+  <div class="insta-post" onclick="openModal('img','/assets/media/construcao_prototipo.jpeg')">
+    <img src="/assets/media/construcao_prototipo.jpeg">
+  </div>
+	
+  <div class="insta-post video" onclick="openModal('video','/assets/media/video_prototipo.mp4')">
+    <video muted>
+      <source src="/assets/media/video_prototipo.mp4" type="video/mp4">
+    </video>
+  </div>
+
+   <div class="insta-post video" onclick="openModal('video','/assets/media/entrevista_bastidores.mp4')">
+    <video muted>
+      <source src="/assets/media/entrevista_bastidores.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="insta-post video" onclick="openModal('video','/assets/media/entec_2025.mp4')">
+    <video muted>
+      <source src="/assets/media/entec_2025.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  
+</div>
+
+  </div>
+	
+<div id="insta-modal" class="insta-modal" onclick="closeModal()">
+  <div class="insta-modal-content" onclick="event.stopPropagation()">
+    <span class="close" onclick="closeModal()">×</span>
+    <div id="modal-media"></div>
+  </div>
+</div>
+
 </section>
 
 
@@ -688,6 +723,33 @@ setInterval(() => {
     const meio = Math.floor(logos.length / 2);
     logos[meio].classList.add("ativo");
 }, 3000);
+
+	
+function openModal(type, src){
+  const modal = document.getElementById('insta-modal');
+  const media = document.getElementById('modal-media');
+
+  media.innerHTML = '';
+
+  if(type === 'img'){
+    media.innerHTML = `<img src="${src}">`;
+  }else{
+    media.innerHTML = `
+      <video controls autoplay>
+        <source src="${src}" type="video/mp4">
+      </video>`;
+  }
+
+  modal.style.display = 'flex';
+}
+
+function closeModal(){
+  const modal = document.getElementById('insta-modal');
+  const media = document.getElementById('modal-media');
+
+  media.innerHTML = '';
+  modal.style.display = 'none';
+}
 
 </script>
 
