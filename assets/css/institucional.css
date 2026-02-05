@@ -1,6 +1,6 @@
 /* ==================================================
-   TEMA INSTITUCIONAL ‚Äî INDEX
-   N√ÉO ALTERA base.css NEM components.css
+   TEMA INSTITUCIONAL INDEX
+   N√O ALTERA base.css NEM components.css
 ================================================== */
 
 /* ==================================================
@@ -71,7 +71,7 @@ nav a:hover::after{
 }
 
 /* ==================================================
-   AJUSTE DE √ÇNCORA
+   AJUSTE DE ¬NCORA
 ================================================== */
 section{
   min-height:100vh;
@@ -113,7 +113,7 @@ section{
 }
 
 /* ==================================================
-   PADR√ÉO DE T√çTULOS E TEXTOS
+   PADR√O DE TÕTULOS E TEXTOS
 ================================================== */
 .section-title{
   font-family: "Archivo Black", sans-serif;
@@ -148,7 +148,7 @@ section p{
 
 .member{
   flex: 0 0 20%;
-  box-sizing: border-box;   /* üî• ISSO resolve */
+  box-sizing: border-box;   /* ISSO resolve */
   padding: 0 8px;
 
   display: flex;
@@ -206,7 +206,7 @@ section p{
 }
 
 /* ==================================================
-   COMPETI√á√ïES
+   COMPETICOES
 ================================================== */
 #competicoes{
   background: rgba(158,190,240,.5);
@@ -233,7 +233,7 @@ section p{
     border: 2px solid #FFD700;
 }
 
-/* T√≠tulo dentro da caixa */
+/* TÌtulo dentro da caixa */
 .countdown-title {
     width: 100%;
     text-align: center;
@@ -267,7 +267,7 @@ section p{
     color: #fff;
 }
 
-/* Linha de separa√ß√£o */
+/* Linha de separaÁ„o */
 #competicoes hr {
     border: 2px solid #FFD700;
     margin: 40px auto;
@@ -275,18 +275,116 @@ section p{
 }
 
 /* ==================================================
-   T√çTULOS
+   TÕTULOS
 ================================================== */
 #titulos{
   background: rgba(0,0,0,.85);
 }
 
 /* ==================================================
-   M√çDIA
+   MIDIA
 ================================================== */
 #midia{
   background: rgba(220,220,220,.5); /* var(--cinza) */
   color: #222;
+	
+.insta-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:6px;
+}
+
+.insta-post{
+  position:relative;
+  width:100%;
+  aspect-ratio:1 / 1; /* quadrado tipo Instagram */
+  overflow:hidden;
+  background:#000;
+  cursor:pointer;
+}
+
+.insta-post img,
+.insta-post video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  pointer-events:none;
+}
+
+/* Õcone de play nos vÌdeos */
+.insta-post.video::after{
+  content:"?";
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  font-size:40px;
+  color:white;
+  opacity:0.8;
+  pointer-events:none;
+}
+
+.insta-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.85);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:1000;
+}
+
+.insta-modal-content{
+  position:relative;
+  max-width:90%;
+  max-height:90%;
+}
+
+.insta-modal-content img,
+.insta-modal-content video{
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain; /* respeita vertical/horizontal */
+}
+
+.close{
+  position:absolute;
+  top:-35px;
+  right:0;
+  font-size:32px;
+  color:white;
+  cursor:pointer;
+}
+	#midia .insta-grid{
+  max-height:450px;          /* controla quantos previews aparecem */
+  overflow-y:auto;
+  padding-right:4px;         /* evita cortar conte˙do pelo scroll */
+}
+
+/* Scroll mais bonito (Chrome / Edge) */
+#midia .insta-grid::-webkit-scrollbar{
+  width:6px;
+}
+
+#midia .insta-grid::-webkit-scrollbar-thumb{
+  background:#999;
+  border-radius:10px;
+}
+
+#midia .insta-grid::-webkit-scrollbar-track{
+  background:transparent;
+}
+/* ~450px ? umas 2 linhas
+   ~600px ? 3 linhas
+   ~800px ? 4 linhas */
+
+	#midia .insta-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:6px;
+  align-content:start; /* importante para scroll */
+}
+
 }
 
 /* ==================================================
@@ -335,7 +433,7 @@ section p{
     align-items: stretch;
 }
 
-/* FORMUL√ÅRIO */
+/* FORMUL¡RIO */
 .contato-form-box {
     display: flex;
     flex-direction: column;
@@ -374,7 +472,7 @@ section p{
     cursor: pointer;
 }
 
-/* √çCONES */
+/* ÕCONES */
 .social-icons {
     margin-top: 14px;
     display: flex;
@@ -475,5 +573,9 @@ section p{
   .footer-container{
     grid-template-columns: 1fr;
     text-align: center;
+  }
+	#midia .insta-grid{
+    max-height:none;
+    overflow:visible;
   }
 }
