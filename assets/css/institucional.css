@@ -112,6 +112,11 @@ section{
   margin-bottom:20px;
 }
 
+#home,
+.hero {
+  position: relative;
+}
+
 .hero-banner {
   position: absolute;
   bottom: 0;
