@@ -344,17 +344,25 @@ section p{
 }
 
 /* ---------- ÍCONE PLAY ---------- */
-#midia .insta-post.video::after{
-  content:">";
+#midia .insta-grid .insta-post.video::after{
+  content:"play_circle";
+
+  font-family:"Material Symbols Outlined";
+  font-size:48px;
+  font-weight:400;
+
   position:absolute;
   top:50%;
   left:50%;
   transform:translate(-50%,-50%);
-  font-size:40px;
-  color:#fff;
-  opacity:.85;
+
+  color:white;
+  opacity:0.85;
   pointer-events:none;
+
+  text-shadow:0 2px 6px rgba(0,0,0,.6);
 }
+
 
 /* ---------- SCROLL ---------- */
 #midia .insta-grid::-webkit-scrollbar{
