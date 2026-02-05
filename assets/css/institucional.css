@@ -359,7 +359,10 @@ section p{
 .insta-modal{
   position:fixed;
   inset:0;
+  height:100svh;
+  width:100vw;
   background:rgba(0,0,0,.85);
+
   display:none;
   justify-content:center;
   align-items:center;
@@ -369,8 +372,8 @@ section p{
 .insta-modal-content{
   position:relative;
 
-  max-width:50vw;
-  max-height:50svh;        /* trava na altura do monitor */
+  max-width:90vw;
+  max-height:90svh;        /* trava na altura do monitor */
 
   display:flex;
   justify-content:center;
