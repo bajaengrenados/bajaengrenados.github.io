@@ -123,16 +123,13 @@ section{
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
-  max-width: 1200px;
+  max-width: 100%;
   animation: pulse 2.5s infinite;
 
   background: linear-gradient(
-    90deg,
-    rgba(194, 151, 107, 0.95),
-    rgba(194, 151, 107, 0.85)
-  );
+    90deg, var(--azul-marinho), var(--azul));
 
-  color: #000;
+  color: #FFF;
   text-decoration: none;
   padding: 14px 24px;
 
