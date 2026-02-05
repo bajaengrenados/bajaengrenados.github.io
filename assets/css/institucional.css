@@ -295,7 +295,9 @@ section p{
 }
 
 .btn-midia {
-  display: inline-block;
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
   padding: 12px 24px;
   background: linear-gradient(45deg, #833AB4, #FD1D1D, #FCAF45);
   color: #fff;
