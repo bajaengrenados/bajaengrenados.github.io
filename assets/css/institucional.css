@@ -383,8 +383,8 @@ section p{
 
 /* ---------- MIDIA NO MODAL ---------- */
 #modal-media{
-  max-width:75%;
-  max-height:750%;
+  max-width:50%;
+  max-height:50%;
 
   display:flex;
   justify-content:center;
