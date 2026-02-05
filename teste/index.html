@@ -886,6 +886,21 @@ function exitFullscreen(){
   }
 }
 
+/* ---------- MENU HAMBURGUER ---------- */
+const menuToggle = document.getElementById("menuToggle");
+const nav = document.getElementById("mainNav");
+
+menuToggle.addEventListener("click", () => {
+  nav.classList.toggle("active");
+});
+
+/* Fecha menu ao clicar */
+document.querySelectorAll("#mainNav a").forEach(link => {
+  link.addEventListener("click", () => {
+    nav.classList.remove("active");
+  });
+});
+
 </script>
 
 </body>
