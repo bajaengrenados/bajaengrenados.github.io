@@ -600,25 +600,52 @@
 
         <!-- FORMULÁRIO -->
         <div class="contato-form-box">
-            <form class="contato-form">
-                <input type="text" placeholder="Nome" required>
-                <input type="email" placeholder="E-mail" required>
 
-                <textarea placeholder="Mensagem"></textarea>
+    <form
+        class="contato-form"
+        action="https://formspree.io/f/xaqdwpvz"
+        method="POST"
+    >
+        <input
+            type="text"
+            name="nome"
+            placeholder="Nome"
+            required
+        >
 
-                <button type="submit">Enviar</button>
-            </form>
+        <input
+            type="email"
+            name="email"
+            placeholder="E-mail"
+            required
+        >
 
-            <!-- ÍCONES -->
-            <div class="social-icons">
-                <a href="#" aria-label="WhatsApp">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-                <a href="https://www.instagram.com/engrenadosbaja/" aria-label="Instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
-            </div>
-        </div>
+        <textarea
+            name="mensagem"
+            placeholder="Mensagem"
+            required
+        ></textarea>
+
+        <!-- Configurações extras -->
+        <input type="hidden" name="_subject" value="Novo contato - Engrenados Baja">
+        <input type="hidden" name="_captcha" value="false">
+
+        <button type="submit">Enviar</button>
+    </form>
+
+    <!-- ÍCONES SOCIAIS -->
+    <div class="social-icons">
+        <a href="https://wa.me/55SEUNUMEROAQUI" target="_blank" aria-label="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+
+        <a href="https://www.instagram.com/engrenadosbaja/" target="_blank" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+    </div>
+
+</div>
+
 
         <!-- MAPA -->
         <div class="contato-mapa">
