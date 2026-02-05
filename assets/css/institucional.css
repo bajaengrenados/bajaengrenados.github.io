@@ -293,22 +293,26 @@ section p{
 #midia .insta-grid{
   display:grid;
   grid-template-columns:repeat(3, 1fr);
-  gap:6px;
+  gap:8px;
+
+  max-width:900px;     /* CONTROLA O TAMANHO */
+  margin:0 auto;       /* centraliza */
 
   max-height:450px;
   overflow-y:auto;
-  padding-right:4px;
   align-content:start;
 }
 
 /* POST */
 #midia .insta-post{
-  position:relative;
   width:100%;
   aspect-ratio:1 / 1;
+  height:auto;
+  max-height:none;
+
+  position:relative;
   overflow:hidden;
   background:#000;
-  cursor:pointer;
 }
 
 #midia .insta-post img,
@@ -573,8 +577,9 @@ section p{
   }
 	
   #midia .insta-grid{
+    grid-template-columns:repeat(2, 1fr);
+    max-width:100%;
     max-height:none;
-    overflow:visible;
   }
 	
   .insta-modal-content{
