@@ -423,57 +423,76 @@
 
 <section id="midia">
   <div class="container">
+
     <h2 class="section-title">Nosso Dia a Dia</h2>
+    <p>Acompanhe a evolução da equipe, bastidores, testes e eventos.</p>
 
-    <p>
-      Acompanhe a evolução da equipe, bastidores, testes e eventos.
-    </p>
+    <!-- GRID -->
+    <div class="insta-grid">
 
-<div class="insta-grid">
+      <!-- IMAGEM -->
+      <div class="insta-post"
+           onclick="openModal('img','/assets/media/modelo_3d.jpeg')">
+        <img src="/assets/media/modelo_3d.jpeg" alt="Modelo 3D">
+      </div>
 
-  <div class="insta-post" onclick="openModal('img','/assets/media/modelo_3d.jpeg')">
-    <img src="/assets/media/modelo_3d.jpeg">
+      <div class="insta-post"
+           onclick="openModal('img','/assets/media/equipe_entec.jpeg')">
+        <img src="/assets/media/equipe_entec.jpeg" alt="Equipe ENTEC">
+      </div>
+
+      <div class="insta-post"
+           onclick="openModal('img','/assets/media/construcao_prototipo.jpeg')">
+        <img src="/assets/media/construcao_prototipo.jpeg" alt="Construção do protótipo">
+      </div>
+
+      <!-- VÍDEO -->
+      <div class="insta-post video"
+           onclick="openModal('video','/assets/media/video_prototipo.mp4')">
+        <video muted preload="metadata">
+          <source src="/assets/media/video_prototipo.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="insta-post video"
+           onclick="openModal('video','/assets/media/entrevista_bastidores.mp4')">
+        <video muted preload="metadata">
+          <source src="/assets/media/entrevista_bastidores.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="insta-post video"
+           onclick="openModal('video','/assets/media/entec_2025.mp4')">
+        <video muted preload="metadata">
+          <source src="/assets/media/entec_2025.mp4" type="video/mp4">
+        </video>
+      </div>
+
+    </div>
   </div>
 
-  <div class="insta-post" onclick="openModal('img','/assets/media/equipe_entec.jpeg')">
-    <img src="/assets/media/equipe_entec.jpeg">
-  </div>
+  <!-- MODAL -->
+  <div id="insta-modal" class="insta-modal" onclick="closeModal()">
+    <div class="insta-modal-content" onclick="event.stopPropagation()">
 
-  <div class="insta-post" onclick="openModal('img','/assets/media/construcao_prototipo.jpeg')">
-    <img src="/assets/media/construcao_prototipo.jpeg">
-  </div>
-	
-  <div class="insta-post video" onclick="openModal('video','/assets/media/video_prototipo.mp4')">
-    <video muted>
-      <source src="/assets/media/video_prototipo.mp4" type="video/mp4">
-    </video>
-  </div>
+      <!-- FECHAR -->
+      <span class="close" onclick="closeModal()">×</span>
 
-   <div class="insta-post video" onclick="openModal('video','/assets/media/entrevista_bastidores.mp4')">
-    <video muted>
-      <source src="/assets/media/entrevista_bastidores.mp4" type="video/mp4">
-    </video>
-  </div>
+      <!-- SETAS -->
+      <button class="nav prev" onclick="prevMedia()">‹</button>
+      <button class="nav next" onclick="nextMedia()">›</button>
 
-  <div class="insta-post video" onclick="openModal('video','/assets/media/entec_2025.mp4')">
-    <video muted>
-      <source src="/assets/media/entec_2025.mp4" type="video/mp4">
-    </video>
-  </div>
+      <!-- MIDIA -->
+      <div id="modal-media"></div>
 
-  
-</div>
+      <!-- DOTS -->
+      <div class="dots" id="modal-dots"></div>
 
+    </div>
   </div>
-	
-<div id="insta-modal" class="insta-modal" onclick="closeModal()">
-  <div class="insta-modal-content" onclick="event.stopPropagation()">
-    <span class="close" onclick="closeModal()">×</span>
-    <div id="modal-media"></div>
-  </div>
-</div>
 
 </section>
+
 
 
 <!-- ------------------------------------------------------------------- -->
@@ -725,30 +744,117 @@ setInterval(() => {
 }, 3000);
 
 	
+
+let mediaItems = [];
+let currentIndex = 0;
+let startX = 0;
+
+document.addEventListener("DOMContentLoaded", () => {
+  mediaItems = Array.from(document.querySelectorAll(".insta-post"));
+});
+
+/* ---------- ABRIR ---------- */
 function openModal(type, src){
-  const modal = document.getElementById('insta-modal');
-  const media = document.getElementById('modal-media');
+  const modal = document.getElementById("insta-modal");
 
-  media.innerHTML = '';
+  currentIndex = mediaItems.findIndex(item =>
+    item.getAttribute("onclick").includes(src)
+  );
 
-  if(type === 'img'){
+  renderMedia(type, src);
+  modal.style.display = "flex";
+  updateDots();
+  preloadNext();
+}
+
+/* ---------- FECHAR ---------- */
+function closeModal(){
+  document.getElementById("insta-modal").style.display = "none";
+  document.getElementById("modal-media").innerHTML = "";
+  exitFullscreen();
+}
+
+/* ---------- RENDER ---------- */
+function renderMedia(type, src){
+  const media = document.getElementById("modal-media");
+  media.className = "fade";
+  media.innerHTML = "";
+
+  if(type === "img"){
     media.innerHTML = `<img src="${src}">`;
   }else{
     media.innerHTML = `
       <video controls autoplay>
         <source src="${src}" type="video/mp4">
       </video>`;
+    requestFullscreen(media.querySelector("video"));
   }
-
-  modal.style.display = 'flex';
 }
 
-function closeModal(){
-  const modal = document.getElementById('insta-modal');
-  const media = document.getElementById('modal-media');
+/* ---------- NAVEGAÇÃO ---------- */
+function nextMedia(){
+  currentIndex = (currentIndex + 1) % mediaItems.length;
+  mediaItems[currentIndex].click();
+}
 
-  media.innerHTML = '';
-  modal.style.display = 'none';
+function prevMedia(){
+  currentIndex = (currentIndex - 1 + mediaItems.length) % mediaItems.length;
+  mediaItems[currentIndex].click();
+}
+
+/* ---------- DOTS ---------- */
+function updateDots(){
+  const dots = document.getElementById("modal-dots");
+  dots.innerHTML = "";
+
+  mediaItems.forEach((_, i) => {
+    const dot = document.createElement("span");
+    if(i === currentIndex) dot.classList.add("active");
+    dots.appendChild(dot);
+  });
+}
+
+/* ---------- PRELOAD ---------- */
+function preloadNext(){
+  const next = mediaItems[(currentIndex + 1) % mediaItems.length];
+  const img = next.querySelector("img");
+  const video = next.querySelector("video");
+
+  if(img) new Image().src = img.src;
+  if(video) video.preload = "auto";
+}
+
+/* ---------- SWIPE ---------- */
+const modal = document.getElementById("insta-modal");
+
+modal.addEventListener("touchstart", e => {
+  startX = e.touches[0].clientX;
+});
+
+modal.addEventListener("touchend", e => {
+  const diff = startX - e.changedTouches[0].clientX;
+  if(Math.abs(diff) > 60){
+    diff > 0 ? nextMedia() : prevMedia();
+  }
+});
+
+/* ---------- ESC ---------- */
+document.addEventListener("keydown", e => {
+  if(e.key === "Escape") closeModal();
+});
+
+/* ---------- FULLSCREEN ---------- */
+function requestFullscreen(el){
+  if(window.innerWidth <= 768){
+    if(el.requestFullscreen) el.requestFullscreen();
+    else if(el.webkitEnterFullscreen) el.webkitEnterFullscreen();
+  }
+}
+
+function exitFullscreen(){
+  if(document.fullscreenElement){
+    document.exitFullscreen();
+  }
 }
 
 </script>
