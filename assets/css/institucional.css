@@ -112,6 +112,57 @@ section{
   margin-bottom:20px;
 }
 
+.hero-banner {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1200px;
+  animation: pulse 2.5s infinite;
+
+  background: linear-gradient(
+    90deg,
+    rgba(194, 151, 107, 0.95),
+    rgba(194, 151, 107, 0.85)
+  );
+
+  color: #000;
+  text-decoration: none;
+  padding: 14px 24px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-weight: 600;
+  z-index: 5;
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.35);
+
+  transition: 0.3s;
+}
+
+.hero-banner:hover {
+  transform: translateX(-50%) translateY(-4px);
+}
+
+.banner-text {
+  font-size: 1rem;
+}
+
+.banner-cta {
+  font-weight: 700;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.35);
+  }
+  50% {
+    box-shadow: 0 -15px 45px rgba(0,0,0,0.55);
+  }
+
+
 /* ==================================================
    PADRÃO DE TÍTULOS E TEXTOS
 ================================================== */
@@ -734,6 +785,16 @@ section p{
   /* ---------- HOME ---------- */
   #home img{
     width: 260px;
+  }
+
+.hero-banner {
+    flex-direction: column;
+    gap: 6px;
+    text-align: center;
+  }
+
+  .banner-text {
+    font-size: 0.95rem;
   }
 
   /* ---------- QUEM SOMOS (CAROUSEL) ---------- */
