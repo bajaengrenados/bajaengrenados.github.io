@@ -294,6 +294,21 @@ section p{
   padding:60px 0;
 }
 
+.btn-midia {
+  display: inline-block;
+  padding: 12px 24px;
+  background: linear-gradient(45deg, #833AB4, #FD1D1D, #FCAF45);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.btn-midia:hover {
+  background-color: #FD1D1D;
+}
+
 /* ---------- GRID ---------- */
 #midia .insta-grid{
   display:grid;
