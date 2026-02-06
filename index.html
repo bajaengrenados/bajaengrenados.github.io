@@ -1,500 +1,118 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ENGRENADOS BAJA UNIUBE</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Fontes -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Open+Sans:wght@300..800&display=swap" rel="stylesheet">
+  <title>ENGRENADOS BAJA UNIUBE</title>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="icon" type="image/png" sizes="16x16"  href="/assets/img/favicon.png">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
 
-
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-body{
-    font-family:"Open Sans", sans-serif;
-    background:url("https://www.gmnbt.com/assets/images/baja-pennsylvania-cornell.jpg") no-repeat center center fixed;
-    background-size:cover;
-    color:#fff;
-}
-
-/* Títulos principais das seções */
-.section-title {
-    font-size: 48px;
-    text-align: center;
-    color: #FFD700;
-    margin-bottom: 50px;
-    font-family: 'Archivo Black', sans-serif;
-    text-transform: uppercase;
-}
-
-/* MENU */
-header{
-    position:fixed;
-    top:0;
-    width:100%;
-    height:80px;
-    background:#e9f1f8; /* sólido, sem transparência */
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 50px;
-    z-index:1000;
-    box-shadow:0 2px 10px rgba(0,0,0,0.5); /* sombra sutil */
-}
-header img{
-    height:65px;
-}
-
-nav a{
-    color:#0b3c5d;
-    margin-left:35px;
-    text-decoration:none;
-    font-weight:600;
-    position:relative;
-    transition: color 0.3s ease;
-}
-
-nav a::after{
-    content:"";
-    position:absolute;
-    bottom:0;
-    left:50%;
-    width:0;
-    height:2px;
-    background:#FFD700;
-    transition: width 0.3s ease;
-    transform:translateX(-50%);
-}
-nav a:hover::after{
-    width:100%;
-}
-
-nav a:hover{
-    color:#FFD700;
-}
-
-nav a:hover::after{
-    width:100%;
-}
-
-/* SEÇÕES */
-section{
-    min-height:100vh;
-    padding:120px 10%;
-}
-
-/* HOME */
-#home{
-    position:relative;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-}
-
-#home video{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    z-index:-2;
-}
-
-#home::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:rgba(255,255,255,0.75);
-    z-index:-1;
-}
-
-#home img{
-    width:450px;
-    margin-bottom:20px;
-}
-
-#home h1{
-    font-family:"Archivo Black", sans-serif;
-    font-size:48px;
-}
-
-/* QUEM SOMOS */
-#quem-somos{
-    background:rgba(0,0,0,0.85);
-}
-
-#quem-somos h2{
-    font-family:"Archivo Black", sans-serif;
-    font-size:42px;
-    color:#FFD700;
-    text-align:center;
-    margin-bottom:20px;
-}
-
-#quem-somos p{
-    max-width:900px;
-    margin:0 auto 40px;
-    text-align:center;
-    font-size:18px;
-}
-
-/* CARROSSEL */
-.carousel-container{
-    overflow:hidden;
-    width:100%;
-    max-width:1200px;
-    margin:0 auto;
-    padding:0 10px;
-}
-
-.carousel-track{
-    display:flex;
-    transition:transform 0.6s ease;
-    gap:10px;
-}
-
-.member{
-    flex: 0 0 calc((100% / 5) - 8px); /* 5 fotos visíveis */
-    text-align:center;
-}
-
-.member img{
-    width:140px;
-    height:140px;
-    border-radius:50%;
-    border:3px solid #FFD700;
-    object-fit:cover;
-}
-
-.member h4{
-    margin-top:10px;
-    font-size:16px;
-    color:#fff;
-}
-
-.member span{
-    font-size:14px;
-    color:#FFD700;
-}
-
-.carousel-buttons{
-    display:flex;
-    justify-content:center;
-    gap:15px;
-    margin-top:25px;
-}
-
-.carousel-buttons button{
-    padding:6px 16px;
-    background:transparent;
-    border:1px solid rgba(255,255,255,0.6);
-    color:#fff;
-    font-weight:600;
-    cursor:pointer;
-    border-radius:20px;
-    font-size:14px;
-    transition:0.3s;
-}
-
-.carousel-buttons button:hover{
-    border-color:#FFD700;
-    color:#FFD700;
-}
-
-@media(max-width:768px){
-    .member{
-        flex: 0 0 calc((100% / 2) - 8px);
-    }
-}
-
-/* Seção Competições */
-#competicoes {
-    background: rgba(9,15,52,0.85);
-    padding: 100px 10%;
-    color: #fff;
-    font-family: 'Open Sans', sans-serif;
-}
-
-#competicoes h2 {
-    text-align: center;
-    color: #FFD700;
-    margin-bottom: 40px;
-}
-
-/* Caixa da contagem regressiva estilo esportivo */
-#countdown {
-    background: #0d1b2acc;
-    padding: 30px 40px;
-    border-radius: 12px;
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    max-width: 600px;
-    margin: 40px auto 0;
-    flex-wrap: wrap;
-    border: 2px solid #FFD700;
-}
-
-/* Título dentro da caixa */
-.countdown-title {
-    width: 100%;
-    text-align: center;
-    font-size: 24px;
-    font-weight: bold;
-    color: #FFD700;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-}
-
-/* Blocos da contagem */
-.countdown-item {
-    background: #000000cc;
-    padding: 15px 20px;
-    border-radius: 10px;
-    text-align: center;
-    min-width: 110px;
-    border: 3px solid #FFD700;
-}
-
-.countdown-item div:first-child {
-    font-size: 14px;
-    color: #FFD700;
-    margin-bottom: 6px;
-}
-
-.countdown-item div:last-child {
-    font-size: 36px;
-    font-weight: bold;
-    color: #fff;
-}
-
-/* Linha de separação */
-#competicoes hr {
-    border: 2px solid #FFD700;
-    margin: 40px auto;
-    width: 100%;
-}
-
-#parceiros{
-    background:rgba(0,0,0,0.85);
-    text-align:center;
-    overflow:hidden;
-}
-
-.parceiros-texto{
-    max-width:900px;
-    margin:0 auto 40px;
-    font-size:18px;
-}
-
-/* CARROSSEL */
-.parceiros-carousel{
-    width:100%;
-    overflow:hidden;
-    position:relative;
-}
-
-.parceiros-track{
-    display:flex;
-    align-items:center;
-    gap:80px;
-    animation: parceirosScroll 30s linear infinite;
-    will-change: transform;
-}
-
-.parceiro-logo img{
-    width:200px;
-    height:200px;
-    object-fit:cover;
-    filter:grayscale(100%);
-    opacity:1;
-    border:2px solid rgba(255,215,0,1);
-    border-radius:12px;
-    background:#000;
-    transition:0.4s ease;
-}
-
-.parceiro-logo:hover img{
-    filter:grayscale(0%);
-    opacity:1;
-    transform:scale(1.15);
-    border-color:#FFD700;
-    background:rgba(255,255,255,0.08);
-}
-
-.parceiros-track{
-    display:flex;
-    align-items:center;
-    gap:80px;
-    width:fit-content;
-    animation: parceirosScroll 30s linear infinite;
-}
-
-@keyframes parceirosScroll{
-    from{
-        transform: translateX(0);
-    }
-    to{
-        transform: translateX(-50%);
-    }
-}
-
-/* SEÇÃO */
-.contato-section{
-    padding:80px 8%;
-    background: rgba(9,15,52,0.85);
-}
-
-/* GRID */
-.contato-container{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:40px;
-    align-items:stretch;
-}
-
-/* FORMULÁRIO */
-.contato-form-box{
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-}
-
-.contato-form{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:14px;
-}
-
-.contato-form textarea{
-    grid-column:1 / -1;
-    height:90px;
-    resize:none;
-}
-
-.contato-form input,
-.contato-form textarea{
-    padding:12px;
-    border-radius:6px;
-    border:none;
-    background:#1a1a1a;
-    color:#fff;
-}
-
-.contato-form button{
-    grid-column:1 / -1;
-    padding:12px;
-    border:none;
-    border-radius:6px;
-    background:#ff3c00;
-    color:#fff;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-/* ÍCONES */
-.social-icons{
-    margin-top:14px;
-    display:flex;
-    justify-content:center;
-    gap:14px;
-}
-
-.social-icons a{
-    width:36px;
-    height:36px;
-    border-radius:50%;
-    background:rgba(255,255,255,0.1);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    transition:0.3s;
-}
-
-.social-icons a:hover{
-    background:#ff3c00;
-}
-
-.social-icons i{
-    font-size:18px;
-    color:#fff;
-}
-
-/* MAPA */
-.contato-mapa iframe{
-    width:100%;
-    height:100%;
-    min-height:320px;
-    border-radius:12px;
-    border:none;
-}
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Open+Sans:wght@300..800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
 
 
-/* FOOTER */
-footer{
-    background:#090F34;
-    padding:30px;
-    text-align:center;
-    font-size:14px;
-}
-
-/* RESPONSIVO */
-@media(max-width:768px){
-    header{
-        flex-direction:column;
-        height:auto;
-        padding:20px;
-    }
-
-    nav{
-        margin-top:10px;
-    }
-
-    .member{
-        flex: 0 0 calc((100% / 2) - 12px);
-    }
-}
-</style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/institucional.css">
 </head>
 
 <body>
 
+
+<!-- ------------------------------------------------------------------- -->
+<!-- ------------------------------------------------------------------- -->
+<!-- ------------------------------ MENU ------------------------------- -->
+<!-- ------------------------------------------------------------------- -->
+<!-- ------------------------------------------------------------------- -->
+
+<!-- ----------------------------------------------------------------------
 <header>
-    <img src="assets/img/logo.png" alt="Engrenados Baja Uniube">
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#quem-somos">Quem Somos</a>
-        <a href="#baja">Baja</a>
-        <a href="#projeto">Projeto</a>
-        <a href="#competicoes">Competições</a>
-        <a href="#titulos">Títulos</a>
-        <a href="#midia">midia</a>
-        <a href="#parceiros">Parceiros</a>
-        <a href="#contato">Contato</a>
-    </nav>
+  <a href="#home">
+  <img src="/assets/img/logo_nome.png" alt="Engrenados Baja Uniube">
+  </a>
+	
+  <nav>
+    <!-- <a href="#home">Home</a> -->
+    <a href="#quem-somos">Quem Somos</a>
+    <a href="#baja">Baja</a>
+    <a href="#projeto">Projeto</a>
+    <a href="#competicoes">Competições</a>
+    <a href="#titulos">Títulos</a>
+    <a href="#midia">Midia</a>
+    <a href="#parceiros">Parceiros</a>
+    <a href="#contato">Contato</a>
+  </nav>
+</header>
+------------------------------------------------------------------------- -->
+
+<header>
+  <a href="#home">
+    <img src="/assets/img/logo_nome.png" alt="Engrenados Baja Uniube">
+  </a>
+
+  <!-- BOTÃO HAMBURGUER -->
+  <div class="menu-toggle" id="menuToggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <nav id="mainNav">
+    <a href="#quem-somos">Quem Somos</a>
+    <a href="#baja">Baja</a>
+    <a href="#projeto">Projeto</a>
+    <a href="#competicoes">Competições</a>
+    <a href="#titulos">Títulos</a>
+    <a href="#midia">Mídia</a>
+    <a href="#parceiros">Parceiros</a>
+    <a href="#contato">Contato</a>
+  </nav>
 </header>
 
-<section id="home">
-    <video autoplay muted loop>
-        <source src="https://cdn.pixabay.com/video/2024/11/20/242283_large.mp4" type="video/mp4">
-    </video>
-    <div>
-        <img src="/assets/img/logo.png" alt="Engrenados Baja Uniube">
-        <!-- <h1>Equipe Baja SAE</h1> -->
-    </div>
+
+<!-- ------------------------------------------------------------------- -->
+<!-- ------------------------------------------------------------------- -->
+<!-- ------------------------------ HOME ------------------------------- -->
+<!-- ------------------------------------------------------------------- -->
+<!-- ------------------------------------------------------------------- -->
+
+
+<section id="home" class="hero">
+  <video autoplay muted loop playsinline class="hero-video">
+    <source src="https://cdn.pixabay.com/video/2024/11/20/242283_large.mp4" type="video/mp4">
+  </video>
+
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <img src="/assets/img/logo.png" alt="Engrenados Baja Uniube">
+  </div>
+
+  <!-- BANNER AQUI DENTRO -->
+  <a
+    href="https://forms.gle/SEU_LINK"
+    target="_blank"
+    class="hero-banner"
+  >
+    <span class="banner-text"> 🚀 Inscrições abertas <br> Faça parte da Engrenados Baja Uniube<br> </span>
+    <span class="banner-cta">----- CLIQUE AQUI -----</span>
+  </a>
 </section>
+
+
+<!-- ------------------------------------------------------------------- -->
+<!-- ------------------------------------------------------------------- -->
+<!-- --------------------------- QUEM SOMOS ---------------------------- -->
+<!-- ------------------------------------------------------------------- -->
+<!-- ------------------------------------------------------------------- -->
+
 
 <section id="quem-somos">
     <h2 class="section-title">Quem Somos</h2>
@@ -512,36 +130,188 @@ footer{
 
     <div class="carousel-container">
         <div class="carousel-track" id="carousel">
+			
             <!-- MEMBROS -->
+			
             <!-- SUPERVISORES -->
-            <div class="member"><img src="https://picsum.photos/300?1"><h4>Matheus Henrique</h4><span>Capitão</span></div>
-            <div class="member"><img src="https://picsum.photos/300?2"><h4>Lucas</h4><span>Sup. Suspensão e Direção</span></div>
-            <div class="member"><img src="https://picsum.photos/300?3"><h4>João Pedro</h4><span>Sup. Chassis e Freio</span></div>
-            <div class="member"><img src="https://picsum.photos/300?4"><h4>Caio</h4><span>Sup. Motor e Transmissão</span></div>
-            <div class="member"><img src="https://picsum.photos/300?5"><h4>Victor</h4><span>Sup. Eletrica</span></div>
-            <div class="member"><img src="https://picsum.photos/300?6"><h4>Adrian</h4><span>Sup. Projetos</span></div>
-            <div class="member"><img src="https://picsum.photos/300?7"><h4>Davi</h4><span>Sup. Relações Publicas</span></div>
-            <div class="member"><img src="https://picsum.photos/300?8"><h4>Prof. Wagner Cardoso</h4><span>Tesoureiro</span></div>
+			
+			<div class="member">
+				<img src="/assets/membros/wagner_cardoso.png">
+				<h4>Prof. Wagner Cardoso</h4>
+				<h5>Coordenador do Baja e do NUPEIA</h5>
+			</div>
+			
+            <div class="member">
+				<img src="/assets/membros/matheus_henrique.png">
+				<h4>Matheus Henrique</h4>
+				<h5>Capitão</h5>
+				<span>Eng. Mecânica</span>
+			</div>
+			
+            <div class="member">
+				<img src="/assets/membros/lucas_menezes.png">
+				<h4>Lucas Menezes</h4>
+				<h5>Sup. Suspensão e Direção</h5>
+				<span>Eng. Mecânica</span>
+			</div>
+			
+            <div class="member">
+				<img src="https://picsum.photos/300?3">
+				<h4>João Vitor</h4>
+				<h5>Sup. Chassis e Freio</h5>
+				<span>Eng. Mecânica</span>
+			</div>
+			
+            <div class="member">
+				<img src="https://picsum.photos/300?4">
+				<h4>Caio Almeida</h4>
+				<h5>Sup. Motor e Transmissão</h5>
+				<span>Eng. Mecânica</span>
+			</div>
+			
+            <div class="member">
+				<img src="/assets/membros/victor_felipe.png">
+				<h4>Victor Felipe</h4>
+				<h5>Sup. Eletrica</h5>
+				<span>Eng. de Controle e Autômação</span>
+			</div>
+			
+            <div class="member">
+				<img src="https://picsum.photos/300?6">
+				<h4>Adrian Ferreira</h4>
+				<h5>Sup. Projetos</h5>
+				<span>Eng. de Produção</span>
+			</div>
+			
+            <div class="member">
+				<img src="/assets/membros/davi_henrique.png">
+				<h4>Davi Henrique</h4>
+				<h5>Sup. Relações Publicas</h5>
+				<span>Eng. de Produção</span>
+			</div>
+			
+			<div class="member">
+				<img src="https://picsum.photos/300?8">
+				<h4>Matheus Crozara</h4>
+				<h5>Sup. TI</h5>
+				<span>Sist. de Informação</span>
+			</div>
+			
+			<div class="member">
+				<img src="/assets/membros/constância_oliveira.png">
+				<h4>Constância Oliveira</h4>
+				<h5>Sup. Marketing</h5>
+				<span>Enge. Química</span>
+			</div>
+			
            <!-- AUXILIARES -->
-            <div class="member"><img src="https://picsum.photos/300?9"><h4>Otavio</h4><span>Aux. Motor e Transmissão</span></div>
-            <div class="member"><img src="https://picsum.photos/300?10"><h4>Laura Mendes</h4><span>Projeto</span></div>
-            <div class="member"><img src="https://picsum.photos/300?11"><h4>Laura Mendes</h4><span>Projeto</span></div>
-            <div class="member"><img src="https://picsum.photos/300?12"><h4>Laura Mendes</h4><span>Projeto</span></div>
-            <div class="member"><img src="https://picsum.photos/300?13"><h4>Laura Mendes</h4><span>Projeto</span></div>
-            <div class="member"><img src="https://picsum.photos/300?14"><h4>Laura Mendes</h4><span>Projeto</span></div>
-            <div class="member"><img src="https://picsum.photos/300?15"><h4>Laura Mendes</h4><span>Projeto</span></div>
-            <div class="member"><img src="https://picsum.photos/300?16"><h4>Laura Mendes</h4><span>Projeto</span></div>
-            <div class="member"><img src="https://picsum.photos/300?17"><h4>Laura Mendes</h4><span>Projeto</span></div>
-            <div class="member"><img src="https://picsum.photos/300?18"><h4>Laura Mendes</h4><span>Projeto</span></div>
-            <div class="member"><img src="https://picsum.photos/300?19"><h4>Laura Mendes</h4><span>Projeto</span></div>
-            <div class="member"><img src="https://picsum.photos/300?20"><h4>Laura Mendes</h4><span>Projeto</span></div>
-            <div class="member"><img src="https://picsum.photos/300?21"><h4>Laura Mendes</h4><span>Projeto</span></div>
-            <div class="member"><img src="https://picsum.photos/300?22"><h4>Laura Mendes</h4><span>Projeto</span></div>
-            <div class="member"><img src="https://picsum.photos/300?23"><h4>Laura Mendes</h4><span>Projeto</span></div>
-            <div class="member"><img src="https://picsum.photos/300?24"><h4>Laura Mendes</h4><span>Projeto</span></div>
-            <div class="member"><img src="https://picsum.photos/300?25"><h4>Laura Mendes</h4><span>Projeto</span></div>
+			
+            <div class="member">
+				<img src="https://picsum.photos/300?9">
+				<h4>Otavio</h4>
+				<span>Eng. Mecânica</span>
+				<span>Aux. Motor e Transmissão</span>
+			</div>
+			
+			<div class="member">
+				<img src="https://picsum.photos/300?10">
+				<h4>Muniz</h4>
+				<span>Eng. Mecânica</span>
+				<span>Aux. Motor e Transmissão</span>
+			</div>
+			
+            <div class="member">
+				<img src="/assets/membros/thiago_souza.png">
+				<h4>Thiago Souza</h4>
+				<h5>Aux. de TI</h5>
+				<span>Eng. de Computação</span>
+			</div>
+			
+		    <div class="member">
+				<img src="/assets/membros/thiago_henrique.png">
+				<h4>Thiago Henrique</h4>
+				<h5>Aux. de TI</h5>
+				<span>Eng. de Computação</span>
+			</div>
+			
+			<div class="member">
+				<img src="/assets/membros/bruno_lempp.png">
+				<h4>Bruno Lempp</h4>
+				<h5>Aux. de TI</h5>
+				<span>Eng. de Computação</span>
+			</div>
+			
+			<div class="member">
+				<img src="https://picsum.photos/300?14">
+				<h4>Luana</h4>
+				<h5>Aux. de TI</h5>
+				<span>Eng. de Computação</span>
+			</div>
+			
+            <div class="member">
+				<img src="/assets/membros/julia_mazeto.png">
+				<h4>Júlia Mazeto</h4>
+				<h5>Aux. Elétrica </h5>
+				<span>Eng. Elétrica</span>
+			</div>
+			
+		    <div class="member">
+				<img src="/assets/membros/andreia_do_nascimento.png">
+				<h4>Andreia do Nascimento</h4>
+				<h5>Aux. Elétrica </h5>
+				<span>Eng. Civil</span>
+			</div>
+			
+            <div class="member">
+				<img src="/assets/membros/thayane_da_silva.png">
+				<h4>Thayane da Silva</h4>
+				<h5>Aux. Suspensão e Direção</h5>
+				<span>Eng. Mecânica</span>
+			</div>
+			
+			<div class="member">
+				<img src="https://picsum.photos/300?14">
+				<h4>Alexandre Camilo</h4>
+				<h5>Aux. Suspensão e Direção</h5>
+				<span>Eng. Mecânica</span>
+			</div>
+			
+			
+			<div class="member">
+				<img src="https://picsum.photos/300?16">
+				<h4>Neto</h4>
+				<h5>Aux. Elétrica </h5>
+				<span>Projeto</span>
+			</div>
 
-
+			<div class="member">
+				<img src="https://picsum.photos/300?17">
+				<h4>Carneiro</h4>
+				<h5>Aux. Chassis e Freio </h5>
+				<span>Projeto</span>
+			</div>
+			
+			<div class="member">
+				<img src="https://picsum.photos/300?18">
+				<h4>André Luiz</h4>
+				<h5>Aux. Chassis e Freio </h5>
+				<span>Eng. Mecânica</span>
+			</div>
+			
+			<div class="member">
+				<img src="https://picsum.photos/300?19">
+				<h4>Elis</h4>
+				<h5>Aux. ---- </h5>
+				<span>Projeto</span>
+			</div>
+			
+			<div class="member">
+				<img src="https://picsum.photos/300?20">
+				<h4>Laura Mendes</h4>
+				<h5>Aux. ---- </h5>
+				<span>Projeto</span>
+			</div>
+			
         </div>
     </div>
 
@@ -551,38 +321,59 @@ footer{
     </div>
 </section>
 
-<section id="baja" class="mid">
-  <div class="container">
-    <h2 class="section-title fade-up">O que é o Baja SAE</h2>
 
-    <p class="fade-up">
-      O Baja SAE é uma competição internacional que desafia equipes universitárias
-      a projetar, construir e competir com veículos off-road monopostos.
+<!-- ------------------------------------------------------------------- -->
+<!-- ------------------------------------------------------------------- -->
+<!-- ------------------------------ BAJA ------------------------------- -->
+<!-- ------------------------------------------------------------------- -->
+<!-- ------------------------------------------------------------------- -->
+
+
+<section id="baja">
+  <div class="container">
+    <h2 class="section-title">O que é o Baja SAE</h2>
+
+    <p>
+      O Baja SAE é uma competição internacional que desafia equipes universitárias a projetar, construir e competir com veículos off-road monopostos.
     </p>
 
-    <p class="fade-up">
-      As equipes são avaliadas em critérios técnicos, dinâmicos e de gestão,
-      simulando o ambiente real da indústria automotiva.
+    <p>
+      As equipes são avaliadas em critérios técnicos, dinâmicos e de gestão, simulando o ambiente real da indústria automotiva.
     </p>
   </div>
 </section>
 
-<section id="projeto" class="dark">
-  <div class="container">
-    <h2 class="section-title fade-up">Nosso Projeto</h2>
 
-    <p class="fade-up">
+<!-- ------------------------------------------------------------------- -->
+<!-- ------------------------------------------------------------------- -->
+<!-- ---------------------------- PROJETO ------------------------------ -->
+<!-- ------------------------------------------------------------------- -->
+<!-- ------------------------------------------------------------------- -->
+
+
+<section id="projeto">
+  <div class="container">
+    <h2 class="section-title">Nosso Projeto</h2>
+
+    <p>
       O projeto do veículo é desenvolvido com foco em desempenho, segurança
       e confiabilidade, integrando engenharia e tecnologia da informação.
     </p>
 
-    <div class="video-3d fade-up">
+    <div class="video-3d">
       <video controls autoplay muted loop>
         <source src="/assets/media/apresentacao_3D.mp4" type="video/mp4">
       </video>
     </div>
   </div>
 </section>
+
+
+<!-- ------------------------------------------------------------------- -->
+<!-- ------------------------------------------------------------------- -->
+<!-- --------------------------- COMPETIÇÕES --------------------------- -->
+<!-- ------------------------------------------------------------------- -->
+<!-- ------------------------------------------------------------------- -->
 
 
 <section id="competicoes">
@@ -625,11 +416,19 @@ footer{
     
 </section>
 
-<section id="titulos" class="dark">
-  <div class="container">
-    <h2 class="section-title fade-up">Títulos & Conquistas</h2>
 
-    <p class="fade-up">
+<!-- ------------------------------------------------------------------- -->
+<!-- ------------------------------------------------------------------- -->
+<!-- ---------------------------- TITULOS ------------------------------ -->
+<!-- ------------------------------------------------------------------- -->
+<!-- ------------------------------------------------------------------- -->
+
+
+<section id="titulos">
+  <div class="container">
+    <h2 class="section-title">Títulos & Conquistas</h2>
+
+    <p>
       Embora seja uma equipe jovem, a Engrenados Baja Uniube já acumula marcos
       importantes na sua trajetória de crescimento.
     </p>
@@ -637,7 +436,7 @@ footer{
     <div class="cards">
       <div class="card">
         <h3>Fundação da Equipe</h3>
-        <p>Criação oficial em julho de 2025, reunindo alunos de múltiplas engenharias.</p>
+        <p style="color: !important color: inherit;">Criação oficial em julho de 2025, reunindo alunos de múltiplas engenharias.</p>
       </div>
 
       <div class="card">
@@ -654,29 +453,99 @@ footer{
 </section>
 
 
-<section id="midia" class="light">
+<!-- ------------------------------------------------------------------- -->
+<!-- ------------------------------------------------------------------- -->
+<!-- ---------------------------- MÍDIAS ------------------------------- -->
+<!-- ------------------------------------------------------------------- -->
+<!-- ------------------------------------------------------------------- -->
+
+
+<section id="midia">
   <div class="container">
-    <h2 class="section-title fade-up">Nosso Dia a Dia</h2>
 
-    <p class="fade-up">
-      Acompanhe a evolução da equipe, bastidores, testes e eventos.
-    </p>
+    <h2 class="section-title">Nosso Dia a Dia</h2>
+    <p>Acompanhe a evolução da equipe, bastidores, testes e eventos.</p>
+	  
+	<a href="https://www.instagram.com/engrenadosbaja/" class="btn-midia" target="_blank"> Acesse nossa pagina no Instragram</a>
 
+    <!-- GRID -->
     <div class="insta-grid">
-      <img src="/assets/insta/1.jpg">
-      <img src="/assets/insta/2.jpg">
-      <video autoplay muted loop src="/assets/insta/reel1.mp4"></video>
-      <img src="/assets/insta/3.jpg">
-      <img src="/assets/insta/4.jpg">
-      <img src="/assets/insta/5.jpg">
+
+      <!-- IMAGEM -->
+      <div class="insta-post"
+           onclick="openModal('img','/assets/media/modelo_3d.jpeg')">
+        <img src="/assets/media/modelo_3d.jpeg" alt="Modelo 3D">
+      </div>
+
+      <div class="insta-post"
+           onclick="openModal('img','/assets/media/equipe_entec.jpeg')">
+        <img src="/assets/media/equipe_entec.jpeg" alt="Equipe ENTEC">
+      </div>
+
+      <div class="insta-post"
+           onclick="openModal('img','/assets/media/construcao_prototipo.jpeg')">
+        <img src="/assets/media/construcao_prototipo.jpeg" alt="Construção do protótipo">
+      </div>
+
+      <!-- VÍDEO -->
+      <div class="insta-post video"
+           onclick="openModal('video','/assets/media/video_prototipo.mp4')">
+        <video muted preload="metadata">
+          <source src="/assets/media/video_prototipo.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="insta-post video"
+           onclick="openModal('video','/assets/media/entrevista_bastidores.mp4')">
+        <video muted preload="metadata">
+          <source src="/assets/media/entrevista_bastidores.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="insta-post video"
+           onclick="openModal('video','/assets/media/entec_2025.mp4')">
+        <video muted preload="metadata">
+          <source src="/assets/media/entec_2025.mp4" type="video/mp4">
+        </video>
+      </div>
+
     </div>
   </div>
+
+  <!-- MODAL -->
+  <div id="insta-modal" class="insta-modal" onclick="closeModal()">
+    <div class="insta-modal-content" onclick="event.stopPropagation()">
+
+      <!-- FECHAR -->
+      <span class="close" onclick="closeModal()">×</span>
+
+      <!-- SETAS -->
+      <button class="nav prev" onclick="prevMedia()">‹</button>
+      <button class="nav next" onclick="nextMedia()">›</button>
+
+      <!-- MIDIA -->
+      <div id="modal-media"></div>
+
+      <!-- DOTS -->
+      <div class="dots" id="modal-dots"></div>
+
+    </div>
+  </div>
+
 </section>
+
+
+
+<!-- ------------------------------------------------------------------- -->
+<!-- ------------------------------------------------------------------- -->
+<!-- -------------------------- PARCEIROS ------------------------------ -->
+<!-- ------------------------------------------------------------------- -->
+<!-- ------------------------------------------------------------------- -->
 
 
 <section id="parceiros">
     <h2 class="section-title">Parceiros</h2>
-    <p class="parceiros-texto">
+    <p>
     Nossos parceiros são parte essencial da construção do Engrenados Baja UNIUBE.
     São empresas e instituições que acreditam no potencial da equipe, apoiando o
     desenvolvimento técnico, acadêmico e humano dos nossos integrantes.
@@ -684,6 +553,14 @@ footer{
     desafios em conquistas dentro e fora das pistas.
 </p>
 
+<a 
+  href="https://wa.me/5534999999999?text=Quero%20ser%20parceiro%20da%20Equipe%20Engrenados"
+  class="btn-parceiro"
+  target="_blank"
+>
+  Seja nosso parceiro
+</a>
+	
 <div class="parceiros-carousel">
   <div class="parceiros-track">
 
@@ -719,6 +596,14 @@ footer{
 
 </section>
 
+
+<!-- ------------------------------------------------------------------- -->
+<!-- ------------------------------------------------------------------- -->
+<!-- ------------------------- CONTATO --------------------------------- -->
+<!-- ------------------------------------------------------------------- -->
+<!-- ------------------------------------------------------------------- -->
+
+
 <section id="contato" class="contato-section">
 
     <h2 class="section-title">Contato</h2>
@@ -727,25 +612,33 @@ footer{
 
         <!-- FORMULÁRIO -->
         <div class="contato-form-box">
-            <form class="contato-form">
-                <input type="text" placeholder="Nome" required>
-                <input type="email" placeholder="E-mail" required>
 
-                <textarea placeholder="Mensagem"></textarea>
+<form
+    id="contatoForm"
+    class="contato-form"
+    action="https://formspree.io/f/xaqdwpvz"
+    method="POST"
+>
+    <input type="text" name="nome" placeholder="Nome" required>
+    <input type="email" name="email" placeholder="E-mail" required>
+    <textarea name="mensagem" placeholder="Mensagem" required></textarea>
 
-                <button type="submit">Enviar</button>
-            </form>
+    <button type="submit">Enviar</button>
+</form>
 
-            <!-- ÍCONES -->
-            <div class="social-icons">
-                <a href="#" aria-label="WhatsApp">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-                <a href="#" aria-label="Instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
-            </div>
-        </div>
+    <!-- ÍCONES SOCIAIS -->
+    <div class="social-icons">
+        <a href="https://wa.me/55SEUNUMEROAQUI" target="_blank" aria-label="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+
+        <a href="https://www.instagram.com/engrenadosbaja/" target="_blank" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+    </div>
+
+</div>
+
 
         <!-- MAPA -->
         <div class="contato-mapa">
@@ -756,6 +649,13 @@ footer{
 
     </div>
 </section>
+
+
+<!-- ------------------------------------------------------------------- -->
+<!-- ------------------------------------------------------------------- -->
+<!-- ---------------------------- RODAPÉ ---------------------------------->
+<!-- ------------------------------------------------------------------- -->
+<!-- ------------------------------------------------------------------- -->
 
 
 <footer class="site-footer">
@@ -773,13 +673,13 @@ footer{
       <h4>Links Úteis</h4>
       <a href="https://www.uniube.br" target="_blank">UNIUBE</a>
       <a href="https://saebrasil.org.br" target="_blank">SAE Brasil</a>
-      <a href="apresentacao.html">Apresentações</a>
+      <a href="/apresentacao/index.html">Apresentações</a>
     </div>
 
     <!-- COLUNA 3 -->
     <div class="footer-col">
       <h4>Redes</h4>
-      <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+      <a href="https://www.instagram.com/engrenadosbaja/" target="_blank">Instagram</a>
       <a href="mailto:engrenados@uniube.br">Email</a>
     </div>
 
@@ -789,6 +689,14 @@ footer{
     © 2026 — Engrenados Baja UNIUBE
   </div>
 </footer>
+
+
+<!-- ------------------------------------------------------------------- -->
+<!-- ------------------------------------------------------------------- -->
+<!-- -------------------------- SCRIPT --------------------------------- -->
+<!-- ------------------------------------------------------------------- -->
+<!-- ------------------------------------------------------------------- -->
+
 
 <script>
 const track = document.getElementById("carousel");
@@ -847,7 +755,7 @@ document.querySelector(".carousel-buttons button:nth-child(1)").addEventListener
 document.querySelector(".carousel-buttons button:nth-child(2)").addEventListener("click", next);
 
 // Data da competição
-const competitionDate = new Date("September 24, 2026 08:00:00").getTime();
+const competitionDate = new Date("2026-10-14T08:00:00").getTime();
 
 function updateCountdown() {
     const now = new Date().getTime();
@@ -883,6 +791,168 @@ setInterval(() => {
     const meio = Math.floor(logos.length / 2);
     logos[meio].classList.add("ativo");
 }, 3000);
+
+	
+
+let mediaItems = [];
+let currentIndex = 0;
+let startX = 0;
+
+document.addEventListener("DOMContentLoaded", () => {
+  mediaItems = Array.from(document.querySelectorAll(".insta-post"));
+});
+
+/* ---------- ABRIR ---------- */
+function openModal(type, src){
+  const modal = document.getElementById("insta-modal");
+
+  currentIndex = mediaItems.findIndex(item =>
+    item.getAttribute("onclick").includes(src)
+  );
+
+  renderMedia(type, src);
+  modal.style.display = "flex";
+  updateDots();
+  preloadNext();
+}
+
+/* ---------- FECHAR ---------- */
+function closeModal(){
+  document.getElementById("insta-modal").style.display = "none";
+  document.getElementById("modal-media").innerHTML = "";
+  exitFullscreen();
+}
+
+/* ---------- RENDER ---------- */
+function renderMedia(type, src){
+  const media = document.getElementById("modal-media");
+  media.className = "fade";
+  media.innerHTML = "";
+
+  if(type === "img"){
+    media.innerHTML = `<img src="${src}">`;
+  }else{
+    media.innerHTML = `
+      <video controls autoplay>
+        <source src="${src}" type="video/mp4">
+      </video>`;
+    requestFullscreen(media.querySelector("video"));
+  }
+}
+
+/* ---------- NAVEGAÇÃO ---------- */
+function nextMedia(){
+  currentIndex = (currentIndex + 1) % mediaItems.length;
+  mediaItems[currentIndex].click();
+}
+
+function prevMedia(){
+  currentIndex = (currentIndex - 1 + mediaItems.length) % mediaItems.length;
+  mediaItems[currentIndex].click();
+}
+
+/* ---------- DOTS ---------- */
+function updateDots(){
+  const dots = document.getElementById("modal-dots");
+  dots.innerHTML = "";
+
+  mediaItems.forEach((_, i) => {
+    const dot = document.createElement("span");
+    if(i === currentIndex) dot.classList.add("active");
+    dots.appendChild(dot);
+  });
+}
+
+/* ---------- PRELOAD ---------- */
+function preloadNext(){
+  const next = mediaItems[(currentIndex + 1) % mediaItems.length];
+  const img = next.querySelector("img");
+  const video = next.querySelector("video");
+
+  if(img) new Image().src = img.src;
+  if(video) video.preload = "auto";
+}
+
+/* ---------- SWIPE ---------- */
+const modal = document.getElementById("insta-modal");
+
+modal.addEventListener("touchstart", e => {
+  startX = e.touches[0].clientX;
+});
+
+modal.addEventListener("touchend", e => {
+  const diff = startX - e.changedTouches[0].clientX;
+  if(Math.abs(diff) > 60){
+    diff > 0 ? nextMedia() : prevMedia();
+  }
+});
+
+/* ---------- ESC ---------- */
+document.addEventListener("keydown", e => {
+  if(e.key === "Escape") closeModal();
+});
+
+/* ---------- FULLSCREEN ---------- */
+function requestFullscreen(el){
+  if(window.innerWidth <= 768){
+    if(el.requestFullscreen) el.requestFullscreen();
+    else if(el.webkitEnterFullscreen) el.webkitEnterFullscreen();
+  }
+}
+
+function exitFullscreen(){
+  if(document.fullscreenElement){
+    document.exitFullscreen();
+  }
+}
+
+/* ---------- MENU HAMBURGUER ---------- */
+const menuToggle = document.getElementById("menuToggle");
+const nav = document.getElementById("mainNav");
+
+menuToggle.addEventListener("click", () => {
+  nav.classList.toggle("active");
+});
+
+/* Fecha menu ao clicar */
+document.querySelectorAll("#mainNav a").forEach(link => {
+  link.addEventListener("click", () => {
+    nav.classList.remove("active");
+  });
+});
+
+
+  const form = document.getElementById("contatoForm");
+  const msg = document.getElementById("formMsg");
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault(); // impede redirecionamento
+
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        msg.textContent = "Mensagem enviada com sucesso!";
+        msg.style.color = "#28a745";
+        form.reset(); // LIMPA OS CAMPOS
+      } else {
+        msg.textContent = "Erro ao enviar. Tente novamente.";
+        msg.style.color = "#dc3545";
+      }
+
+    } catch (error) {
+      msg.textContent = "Erro de conexão. Tente mais tarde.";
+      msg.style.color = "#dc3545";
+    }
+  });
 
 </script>
 
