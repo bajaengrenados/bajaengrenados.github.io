@@ -95,7 +95,53 @@ GALLERY
 MENU LATERAL SOBREPOSTO
 ================================================== */
 
+.apresentacao .menu {
+  position: fixed;
+  top: 0;
+  left: 0;
 
+  width: 64px;
+  height: 100vh;
+
+  background: rgba(11,60,93,.96);
+  backdrop-filter: blur(8px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 10px;
+
+  z-index: 9999;
+  transition: width .25s ease;
+}
+
+/* expande por cima */
+.apresentacao .menu:hover {
+  width: 220px;
+  align-items: flex-start;
+  padding-left: 18px;
+}
+
+.apresentacao main {
+  padding-left: 0px;
+  transition: padding-left .25s ease;
+}
+
+.apresentacao .container {
+  padding-left: 64px; /* largura do menu fechado */
+  transition: padding-left .25s ease;
+}
+
+.apresentacao .menu:hover ~ main .container {
+  padding-left: 210px; /* menu aberto */
+}
+
+/*
+.apresentacao .menu:hover ~ main {
+  padding-left: 210px;
+}
+*/
 
 
 /* ==================================================
@@ -104,7 +150,7 @@ LINKS DO MENU
 .apresentacao .menu a {
   display: flex;
   align-items: center;
-  justify-content: center; /* 👈 ESSENCIAL */
+  justify-content: center; /* ESSENCIAL */
 
   gap: 20px;
   height: 36px;
