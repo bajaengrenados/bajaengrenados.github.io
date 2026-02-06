@@ -134,14 +134,14 @@ MENU LATERAL SOBREPOSTO
 }
 
 .apresentacao .menu:hover ~ main .container {
-  padding-left: 220px; /* menu aberto */
+  padding-left: 210px; /* menu aberto */
 }
 
-
+/*
 .apresentacao .menu:hover ~ main {
   padding-left: 210px;
 }
-
+*/
 
 /* ==================================================
 LINKS DO MENU
