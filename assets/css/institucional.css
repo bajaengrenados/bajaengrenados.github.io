@@ -369,16 +369,18 @@ section p{
 #midia .insta-grid{
   display:grid;
   grid-template-columns:repeat(3, 1fr);
+  grid-auto-rows:1fr;   /* chave do problema */
   gap:8px;
 
   max-width:900px;
   margin:20px auto 0;
 
-  max-height:350px;           /* 2 linhas visíveis */
+  max-height:350px;
   overflow-y:auto;
   align-content:start;
-  padding-right:4px;
+  padding:8px;
 }
+
 
 /* ---------- POST ---------- */
 #midia .insta-post{
@@ -389,6 +391,7 @@ section p{
   background:#000;
   cursor:pointer;
 }
+
 
 #midia .insta-post img,
 #midia .insta-post video{
