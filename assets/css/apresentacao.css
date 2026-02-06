@@ -156,10 +156,10 @@ LINKS DO MENU
 .apresentacao .menu a {
   display: flex;
   align-items: center;
-  justify-content: center; /* ESSENCIAL */
-
+  justify-content: center; /* menu fechado */
   gap: 20px;
-  height: 40px;
+
+  height: 36px;
   width: 100%;
 
   text-decoration: none;
@@ -168,13 +168,12 @@ LINKS DO MENU
 
   opacity: .95;
   transition: opacity .2s ease;
-  overflow: hidden;
-
-  padding-left: 5px;
 }
+
 
 .apresentacao .menu a:hover {
   opacity: 1;
+  justify-content: flex-start;
 }
 
 /* ==================================================
@@ -182,8 +181,8 @@ LINKS DO MENU
 ================================================== */
 .apresentacao .menu .icon {
   font-family: 'Material Symbols Rounded';
-  width: 40px;          /* COLUNA FIXA */
-  min-width: 40px;
+  width: 26px;
+  min-width: 26px; /* ESSENCIAL */
   text-align: center;
 
   color: #ffffff;
