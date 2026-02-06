@@ -123,25 +123,6 @@ MENU LATERAL SOBREPOSTO
   padding-left: 18px;
 }
 
-.apresentacao main {
-  padding-left: 0px;
-  transition: padding-left .25s ease;
-}
-
-.apresentacao .container {
-  padding-left: 64px; /* largura do menu fechado */
-  transition: padding-left .25s ease;
-}
-
-.apresentacao .menu:hover ~ main .container {
-  padding-left: 210px; /* menu aberto */
-}
-
-/*
-.apresentacao .menu:hover ~ main {
-  padding-left: 210px;
-}
-*/
 
 /* ==================================================
 LINKS DO MENU
