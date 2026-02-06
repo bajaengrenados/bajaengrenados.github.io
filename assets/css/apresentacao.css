@@ -5,6 +5,10 @@ html, body {
   overflow-x: hidden;
 }
 
+body {
+  overflow-y: auto;
+}
+
 section:not(.hero) {
   padding-bottom: 40px;
 }
