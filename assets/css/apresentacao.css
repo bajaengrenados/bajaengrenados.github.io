@@ -124,7 +124,7 @@ MENU LATERAL SOBREPOSTO
 }
 
 .apresentacao main {
-  padding-left: 60px;
+  padding-left: 0px;
   transition: padding-left .25s ease;
 }
 
