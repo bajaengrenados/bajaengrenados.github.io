@@ -156,7 +156,7 @@ LINKS DO MENU
 .apresentacao .menu a {
   display: flex;
   align-items: center;
-  justify-content: center; /* menu fechado */
+  justify-content: flex-start; /* menu fechado */
   gap: 20px;
 
   height: 36px;
