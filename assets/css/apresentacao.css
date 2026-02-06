@@ -1,3 +1,7 @@
+/* ==================================================
+RESET GLOBAL
+Remove padrões do navegador e evita scroll lateral
+================================================== */
 html, body {
   margin: 0;
   padding: 0;
@@ -9,6 +13,9 @@ body {
   overflow-y: auto;
 }
 
+/* ==================================================
+SECTIONS
+================================================== */
 section:not(.hero) {
   padding-bottom: 40px;
 }
@@ -17,15 +24,15 @@ section:not(.hero):last-of-type {
   padding-bottom: 0;
 }
 
-
-
 /* ==================================================
 HERO
 ================================================== */
 .hero {
   position: relative;
-  min-height: 100vh;
-  min-height: 100dvh;;
+
+  min-height: 100vh;   /* fallback */
+  min-height: 100dvh;  /* corrige mobile moderno */
+
   margin: 0;
   padding: 0;
 
@@ -41,8 +48,10 @@ HERO
 .hero video {
   position: absolute;
   inset: 0;
+
   width: 100%;
   height: 100%;
+
   object-fit: cover;
   display: block;
 }
@@ -61,8 +70,6 @@ HERO
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  padding: 0px;
 }
 
 .logo-apresentacao {
@@ -70,7 +77,6 @@ HERO
   max-width: 80%;
   margin-bottom: 20px;
 }
-
 
 /* ==================================================
 GALLERY
@@ -84,23 +90,20 @@ GALLERY
 
 .gallery img {
   height: 250px;
-  width: auto;
   max-width: 100%;
   border-radius: 16px;
   object-fit: cover;
 }
 
-
 /* ==================================================
-MENU LATERAL SOBREPOSTO
+MENU LATERAL FIXO (DESKTOP)
 ================================================== */
-
 .apresentacao .menu {
   position: fixed;
   top: 0;
   left: 0;
 
-  width: 64px;
+  width: 64px;         /* menu fechado */
   height: 100vh;
 
   background: rgba(11,60,93,.96);
@@ -110,41 +113,40 @@ MENU LATERAL SOBREPOSTO
   flex-direction: column;
   align-items: center;
 
-  padding: 0px 0px;
+  padding: 0;
   gap: 10px;
 
   z-index: 9999;
   transition: width .25s ease;
 }
 
-/* expande por cima */
+/* ==================================================
+MENU EXPANDIDO (DESKTOP)
+================================================== */
 .apresentacao .menu:hover {
   width: 220px;
   align-items: flex-start;
   padding-left: 18px;
 }
 
+/* ==================================================
+CONTEÚDO PRINCIPAL
+================================================== */
 .apresentacao main {
-  padding-left: 0px;
-  transition: padding-left .25s ease;
+  padding-left: 0;
 }
 
+/* ==================================================
+CONTAINER — DESLOCA APENAS O TEXTO
+================================================== */
 .apresentacao .container {
-  padding-left: 64px; /* largura do menu fechado */
+  padding-left: 64px;       /* menu fechado */
   transition: padding-left .25s ease;
 }
 
 .apresentacao .menu:hover ~ main .container {
-  padding-left: 210px; /* menu aberto */
+  padding-left: 220px;      /* menu aberto */
 }
-
-/*
-.apresentacao .menu:hover ~ main {
-  padding-left: 210px;
-}
-*/
-
-
 
 /* ==================================================
 LINKS DO MENU
@@ -152,19 +154,23 @@ LINKS DO MENU
 .apresentacao .menu a {
   display: flex;
   align-items: center;
-  justify-content: center; /* ESSENCIAL */
+  justify-content: center;  /* centraliza ícones */
 
-  gap: 20px;
-  height: 36px;
   width: 100%;
+  height: 36px;
+  gap: 20px;
 
   text-decoration: none;
   font-weight: 600;
   color: var(--branco);
 
   opacity: .95;
-  transition: opacity .2s ease;
   overflow: hidden;
+  transition: opacity .2s ease;
+}
+
+.apresentacao .menu:hover a {
+  justify-content: flex-start;
 }
 
 .apresentacao .menu a:hover {
@@ -172,7 +178,7 @@ LINKS DO MENU
 }
 
 /* ==================================================
-ÍCONES (BRANCO → AMARELO)
+ÍCONES
 ================================================== */
 .apresentacao .menu .icon {
   font-family: 'Material Symbols Rounded';
@@ -198,15 +204,11 @@ LINKS DO MENU
 TEXTO DO MENU
 ================================================== */
 .apresentacao .menu .text {
-  display: block;
-
   opacity: 0;
   max-width: 0;
 
   overflow: hidden;
   white-space: nowrap;
-
-  color: var(--branco);
 
   transition: opacity .2s ease, max-width .25s ease;
 }
@@ -214,12 +216,6 @@ TEXTO DO MENU
 .apresentacao .menu:hover .text {
   opacity: 1;
   max-width: 160px;
-  white-space: normal;
-  color: var(--branco);
-}
-
-.apresentacao .menu a:hover .text {
-  color: var(--amarelo);
 }
 
 /* ==================================================
@@ -236,50 +232,37 @@ FINAL
 }
 
 /* ==================================================
-MOBILE – CONFIGURAÇÃO FINAL LIMPA
+MOBILE
 ================================================== */
 @media (max-width: 900px) {
 
-  /* ===== RESET MOBILE ===== */
   html, body {
     width: 100%;
-    margin: 0;
-    padding: 0;
     overflow-x: hidden;
   }
 
-  /* ===== BOTÃO MENU ===== */
-.menu-toggle {
-  position: fixed;
-  top: 14px;
-  left: 14px;
-
-  z-index: 10000;
-
-  background: none;
-  border: none;
-
-  color: var(--branco);
-  cursor: pointer;
-}
-
-  /* ===== MENU MOBILE ===== */
-  .apresentacao .menu {
+  /* BOTÃO MENU */
+  .menu-toggle {
     position: fixed;
-    inset: 0;
+    top: 14px;
+    left: 14px;
 
+    background: none;
+    border: none;
+    color: var(--branco);
+
+    cursor: pointer;
+    z-index: 15000;
+  }
+
+  /* MENU MOBILE FULLSCREEN */
+  .apresentacao .menu {
+    inset: 0;
     width: 100vw;
     height: 100vh;
 
-    background: rgba(11,60,93,.96);
-    backdrop-filter: blur(8px);
-
     transform: translateX(-100%);
     transition: transform .3s ease;
-
-    z-index: 14000;
-
-    gap: 8px; /* espaço entre os links */
   }
 
   .apresentacao .menu.open {
@@ -290,80 +273,32 @@ MOBILE – CONFIGURAÇÃO FINAL LIMPA
     opacity: 1;
     max-width: 100%;
     white-space: normal;
-    color: var(--branco);
   }
 
   .apresentacao .menu a {
-    padding: 18px 20px; /* aumenta área de toque */
+    padding: 18px 20px;
     height: auto;
     font-size: 1.05rem;
   }
-  .apresentacao .menu a:hover .icon,
-  .apresentacao .menu a:hover .text {
-    color: var(--amarelo);
-  }
 
-  /* ===== HERO ===== */
-  .hero {
-    width: 100%;
-    min-height: 100vh;
-    height: auto;
-  }
-
+  /* HERO MOBILE */
   .hero-content {
     padding: 20px;
   }
 
   .hero-content img {
     width: 160px;
-    max-width: 70%;
   }
 
-  .hero-content h1 {
-    font-size: 1.9rem;
-    line-height: 1.2;
-  }
-
-  .hero-content p {
-    font-size: 1rem;
-  }
-
-  /* ===== SECTIONS ===== */
-  section {
-    width: 100%;
-    max-width: 100%;
-    padding: 30px 0;
-    overflow-x: hidden;
-    padding-left: 25px;
-  }
-
-  /* ===== CONTAINER ===== */
+  /* CONTAINER MOBILE */
   .container {
-    width: 100%;
-    max-width: 100%;
     padding-left: 16px;
     padding-right: 16px;
-    box-sizing: border-box;
   }
 
-  /* ===== CARDS ===== */
-  .cards {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 20px;
-  }
-
-  .card {
-    width: 100%;
-    max-width: 100%;
-    margin: 0 auto;
-  }
-
-  /* ===== GALLEY ===== */
+  /* GALLERY MOBILE */
   .gallery img {
     height: 220px;
   }
-
-
 }
 
