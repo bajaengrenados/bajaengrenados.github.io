@@ -116,12 +116,6 @@ MENU LATERAL SOBREPOSTO
   transition: width .25s ease;
 }
 
-/* expande por cima */
-.apresentacao .menu:hover {
-  width: 220px;
-  align-items: flex-start;
-  padding-left: 18px;
-}
 
 
 /* ==================================================
