@@ -111,10 +111,10 @@ MENU LATERAL FIXO (DESKTOP)
 
   display: flex;
   flex-direction: column;
-  align-items: center;
+  
 
   padding: 0px 0px;
-  gap: 10px;
+  gap: 20px;
 
   z-index: 9999;
   transition: width .25s ease;
