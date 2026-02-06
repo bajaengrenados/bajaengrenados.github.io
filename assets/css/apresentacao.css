@@ -111,7 +111,7 @@ MENU LATERAL FIXO (DESKTOP)
 
   display: flex;
   flex-direction: column;
-  
+  align-items: center;
 
   padding: 0px 0px;
   gap: 20px;
@@ -158,7 +158,7 @@ LINKS DO MENU
   justify-content: center; /* ESSENCIAL */
 
   gap: 20px;
-  height: 36px;
+  height: 40px;
   width: 100%;
 
   text-decoration: none;
@@ -168,6 +168,8 @@ LINKS DO MENU
   opacity: .95;
   transition: opacity .2s ease;
   overflow: hidden;
+
+  padding-left: 5px;
 }
 
 .apresentacao .menu a:hover {
@@ -179,8 +181,8 @@ LINKS DO MENU
 ================================================== */
 .apresentacao .menu .icon {
   font-family: 'Material Symbols Rounded';
-  font-size: 26px;
-  width: 26px;
+  width: 40px;          /* COLUNA FIXA */
+  min-width: 40px;
   text-align: center;
 
   color: #ffffff;
