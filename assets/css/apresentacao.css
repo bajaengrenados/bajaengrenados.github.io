@@ -125,7 +125,7 @@ MENU LATERAL FIXO (DESKTOP)
 MENU EXPANDIDO (DESKTOP)
 ================================================== */
 .apresentacao .menu:hover {
-  width: 220px;
+  width: 240px;
   align-items: flex-start;
   padding-left: 18px;
   gap: 20px;
