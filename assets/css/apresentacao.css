@@ -97,27 +97,24 @@ MENU LATERAL SOBREPOSTO
 
 .apresentacao .menu {
   position: fixed;
-
-/*
   top: 0;
   left: 0;
-*/
 
   width: 64px;
   height: 100vh;
 
-
-  background: rgba(255,60,93,.96);
+  background: rgba(11,60,93,.96);
   backdrop-filter: blur(8px);
 
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  padding: 40px 20px;
-  gap: 20px;
+  padding: 0px 0px;
+  gap: 10px;
 
   z-index: 9999;
+  transition: width .25s ease;
 }
 
 /* expande por cima */
@@ -140,6 +137,12 @@ MENU LATERAL SOBREPOSTO
 .apresentacao .menu:hover ~ main .container {
   padding-left: 210px; /* menu aberto */
 }
+
+/*
+.apresentacao .menu:hover ~ main {
+  padding-left: 210px;
+}
+*/
 
 
 
@@ -230,5 +233,136 @@ FINAL
 
 .final h2 {
   color: var(--amarelo);
+}
+
+/* ==================================================
+MOBILE – CONFIGURAÇÃO FINAL LIMPA
+================================================== */
+@media (max-width: 900px) {
+
+  /* ===== RESET MOBILE ===== */
+  html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  /* ===== BOTÃO MENU ===== */
+  .menu-toggle {
+  all: unset;
+  cursor: pointer;
+  color: var(--branco);
+
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+  /* ===== MENU MOBILE ===== */
+  .apresentacao .menu {
+    position: fixed;
+    inset: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    background: rgba(11,60,93,.96);
+    backdrop-filter: blur(8px);
+
+    transform: translateX(-100%);
+    transition: transform .3s ease;
+
+    z-index: 14000;
+
+    gap: 8px; /* espaço entre os links */
+  }
+
+  .apresentacao .menu.open {
+    transform: translateX(0);
+  }
+
+  .apresentacao .menu .text {
+    opacity: 1;
+    max-width: 100%;
+    white-space: normal;
+    color: var(--branco);
+  }
+
+  .apresentacao .menu a {
+    padding: 18px 20px; /* aumenta área de toque */
+    height: auto;
+    font-size: 1.05rem;
+  }
+  .apresentacao .menu a:hover .icon,
+  .apresentacao .menu a:hover .text {
+    color: var(--amarelo);
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+  }
+
+  .hero-content {
+    padding: 20px;
+  }
+
+  .hero-content img {
+    width: 160px;
+    max-width: 70%;
+  }
+
+  .hero-content h1 {
+    font-size: 1.9rem;
+    line-height: 1.2;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  /* ===== SECTIONS ===== */
+  section {
+    width: 100%;
+    max-width: 100%;
+    padding: 30px 0;
+    overflow-x: hidden;
+    padding-left: 25px;
+  }
+
+  /* ===== CONTAINER ===== */
+  .container {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
+    box-sizing: border-box;
+  }
+
+  /* ===== CARDS ===== */
+  .cards {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  /* ===== GALLEY ===== */
+  .gallery img {
+    height: 220px;
+  }
+
+
 }
 
