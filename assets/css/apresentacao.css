@@ -249,17 +249,18 @@ MOBILE – CONFIGURAÇÃO FINAL LIMPA
   }
 
   /* ===== BOTÃO MENU ===== */
-  .menu-toggle {
-  all: unset;
-  cursor: pointer;
+.menu-toggle {
+  position: fixed;
+  top: 14px;
+  left: 14px;
+
+  z-index: 10000;
+
+  background: none;
+  border: none;
+
   color: var(--branco);
-
-  width: 36px;
-  height: 36px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  cursor: pointer;
 }
 
   /* ===== MENU MOBILE ===== */
