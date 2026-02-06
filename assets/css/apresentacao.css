@@ -149,8 +149,9 @@ LINKS DO MENU
 .apresentacao .menu a {
   display: flex;
   align-items: center;
-  gap: 20px;
+  justify-content: center; /* 👈 ESSENCIAL */
 
+  gap: 20px;
   height: 36px;
   width: 100%;
 
@@ -160,7 +161,6 @@ LINKS DO MENU
 
   opacity: .95;
   transition: opacity .2s ease;
-
   overflow: hidden;
 }
 
