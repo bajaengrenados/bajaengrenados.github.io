@@ -114,6 +114,7 @@ MENU LATERAL FIXO (DESKTOP)
   align-items: center;
 
   padding: 0px 0px;
+  padding-left: 18px;
   gap: 20px;
 
   z-index: 9999;
