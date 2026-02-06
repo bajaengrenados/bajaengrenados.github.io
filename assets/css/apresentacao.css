@@ -127,6 +127,7 @@ MENU EXPANDIDO (DESKTOP)
   width: 220px;
   align-items: flex-start;
   padding-left: 18px;
+  gap: 20px;
 }
 
 /* ==================================================
