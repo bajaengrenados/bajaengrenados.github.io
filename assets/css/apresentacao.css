@@ -100,28 +100,45 @@ MENU LATERAL SOBREPOSTO
   top: 0;
   left: 0;
 
+/*
   width: 220px;
   height: 100vh;
+*/
 
-  background: #0b3c5d;
+  background: rgba(11,60,93,.96);
+  backdrop-filter: blur(8px);
 
   display: flex;
   flex-direction: column;
+  align-items: center;
+
   padding: 40px 20px;
+  gap: 20px;
 
   z-index: 9999;
 }
 
-.apresentacao .menu a {
-  color: #fff;
-  text-decoration: none;
-  margin-bottom: 20px;
-  font-weight: 600;
+/* expande por cima */
+.apresentacao .menu:hover {
+  width: 220px;
+  align-items: flex-start;
+  padding-left: 18px;
 }
 
-.apresentacao section {
-  padding-left: 240px;
+.apresentacao main {
+  padding-left: 0px;
+  transition: padding-left .25s ease;
 }
+
+.apresentacao .container {
+  padding-left: 64px; /* largura do menu fechado */
+  transition: padding-left .25s ease;
+}
+
+.apresentacao .menu:hover ~ main .container {
+  padding-left: 210px; /* menu aberto */
+}
+
 
 
 /* ==================================================
