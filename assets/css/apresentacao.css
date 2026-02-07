@@ -259,9 +259,6 @@ TESTE
 }
 
 
-/* ==================================================
-MOBILE
-================================================== */
 @media (max-width: 900px) {
 
   html, body {
@@ -270,7 +267,7 @@ MOBILE
   }
 
   .menu-toggle {
-    display: flex;           /* AGORA SIM */
+    display: flex;
     align-items: center;
     justify-content: center;
 
@@ -292,7 +289,7 @@ MOBILE
     z-index: 15000;
   }
 
-  /* MENU MOBILE FULLSCREEN */
+  /* MENU MOBILE */
   .apresentacao .menu {
     inset: 0;
     width: 100vw;
@@ -306,19 +303,7 @@ MOBILE
     transform: translateX(0);
   }
 
-  .apresentacao .menu .text {
-    opacity: 1;
-    max-width: 100%;
-    white-space: normal;
-  }
-
-  .apresentacao .menu a {
-    padding: 18px 20px;
-    height: auto;
-    font-size: 1.05rem;
-  }
-	
-	  /* REMOVE QUALQUER EMPURRÃO */
+  /* REMOVE EMPURRÃO */
   .apresentacao main {
     padding-left: 0 !important;
   }
@@ -328,32 +313,7 @@ MOBILE
     padding-right: 16px;
   }
 
-	  .menu.open + main ~ .menu-toggle,
-  .menu.open ~ .menu-toggle {
-    opacity: 0;
-    pointer-events: none;
-  }
-
-  /* HERO MOBILE */
-  .hero-content {
-    padding: 20px;
-  }
-
-  .hero-content img {
-    width: 160px;
-  }
-
-  /* CONTAINER MOBILE */
-  .container {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-
-  /* GALLERY MOBILE */
-  .gallery img {
-    height: 220px;
-  }
-
+  /* CARDS MOBILE */
   .cards {
     display: flex;
     flex-direction: column;
@@ -365,4 +325,3 @@ MOBILE
   }
 
 }
-
