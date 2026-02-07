@@ -337,5 +337,9 @@ MOBILE
   .gallery img {
     height: 220px;
   }
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
 }
 
