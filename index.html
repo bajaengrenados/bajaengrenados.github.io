@@ -666,61 +666,102 @@
 
 
 <script>
-const track = document.getElementById("carousel");
-const members = Array.from(track.children);
-const visibleCount = 5; // número de fotos visíveis
-const gap = 10; // gap em px
+let moveNext, movePrev;
 
-// duplicando os primeiros membros para loop infinito suave
-members.slice(0, visibleCount).forEach(member => {
-    const clone = member.cloneNode(true);
-    track.appendChild(clone);
+document.addEventListener("DOMContentLoaded", () => {
+
+  const track = document.getElementById("carousel");
+  let members = Array.from(track.children);
+  const visibleCount = 5;
+
+  /* DUPLICA PARA LOOP */
+  members.slice(0, visibleCount).forEach(member => {
+    track.appendChild(member.cloneNode(true));
+  });
+
+  members = Array.from(track.children);
+
+  let index = 0;
+  let step = 0;
+
+  function calculateStep(){
+    const rect1 = members[0].getBoundingClientRect();
+    const rect2 = members[1].getBoundingClientRect();
+    step = rect2.left - rect1.left;
+  }
+
+  function updatePosition(){
+    track.style.transform = `translateX(${-index * step}px)`;
+  }
+
+  window.addEventListener("load", () => {
+    calculateStep();
+    updatePosition();
+  });
+
+  moveNext = function (){
+    index++;
+    track.style.transition = "transform 0.6s ease";
+    updatePosition();
+
+    if(index >= members.length - visibleCount){
+      setTimeout(() => {
+        track.style.transition = "none";
+        index = 0;
+        updatePosition();
+      }, 610);
+    }
+  };
+
+  movePrev = function (){
+    if(index === 0){
+      index = members.length - visibleCount;
+      track.style.transition = "none";
+      updatePosition();
+    }
+
+    requestAnimationFrame(() => {
+      index--;
+      track.style.transition = "transform 0.6s ease";
+      updatePosition();
+    });
+  };
+
+  let auto = setInterval(moveNext, 3000);
+
+  function resetAuto(){
+    clearInterval(auto);
+    auto = setInterval(moveNext, 3000);
+  }
+
+  /* BOTÕES */
+  document
+    .querySelector(".carousel-buttons button:nth-child(1)")
+    .addEventListener("click", () => {
+      movePrev();
+      resetAuto();
+    });
+
+  document
+    .querySelector(".carousel-buttons button:nth-child(2)")
+    .addEventListener("click", () => {
+      moveNext();
+      resetAuto();
+    });
+
+  window.addEventListener("resize", () => {
+    track.style.transition = "none";
+    calculateStep();
+    updatePosition();
+  });
+
 });
 
-let position = 0;
-const cardWidth = members[0].offsetWidth + gap;
-
-function moveCarousel(){
-    position += cardWidth;
-    track.style.transition = "transform 0.6s ease";
-    track.style.transform = `translateX(${-position}px)`;
-
-    if(position >= cardWidth * members.length){
-        // reset instantâneo sem animação
-        setTimeout(() => {
-            track.style.transition = "none";
-            position = 0;
-            track.style.transform = `translateX(${-position}px)`;
-        }, 610); // um pouco mais que o tempo de transição
-    }
-}
-
-let auto = setInterval(moveCarousel, 3000);
-
-// Botões discretos
-function next(){
-    moveCarousel();
-    resetAuto();
-}
-
-function prev(){
-    position -= cardWidth;
-    if(position < 0){
-        position = cardWidth * (members.length - visibleCount);
-    }
-    track.style.transition = "transform 0.6s ease";
-    track.style.transform = `translateX(${-position}px)`;
-    resetAuto();
-}
-
-function resetAuto(){
-    clearInterval(auto);
-    auto = setInterval(moveCarousel, 3000);
-}
-
-document.querySelector(".carousel-buttons button:nth-child(1)").addEventListener("click", prev);
-document.querySelector(".carousel-buttons button:nth-child(2)").addEventListener("click", next);
-
+/* EXPÕE PARA O HTML */
+function next(){ moveNext(); }
+function prev(){ movePrev(); }
+	
+	
 // Data da competição
 const competitionDate = new Date("2026-10-14T08:00:00").getTime();
 
