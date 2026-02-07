@@ -941,27 +941,21 @@ section p{
 /* ==================================================
    PARCEIROS
 ================================================== */
-  .parceiro-item{
-    width: 240px;
-    height: 135px;
-    flex: 0 0 auto;   /* NÃO deixa encolher */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .parceiros-carousel{
+.parceiros-carousel{
     margin-top: 30px;
   }
 	
-  .parceiro-item img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.parceiro-item{
+  width: 240px;
+  height: 135px;
+  flex: 0 0 auto;
+  display: flex;
+}
 
-    max-width: 90%;
-    max-height: 90%;
-
-    flex-shrink: 0;
-  }
+.parceiro-item img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* PREENCHE TODO O BOX */
+  display: block;
+}
 }
