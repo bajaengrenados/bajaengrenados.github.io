@@ -265,6 +265,12 @@
       menu.classList.remove('open');
     });
   });
+	
+	toggle.addEventListener('click', () => {
+  menu.classList.toggle('open');
+  toggle.style.display = menu.classList.contains('open') ? 'none' : 'flex';
+});
+
 </script>
    </body>
 </html>
