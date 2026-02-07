@@ -232,7 +232,7 @@ TEXTO DO MENU
 FINAL
 ================================================== */
 .final {
-  background: var(--azul);
+  background: var(--azul-marinho);
   color: var(--branco);
   text-align: center;
 }
