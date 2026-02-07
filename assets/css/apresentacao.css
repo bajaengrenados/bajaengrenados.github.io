@@ -317,6 +317,22 @@ MOBILE
     height: auto;
     font-size: 1.05rem;
   }
+	
+	  /* REMOVE QUALQUER EMPURRÃO */
+  .apresentacao main {
+    padding-left: 0 !important;
+  }
+
+  .apresentacao .container {
+    padding-left: 16px !important;
+    padding-right: 16px;
+  }
+
+	  .menu.open + main ~ .menu-toggle,
+  .menu.open ~ .menu-toggle {
+    opacity: 0;
+    pointer-events: none;
+  }
 
   /* HERO MOBILE */
   .hero-content {
@@ -337,8 +353,15 @@ MOBILE
   .gallery img {
     height: 220px;
   }
+
   .cards {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .card {
+    width: 100%;
   }
 
 }
