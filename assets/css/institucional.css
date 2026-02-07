@@ -749,219 +749,138 @@ section p{
 }
 
 /* ==================================================
-   MOBILE GERAL
+MOBILE
 ================================================== */
-@media (max-width: 900px){
+@media (max-width: 900px) {
 
-  /* ---------- BODY / SECTIONS ---------- */
-  section{
-    padding: 80px 20px;
-    min-height: auto;
-  }
-
-  .section-title{
-    font-size: 32px;
-  }
-
-  section p{
-    font-size: 16px;
-  }
-
-  /* ---------- HEADER ---------- */
-  header{
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 0 20px;
-  }
-
-  header img{
-    height: 42px;
-  }
-
-  /* ---------- MENU HAMBURGUER ---------- */
-  .menu-toggle{
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-  }
-
-  .menu-toggle span{
-    width: 26px;
-    height: 3px;
-    background: var(--azul);
-    margin: 4px 0;
-    transition: 0.3s;
-  }
-
-
-  nav{
-    position: absolute;
-    top: var(--header-altura);
-    left: 0;
+  /* ===============================
+  BASE
+  =============================== */
+  html, body {
     width: 100%;
-    background: #fff;
-
-    display: flex;
-    flex-direction: column;   /* <<< ISSO é o segredo */
-    align-items: center;
-
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
-    z-index: 999;
+    overflow-x: hidden;
   }
 
-  nav a{
-    width: 100%;
-    text-align: center;
-    padding: 14px 0;
-    margin: 0;
-    font-size: 18px;
-    border-bottom: 1px solid rgba(0,0,0,.08);
-  }
-
-  nav a:last-child{
-    border-bottom: none;
-  }
-
-  nav.active{
-    max-height: 600px;
-    box-shadow: 0 10px 20px rgba(0,0,0,.3);
-  }
-
-  /* ---------- HOME ---------- */
-  #home img{
-    width: 260px;
-  }
-
-.hero-banner {
-    flex-direction: column;
-    gap: 6px;
-    text-align: center;
-  }
-
-  .banner-text {
-    font-size: 0.95rem;
-  }
-
-  /* ---------- QUEM SOMOS (CAROUSEL) ---------- */
-  .carousel-container{
-    max-width: 100%;
-  }
-
-  .member{
-    flex: 0 0 50%;
-  }
-
-  .member img{
-    width: 120px;
-    height: 120px;
-  }
-
-  /* ---------- PROJETO ---------- */
-  #projeto video{
-    max-width: 100%;
-  }
-
-  /* ---------- CONTAGEM ---------- */
-  #countdown{
-    padding: 20px;
-    gap: 14px;
-  }
-
-  .countdown-item{
-    min-width: 90px;
-  }
-
-  .countdown-item div:last-child{
-    font-size: 28px;
-  }
-
-  /* ---------- MIDIA ---------- */
-  #midia{
-    padding: 60px 10px;
-  }
-
-  #midia .insta-grid{
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 100%;
-    max-height: none;
-  }
-
-  .nav{
-    display: none;
-  }
-
-  #modal-media{
-    max-width: 90%;
-    max-height: 90%;
-  }
-
-
-  /* ---------- CONTATO ---------- */
-  .contato-container{
-    grid-template-columns: 1fr;
-  }
-
-  .contato-form{
-    grid-template-columns: 1fr;
-  }
-
-  .contato-form textarea{
-    height: 110px;
-  }
-
-  .contato-mapa iframe{
-    min-height: 260px;
-  }
-
-  /* ---------- FOOTER ---------- */
-  .footer-container{
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-
-/* ==================================================
-   CARDS — MOBILE (empilhados)
-================================================== */
-  .cards,
-  .cards-container,
-  .cards-wrapper{
-    display: flex;
-    flex-direction: column;   /* <<< ESSENCIAL */
-    gap: 20px;
-  }
-
-  .card{
-    width: 100%;
-    max-width: 100%;
-    flex: none;               /* impede compressão */
-  }
-
-/* ==================================================
-   PARCEIROS
-================================================== */
-  .parceiro-item{
-    width: 240px;
-    height: 135px;
-    flex: 0 0 auto;   /* NÃO deixa encolher */
+  /* ===============================
+  BOTÃO MENU (somente mobile)
+  =============================== */
+  .menu-toggle {
     display: flex;
     align-items: center;
     justify-content: center;
+
+    position: fixed;
+    top: 14px;
+    left: 14px;
+
+    width: 42px;
+    height: 42px;
+
+    background: rgba(11,60,93,.96);
+    color: var(--branco);
+    border: none;
+    border-radius: 12px;
+
+    font-size: 24px;
+    cursor: pointer;
+
+    z-index: 15000;
   }
 
-  .parceiros-carousel{
-    margin-top: 30px;
+  /* ===============================
+  MENU MOBILE (OVERLAY)
+  =============================== */
+  .apresentacao .menu {
+    position: fixed;
+    inset: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    background: rgba(11,60,93,.98);
+    backdrop-filter: blur(10px);
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    padding-top: 80px;
+    gap: 10px;
+
+    transform: translateX(-100%);
+    transition: transform .3s ease;
+    z-index: 14000;
   }
-	
-  .parceiro-item img{
+
+  .apresentacao .menu.open {
+    transform: translateX(0);
+  }
+
+  /* ===============================
+  LINKS DO MENU
+  =============================== */
+  .apresentacao .menu a {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    padding: 16px 22px;
 
-    max-width: 90%;
-    max-height: 90%;
+    display: flex;
+    align-items: center;
+    gap: 18px;
 
-    flex-shrink: 0;
+    font-size: 1.05rem;
   }
+
+  .apresentacao .menu .text {
+    opacity: 1;
+    max-width: none;
+    white-space: normal;
+  }
+
+  /* ===============================
+  REMOVE EMPURRÃO DO DESKTOP
+  =============================== */
+  .apresentacao main {
+    padding-left: 0 !important;
+  }
+
+  .apresentacao .container {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  /* ===============================
+  HERO
+  =============================== */
+  .hero-content {
+    padding: 20px;
+  }
+
+  .hero-content img {
+    width: 160px;
+  }
+
+  /* ===============================
+  CARDS (1 POR LINHA)
+  =============================== */
+  .cards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  /* ===============================
+  GALLERY
+  =============================== */
+  .gallery {
+    gap: 14px;
+  }
+
+  .gallery img {
+    height: 220px;
+  }
+
 }
