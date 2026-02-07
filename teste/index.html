@@ -690,6 +690,8 @@
 
 
 <script>
+let moveNext, movePrev;
+
 document.addEventListener("DOMContentLoaded", () => {
 
   const track = document.getElementById("carousel");
@@ -712,17 +714,16 @@ document.addEventListener("DOMContentLoaded", () => {
     step = rect2.left - rect1.left;
   }
 
-  /* garante que imagens não afetem o cálculo */
+  function updatePosition(){
+    track.style.transform = `translateX(${-index * step}px)`;
+  }
+
   window.addEventListener("load", () => {
     calculateStep();
     updatePosition();
   });
 
-  function updatePosition(){
-    track.style.transform = `translateX(${-index * step}px)`;
-  }
-
-  function moveNext(){
+  moveNext = function (){
     index++;
     track.style.transition = "transform 0.6s ease";
     updatePosition();
@@ -734,9 +735,9 @@ document.addEventListener("DOMContentLoaded", () => {
         updatePosition();
       }, 610);
     }
-  }
+  };
 
-  function movePrev(){
+  movePrev = function (){
     if(index === 0){
       index = members.length - visibleCount;
       track.style.transition = "none";
@@ -748,7 +749,7 @@ document.addEventListener("DOMContentLoaded", () => {
       track.style.transition = "transform 0.6s ease";
       updatePosition();
     });
-  }
+  };
 
   let auto = setInterval(moveNext, 3000);
 
@@ -757,6 +758,7 @@ document.addEventListener("DOMContentLoaded", () => {
     auto = setInterval(moveNext, 3000);
   }
 
+  /* BOTÕES */
   document
     .querySelector(".carousel-buttons button:nth-child(1)")
     .addEventListener("click", () => {
@@ -779,6 +781,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+/* EXPÕE PARA O HTML */
+function next(){ moveNext(); }
+function prev(){ movePrev(); }
+	
+	
 // Data da competição
 const competitionDate = new Date("2026-10-14T08:00:00").getTime();
 
