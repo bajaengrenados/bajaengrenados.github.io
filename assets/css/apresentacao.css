@@ -261,11 +261,22 @@ TESTE
 
 @media (max-width: 900px) {
 
+/* ==================================================
+MOBILE
+================================================== */
+@media (max-width: 900px) {
+
+  /* ===============================
+  BASE
+  =============================== */
   html, body {
     width: 100%;
     overflow-x: hidden;
   }
 
+  /* ===============================
+  BOTÃO MENU (somente mobile)
+  =============================== */
   .menu-toggle {
     display: flex;
     align-items: center;
@@ -275,47 +286,95 @@ TESTE
     top: 14px;
     left: 14px;
 
-    width: 40px;
-    height: 40px;
-	  
-	gap: 10px;
+    width: 42px;
+    height: 42px;
 
-    background: rgba(11,60,93,.95);
+    background: rgba(11,60,93,.96);
     color: var(--branco);
     border: none;
     border-radius: 12px;
 
-    font-size: 22px;
+    font-size: 24px;
     cursor: pointer;
 
     z-index: 15000;
   }
 
-  /* MENU MOBILE */
+  /* ===============================
+  MENU MOBILE (OVERLAY)
+  =============================== */
   .apresentacao .menu {
+    position: fixed;
     inset: 0;
+
     width: 100vw;
     height: 100vh;
 
+    background: rgba(11,60,93,.98);
+    backdrop-filter: blur(10px);
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    padding-top: 80px;
+    gap: 10px;
+
     transform: translateX(-100%);
     transition: transform .3s ease;
+    z-index: 14000;
   }
 
   .apresentacao .menu.open {
     transform: translateX(0);
   }
 
-  /* REMOVE EMPURRÃO */
+  /* ===============================
+  LINKS DO MENU
+  =============================== */
+  .apresentacao .menu a {
+    width: 100%;
+    padding: 16px 22px;
+
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    font-size: 1.05rem;
+  }
+
+  .apresentacao .menu .text {
+    opacity: 1;
+    max-width: none;
+    white-space: normal;
+  }
+
+  /* ===============================
+  REMOVE EMPURRÃO DO DESKTOP
+  =============================== */
   .apresentacao main {
     padding-left: 0 !important;
   }
 
   .apresentacao .container {
-    padding-left: 40px !important;
-    padding-right: 16px;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
   }
 
-  /* CARDS MOBILE */
+  /* ===============================
+  HERO
+  =============================== */
+  .hero-content {
+    padding: 20px;
+  }
+
+  .hero-content img {
+    width: 160px;
+  }
+
+  /* ===============================
+  CARDS (1 POR LINHA)
+  =============================== */
   .cards {
     display: flex;
     flex-direction: column;
@@ -324,6 +383,17 @@ TESTE
 
   .card {
     width: 100%;
+  }
+
+  /* ===============================
+  GALLERY
+  =============================== */
+  .gallery {
+    gap: 14px;
+  }
+
+  .gallery img {
+    height: 220px;
   }
 
 }
