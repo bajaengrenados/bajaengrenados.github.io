@@ -236,6 +236,30 @@ section p{
   font-size: 15px;
   color: var(--amarelo);
 }
+.carousel-buttons{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    margin-top:25px;
+}
+
+.carousel-buttons button{
+    padding:6px 16px;
+    background:transparent;
+    border:1px solid rgba(255,255,255,0.6);
+    color:#fff;
+    font-weight:600;
+    cursor:pointer;
+    border-radius:20px;
+    font-size:14px;
+    transition:0.3s;
+}
+
+.carousel-buttons button:hover{
+    border-color:#FFD700;
+    color:#FFD700;
+}
+
 
 /* ==================================================
    BAJA
