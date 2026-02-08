@@ -749,6 +749,43 @@ section p{
 }
 
 /* ==================================================
+   FOOTER
+================================================== */
+.organograma{
+  margin: 40px 0;
+  text-align: center;
+}
+
+.org-nivel{
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.org-setores{
+  margin-top: 10px;
+}
+
+.org-box{
+  background: rgba(255,255,255,0.95);
+  border: 2px solid #222;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  min-width: 180px;
+}
+
+.org-linha{
+  width: 2px;
+  height: 30px;
+  background: #222;
+  margin: 10px auto;
+}
+
+
+/* ==================================================
    MOBILE GERAL
 ================================================== */
 @media (max-width: 900px){
