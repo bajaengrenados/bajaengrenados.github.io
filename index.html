@@ -753,174 +753,226 @@
 
 
 <script>
-let moveNext, movePrev;
+/* ===============================
+   VARIÁVEIS GLOBAIS
+================================*/
+let carouselNext, carouselPrev;
+let mediaItems = [];
+let currentMedia = 0;
+let startX = 0;
 
+
+/* ===============================
+   INICIALIZAÇÃO
+================================*/
 document.addEventListener("DOMContentLoaded", () => {
 
-  const track = document.getElementById("carousel");
-  let members = Array.from(track.children);
-  const visibleCount = 5;
+  initCarousel();
+  initCountdown();
+  initPartners();
+  initGallery();
+  initMenu();
+  initForm();
+  buildOrganogram();
 
-  /* DUPLICA PARA LOOP */
-  members.slice(0, visibleCount).forEach(member => {
-    track.appendChild(member.cloneNode(true));
+});
+
+
+/* ===============================
+   CARROSSEL MEMBROS
+================================*/
+function initCarousel(){
+
+  const track = document.getElementById("carousel");
+  if(!track) return;
+
+  let items = Array.from(track.children);
+  const visible = 5;
+
+  /* Duplica para loop */
+  items.slice(0, visible).forEach(i=>{
+    track.appendChild(i.cloneNode(true));
   });
 
-  members = Array.from(track.children);
+  items = Array.from(track.children);
 
   let index = 0;
   let step = 0;
 
-  function calculateStep(){
-    const rect1 = members[0].getBoundingClientRect();
-    const rect2 = members[1].getBoundingClientRect();
-    step = rect2.left - rect1.left;
+  function calcStep(){
+    if(items.length < 2) return;
+    step = items[1].offsetLeft - items[0].offsetLeft;
   }
 
-  function updatePosition(){
+  function update(){
     track.style.transform = `translateX(${-index * step}px)`;
   }
 
-  window.addEventListener("load", () => {
-    calculateStep();
-    updatePosition();
-  });
-
-  moveNext = function (){
+  function next(){
     index++;
-    track.style.transition = "transform 0.6s ease";
-    updatePosition();
+    track.style.transition = "transform .6s ease";
+    update();
 
-    if(index >= members.length - visibleCount){
-      setTimeout(() => {
+    if(index >= items.length - visible){
+      setTimeout(()=>{
         track.style.transition = "none";
         index = 0;
-        updatePosition();
-      }, 610);
+        update();
+      },610);
     }
-  };
-
-  movePrev = function (){
-    if(index === 0){
-      index = members.length - visibleCount;
-      track.style.transition = "none";
-      updatePosition();
-    }
-
-    requestAnimationFrame(() => {
-      index--;
-      track.style.transition = "transform 0.6s ease";
-      updatePosition();
-    });
-  };
-
-  let auto = setInterval(moveNext, 3000);
-
-  function resetAuto(){
-    clearInterval(auto);
-    auto = setInterval(moveNext, 3000);
   }
 
-  /* BOTÕES */
-  document
-    .querySelector(".carousel-buttons button:nth-child(1)")
-    .addEventListener("click", () => {
-      movePrev();
-      resetAuto();
-    });
+  function prev(){
 
-  document
-    .querySelector(".carousel-buttons button:nth-child(2)")
-    .addEventListener("click", () => {
-      moveNext();
-      resetAuto();
-    });
-
-  window.addEventListener("resize", () => {
-    track.style.transition = "none";
-    calculateStep();
-    updatePosition();
-  });
-
-});
-
-/* EXPÕE PARA O HTML */
-function next(){ moveNext(); }
-function prev(){ movePrev(); }
-	
-	
-// Data da competição
-const competitionDate = new Date("2026-10-14T08:00:00").getTime();
-
-function updateCountdown() {
-    const now = new Date().getTime();
-    const distance = competitionDate - now;
-
-    if(distance < 0){
-        document.getElementById("days").innerHTML = "0";
-        document.getElementById("hours").innerHTML = "0";
-        document.getElementById("minutes").innerHTML = "0";
-        document.getElementById("seconds").innerHTML = "0";
-        return;
+    if(index === 0){
+      index = items.length - visible;
+      track.style.transition = "none";
+      update();
     }
 
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000*60*60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000*60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    requestAnimationFrame(()=>{
+      index--;
+      track.style.transition = "transform .6s ease";
+      update();
+    });
+  }
 
-    document.getElementById("days").innerHTML = days;
-    document.getElementById("hours").innerHTML = hours;
-    document.getElementById("minutes").innerHTML = minutes;
-    document.getElementById("seconds").innerHTML = seconds;
+  window.addEventListener("load", ()=>{
+    calcStep();
+    update();
+  });
+
+  window.addEventListener("resize", ()=>{
+    track.style.transition = "none";
+    calcStep();
+    update();
+  });
+
+  let auto = setInterval(next,3000);
+
+  function reset(){
+    clearInterval(auto);
+    auto = setInterval(next,3000);
+  }
+
+  /* Botões */
+  const prevBtn = document.querySelector(".carousel-buttons button:nth-child(1)");
+  const nextBtn = document.querySelector(".carousel-buttons button:nth-child(2)");
+
+  if(prevBtn){
+    prevBtn.addEventListener("click", ()=>{
+      prev();
+      reset();
+    });
+  }
+
+  if(nextBtn){
+    nextBtn.addEventListener("click", ()=>{
+      next();
+      reset();
+    });
+  }
+
+  carouselNext = next;
+  carouselPrev = prev;
 }
 
-setInterval(updateCountdown, 1000);
-updateCountdown();
 
-const logos = document.querySelectorAll(".parceiro-logo img");
+/* ===============================
+   COUNTDOWN
+================================*/
+function initCountdown(){
 
-setInterval(() => {
-    logos.forEach(logo => logo.classList.remove("ativo"));
+  const target = new Date("2026-10-14T08:00:00").getTime();
 
-    const meio = Math.floor(logos.length / 2);
-    logos[meio].classList.add("ativo");
-}, 3000);
+  function update(){
 
-	
+    const now = new Date().getTime();
+    const diff = target - now;
 
-let mediaItems = [];
-let currentIndex = 0;
-let startX = 0;
+    const d = document.getElementById("days");
+    if(!d) return;
 
-document.addEventListener("DOMContentLoaded", () => {
+    if(diff < 0){
+      ["days","hours","minutes","seconds"].forEach(id=>{
+        document.getElementById(id).textContent = "0";
+      });
+      return;
+    }
+
+    document.getElementById("days").textContent =
+      Math.floor(diff/(1000*60*60*24));
+
+    document.getElementById("hours").textContent =
+      Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+
+    document.getElementById("minutes").textContent =
+      Math.floor((diff%(1000*60*60))/(1000*60));
+
+    document.getElementById("seconds").textContent =
+      Math.floor((diff%(1000*60))/1000);
+  }
+
+  update();
+  setInterval(update,1000);
+}
+
+
+/* ===============================
+   PARCEIROS
+================================*/
+function initPartners(){
+
+  const logos = document.querySelectorAll(".parceiro-logo img");
+  if(!logos.length) return;
+
+  let i = 0;
+
+  setInterval(()=>{
+
+    logos.forEach(l=>l.classList.remove("ativo"));
+
+    logos[i].classList.add("ativo");
+
+    i = (i+1) % logos.length;
+
+  },3000);
+}
+
+
+/* ===============================
+   GALERIA MODAL
+================================*/
+function initGallery(){
+
   mediaItems = Array.from(document.querySelectorAll(".insta-post"));
-});
+}
 
-/* ---------- ABRIR ---------- */
 function openModal(type, src){
+
   const modal = document.getElementById("insta-modal");
 
-  currentIndex = mediaItems.findIndex(item =>
-    item.getAttribute("onclick").includes(src)
+  currentMedia = mediaItems.findIndex(item =>
+    item.getAttribute("onclick")?.includes(src)
   );
 
-  renderMedia(type, src);
+  renderMedia(type,src);
   modal.style.display = "flex";
   updateDots();
   preloadNext();
 }
 
-/* ---------- FECHAR ---------- */
 function closeModal(){
+
   document.getElementById("insta-modal").style.display = "none";
   document.getElementById("modal-media").innerHTML = "";
   exitFullscreen();
 }
 
-/* ---------- RENDER ---------- */
 function renderMedia(type, src){
+
   const media = document.getElementById("modal-media");
+
   media.className = "fade";
   media.innerHTML = "";
 
@@ -929,368 +981,298 @@ function renderMedia(type, src){
   }else{
     media.innerHTML = `
       <video controls autoplay>
-        <source src="${src}" type="video/mp4">
-      </video>`;
+        <source src="${src}">
+      </video>
+    `;
+
     requestFullscreen(media.querySelector("video"));
   }
 }
 
-/* ---------- NAVEGAÇÃO ---------- */
 function nextMedia(){
-  currentIndex = (currentIndex + 1) % mediaItems.length;
-  mediaItems[currentIndex].click();
+  currentMedia = (currentMedia+1) % mediaItems.length;
+  mediaItems[currentMedia].click();
 }
 
 function prevMedia(){
-  currentIndex = (currentIndex - 1 + mediaItems.length) % mediaItems.length;
-  mediaItems[currentIndex].click();
+  currentMedia = (currentMedia-1+mediaItems.length)%mediaItems.length;
+  mediaItems[currentMedia].click();
 }
 
-/* ---------- DOTS ---------- */
 function updateDots(){
+
   const dots = document.getElementById("modal-dots");
   dots.innerHTML = "";
 
-  mediaItems.forEach((_, i) => {
+  mediaItems.forEach((_,i)=>{
+
     const dot = document.createElement("span");
-    if(i === currentIndex) dot.classList.add("active");
+
+    if(i===currentMedia) dot.classList.add("active");
+
     dots.appendChild(dot);
   });
 }
 
-/* ---------- PRELOAD ---------- */
 function preloadNext(){
-  const next = mediaItems[(currentIndex + 1) % mediaItems.length];
+
+  const next = mediaItems[(currentMedia+1)%mediaItems.length];
+
+  if(!next) return;
+
   const img = next.querySelector("img");
-  const video = next.querySelector("video");
+  const vid = next.querySelector("video");
 
   if(img) new Image().src = img.src;
-  if(video) video.preload = "auto";
+  if(vid) vid.preload = "auto";
 }
 
-/* ---------- SWIPE ---------- */
+
+/* Swipe */
 const modal = document.getElementById("insta-modal");
 
-modal.addEventListener("touchstart", e => {
-  startX = e.touches[0].clientX;
+if(modal){
+
+  modal.addEventListener("touchstart",e=>{
+    startX = e.touches[0].clientX;
+  });
+
+  modal.addEventListener("touchend",e=>{
+
+    const diff = startX - e.changedTouches[0].clientX;
+
+    if(Math.abs(diff)>60){
+      diff>0 ? nextMedia() : prevMedia();
+    }
+  });
+}
+
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape") closeModal();
 });
 
-modal.addEventListener("touchend", e => {
-  const diff = startX - e.changedTouches[0].clientX;
-  if(Math.abs(diff) > 60){
-    diff > 0 ? nextMedia() : prevMedia();
-  }
-});
 
-/* ---------- ESC ---------- */
-document.addEventListener("keydown", e => {
-  if(e.key === "Escape") closeModal();
-});
-
-/* ---------- FULLSCREEN ---------- */
+/* Fullscreen */
 function requestFullscreen(el){
-  if(window.innerWidth <= 768){
+
+  if(window.innerWidth<=768){
+
     if(el.requestFullscreen) el.requestFullscreen();
     else if(el.webkitEnterFullscreen) el.webkitEnterFullscreen();
   }
 }
 
 function exitFullscreen(){
+
   if(document.fullscreenElement){
     document.exitFullscreen();
   }
 }
 
-/* ---------- MENU HAMBURGUER ---------- */
-const menuToggle = document.getElementById("menuToggle");
-const nav = document.getElementById("mainNav");
 
-menuToggle.addEventListener("click", () => {
-  nav.classList.toggle("active");
-});
+/* ===============================
+   MENU MOBILE
+================================*/
+function initMenu(){
 
-/* Fecha menu ao clicar */
-document.querySelectorAll("#mainNav a").forEach(link => {
-  link.addEventListener("click", () => {
-    nav.classList.remove("active");
+  const btn = document.getElementById("menuToggle");
+  const nav = document.getElementById("mainNav");
+
+  if(!btn || !nav) return;
+
+  btn.addEventListener("click",()=>{
+    nav.classList.toggle("active");
   });
-});
 
+  document.querySelectorAll("#mainNav a")
+    .forEach(link=>{
+      link.addEventListener("click",()=>{
+        nav.classList.remove("active");
+      });
+    });
+}
+
+
+/* ===============================
+   FORMULÁRIO
+================================*/
+function initForm(){
 
   const form = document.getElementById("contatoForm");
-  const msg = document.getElementById("formMsg");
+  const msg  = document.getElementById("formMsg");
 
-  form.addEventListener("submit", async function (e) {
-    e.preventDefault(); // impede redirecionamento
+  if(!form || !msg) return;
 
-    const formData = new FormData(form);
+  form.addEventListener("submit", async e=>{
 
-    try {
-      const response = await fetch(form.action, {
+    e.preventDefault();
+
+    const data = new FormData(form);
+
+    try{
+
+      const r = await fetch(form.action,{
         method: form.method,
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
+        body: data,
+        headers:{Accept:"application/json"}
       });
 
-      if (response.ok) {
-        msg.textContent = "Mensagem enviada com sucesso!";
-        msg.style.color = "#28a745";
-        form.reset(); // LIMPA OS CAMPOS
-      } else {
-        msg.textContent = "Erro ao enviar. Tente novamente.";
-        msg.style.color = "#dc3545";
+      if(r.ok){
+
+        msg.textContent="Mensagem enviada com sucesso!";
+        msg.style.color="#28a745";
+        form.reset();
+
+      }else{
+
+        msg.textContent="Erro ao enviar.";
+        msg.style.color="#dc3545";
       }
 
-    } catch (error) {
-      msg.textContent = "Erro de conexão. Tente mais tarde.";
-      msg.style.color = "#dc3545";
+    }catch{
+
+      msg.textContent="Erro de conexão.";
+      msg.style.color="#dc3545";
     }
   });
-	
-	const track = document.getElementById("carousel");
-let members = Array.from(track.children);
-const visibleCount = 5;
-
-/* DUPLICA PARA LOOP */
-members.slice(0, visibleCount).forEach(member => {
-  track.appendChild(member.cloneNode(true));
-});
-
-/* RECAPTURA após duplicar */
-members = Array.from(track.children);
-
-let index = 0;
-
-/* largura REAL baseada na posição */
-function getStep(){
-  return members[1].offsetLeft - members[0].offsetLeft;
 }
 
-function moveCarousel(){
-  index++;
-  track.style.transition = "transform 0.6s ease";
-  track.style.transform = `translateX(${-index * getStep()}px)`;
 
-  if(index >= members.length - visibleCount){
-    setTimeout(() => {
-      track.style.transition = "none";
-      index = 0;
-      track.style.transform = "translateX(0)";
-    }, 610);
-  }
-}
+/* ===============================
+   ORGANOGRAMA
+================================*/
+function buildOrganogram(){
 
-let auto = setInterval(moveCarousel, 3000);
+  const cards = document.querySelectorAll(".member");
+  const org = document.getElementById("organograma");
 
-/* BOTÕES */
-function next(){
-  moveCarousel();
-  resetAuto();
-}
+  if(!cards.length || !org) return;
 
-function prev(){
-  index--;
-  if(index < 0){
-    index = members.length - visibleCount - 1;
-    track.style.transition = "none";
-    track.style.transform = `translateX(${-index * getStep()}px)`;
-  }
+  const estrutura = {
+    coord:null,
+    cap:null,
+    tes:null,
+    setores:{}
+  };
 
-  requestAnimationFrame(() => {
-    track.style.transition = "transform 0.6s ease";
-    track.style.transform = `translateX(${-index * getStep()}px)`;
+  const mapa = {
+    'Projetos':'Projetos',
+    'Relações Publicas':'Relações Públicas',
+    'Marketing':'Marketing',
+    'Chassis e Freio':'Chassis e Freio',
+    'Motor e Transmissão':'Motor e Transmissão',
+    'Suspensão e Direção':'Suspensão e Direção',
+    'Eletrica':'Elétrica',
+    'Elétrica':'Elétrica',
+    'TI':'TI'
+  };
+
+  Object.values(mapa).forEach(s=>{
+    estrutura.setores[s]={sup:null,aux:[]};
   });
 
-  resetAuto();
-}
+  cards.forEach(c=>{
 
-function resetAuto(){
-  clearInterval(auto);
-  auto = setInterval(moveCarousel, 3000);
-}
+    const nome = c.querySelector("h4")?.textContent.trim();
+    const cargo = c.querySelector("h5")?.textContent.trim();
 
-document.querySelector(".carousel-buttons button:nth-child(1)")
-  .addEventListener("click", prev);
+    if(!nome || !cargo) return;
 
-document.querySelector(".carousel-buttons button:nth-child(2)")
-  .addEventListener("click", next);
+    if(cargo.includes("Coordenador")){
+      estrutura.coord=nome; return;
+    }
 
-window.addEventListener("resize", () => {
-  track.style.transition = "none";
-  track.style.transform = `translateX(${-index * getStep()}px)`;
-});
+    if(cargo.includes("Capitão")){
+      estrutura.cap=nome; return;
+    }
 
-	
+    if(cargo.includes("Tesoureiro")){
+      estrutura.tes=nome; return;
+    }
 
-// ===============================
-// MONTA ORGANOGRAMA AUTOMÁTICO
-// A PARTIR DOS .member
-// ===============================
+    if(cargo.includes("Sup.")){
 
-const members = document.querySelectorAll('.member');
-
-// Estrutura base
-const estrutura = {
-  coordenador: null,
-  capitao: null,
-  tesoureiro: null,
-  setores: {}
-};
-
-// Mapeamento de cargos para setores
-const mapaSetores = {
-  'Projetos': 'Projetos',
-  'Relações Publicas': 'Relações Públicas',
-  'Marketing': 'Marketing',
-  'Chassis e Freio': 'Chassis e Freio',
-  'Motor e Transmissão': 'Motor e Transmissão',
-  'Suspensão e Direção': 'Suspensão e Direção',
-  'Eletrica': 'Elétrica',
-  'Elétrica': 'Elétrica',
-  'TI': 'TI'
-};
-
-// Inicializa setores
-Object.values(mapaSetores).forEach(s => {
-  estrutura.setores[s] = { sup: null, aux: [] };
-});
-
-// Lê os membros
-members.forEach(member => {
-
-  const nome = member.querySelector('h4')?.textContent.trim();
-  const cargo = member.querySelector('h5')?.textContent.trim();
-
-  if (!nome || !cargo) return;
-
-  // Coordenador
-  if (cargo.includes('Coordenador')) {
-    estrutura.coordenador = nome;
-    return;
-  }
-
-  // Capitão
-  if (cargo.includes('Capitão')) {
-    estrutura.capitao = nome;
-    return;
-  }
-
-  // Tesoureiro
-  if (cargo.includes('Tesoureiro')) {
-    estrutura.tesoureiro = nome;
-    return;
-  }
-
-  // Supervisores
-  if (cargo.includes('Sup.')) {
-
-    Object.keys(mapaSetores).forEach(key => {
-      if (cargo.includes(key)) {
-
-        const setor = mapaSetores[key];
-        estrutura.setores[setor].sup = nome;
+      for(const k in mapa){
+        if(cargo.includes(k)){
+          estrutura.setores[mapa[k]].sup=nome;
+        }
       }
-    });
+    }
 
-    return;
-  }
+    if(cargo.includes("Aux.")){
 
-  // Auxiliares
-  if (cargo.includes('Aux.')) {
-
-    Object.keys(mapaSetores).forEach(key => {
-      if (cargo.includes(key)) {
-
-        const setor = mapaSetores[key];
-        estrutura.setores[setor].aux.push(nome);
+      for(const k in mapa){
+        if(cargo.includes(k)){
+          estrutura.setores[mapa[k]].aux.push(nome);
+        }
       }
-    });
-
-    return;
-  }
-
-});
-
-// Ordenar auxiliares
-Object.values(estrutura.setores).forEach(setor => {
-  setor.aux.sort((a, b) => a.localeCompare(b, 'pt-BR'));
-});
-
-// Renderização
-const org = document.getElementById('organograma');
-
-function criarNivel(html) {
-  const div = document.createElement('div');
-  div.className = 'org-nivel';
-  div.innerHTML = html;
-  org.appendChild(div);
-}
-
-function criarLinha() {
-  const l = document.createElement('div');
-  l.className = 'org-linha';
-  org.appendChild(l);
-}
-
-// Coordenador
-criarNivel(`
-  <div class="org-box">
-    ${estrutura.coordenador || 'A definir'}<br>
-    <small>Coordenador</small>
-  </div>
-`);
-
-criarLinha();
-
-// Capitão
-criarNivel(`
-  <div class="org-box">
-    ${estrutura.capitao || 'A definir'}<br>
-    <small>Capitão</small>
-  </div>
-`);
-
-criarLinha();
-
-// Tesoureiro
-criarNivel(`
-  <div class="org-box">
-    ${estrutura.tesoureiro || 'A definir'}<br>
-    <small>Tesoureiro</small>
-  </div>
-`);
-
-criarLinha();
-
-// Setores
-const setoresDiv = document.createElement('div');
-setoresDiv.className = 'org-nivel org-setores';
-
-Object.entries(estrutura.setores).forEach(([nome, setor]) => {
-
-  let html = `<strong>${nome}</strong><br><br>`;
-
-  if (setor.sup) {
-    html += `${setor.sup} (Sup.)<br>`;
-  }
-
-  setor.aux.forEach(aux => {
-    html += `${aux} (Aux.)<br>`;
+    }
   });
 
-  const box = document.createElement('div');
-  box.className = 'org-box setor';
-  box.innerHTML = html;
+  Object.values(estrutura.setores).forEach(s=>{
+    s.aux.sort((a,b)=>a.localeCompare(b,"pt-BR"));
+  });
 
-  setoresDiv.appendChild(box);
-});
+  function nivel(html){
+    const d=document.createElement("div");
+    d.className="org-nivel";
+    d.innerHTML=html;
+    org.appendChild(d);
+  }
 
-org.appendChild(setoresDiv);
+  function linha(){
+    const l=document.createElement("div");
+    l.className="org-linha";
+    org.appendChild(l);
+  }
 
+  nivel(`
+    <div class="org-box">
+      ${estrutura.coord||"A definir"}<br>
+      <small>Coordenador</small>
+    </div>`);
+
+  linha();
+
+  nivel(`
+    <div class="org-box">
+      ${estrutura.cap||"A definir"}<br>
+      <small>Capitão</small>
+    </div>`);
+
+  linha();
+
+  nivel(`
+    <div class="org-box">
+      ${estrutura.tes||"A definir"}<br>
+      <small>Tesoureiro</small>
+    </div>`);
+
+  linha();
+
+  const setores=document.createElement("div");
+  setores.className="org-nivel org-setores";
+
+  Object.entries(estrutura.setores).forEach(([n,s])=>{
+
+    let html=`<strong>${n}</strong><br><br>`;
+
+    if(s.sup) html+=`${s.sup} (Sup.)<br>`;
+
+    s.aux.forEach(a=>{
+      html+=`${a} (Aux.)<br>`;
+    });
+
+    const box=document.createElement("div");
+    box.className="org-box setor";
+    box.innerHTML=html;
+
+    setores.appendChild(box);
+  });
+
+  org.appendChild(setores);
+}
 </script>
-
 
 </body>
 </html>
