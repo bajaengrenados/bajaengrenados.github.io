@@ -763,7 +763,8 @@ section p{
   display: flex;
   justify-content: center;
   gap: 20px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow-x: auto;
 }
 
 .org-setores{
@@ -1028,4 +1029,15 @@ section p{
   color: #777;
   text-align: center;
 }
+
+/* ORGANOGRAMA */
+  .org-nivel{
+    flex-wrap: wrap; /* No celular pode quebrar */
+  }
+
+  .org-box{
+    min-width: 140px;
+    font-size: 13px;
+    padding: 10px 14px;
+  }
 }
