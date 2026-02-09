@@ -752,19 +752,18 @@ section p{
 
 /* ==================================================
    ORGANOGRAMA
-================================================== */
+================================================== 
 .organograma{
   margin: 40px 0;
   text-align: center;
   background: var(--azul);
 }
-
+================================================== */
 .org-nivel{
   display: flex;
   justify-content: center;
   gap: 20px;
-  flex-wrap: nowrap;
-  overflow-x: auto;
+  flex-wrap: wrap; /* deixa quebrar quando precisar */
 }
 
 .org-setores{
@@ -778,7 +777,9 @@ section p{
   border-radius: 8px;
   font-weight: 600;
   font-size: 14px;
-  min-width: 180px;
+  min-width: 160px; /* menor pra caber melhor */
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .org-linha{
