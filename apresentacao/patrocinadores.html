@@ -13,6 +13,7 @@
       <link rel="stylesheet" href="/assets/css/apresentacao.css">
       <link rel="stylesheet" href="/assets/css/base.css">
       <link rel="stylesheet" href="/assets/css/components.css">
+      <link rel="stylesheet" href="/assets/css/institucional.css">
 
       <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet">
 
@@ -105,6 +106,9 @@
       Nosso propósito é representar a Uniube com excelência nas competições, formar profissionais qualificados e gerar valor para nossos parceiros, conectando educação, tecnologia e inovação.
     </p>
   </div>
+
+<div id="org-container"></div>
+
 </section>
 
 
@@ -305,6 +309,15 @@
       menu.classList.remove('open');
     });
   });
+
+/* ==== ORGANOGRAMA ======*/
+
+fetch('/components/organograma.html')
+  .then(res => res.text())
+  .then(html => {
+    document.getElementById('org-container').innerHTML = html;
+  });
+
 </script>
 
    </body>
