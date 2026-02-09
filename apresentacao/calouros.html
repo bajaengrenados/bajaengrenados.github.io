@@ -109,6 +109,10 @@
       <br><br>
       Nosso propósito é representar a Uniube com excelência nas competições, formar profissionais qualificados e gerar valor para nossos parceiros, conectando educação, tecnologia e inovação.
     </p>
+
+    <div class="organograma" id="organograma">
+      <h2 class="fade-up">Organização da Equipe</h2>
+    </div>
   </div>
 </section>
 
@@ -270,6 +274,151 @@
   menu.classList.toggle('open');
   toggle.style.display = menu.classList.contains('open') ? 'none' : 'flex';
 });
+
+/* ORGANOGRAMA AUTOMÁTICO */
+
+async function carregarMembros() {
+
+  const response = await fetch('/index.html');
+  const html = await response.text();
+
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(html, 'text/html');
+
+  return doc.querySelectorAll('.member');
+}
+
+async function montarOrganograma() {
+
+  const members = await carregarMembros();
+
+  const estrutura = {
+    coordenador: null,
+    capitao: null,
+    tesoureiro: null,
+    setores: {}
+  };
+
+  const mapaSetores = {
+    'Projetos': 'Projetos',
+    'Relações Publicas': 'Relações Públicas',
+    'Marketing': 'Marketing',
+    'Chassis e Freio': 'Chassis e Freio',
+    'Motor e Transmissão': 'Motor e Transmissão',
+    'Suspensão e Direção': 'Suspensão e Direção',
+    'Eletrica': 'Elétrica',
+    'Elétrica': 'Elétrica',
+    'TI': 'TI'
+  };
+
+  Object.values(mapaSetores).forEach(s => {
+    estrutura.setores[s] = { sup: null, aux: [] };
+  });
+
+  members.forEach(member => {
+
+    const nome = member.querySelector('h4')?.textContent.trim();
+    const cargo = member.querySelector('h5')?.textContent.trim();
+
+    if (!nome || !cargo) return;
+
+    if (cargo.includes('Coordenador')) estrutura.coordenador = nome;
+    else if (cargo.includes('Capitão')) estrutura.capitao = nome;
+    else if (cargo.includes('Tesoureiro')) estrutura.tesoureiro = nome;
+
+    else if (cargo.includes('Sup.')) {
+
+      Object.keys(mapaSetores).forEach(key => {
+        if (cargo.includes(key)) {
+          estrutura.setores[mapaSetores[key]].sup = nome;
+        }
+      });
+
+    }
+
+    else if (cargo.includes('Aux.')) {
+
+      Object.keys(mapaSetores).forEach(key => {
+        if (cargo.includes(key)) {
+          estrutura.setores[mapaSetores[key]].aux.push(nome);
+        }
+      });
+
+    }
+
+  });
+
+  Object.values(estrutura.setores).forEach(setor => {
+    setor.aux.sort((a,b)=>a.localeCompare(b,'pt-BR'));
+  });
+
+  const org = document.getElementById('organograma');
+  org.innerHTML = '';
+
+  function nivel(html){
+    const d=document.createElement('div');
+    d.className='org-nivel';
+    d.innerHTML=html;
+    org.appendChild(d);
+  }
+
+  function linha(){
+    const l=document.createElement('div');
+    l.className='org-linha';
+    org.appendChild(l);
+  }
+
+  nivel(`
+    <div class="org-box">
+      ${estrutura.coordenador || 'A definir'}<br>
+      <small>Coordenador</small>
+    </div>
+  `);
+
+  linha();
+
+  nivel(`
+    <div class="org-box">
+      ${estrutura.capitao || 'A definir'}<br>
+      <small>Capitão</small>
+    </div>
+  `);
+
+  linha();
+
+  nivel(`
+    <div class="org-box">
+      ${estrutura.tesoureiro || 'A definir'}<br>
+      <small>Tesoureiro</small>
+    </div>
+  `);
+
+  linha();
+
+  const setoresDiv=document.createElement('div');
+  setoresDiv.className='org-nivel org-setores';
+
+  Object.entries(estrutura.setores).forEach(([nome,setor])=>{
+
+    let html=`<strong>${nome}</strong><br><br>`;
+
+    if(setor.sup) html+=`${setor.sup} (Sup.)<br>`;
+
+    setor.aux.forEach(a=>{
+      html+=`${a} (Aux.)<br>`;
+    });
+
+    const box=document.createElement('div');
+    box.className='org-box setor';
+    box.innerHTML=html;
+
+    setoresDiv.appendChild(box);
+  });
+
+  org.appendChild(setoresDiv);
+}
+
+montarOrganograma();
 
 </script>
    </body>
