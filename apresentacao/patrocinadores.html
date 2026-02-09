@@ -321,8 +321,8 @@ fetch('/components/organograma.html')
   .then(res => res.text())
   .then(html => {
     document.getElementById('org-container').innerHTML = html;
-  });
-
+  })
+  .catch(err => console.error('Erro ao carregar organograma:', err));
 </script>
 
    </body>
