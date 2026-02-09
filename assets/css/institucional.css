@@ -265,7 +265,9 @@ section p{
     color:#FFD700;
 }
 
-
+.data-only {
+  display: none;
+}
 
 /* ==================================================
    BAJA
