@@ -993,7 +993,7 @@ function renderMedia(type, src){
     media.innerHTML = `
       <video controls autoplay>
         <source src="${src}">
-      </video>
+      </video>`;
     
 
     requestFullscreen(media.querySelector("video"));
@@ -1271,7 +1271,7 @@ function buildOrganogram(){
     if(s.sup) html+=`${s.sup} (Sup.)<br>`;
 
     s.aux.forEach(a=>{
-      html+=`${a} (Aux.)<br>
+      html+=`${a} (Aux.)<br>`;
     });
 
     const box=document.createElement("div");
@@ -1283,15 +1283,7 @@ function buildOrganogram(){
 
   org.appendChild(setores);
 }
-/* ===============================
-   VIDEO
-================================*/
-	  document.addEventListener('contextmenu', function(e) {
-    if (e.target.tagName === 'VIDEO') {
-      e.preventDefault();
-    }
-  });
-	
+
 	
 </script>
 
