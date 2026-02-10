@@ -361,11 +361,18 @@
       e confiabilidade, integrando engenharia e tecnologia da informação.
     </p>
 
-    <div class="video-3d">
-      <video controls autoplay muted loop>
-        <source src="/assets/media/apresentacao_3D.mp4" type="video/mp4">
-      </video>
-    </div>
+<div class="video-3d">
+  <video 
+    autoplay 
+    muted 
+    loop 
+    controls 
+    controlsList="nodownload noremoteplayback"
+    disablePictureInPicture
+  >
+    <source src="/assets/media/apresentacao_3D.mp4" type="video/mp4">
+  </video>
+</div>
   </div>
 </section>
 
@@ -1264,7 +1271,7 @@ function buildOrganogram(){
     if(s.sup) html+=`${s.sup} (Sup.)<br>`;
 
     s.aux.forEach(a=>{
-      html+=`${a} (Aux.)<br>`;
+      html+=`${a} (Aux.)<br>
     });
 
     const box=document.createElement("div");
@@ -1276,6 +1283,16 @@ function buildOrganogram(){
 
   org.appendChild(setores);
 }
+/* ===============================
+   VIDEO
+================================*/
+	  document.addEventListener('contextmenu', function(e) {
+    if (e.target.tagName === 'VIDEO') {
+      e.preventDefault();
+    }
+  });
+	
+	
 </script>
 
 </body>
