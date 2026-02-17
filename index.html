@@ -762,7 +762,32 @@
   </div>
 </footer>
 
+<!-- ------------------------------------------------------------------- -->
+<!-- ------------------------------------------------------------------- -->
+<!-- -------------------------- POP-UP --------------------------------- -->
+<!-- ------------------------------------------------------------------- -->
+<!-- ------------------------------------------------------------------- -->
 
+
+	<!-- OVERLAY -->
+<div id="popup-overlay"></div>
+
+<!-- POPUP -->
+<div id="popup">
+  <button id="close-popup">&times;</button>
+
+  <h2>🚀 Engrenados Baja UNIUBE</h2>
+  <p>
+    Estamos em preparação para a próxima competição!
+    Acompanhe nossas redes sociais e apoie o projeto.
+  </p>
+
+  <a href="https://instagram.com/" target="_blank" class="popup-btn">
+    Acompanhar agora
+  </a>
+</div>     
+	
+	
 <!-- ------------------------------------------------------------------- -->
 <!-- ------------------------------------------------------------------- -->
 <!-- -------------------------- SCRIPT --------------------------------- -->
@@ -1154,6 +1179,33 @@ function initForm(){
     }
   });
 }
+
+/* ===============================
+   POP-UP
+================================*/
+  window.onload = function() {
+    const popup = document.getElementById("popup");
+    const overlay = document.getElementById("popup-overlay");
+    const closeBtn = document.getElementById("close-popup");
+
+    // Abrir após 2 segundos
+    setTimeout(() => {
+      popup.style.display = "block";
+      overlay.style.display = "block";
+      popup.classList.add("active");
+    }, 2000);
+
+    // Fechar
+    closeBtn.onclick = function() {
+      popup.style.display = "none";
+      overlay.style.display = "none";
+    };
+
+    overlay.onclick = function() {
+      popup.style.display = "none";
+      overlay.style.display = "none";
+    };
+  };
 
 
 /* ===============================
