@@ -6,7 +6,7 @@
 
   <title>Programa Trainee Engrenados</title>
 
-  <!-- CSS do seu site -->
+  <!-- CSS do site -->
   <link rel="stylesheet" href="/assets/css/base.css">
   <link rel="stylesheet" href="/assets/css/components.css">
   <link rel="stylesheet" href="/assets/css/institucional.css">
@@ -16,37 +16,53 @@
 
 <body class="apresentacao trainee-page">
 
-  <header>
-    <img src="/assets/img/logo_nome.png" alt="Engrenados Baja Uniube">
+  <!-- HEADER -->
+  <header class="header-interno">
+    <div class="container">
 
-    <nav>
-      <a href="/index.html">← Voltar para o site</a>
-    </nav>
+      <img src="/assets/img/logo_nome.png" alt="Engrenados Baja Uniube">
+
+      <nav>
+        <a href="/index.html" class="btn-voltar">
+          ← Voltar para o site
+        </a>
+      </nav>
+
+    </div>
   </header>
 
   <main>
 
-      <!-- ------------------------------------------------------------------- -->
-      <!-- ------------------------------------------------------------------- -->
-      <!-- HOME -->
-      <!-- ------------------------------------------------------------------- -->
-      <!-- ------------------------------------------------------------------- -->
+    <!-- HERO -->
+    <section id="home" class="hero">
 
-      <section id="home" class="hero">
-         <video autoplay muted loop playsinline>
-            <source src="https://cdn.pixabay.com/video/2024/11/20/242283_tiny.mp4" type="video/mp4">
-         </video>
-         <div class="overlay"></div>
-         <div class="hero-content">
-            <img class="logo-apresentacao" src="/assets/img/logo.png" alt="Engrenados Baja Uniube">
-            <h1>Engrenados Baja Uniube</h1>
-            <p>Onde a engenharia sai do papel e vira experiência real.</p>
-         </div>
-      </section>
+      <video autoplay muted loop playsinline>
+        <source src="https://cdn.pixabay.com/video/2024/11/20/242283_tiny.mp4" type="video/mp4">
+      </video>
+
+      <div class="overlay"></div>
+
+      <div class="hero-content container">
+
+        <img
+          class="logo-apresentacao"
+          src="/assets/img/logo.png"
+          alt="Engrenados Baja Uniube"
+        >
+
+        <h1>Programa Trainee</h1>
+
+        <p>
+          Onde a engenharia sai do papel e vira experiência real.
+        </p>
+
+      </div>
+
+    </section>
 
 
     <!-- APRESENTAÇÃO -->
-    <section class="light">
+    <section class="light reveal">
       <div class="container">
 
         <h2 class="section-title">Apresentação</h2>
@@ -65,8 +81,9 @@
       </div>
     </section>
 
+
     <!-- OBJETIVOS -->
-    <section class="soft">
+    <section class="soft reveal">
       <div class="container">
 
         <h2 class="section-title">Objetivos</h2>
@@ -93,8 +110,9 @@
       </div>
     </section>
 
+
     <!-- FUNCIONAMENTO -->
-    <section class="light">
+    <section class="light reveal">
       <div class="container">
 
         <h2 class="section-title">Como Funciona</h2>
@@ -131,8 +149,9 @@
       </div>
     </section>
 
+
     <!-- RESPONSABILIDADES -->
-    <section class="mid">
+    <section class="mid reveal">
       <div class="container">
 
         <h2 class="section-title">Responsabilidades</h2>
@@ -174,8 +193,9 @@
       </div>
     </section>
 
+
     <!-- CRONOGRAMA -->
-    <section class="light">
+    <section class="light reveal">
       <div class="container">
 
         <h2 class="section-title">Cronograma</h2>
@@ -217,6 +237,7 @@
       </div>
     </section>
 
+
     <!-- INSCRIÇÃO -->
     <section class="dark">
       <div class="container">
@@ -227,7 +248,7 @@
           As inscrições são realizadas por meio do formulário oficial.
         </p>
 
-        <p style="text-align:center; margin-top:30px;">
+        <p class="cta-center">
           <a
             href="https://SEU-LINK-AQUI"
             target="_blank"
@@ -239,6 +260,7 @@
 
       </div>
     </section>
+
 
     <!-- FINAL -->
     <section class="final">
