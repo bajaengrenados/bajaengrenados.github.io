@@ -787,6 +787,7 @@
   </a>
 </div>     
 	
+
 	
 <!-- ------------------------------------------------------------------- -->
 <!-- ------------------------------------------------------------------- -->
@@ -1207,6 +1208,12 @@ function initForm(){
     };
   };
 
+const popupAtivo = false;
+
+if (popupAtivo) {
+  document.getElementById("popup").style.display = "block";
+  document.getElementById("popup-overlay").style.display = "block";
+}
 
 /* ===============================
    ORGANOGRAMA
