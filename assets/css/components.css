@@ -139,6 +139,31 @@ ANIMAÇÕES SEGURAS
   to   { transform: translateX(-50%); }
 }
 
+/* ---- ORGANOGRAMA ---*/
+.org-nivel{
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap; /* deixa quebrar quando precisar */
+}
+
+.org-setores{
+  margin-top: 10px;
+}
+
+.org-box{
+  background: var(--azul-marinho);
+  border: 2px solid #fff;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  min-width: 160px; /* menor pra caber melhor */
+  max-width: 100%;
+  box-sizing: border-box;
+  color: #fff;
+}
+
 /* Mobile */
 @media (max-width: 900px){
   .parceiros-track{

@@ -52,7 +52,7 @@
     <a href="#competicoes">Competições</a>
     <a href="#titulos">Títulos</a>
     <a href="#midia">Mídia</a>
-    <a href="#impresa">Imprensa</a>
+    <a href="#imprensa">Imprensa</a>
     <a href="#parceiros">Parceiros</a>
     <a href="#contato">Contato</a>
   </nav>
@@ -335,11 +335,19 @@
     <h2 class="section-title">O que é o Baja SAE</h2>
 
     <p>
-      O Baja SAE é uma competição internacional que desafia equipes universitárias a projetar, construir e competir com veículos off-road monopostos.
+      O Baja SAE Brasil é um programa que desafia estudantes de Engenharia a
+      aplicarem, na prática, os conhecimentos adquiridos em sala de aula,
+      contribuindo diretamente para sua formação profissional e preparação
+      para o mercado de trabalho.
     </p>
 
     <p>
-      As equipes são avaliadas em critérios técnicos, dinâmicos e de gestão, simulando o ambiente real da indústria automotiva.
+      Ao integrar o programa, os participantes vivenciam um projeto real de
+      desenvolvimento de um veículo off-road, passando por todas as etapas do
+      processo: concepção, projeto detalhado, construção e testes. Como
+      reconhecimento pelo desempenho, as equipes com melhor colocação
+      conquistam a oportunidade de representar o país na competição
+      internacional, realizada nos Estados Unidos.
     </p>
   </div>
 </section>
@@ -357,15 +365,21 @@
     <h2 class="section-title">Nosso Projeto</h2>
 
     <p>
-      O projeto do veículo é desenvolvido com foco em desempenho, segurança
-      e confiabilidade, integrando engenharia e tecnologia da informação.
+ O projeto do veículo é concebido com foco em alto desempenho, máxima segurança e elevada confiabilidade, integrando soluções avançadas de engenharia com tecnologias da informação para otimizar resultados e garantir excelência operacional.
     </p>
 
-    <div class="video-3d">
-      <video controls autoplay muted loop>
-        <source src="/assets/media/apresentacao_3D.mp4" type="video/mp4">
-      </video>
-    </div>
+<div class="video-3d">
+  <video 
+    autoplay 
+    muted 
+    loop 
+    controls 
+    controlsList="nodownload noremoteplayback"
+    disablePictureInPicture
+  >
+    <source src="/assets/media/apresentacao_3D.mp4" type="video/mp4">
+  </video>
+</div>
   </div>
 </section>
 
@@ -748,7 +762,33 @@
   </div>
 </footer>
 
+<!-- ------------------------------------------------------------------- -->
+<!-- ------------------------------------------------------------------- -->
+<!-- -------------------------- POP-UP --------------------------------- -->
+<!-- ------------------------------------------------------------------- -->
+<!-- ------------------------------------------------------------------- -->
 
+
+	<!-- OVERLAY -->
+<div id="popup-overlay"></div>
+
+<!-- POPUP -->
+<div id="popup">
+  <button id="close-popup">&times;</button>
+
+  <h2>🚀 Engrenados Baja UNIUBE</h2>
+  <p>
+    Estamos em preparação para a próxima competição!
+    Acompanhe nossas redes sociais e apoie o projeto.
+  </p>
+
+  <a href="https://instagram.com/" target="_blank" class="popup-btn">
+    Acompanhar agora
+  </a>
+</div>     
+	
+
+	
 <!-- ------------------------------------------------------------------- -->
 <!-- ------------------------------------------------------------------- -->
 <!-- -------------------------- SCRIPT --------------------------------- -->
@@ -986,8 +1026,8 @@ function renderMedia(type, src){
     media.innerHTML = `
       <video controls autoplay>
         <source src="${src}">
-      </video>
-    `;
+      </video>`;
+    
 
     requestFullscreen(media.querySelector("video"));
   }
@@ -1141,6 +1181,39 @@ function initForm(){
   });
 }
 
+/* ===============================
+   POP-UP
+================================*/
+
+const popupAtivo = false; // 🔥 Troque para true quando quiser ativar
+
+window.onload = function() {
+
+  if (!popupAtivo) return; // Se for false, para tudo aqui
+
+  const popup = document.getElementById("popup");
+  const overlay = document.getElementById("popup-overlay");
+  const closeBtn = document.getElementById("close-popup");
+
+  // Abrir após 2 segundos
+  setTimeout(() => {
+    popup.style.display = "block";
+    overlay.style.display = "block";
+    popup.classList.add("active");
+  }, 2000);
+
+  // Fechar
+  closeBtn.onclick = function() {
+    popup.style.display = "none";
+    overlay.style.display = "none";
+  };
+
+  overlay.onclick = function() {
+    popup.style.display = "none";
+    overlay.style.display = "none";
+  };
+};
+
 
 /* ===============================
    ORGANOGRAMA
@@ -1276,6 +1349,8 @@ function buildOrganogram(){
 
   org.appendChild(setores);
 }
+
+	
 </script>
 
 </body>

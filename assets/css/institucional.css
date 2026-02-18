@@ -752,41 +752,75 @@ section p{
 
 /* ==================================================
    ORGANOGRAMA
-================================================== 
-.organograma{
-  margin: 40px 0;
-  text-align: center;
-  background: var(--azul);
-}
 ================================================== */
-.org-nivel{
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap; /* deixa quebrar quando precisar */
-}
-
-.org-setores{
-  margin-top: 10px;
-}
-
-.org-box{
-  background: var(--azul-marinho);
-  border: 2px solid #fff;
-  padding: 12px 18px;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 14px;
-  min-width: 160px; /* menor pra caber melhor */
-  max-width: 100%;
-  box-sizing: border-box;
-}
 
 .org-linha{
   width: 2px;
   height: 30px;
   background: #FFF;
   margin: 10px auto;
+}
+
+/* ==================================================
+   POP-UP
+================================================== */
+/* OVERLAY */
+#popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
+  z-index: 999;
+}
+
+/* POPUP */
+#popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  background: #111;
+  color: #fff;
+  padding: 30px;
+  width: 90%;
+  max-width: 420px;
+  border-radius: 12px;
+  text-align: center;
+  z-index: 1000;
+  display: none;
+  transition: 0.3s ease;
+  box-shadow: 0 0 30px rgba(0,0,0,0.5);
+}
+
+#popup.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* BOTÃO */
+.popup-btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: #f1c40f; /* Amarelo estilo Baja */
+  color: #000;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+/* FECHAR */
+#close-popup {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: #fff;
+  cursor: pointer;
 }
 
 
