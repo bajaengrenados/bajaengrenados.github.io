@@ -1,20 +1,21 @@
 /* ===================================
    ESTILO EXCLUSIVO - PROGRAMA TRAINEE
-   =================================== */
+=================================== */
+
+
+/* BASE */
 
 .trainee-page {
   background: #f4f6f9;
   color: #222;
 }
 
-/* Texto padrão */
 .trainee-page p,
 .trainee-page li {
   color: #222;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
-/* Títulos */
 .trainee-page h1,
 .trainee-page h2,
 .trainee-page h3 {
@@ -22,7 +23,13 @@
   font-weight: 700;
 }
 
-/* Seções claras */
+
+/* SEÇÕES */
+
+.trainee-page section {
+  padding: 70px 0;
+}
+
 .trainee-page .light,
 .trainee-page .soft,
 .trainee-page .mid {
@@ -30,10 +37,9 @@
   color: #222;
 }
 
-/* Seção escura */
 .trainee-page .dark {
   background: #0a2a4f;
-  color: #ffffff;
+  color: #eee;
 }
 
 .trainee-page .dark p,
@@ -42,25 +48,35 @@
   color: #ffffff;
 }
 
-/* Header */
+
+/* HEADER */
+
 .trainee-page header {
   background: #0a2a4f;
-  padding: 12px 20px;
+  padding: 14px 0;
+}
+
+.trainee-page header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .trainee-page header img {
   height: 55px;
 }
 
-/* Botão voltar */
+
+/* BOTÃO VOLTAR */
+
 .trainee-page .btn-voltar {
   color: #fff;
   border: 2px solid #fff;
-  padding: 6px 14px;
+  padding: 7px 16px;
   border-radius: 6px;
   text-decoration: none;
   font-weight: 600;
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
 
 .trainee-page .btn-voltar:hover {
@@ -68,33 +84,99 @@
   color: #0a2a4f;
 }
 
-/* Cards */
+
+/* HERO */
+
+.trainee-page .hero {
+  position: relative;
+  min-height: 80vh;
+  overflow: hidden;
+}
+
+.trainee-page .hero video {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.trainee-page .hero .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 42, 79, 0.75);
+}
+
+.trainee-page .hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+}
+
+.trainee-page .hero-content h1 {
+  color: #fff;
+  font-size: 3rem;
+  margin: 15px 0;
+}
+
+.trainee-page .hero-content p {
+  color: #eee;
+  font-size: 1.2rem;
+}
+
+
+/* CARDS */
+
 .trainee-page .card {
-  transition: 0.3s;
+  background: #fff;
+  border-radius: 14px;
+  padding: 25px 20px;
+  border: 1px solid #eee;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
 .trainee-page .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
 }
 
-/* Botão inscrição */
+.trainee-page .card.highlight {
+  border: 2px solid #0a2a4f;
+}
+
+
+/* BOTÃO INSCRIÇÃO */
+
 .trainee-page .btn-parceiro {
-  background: #ffffff;
+  background: linear-gradient(135deg, #ffffff, #e6e6e6);
   color: #0a2a4f;
-  border: 2px solid #ffffff;
-  padding: 12px 28px;
-  border-radius: 30px;
+  border: none;
+  padding: 14px 38px;
+  border-radius: 40px;
   font-weight: 700;
-  transition: 0.3s;
+  font-size: 1.05rem;
+  letter-spacing: 1px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  transition: all 0.3s ease;
 }
 
 .trainee-page .btn-parceiro:hover {
-  background: transparent;
-  color: #ffffff;
+  transform: scale(1.08);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.35);
 }
 
-/* Tabela (se usar depois) */
+
+/* CTA CENTER */
+
+.trainee-page .cta-center {
+  text-align: center;
+  margin-top: 35px;
+}
+
+
+/* TABELA */
+
 .trainee-page table {
   width: 100%;
   border-collapse: collapse;
@@ -111,11 +193,39 @@
   color: #fff;
 }
 
-/* Responsivo */
+
+/* ANIMAÇÃO REVEAL */
+
+.trainee-page .reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.7s ease;
+}
+
+.trainee-page .reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* RESPONSIVO */
+
 @media (max-width: 768px) {
+
+  .trainee-page section {
+    padding: 50px 0;
+  }
 
   .trainee-page header img {
     height: 45px;
+  }
+
+  .trainee-page .hero-content h1 {
+    font-size: 2.2rem;
+  }
+
+  .trainee-page .hero-content p {
+    font-size: 1.05rem;
   }
 
   .trainee-page .card {
