@@ -1184,36 +1184,36 @@ function initForm(){
 /* ===============================
    POP-UP
 ================================*/
-  window.onload = function() {
-    const popup = document.getElementById("popup");
-    const overlay = document.getElementById("popup-overlay");
-    const closeBtn = document.getElementById("close-popup");
 
-    // Abrir após 2 segundos
-    setTimeout(() => {
-      popup.style.display = "block";
-      overlay.style.display = "block";
-      popup.classList.add("active");
-    }, 2000);
+const popupAtivo = false; // 🔥 Troque para true quando quiser ativar
 
-    // Fechar
-    closeBtn.onclick = function() {
-      popup.style.display = "none";
-      overlay.style.display = "none";
-    };
+window.onload = function() {
 
-    overlay.onclick = function() {
-      popup.style.display = "none";
-      overlay.style.display = "none";
-    };
+  if (!popupAtivo) return; // Se for false, para tudo aqui
+
+  const popup = document.getElementById("popup");
+  const overlay = document.getElementById("popup-overlay");
+  const closeBtn = document.getElementById("close-popup");
+
+  // Abrir após 2 segundos
+  setTimeout(() => {
+    popup.style.display = "block";
+    overlay.style.display = "block";
+    popup.classList.add("active");
+  }, 2000);
+
+  // Fechar
+  closeBtn.onclick = function() {
+    popup.style.display = "none";
+    overlay.style.display = "none";
   };
 
-const popupAtivo = false;
+  overlay.onclick = function() {
+    popup.style.display = "none";
+    overlay.style.display = "none";
+  };
+};
 
-if (popupAtivo) {
-  document.getElementById("popup").style.display = "block";
-  document.getElementById("popup-overlay").style.display = "block";
-}
 
 /* ===============================
    ORGANOGRAMA
