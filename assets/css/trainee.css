@@ -207,6 +207,98 @@
   transform: translateY(0);
 }
 
+/* ===============================
+   TELA ÚNICA - AJUSTE FINAL
+=============================== */
+
+.trainee-single {
+  background: #f4f6f9;
+  min-height: calc(100vh - 90px);
+  display: flex;
+  align-items: center;
+  padding: 60px 0;
+}
+
+/* Caixa principal */
+.trainee-single .container {
+  max-width: 900px;
+}
+
+/* Conteúdo central */
+.text-box {
+  background: #fff;
+  padding: 45px;
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+}
+
+/* Título principal */
+.main-title {
+  text-align: center;
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+/* Subtítulo */
+.subtitle {
+  text-align: center;
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 35px;
+}
+
+/* Listas */
+.text-box ul {
+  padding-left: 22px;
+  margin-top: 12px;
+}
+
+.text-box li {
+  margin-bottom: 8px;
+}
+
+/* Botões */
+.actions {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Botões novos */
+.btn-primary,
+.btn-secondary {
+  padding: 14px 34px;
+  border-radius: 40px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+/* Principal */
+.btn-primary {
+  background: #0a2a4f;
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+.btn-primary:hover {
+  background: #081f3a;
+  transform: scale(1.05);
+}
+
+/* Secundário */
+.btn-secondary {
+  border: 2px solid #0a2a4f;
+  color: #0a2a4f;
+}
+
+.btn-secondary:hover {
+  background: #0a2a4f;
+  color: #fff;
+}
+
 
 /* RESPONSIVO */
 
@@ -230,6 +322,14 @@
 
   .trainee-page .card {
     margin-bottom: 15px;
+  }
+
+  .main-title {
+    font-size: 30px;
+  }
+
+  .text-box {
+    padding: 28px;
   }
 
 }
