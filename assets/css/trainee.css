@@ -1,0 +1,125 @@
+/* ===================================
+   ESTILO EXCLUSIVO - PROGRAMA TRAINEE
+   =================================== */
+
+.trainee-page {
+  background: #f4f6f9;
+  color: #222;
+}
+
+/* Texto padrão */
+.trainee-page p,
+.trainee-page li {
+  color: #222;
+  line-height: 1.6;
+}
+
+/* Títulos */
+.trainee-page h1,
+.trainee-page h2,
+.trainee-page h3 {
+  color: #0a2a4f;
+  font-weight: 700;
+}
+
+/* Seções claras */
+.trainee-page .light,
+.trainee-page .soft,
+.trainee-page .mid {
+  background: #ffffff;
+  color: #222;
+}
+
+/* Seção escura */
+.trainee-page .dark {
+  background: #0a2a4f;
+  color: #ffffff;
+}
+
+.trainee-page .dark p,
+.trainee-page .dark h2,
+.trainee-page .dark h3 {
+  color: #ffffff;
+}
+
+/* Header */
+.trainee-page header {
+  background: #0a2a4f;
+  padding: 12px 20px;
+}
+
+.trainee-page header img {
+  height: 55px;
+}
+
+/* Botão voltar */
+.trainee-page .btn-voltar {
+  color: #fff;
+  border: 2px solid #fff;
+  padding: 6px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.trainee-page .btn-voltar:hover {
+  background: #fff;
+  color: #0a2a4f;
+}
+
+/* Cards */
+.trainee-page .card {
+  transition: 0.3s;
+}
+
+.trainee-page .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* Botão inscrição */
+.trainee-page .btn-parceiro {
+  background: #ffffff;
+  color: #0a2a4f;
+  border: 2px solid #ffffff;
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-weight: 700;
+  transition: 0.3s;
+}
+
+.trainee-page .btn-parceiro:hover {
+  background: transparent;
+  color: #ffffff;
+}
+
+/* Tabela (se usar depois) */
+.trainee-page table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.trainee-page table th,
+.trainee-page table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+}
+
+.trainee-page table th {
+  background: #0a2a4f;
+  color: #fff;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+
+  .trainee-page header img {
+    height: 45px;
+  }
+
+  .trainee-page .card {
+    margin-bottom: 15px;
+  }
+
+}
