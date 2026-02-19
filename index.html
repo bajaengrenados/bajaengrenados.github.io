@@ -779,61 +779,21 @@
      ">
 </div>
 
+<!-- OVERLAY -->
+<div id="popup-overlay"></div>
+
 <!-- POPUP -->
-<div id="popup"
-     style="
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 90%;
-        max-width: 800px;
-        height: 450px;
-        background: url('/assets/media/pop-trainee.png') center/cover no-repeat;
-        border-radius: 15px;
-        overflow: hidden;
-        display: flex;
-        align-items: flex-end;
-        justify-content: center;
-        padding-bottom: 40px;
-        z-index: 1000;
-     ">
+<div id="popup" class="popup-trainee">
 
   <!-- Botão fechar -->
-  <button id="close-popup"
-          style="
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 28px;
-            background: none;
-            border: none;
-            color: #fff;
-            cursor: pointer;
-          ">
-    &times;
-  </button>
+  <button id="close-popup">&times;</button>
 
   <!-- Botão principal -->
-  <a href="/trainee/index.html"
-     style="
-        background: #0a2a4f;
-        color: #fff;
-        padding: 16px 32px;
-        border-radius: 30px;
-        text-decoration: none;
-        font-weight: bold;
-        font-size: 1rem;
-        transition: 0.3s;
-     "
-     onmouseover="this.style.transform='scale(1.05)'; this.style.background='#081f3a';"
-     onmouseout="this.style.transform='scale(1)'; this.style.background='#0a2a4f';"
-  >
+  <a href="/estagio/index.html" class="popup-btn">
     Acessar página do Trainee
   </a>
 
-</div>	
-
+</div>
 	
 <!-- ------------------------------------------------------------------- -->
 <!-- ------------------------------------------------------------------- -->
