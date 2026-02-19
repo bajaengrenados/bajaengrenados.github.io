@@ -776,53 +776,62 @@ section p{
   z-index: 999;
 }
 
-/* POPUP */
+/* POPUP base */
 #popup {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0.8);
-  background: #111;
-  color: #fff;
-  padding: 30px;
   width: 90%;
-  max-width: 420px;
-  border-radius: 12px;
-  text-align: center;
-  z-index: 1000;
+  max-width: 800px;
+  height: 450px;
+  border-radius: 15px;
+  overflow: hidden;
   display: none;
-  transition: 0.3s ease;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding-bottom: 40px;
+  z-index: 1000;
+  transition: transform 0.3s ease, opacity 0.3s ease;
   box-shadow: 0 0 30px rgba(0,0,0,0.5);
+  background-size: cover;
+  background-position: center;
 }
 
-#popup.active {
-  transform: translate(-50%, -50%) scale(1);
+/* POPUP - imagens específicas */
+.popup-trainee {
+  background-image: url('/estagio/img/pop-estagio.png');
 }
 
-/* BOTÃO */
-.popup-btn {
-  display: inline-block;
-  margin-top: 15px;
-  padding: 10px 20px;
-  background: #f1c40f; /* Amarelo estilo Baja */
-  color: #000;
-  text-decoration: none;
-  border-radius: 6px;
-  font-weight: bold;
-}
-
-/* FECHAR */
-#close-popup {
+/* Botão fechar */
+#popup button {
   position: absolute;
-  top: 10px;
-  right: 15px;
+  top: 15px;
+  right: 20px;
+  font-size: 28px;
   background: none;
   border: none;
-  font-size: 22px;
   color: #fff;
   cursor: pointer;
 }
 
+/* Botão principal */
+.popup-btn {
+  background: #0a2a4f;
+  color: #fff;
+  padding: 16px 32px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+.popup-btn:hover {
+  transform: scale(1.05);
+  background: #081f3a;
+}
 
 /* ==================================================
    MOBILE GERAL
