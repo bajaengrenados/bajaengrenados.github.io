@@ -114,7 +114,8 @@ header img {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding-top: 80px;
+  color: #FFF;
+  padding-top: 0px;
   overflow: hidden;
 }
 
@@ -129,7 +130,7 @@ header img {
 .hero .overlay {
   position: absolute;
   inset: 0;
-  background: rgba(255,255,255,0.9);
+  background: rgba(9,15,52,0.5);
 }
 
 .hero-content {
@@ -138,7 +139,7 @@ header img {
 }
 
 .logo-apresentacao {
-  width: 260px;
+  width: 300px;
   margin-bottom: 20px;
 }
 
