@@ -764,133 +764,130 @@ section p{
 /* ==================================================
    POP-UP
 ================================================== */
-/* OVERLAY */
+/* ==================================================
+   OVERLAY
+================================================== */
 #popup-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.7);
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
   display: none;
   z-index: 999;
 }
 
-/* POPUP base */
+/* ==================================================
+   POPUP BASE
+================================================== */
 #popup {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(0.8);
+  transform: translate(-50%, -50%);
   width: 90%;
-  max-width: 800px;
-  height: 450px;
-  border-radius: 15px;
+  max-width: 900px;
+  height: 480px;
+  border-radius: 18px;
   overflow: hidden;
   display: none;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: flex-end;
-  padding-bottom: 40px;
   z-index: 1000;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  box-shadow: 0 0 30px rgba(0,0,0,0.5);
+
   background-size: cover;
   background-position: center;
+
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
 }
 
-/* POPUP - imagens específicas */
+/* ==================================================
+   BACKGROUND ESPECÍFICO
+================================================== */
 .popup-trainee {
   background-image: url('/estagio/img/pop-estagio.png');
 }
 
-/* Botão fechar */
-#popup button {
+/* ==================================================
+   BOTÃO FECHAR
+================================================== */
+#close-popup {
   position: absolute;
-  top: 15px;
-  right: 20px;
+  top: 18px;
+  right: 22px;
   font-size: 28px;
   background: none;
   border: none;
-  color: #fff;
+  color: #ffffff;
   cursor: pointer;
+  z-index: 10;
+  transition: transform 0.2s ease;
 }
 
-/* Botão principal */
+#close-popup:hover {
+  transform: scale(1.15);
+}
+
 /* ==================================================
-   BOTÃO CTA – ESTILO COMPETIÇÃO / LINKTREE
+   WRAPPER DO BOTÃO (CENTRALIZA EMBAIXO)
 ================================================== */
-.popup-btn {
+.popup-btn-wrapper {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ==================================================
+   BOTÃO PRINCIPAL – ESTILO COMPETIÇÃO
+================================================== */
+.popup-btn-cta {
   display: inline-block;
-  margin-right: 40px; /* afasta da borda do popup */
-  margin-bottom: 20px;
+  padding: 18px 44px;
 
-  padding: 18px 42px;
-  font-size: 1.1rem;
-  font-weight: 800;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-
-  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #ffffff;
   text-decoration: none;
 
   border-radius: 14px;
-  border: 1px solid rgba(255,255,255,0.25);
 
   background: linear-gradient(
     180deg,
-    #3fa9f5 0%,
-    #1e7fd6 45%,
-    #0b5fa8 100%
+    #3db8ff,
+    #167acb
   );
 
   box-shadow:
-    0 0 0 2px rgba(255,255,255,0.15) inset,
-    0 10px 25px rgba(0,0,0,0.6),
-    0 0 30px rgba(63,169,245,0.7);
+    0 0 18px rgba(61, 184, 255, 0.7),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
 
-  position: relative;
-  overflow: hidden;
   transition: all 0.25s ease;
 }
 
-/* brilho animado */
-.popup-btn::before {
-  content: "";
-  position: absolute;
-  top: -60%;
-  left: -40%;
-  width: 60%;
-  height: 220%;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(255,255,255,0.5),
-    transparent
-  );
-  transform: rotate(25deg);
-  transition: all 0.6s ease;
-}
-
-/* hover */
-.popup-btn:hover {
-  transform: translateY(-4px) scale(1.04);
+/* ==================================================
+   HOVER DO BOTÃO
+================================================== */
+.popup-btn-cta:hover {
+  transform: scale(1.08);
   box-shadow:
-    0 0 0 2px rgba(255,255,255,0.25) inset,
-    0 18px 45px rgba(0,0,0,0.75),
-    0 0 45px rgba(63,169,245,0.95);
+    0 0 28px rgba(61, 184, 255, 0.9),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45);
 }
 
-/* brilho passando */
-.popup-btn:hover::before {
-  left: 130%;
-}
+/* ==================================================
+   RESPONSIVO
+================================================== */
+@media (max-width: 600px) {
+  #popup {
+    height: 420px;
+  }
 
-/* clique */
-.popup-btn:active {
-  transform: scale(0.97);
-}
+  .popup-btn-wrapper {
+    bottom: 28px;
+  }
 
+  .popup-btn-cta {
+    padding: 16px 30px;
+    font-size: 0.95rem;
+  }
+}
 /* ==================================================
    MOBILE GERAL
 ================================================== */
