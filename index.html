@@ -179,11 +179,11 @@
 
                      <div class="member data-only">
 
-			<div class="member" data-id="10" hidden>
-				<img src="/assets/membros/wagner_cardoso.png">
-				<h4>Prof. Wagner Cardoso</h4>
-				<h5>Tesoureiro</h5>
-			</div>
+<div class="member data-only" hidden data-id="10">
+  <img src="/assets/membros/wagner_cardoso.png">
+  <h4>Prof. Wagner Cardoso</h4>
+  <h5>Tesoureiro</h5>
+</div>
                      </div>
 
 			
@@ -638,7 +638,7 @@
   Seja nosso parceiro
 </a>
 	
-<div class="parceiros-carousel">
+<div class="parceiros-carousel" id="parceiros-source">
   <div class="parceiros-track">
 
     <div class="parceiro-logo">
@@ -659,23 +659,6 @@
 
     <div class="parceiro-logo placeholder">
       <span>Sua marca aqui</span>
-    </div>
-
-    <!-- DUPLICAÇÃO PARA LOOP -->
-    <div class="parceiro-logo">
-      <img src="/assets/parceiros/rc_materiais.png" alt="RC Materiais de Construção">
-    </div>
-
-    <div class="parceiro-logo">
-      <img src="/assets/parceiros/ta_confeccoes.png" alt="TA Confecções">
-    </div>
-
-    <div class="parceiro-logo">
-      <img src="/assets/parceiros/tekpint.png" alt="Tekpint Pintura Eletrostática">
-    </div>
-
-    <div class="parceiro-logo">
-      <img src="/assets/parceiros/uniube.png" alt="Uniube">
     </div>
 
   </div>
@@ -707,7 +690,7 @@
 
     <button type="submit">Enviar</button>
 </form>
-
+<div id="formMsg" class="form-msg"></div>
     <!-- ÍCONES SOCIAIS -->
     <div class="social-icons">
         <a href="https://wa.me/55SEUNUMEROAQUI" target="_blank" aria-label="WhatsApp">
@@ -974,23 +957,31 @@ function initCountdown(){
    PARCEIROS
 ================================*/
 function initPartners(){
-
-  const logos = document.querySelectorAll(".parceiro-logo img");
-  if(!logos.length) return;
-
-  let i = 0;
-
-  setInterval(()=>{
-
-    logos.forEach(l=>l.classList.remove("ativo"));
-
-    logos[i].classList.add("ativo");
-
-    i = (i+1) % logos.length;
-
-  },3000);
+  const track = document.querySelector('.parceiros-track');
+  initPartnersCarousel(track);
 }
 
+function initPartnersCarousel(track){
+
+  if(!track) return;
+
+  const items = Array.from(track.children);
+  items.forEach(i => track.appendChild(i.cloneNode(true)));
+
+  let pos = 0;
+  const speed = 0.4;
+
+  function animate(){
+    pos -= speed;
+    if(Math.abs(pos) >= track.scrollWidth / 2){
+      pos = 0;
+    }
+    track.style.transform = `translateX(${pos}px)`;
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+}
 
 /* ===============================
    GALERIA MODAL
