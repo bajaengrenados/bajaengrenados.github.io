@@ -228,48 +228,7 @@
             <h3 style="margin-top:50px;">Junte-se a nós</h3>
             <p> Não buscamos apenas patrocínio financeiro, mas parcerias estratégicas com empresas que acreditam na educação prática, inovação e desenvolvimento tecnológico. </p>
 
-            <div class="parceiros-carousel">
-  <div class="parceiros-track">
-
-    <div class="parceiro-logo">
-      <img src="/assets/parceiros/rc_materiais.png" alt="RC Materiais de Construção">
-    </div>
-
-    <div class="parceiro-logo">
-      <img src="/assets/parceiros/ta_confeccoes.png" alt="TA Confecções">
-    </div>
-
-    <div class="parceiro-logo">
-      <img src="/assets/parceiros/tekpint.png" alt="Tekpint Pintura Eletrostática">
-    </div>
-
-    <div class="parceiro-logo">
-      <img src="/assets/parceiros/uniube.png" alt="Uniube">
-    </div>
-
-    <div class="parceiro-logo placeholder">
-      <span>Sua marca aqui</span>
-    </div>
-
-    <!-- DUPLICAÇÃO PARA LOOP -->
-    <div class="parceiro-logo">
-      <img src="/assets/parceiros/rc_materiais.png" alt="RC Materiais de Construção">
-    </div>
-
-    <div class="parceiro-logo">
-      <img src="/assets/parceiros/ta_confeccoes.png" alt="TA Confecções">
-    </div>
-
-    <div class="parceiro-logo">
-      <img src="/assets/parceiros/tekpint.png" alt="Tekpint Pintura Eletrostática">
-    </div>
-
-    <div class="parceiro-logo">
-      <img src="/assets/parceiros/uniube.png" alt="Uniube">
-    </div>
-
-  </div>
-</div>
+            <div id="parceiros-container"></div>
 
 
          </div>
@@ -469,6 +428,54 @@ async function montarOrganograma() {
 }
 
 montarOrganograma();
+
+/* PARCEIROS */
+
+fetch('/index.html')
+  .then(r => r.text())
+  .then(html => {
+
+    const temp = document.createElement('div');
+    temp.innerHTML = html;
+
+    const source = temp.querySelector('#parceiros-source');
+    const target = document.getElementById('parceiros-container');
+
+    if (!source || !target) return;
+
+    target.innerHTML = `
+      <section id="parceiros">
+        <h2 class="section-title">Parceiros</h2>
+        ${source.outerHTML}
+      </section>
+    `;
+
+    initPartnersCarousel(target.querySelector('.parceiros-track'));
+  });
+
+
+function initPartnersCarousel(track){
+
+  if(!track) return;
+
+  const items = Array.from(track.children);
+  items.forEach(i => track.appendChild(i.cloneNode(true)));
+
+  let pos = 0;
+  const speed = 0.4;
+
+  function animate(){
+    pos -= speed;
+    if(Math.abs(pos) >= track.scrollWidth / 2){
+      pos = 0;
+    }
+    track.style.transform = `translateX(${pos}px)`;
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+}
+
 </script>
 
    </body>
