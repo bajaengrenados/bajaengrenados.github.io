@@ -73,7 +73,7 @@ li {
    HEADER
 ================================================== */
 header {
-  background: var(--azul-marinho);
+  background: var(--branco);
   padding: 14px 0;
   position: relative;
   z-index: 50;
@@ -90,6 +90,7 @@ header img {
 }
 
 .btn-voltar {
+  background: var(--azul-marinho);
   color: var(--branco);
   border: 2px solid var(--branco);
   padding: 7px 16px;
