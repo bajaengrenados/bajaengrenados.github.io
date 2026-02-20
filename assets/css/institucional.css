@@ -835,80 +835,102 @@ section p{
 }
 
 /* ==================================================
-   BOTÃO PRINCIPAL – ESTILO COMPETIÇÃO
+   WRAPPER DO BOTÃO (CENTRALIZA EMBAIXO)
+================================================== */
+.popup-btn-wrapper {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+}
+
+/* ==================================================
+   BOTÃO CTA – ESTILO COMPETIÇÃO (IDÊNTICO)
 ================================================== */
 .popup-btn-cta {
   display: inline-block;
-  padding: 18px 44px;
+  text-align: center;
 
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: #ffffff;
+  padding: 20px 42px;
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  color: #fff;
   text-decoration: none;
 
   border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.25);
 
   background: linear-gradient(
     180deg,
-    #3db8ff,
-    #167acb
+    #3fa9f5 0%,
+    #1e7fd6 45%,
+    #0b5fa8 100%
   );
 
   box-shadow:
-    0 0 14px rgba(61, 184, 255, 0.6),
-    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+    0 0 0 2px rgba(255,255,255,0.15) inset,
+    0 8px 20px rgba(0,0,0,0.55),
+    0 0 25px rgba(63,169,245,0.65);
 
-  animation: glowPulse 2.2s infinite ease-in-out;
-
-  transition: transform 0.25s ease;
-}
-
-  box-shadow:
-    0 0 18px rgba(61, 184, 255, 0.7),
-    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  position: relative;
+  overflow: hidden;
 
   transition: all 0.25s ease;
 }
 
 /* ==================================================
-   HOVER DO BOTÃO
+   BRILHO ANIMADO (SHINE)
+================================================== */
+.popup-btn-cta::before {
+  content: "";
+  position: absolute;
+  top: -60%;
+  left: -40%;
+  width: 60%;
+  height: 220%;
+
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.5),
+    transparent
+  );
+
+  transform: rotate(25deg);
+  transition: all 0.6s ease;
+}
+
+/* ==================================================
+   HOVER
 ================================================== */
 .popup-btn-cta:hover {
-  transform: scale(1.08);
+  transform: translateY(-4px) scale(1.04);
   box-shadow:
-    0 0 28px rgba(61, 184, 255, 0.9),
-    inset 0 1px 0 rgba(255, 255, 255, 0.45);
+    0 0 0 2px rgba(255,255,255,0.25) inset,
+    0 15px 40px rgba(0,0,0,0.7),
+    0 0 40px rgba(63,169,245,0.95);
 }
 
-@keyframes glowPulse {
-  0% {
-    box-shadow:
-      0 0 14px rgba(61, 184, 255, 0.5),
-      inset 0 1px 0 rgba(255, 255, 255, 0.25);
-  }
-
-  50% {
-    box-shadow:
-      0 0 28px rgba(61, 184, 255, 0.9),
-      inset 0 1px 0 rgba(255, 255, 255, 0.45);
-  }
-
-  100% {
-    box-shadow:
-      0 0 14px rgba(61, 184, 255, 0.5),
-      inset 0 1px 0 rgba(255, 255, 255, 0.25);
-  }
+/* brilho passando */
+.popup-btn-cta:hover::before {
+  left: 130%;
 }
 
+/* ==================================================
+   CLIQUE
+================================================== */
+.popup-btn-cta:active {
+  transform: scale(0.97);
+}
 
 /* ==================================================
    RESPONSIVO
 ================================================== */
 @media (max-width: 600px) {
-  #popup {
-    height: 420px;
-  }
-
   .popup-btn-wrapper {
     bottom: 28px;
   }
@@ -918,6 +940,7 @@ section p{
     font-size: 0.95rem;
   }
 }
+
 /* ==================================================
    MOBILE GERAL
 ================================================== */
