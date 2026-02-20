@@ -1,54 +1,97 @@
-/* ===================================
-   PROGRAMA ESTAGIO - ESTILO FINAL
-=================================== */
-
-/* BASE */
-
-.trainee-page {
-  background: #f4f6f9;
-  color: #222;
-  font-family: inherit;
+/* ==================================================
+   VARIÁVEIS
+================================================== */
+:root {
+  --azul-marinho: #090F34;
+  --cinza: #f4f6f8;
+  --branco: #ffffff;
 }
 
-.trainee-page p,
-.trainee-page li {
+/* ==================================================
+   RESET
+================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Open Sans', 'Segoe UI', Arial, sans-serif, 'Montserrat';
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body.trainee-page {
+  background: var(--cinza);
   color: #222;
+  overflow-x: hidden;
   line-height: 1.7;
 }
 
-.trainee-page h1,
-.trainee-page h2,
-.trainee-page h3 {
-  color: #0a2a4f;
-  font-weight: 700;
+/* ==================================================
+   CONTAINER
+================================================== */
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
 }
 
+/* ==================================================
+   TIPOGRAFIA
+================================================== */
+h1 {
+  font-size: 3rem;
+  text-transform: uppercase;
+  color: var(--azul-marinho);
+}
 
-/* ===============================
+h2 {
+  font-size: 2rem;
+  margin: 30px 0 20px;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--azul-marinho);
+}
+
+p {
+  margin-bottom: 16px;
+  max-width: 900px;
+}
+
+ul {
+  padding-left: 22px;
+  margin-top: 10px;
+}
+
+li {
+  margin-bottom: 8px;
+}
+
+/* ==================================================
    HEADER
-=============================== */
-
-.trainee-page header {
-  background: #0a2a4f;
+================================================== */
+header {
+  background: var(--azul-marinho);
   padding: 14px 0;
+  position: relative;
+  z-index: 50;
 }
 
-.trainee-page header .container {
+header .container {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
 }
 
-.trainee-page header img {
+header img {
   height: 50px;
 }
 
-
-/* Botão Voltar */
-
 .btn-voltar {
-  color: #fff;
-  border: 2px solid #fff;
+  color: var(--branco);
+  border: 2px solid var(--branco);
   padding: 7px 16px;
   border-radius: 6px;
   text-decoration: none;
@@ -57,183 +100,117 @@
 }
 
 .btn-voltar:hover {
-  background: #fff;
-  color: #0a2a4f;
+  background: var(--branco);
+  color: var(--azul-marinho);
 }
 
 /* ==================================================
-HERO
+   HERO
 ================================================== */
 .hero {
   position: relative;
-
-  min-height: 100vh;   /* fallback */
-  min-height: 100dvh;  /* corrige mobile moderno */
-
-  margin: 0;
-  padding: 0;
-
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-
   text-align: center;
-  color: var(--branco);
+  padding-top: 80px;
   overflow: hidden;
 }
 
 .hero video {
   position: absolute;
   inset: 0;
-
   width: 100%;
   height: 100%;
-
   object-fit: cover;
-  display: block;
 }
 
 .hero .overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,.55);
+  background: rgba(255,255,255,0.9);
 }
 
 .hero-content {
   position: relative;
-  z-index: 3;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  z-index: 2;
 }
 
 .logo-apresentacao {
   width: 260px;
-  max-width: 80%;
   margin-bottom: 20px;
 }
 
-/* ===============================
-   CONTEÚDO PRINCIPAL
-=============================== */
-
+/* ==================================================
+   CONTEÚDO
+================================================== */
 .trainee-single {
-  background: #f4f6f9;
+  background: var(--branco);
   padding: 70px 0;
 }
 
-.trainee-single .container {
-  max-width: 900px;
-}
-
-
-/* Títulos */
-
 .main-title {
   text-align: center;
-  font-size: 42px;
   margin-bottom: 10px;
 }
 
 .subtitle {
   text-align: center;
-  font-size: 18px;
   color: #555;
   margin-bottom: 35px;
 }
 
-
-/* Texto */
-
-.trainee-single h2 {
-  margin-top: 35px;
-}
-
-.trainee-single ul {
-  padding-left: 22px;
-  margin-top: 12px;
-}
-
-.trainee-single li {
-  margin-bottom: 8px;
-}
-
-
-/* ===============================
-   BOTÕES - VERSÃO SEGURA
-=============================== */
+/* ==================================================
+   BOTÕES
+================================================== */
 .actions {
-  margin: 60px auto 0 auto;   /* espaço acima */
+  margin-top: 50px;
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 25px;
+  gap: 20px;
   flex-wrap: wrap;
-  text-align: center;
 }
 
-.trainee-page .actions .btn-estagio {
-  display: inline-block;
+.btn-estagio {
   padding: 14px 28px;
-  background-color: #0a2a4f;
-  color: #ffffff;
-  text-decoration: none;
+  background: var(--azul-marinho);
+  color: var(--branco);
   border-radius: 30px;
+  text-decoration: none;
   font-weight: 700;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  border: none;
+  transition: 0.3s;
 }
 
-.trainee-page .actions .btn-estagio:hover {
-  background-color: #081f3a;
+.btn-estagio:hover {
   transform: scale(1.05);
 }
 
-/* ===============================
-   FOOTER CLARO E ESTREITO
-=============================== */
-
+/* ==================================================
+   FOOTER
+================================================== */
 footer {
-  background: #f4f6f9;     /* fundo claro */
-  color: #0a2a4f;          /* texto escuro */
   text-align: center;
-  padding: 25px 15px;      /* mais estreito */
-  font-size: 0.9rem;
-  border-top: 1px solid #e0e0e0;
-  margin-top: 80px;
+  padding: 25px 15px;
+  border-top: 1px solid #ddd;
+  margin-top: 70px;
 }
 
-footer p {
-  margin: 5px 0;
-}
-
-/* ===============================
+/* ==================================================
    RESPONSIVO
-=============================== */
-
+================================================== */
 @media (max-width: 768px) {
+
+  h1 {
+    font-size: 2.1rem;
+  }
+
+  .hero {
+    padding-top: 100px;
+  }
 
   header img {
     height: 45px;
-  }
-
-  .hero-content h1 {
-    font-size: 2.2rem;
-  }
-
-  .hero-content p {
-    font-size: 1.05rem;
-  }
-
-  .main-title {
-    font-size: 30px;
-  }
-
-  .trainee-single {
-    padding: 50px 0;
   }
 
 }
