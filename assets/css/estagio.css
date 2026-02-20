@@ -120,6 +120,10 @@ header img {
   overflow: hidden;
 }
 
+.hero h1 {
+  color: #fff;
+}
+
 .hero video {
   position: absolute;
   inset: 0;
