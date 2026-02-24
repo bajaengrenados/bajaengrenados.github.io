@@ -55,7 +55,7 @@ section:not(.hero):last-of-type {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 40px 24px 0 24px; /* adiciona espaço interno superior */
+  padding: 20px 24px 0 24px; /* adiciona espaço interno superior */
 }
 
 section p {
