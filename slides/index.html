@@ -307,17 +307,28 @@ function goTo(index) {
 }
 
 document.addEventListener('keydown', e => {
+
+  // BLOQUEIA setas CIMA e BAIXO
+  if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+    e.preventDefault();
+    return;
+  }
+
   updateCurrent();
 
-  if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+  // PERMITE apenas ESQUERDA e DIREITA
+  if (e.key === 'ArrowRight') {
     goTo(current + 1);
   }
 
-  if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+  if (e.key === 'ArrowLeft') {
     goTo(current - 1);
   }
 });
 
+window.addEventListener('wheel', e => {
+  e.preventDefault();
+}, { passive: false });
 
 
 /* -------------------------------------------------
