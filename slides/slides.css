@@ -58,6 +58,19 @@ section:not(.hero):last-of-type {
   padding: 0 24px;
 }
 
+section p {
+  margin-top: 20px;
+}
+
+h3 {
+  margin-top: 15px;
+}
+
+.destaque-final {
+  font-weight: 600;
+  font-size: 1.15rem;
+}
+
 /* ==================================================
    TIPOGRAFIA
 ================================================== */
@@ -179,22 +192,22 @@ video {
 .org-nivel {
   display: flex;
   justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap; /* deixa quebrar quando precisar */
+  gap: 12px;              /* antes 20px */
+  flex-wrap: wrap;
 }
 
 .org-setores {
-  margin-top: 10px;
+  margin-top: 6px;        /* antes 10px */
 }
 
 .org-box {
   background: var(--azul-marinho);
   border: 2px solid #fff;
-  padding: 12px 18px;
-  border-radius: 8px;
+  padding: 8px 14px;      /* antes 12px 18px */
+  border-radius: 6px;     /* levemente menor */
   font-weight: 600;
-  font-size: 14px;
-  min-width: 160px; /* menor pra caber melhor */
+  font-size: 13px;        /* antes 14px */
+  min-width: 140px;       /* antes 160px */
   max-width: 100%;
   box-sizing: border-box;
   color: #fff;
@@ -202,9 +215,9 @@ video {
 
 .org-linha {
   width: 2px;
-  height: 30px;
+  height: 18px;           /* antes 30px */
   background: #222;
-  margin: 10px auto;
+  margin: 6px auto;       /* antes 10px */
 }
 
 /* ==================================================
