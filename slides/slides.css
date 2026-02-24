@@ -115,18 +115,6 @@ video {
   display: block;
 }
 
-.mascote-direita {
-  position: absolute;
-  bottom: -20px;
-  right: 40px;
-  height: 80%;
-  pointer-events: none;
-}
-
-.engenharia {
-  position: relative;
-  overflow: hidden;
-}
 
 /* ==================================================
    FUNDOS
@@ -322,6 +310,38 @@ h3 {
   height: 12px;           /* antes 18px */
   background: #222;
   margin: 4px auto;       /* antes 6px */
+}
+
+/* ==================================================
+ENGENHARIA REAL + MASCOTE
+================================================== */
+
+#engenharia-real {
+  position: relative;
+  overflow: hidden;
+}
+
+#engenharia-real .container {
+  position: relative;
+  z-index: 2;
+  max-width: 900px; /* evita texto muito largo */
+}
+
+.mascote-direita {
+  position: absolute;
+  bottom: -40px;        /* desce levemente para parecer natural */
+  right: 40px;
+  height: 85%;
+  max-height: 900px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.subtitulo-impacto {
+  font-size: 1.6rem;
+  margin-bottom: 25px;
+  font-weight: 600;
+  color: var(--amarelo);
 }
 
 /* ==================================================
