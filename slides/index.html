@@ -5,151 +5,27 @@
   <title>Engrenados Baja Uniube • Apresentação</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    :root {
-      --dark: #0B1E3F;
-      --light: #ffffff;
-      --accent: #1E5EFF;
-    }
+      <link rel="icon" type="image/png" sizes="16x16"  href="/assets/img/favicon.png">
+      <meta name="msapplication-TileColor" content="#ffffff">
+      <meta name="theme-color" content="#ffffff">
+	   
+      <link rel="stylesheet" href="/slides/slides.css">
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      font-family: Arial, sans-serif;
-      overflow: hidden;
-    }
-
-    section {
-      height: 100vh;
-      width: 100vw;
-      padding: 80px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      position: relative;
-    }
-
-/* ==================================================
-HERO
-================================================== */
-.hero {
-  position: relative;
-
-  min-height: 100vh;   /* fallback */
-  min-height: 100dvh;  /* corrige mobile moderno */
-
-  margin: 0;
-  padding: 0;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  text-align: center;
-  color: var(--branco);
-  overflow: hidden;
-}
-
-.hero video {
-  position: absolute;
-  inset: 0;
-
-  width: 100%;
-  height: 100%;
-
-  object-fit: cover;
-  display: block;
-}
-
-.hero .overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,.55);
-}
-
-.hero-content {
-  position: relative;
-  z-index: 3;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.logo-apresentacao {
-  width: 260px;
-  max-width: 80%;
-  margin-bottom: 20px;
-}
-
-    .dark { background: var(--dark); color: #fff; }
-    .light { background: var(--light); color: #111; }
-
-    h1, h2 { font-size: 3.4rem; margin-bottom: 20px; }
-    p { font-size: 1.7rem; max-width: 1000px; line-height: 1.4; }
-
-    .highlight { color: var(--accent); }
-
-    .logo { width: 180px; margin-bottom: 30px; }
-
-/* ==================================================
-CARDS
-================================================== */
-.cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin-top: 40px;
-}
-
-.card {
-  background: var(--branco);
-  color: #222;
-  padding: 20px;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0,0,0,.1);
-}
-
-.card h3 {
-  color: #0b3c5d;
-  margin-bottom: 10px;
-  text-align: center;
-}
-
-.card.highlight {
-  border-left: 6px solid var(--amarelo);
-}
-
-    .qr { width: 260px; margin: 30px 0; }
-
-/* ==================================================
-ORGANOGRAMA
-================================================== */
-.org-linha{
-  width: 2px;
-  height: 30px;
-  background: #222;
-  margin: 10px auto;
-}
-
-  </style>
 </head>
 
 <body>
 
 <!-- HERO -->
-<section class="hero">
-  <video autoplay muted loop playsinline>
-    <source src="https://cdn.pixabay.com/video/2024/11/20/242283_tiny.mp4" type="video/mp4">
-  </video>
-  <div class="overlay"></div>
-
-  <img src="img/logo.png" class="logo">
-  <h1>A universidade é o começo.<br><strong>Aqui você vira engenheiro.</strong></h1>
-</section>
+      <section id="home" class="hero">
+         <video autoplay muted loop playsinline>
+            <source src="https://cdn.pixabay.com/video/2024/11/20/242283_tiny.mp4" type="video/mp4">
+         </video>
+         <div class="overlay"></div>
+         <div class="hero-content">
+            <img class="logo-apresentacao" src="/assets/img/logo.png" alt="Engrenados Baja Uniube">
+            <h1>A universidade é o começo.<br><strong>Aqui você vira engenheiro.</strong></h1>
+         </div>
+      </section>
 
 <!-- QUEM SOMOS -->
 <section id="about" class="light">
