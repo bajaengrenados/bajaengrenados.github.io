@@ -118,13 +118,93 @@ video {
   background: var(--branco);
 }
 .soft {
-  background: var(--azul-claro);
+  background: var(--cinza);
 }
 .mid {
-  background: #9EBEF0;
+  background: var(--azul-claro);
 }
 .dark {
   background: var(--azul-marinho);
+}
+
+
+/* ==================================================
+   CORES DE TEXTO POR FUNDO
+================================================== */
+
+/* =========================
+   FUNDOS CLAROS
+========================= */
+
+.light,
+.soft {
+  color: #1a1a1a; /* texto principal */
+}
+
+.light h2,
+.light h3,
+.soft h2,
+.soft h3 {
+  color: var(--azul-marinho); /* títulos */
+}
+
+.light p,
+.soft p {
+  color: #333;
+}
+
+
+/* =========================
+   FUNDO AZUL CLARO
+========================= */
+
+.mid {
+  color: #0f172a;
+}
+
+.mid h2,
+.mid h3 {
+  color: var(--azul-marinho);
+}
+
+.mid p {
+  color: #1e293b;
+}
+
+
+/* =========================
+   FUNDO ESCURO
+========================= */
+
+.dark {
+  color: var(--branco);
+}
+
+.dark h2,
+.dark h3 {
+  color: var(--amarelo); /* destaque elegante */
+}
+
+.dark p {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+
+/* ==================================================
+   AJUSTES GERAIS DE TIPOGRAFIA
+================================================== */
+
+h2 {
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+h3 {
+  font-weight: 600;
+}
+
+.dark h2 {
+  letter-spacing: 1.5px;
 }
 
 /* ==================================================
