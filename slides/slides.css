@@ -17,7 +17,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Open Sans', 'Segoe UI', Arial, sans-serif, 'Montserrat';
+  font-family: "Open Sans", "Segoe UI", Arial, sans-serif, "Montserrat";
 }
 
 html {
@@ -100,10 +100,18 @@ video {
 /* ==================================================
    FUNDOS
 ================================================== */
-.light { background: var(--branco); }
-.soft  { background: var(--azul-claro); }
-.mid   { background: #9EBEF0; }
-.dark  { background: var(--azul-marinho); }
+.light {
+  background: var(--branco);
+}
+.soft {
+  background: var(--azul-claro);
+}
+.mid {
+  background: #9EBEF0;
+}
+.dark {
+  background: var(--azul-marinho);
+}
 
 /* ==================================================
    CARDS
@@ -168,18 +176,18 @@ video {
    ORGANOGRAMA
 ================================================== */
 
-.org-nivel{
+.org-nivel {
   display: flex;
   justify-content: center;
   gap: 20px;
   flex-wrap: wrap; /* deixa quebrar quando precisar */
 }
 
-.org-setores{
+.org-setores {
   margin-top: 10px;
 }
 
-.org-box{
+.org-box {
   background: var(--azul-marinho);
   border: 2px solid #fff;
   padding: 12px 18px;
@@ -192,7 +200,7 @@ video {
   color: #fff;
 }
 
-.org-linha{
+.org-linha {
   width: 2px;
   height: 30px;
   background: #222;
@@ -273,7 +281,6 @@ video {
    RESPONSIVO
 ================================================== */
 @media (max-width: 900px) {
-
   .cards {
     display: flex;
     flex-direction: column;
