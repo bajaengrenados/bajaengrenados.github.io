@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="/slides/slides.css">
 </head>
 
-<body>
+<body class="apresentacao apresentacao-mode">
 
 <!-- ==================================================
      HERO
@@ -266,22 +266,63 @@ A Engrenados Baja Uniube é um projeto que conecta engenharia, tecnologia e form
 ================================================== -->
 <script>
 
-    const screens = document.querySelectorAll('section');
-    let current = 0;
 
-    function goTo(index) {
-      if (index < 0 || index >= screens.length) return;
-      current = index;
-      screens[current].scrollIntoView({
-        behavior: 'smooth'
-      });
+/* -------------------------------------------------
+----------------- PASSAR SLIDE ---------------------
+--------------------------------------------------*/
+const screens = document.querySelectorAll('section');
+let current = 0;
+let isScrolling = false;
+
+/* Atualiza o índice conforme a seção visível */
+function updateCurrent() {
+  let closestIndex = 0;
+  let closestOffset = Infinity;
+
+  screens.forEach((section, index) => {
+    const rect = section.getBoundingClientRect();
+    const offset = Math.abs(rect.top);
+    if (offset < closestOffset) {
+      closestOffset = offset;
+      closestIndex = index;
     }
-    document.addEventListener('keydown', e => {
-      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') goTo(current + 1);
-      if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') goTo(current - 1);
-    });
+  });
 
-/* ANIMAÇÃO FADE-UP */
+  current = closestIndex;
+}
+
+function goTo(index) {
+  if (index < 0 || index >= screens.length || isScrolling) return;
+
+  isScrolling = true;
+  current = index;
+
+  screens[current].scrollIntoView({
+    behavior: 'smooth'
+  });
+
+  setTimeout(() => {
+    isScrolling = false;
+  }, 700); // tempo do scroll
+}
+
+document.addEventListener('keydown', e => {
+  updateCurrent();
+
+  if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+    goTo(current + 1);
+  }
+
+  if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+    goTo(current - 1);
+  }
+});
+
+
+
+/* -------------------------------------------------
+--------------- ANIMAÇÃO FADE-UP -------------------
+--------------------------------------------------*/
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -296,7 +337,9 @@ document.querySelectorAll(".fade-up").forEach(el => {
   observer.observe(el);
 });
 
-    /* ORGANOGRAMA AUTOMÁTICO */
+/* -------------------------------------------------
+------------------ ORGANOGRAMA ---------------------
+--------------------------------------------------*/
     async function carregarMembros() {
       const response = await fetch('/index.html');
       const html = await response.text();
