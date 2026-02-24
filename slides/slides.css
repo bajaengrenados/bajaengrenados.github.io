@@ -409,7 +409,7 @@ CTA QR CODES
 }
 
 .final .cta-container {
-  margin-top: 80px; /* empurra tudo para baixo de forma controlada */
+  margin-top: 0px; /* empurra tudo para baixo de forma controlada */
   padding-bottom: 40px;
 }
 
