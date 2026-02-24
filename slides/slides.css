@@ -115,6 +115,19 @@ video {
   display: block;
 }
 
+.mascote-direita {
+  position: absolute;
+  bottom: -20px;
+  right: 40px;
+  height: 80%;
+  pointer-events: none;
+}
+
+.engenharia {
+  position: relative;
+  overflow: hidden;
+}
+
 /* ==================================================
    FUNDOS
 ================================================== */
