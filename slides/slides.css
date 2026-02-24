@@ -55,7 +55,7 @@ section:not(.hero):last-of-type {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 40px 24px 0 24px; /* adiciona espaço interno superior */
 }
 
 section p {
@@ -91,6 +91,7 @@ h3 {
   font-size: 1.15rem;
   margin-bottom: 10px;
   color: var(--azul-marinho);
+  text-align: center;
   text-transform: uppercase;
 }
 
@@ -186,38 +187,43 @@ video {
 }
 
 /* ==================================================
-   ORGANOGRAMA
+   ORGANOGRAMA - VERSÃO COMPACTA
 ================================================== */
+#organograma {
+  transform: scale(0.9);
+  transform-origin: top center;
+}
 
 .org-nivel {
   display: flex;
   justify-content: center;
-  gap: 12px;              /* antes 20px */
+  gap: 8px;               /* antes 12px */
   flex-wrap: wrap;
 }
 
 .org-setores {
-  margin-top: 6px;        /* antes 10px */
+  margin-top: 4px;        /* antes 6px */
 }
 
 .org-box {
   background: var(--azul-marinho);
-  border: 2px solid #fff;
-  padding: 8px 14px;      /* antes 12px 18px */
-  border-radius: 6px;     /* levemente menor */
+  border: 1.5px solid #fff; /* antes 2px */
+  padding: 6px 10px;      /* reduzido */
+  border-radius: 5px;
   font-weight: 600;
-  font-size: 13px;        /* antes 14px */
-  min-width: 140px;       /* antes 160px */
+  font-size: 12px;        /* antes 13px */
+  min-width: 120px;       /* antes 140px */
   max-width: 100%;
   box-sizing: border-box;
   color: #fff;
+  line-height: 1.2;       /* ajuda a compactar texto */
 }
 
 .org-linha {
   width: 2px;
-  height: 18px;           /* antes 30px */
+  height: 12px;           /* antes 18px */
   background: #222;
-  margin: 6px auto;       /* antes 10px */
+  margin: 4px auto;       /* antes 6px */
 }
 
 /* ==================================================
