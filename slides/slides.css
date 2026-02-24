@@ -192,6 +192,7 @@ video {
 #organograma {
   transform: scale(0.9);
   transform-origin: top center;
+  padding: 20px 0;
 }
 
 .org-nivel {
