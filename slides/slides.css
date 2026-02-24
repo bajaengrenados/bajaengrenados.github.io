@@ -313,10 +313,6 @@ h3 {
 }
 
 /* ==================================================
-ENGENHARIA REAL + MASCOTE
-================================================== */
-
-/* ==================================================
 ENGENHARIA REAL – TEXTO + MASCOTE LADO A LADO
 ================================================== */
 
@@ -340,16 +336,6 @@ ENGENHARIA REAL – TEXTO + MASCOTE LADO A LADO
   width: 100%;
   max-height: 85vh;
   object-fit: contain;
-  pointer-events: none;
-}
-
-.mascote-direita {
-  position: absolute;
-  bottom: -40px;        /* desce levemente para parecer natural */
-  right: 40px;
-  height: 85%;
-  max-height: 900px;
-  z-index: 1;
   pointer-events: none;
 }
 
