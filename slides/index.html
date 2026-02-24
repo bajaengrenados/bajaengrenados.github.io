@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Engrenados Baja Uniube • Apresentação</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    :root {
+      --dark: #0B1E3F;
+      --light: #ffffff;
+      --accent: #1E5EFF;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    section {
+      height: 100vh;
+      width: 100vw;
+      padding: 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+
+    /* HERO */
+    .hero video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: -1;
+    }
+
+    .dark {
+      background: var(--dark);
+      color: white;
+    }
+
+    .light {
+      background: var(--light);
+      color: #111;
+    }
+
+    .final {
+      background: var(--dark);
+      color: white;
+    }
+
+    h1, h2 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.8rem;
+      max-width: 900px;
+      line-height: 1.4;
+    }
+
+    .highlight {
+      color: var(--accent);
+    }
+
+    .logo {
+      width: 180px;
+      margin-bottom: 30px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .card {
+      padding: 40px;
+      background: #f0f0f0;
+      font-size: 1.6rem;
+      border-radius: 12px;
+    }
+
+    .card.highlight {
+      background: var(--accent);
+      color: white;
+    }
+
+    .qr {
+      width: 260px;
+      margin: 30px 0;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- TELA 1 -->
+<section class="hero">
+  <video autoplay muted loop playsinline preload="auto">
+    <source src="https://cdn.pixabay.com/video/2024/11/20/242283_tiny.mp4" type="video/mp4">
+  </video>
+  <div class="overlay"></div>
+
+  <img src="img/logo.png" class="logo" alt="Engrenados Baja Uniube">
+  <h1>A universidade é o começo.<br><strong>Aqui você vira engenheiro.</strong></h1>
+</section>
+
+<!-- TELA 2 -->
+<section class="dark">
+  <h2>Sala de aula é importante.</h2>
+  <h2 class="highlight">Mas o mercado exige experiência.</h2>
+</section>
+
+<!-- TELA 3 -->
+<section class="light">
+  <h2>Quem Somos</h2>
+  <p>Somos a Engrenados Baja Uniube.<br>
+     Projetamos, construímos e testamos um veículo off-road real.</p>
+</section>
+
+<!-- TELA 4 -->
+<section class="dark">
+  <h2>Engenharia de Verdade</h2>
+  <p>Projeto • Mão na massa • Testes • Erros • Evolução</p>
+</section>
+
+<!-- TELA 5 -->
+<section class="light">
+  <h2>Como a Equipe Funciona</h2>
+  <div class="cards">
+    <div class="card">Projetos</div>
+    <div class="card">Suspensão & Direção</div>
+    <div class="card">Motor & Transmissão</div>
+    <div class="card">Chassi & Freio</div>
+    <div class="card">Elétrica</div>
+    <div class="card highlight">TI</div>
+  </div>
+</section>
+
+<!-- TELA 6 -->
+<section class="dark">
+  <h2>Ninguém entra perdido.</h2>
+  <h2 class="highlight">Aqui você é formado.</h2>
+</section>
+
+<!-- TELA 7 -->
+<section class="light">
+  <h2>Programa Estágio Engrenados</h2>
+  <p>Rodízio • Mentoria • Evolução • Escolha do setor</p>
+</section>
+
+<!-- TELA 8 -->
+<section class="dark">
+  <h2>O que você ganha</h2>
+  <p>Experiência • Currículo • Networking • Confiança</p>
+</section>
+
+<!-- TELA 9 -->
+<section class="light">
+  <h2>Não é para qualquer um.</h2>
+  <h2 class="highlight">É para quem quer crescer.</h2>
+</section>
+
+<!-- TELA 10 -->
+<section class="final">
+  <h2>Seu próximo passo começa aqui</h2>
+  <img src="img/qr.png" class="qr" alt="QR Code Inscrição">
+  <p>Aqui você não é apenas aluno.<br><strong>Você é engenheiro em formação.</strong></p>
+</section>
+
+<script>
+  const screens = document.querySelectorAll('section');
+  let current = 0;
+
+  function goTo(index) {
+    if (index < 0 || index >= screens.length) return;
+    current = index;
+    screens[current].scrollIntoView({ behavior: 'smooth' });
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') goTo(current + 1);
+    if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') goTo(current - 1);
+  });
+</script>
+
+</body>
+</html>
