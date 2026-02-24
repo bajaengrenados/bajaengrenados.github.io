@@ -363,18 +363,39 @@ h3 {
   color: var(--amarelo);
 }
 
-/* ==================================================
-   QUEM SOMOS
-================================================== */
-#about {
-  color: #222; /* cinza */
-}
 
 /* ==================================================
-   PARCERIA E PATROCINIO
+CTA QR CODES
 ================================================== */
-#sponsors {
-  color: #222; /* cinza */
+
+.cta-qrs {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.qr-box {
+  text-align: center;
+  max-width: 260px;
+}
+
+.qr-box img {
+  width: 220px;
+  margin-bottom: 15px;
+  border-radius: 12px;
+  background: #fff;
+  padding: 10px;
+}
+
+.qr-box p {
+  font-size: 1rem;
+  color: var(--branco);
+}
+
+.qr-box.destaque img {
+  border: 3px solid var(--amarelo);
 }
 
 /* ==================================================
@@ -393,5 +414,13 @@ h3 {
 
   .hero-content img {
     width: 160px;
+  }
+
+  .cta-qrs {
+  gap: 30px;
+  }
+
+  .qr-box img {
+  width: 180px;
   }
 }
