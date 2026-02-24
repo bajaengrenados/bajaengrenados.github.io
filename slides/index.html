@@ -157,6 +157,8 @@
       </p>
     </div>
   </section>
+
+
   <!-- ==================================================
      SCRIPTS
 ================================================== -->
@@ -175,6 +177,22 @@
       if (e.key === 'ArrowDown' || e.key === 'ArrowRight') goTo(current + 1);
       if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') goTo(current - 1);
     });
+
+/* ANIMAÇÃO FADE-UP */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("active");
+    }
+  });
+}, {
+  threshold: 0.2
+});
+
+document.querySelectorAll(".fade-up").forEach(el => {
+  observer.observe(el);
+});
+
     /* ORGANOGRAMA AUTOMÁTICO */
     async function carregarMembros() {
       const response = await fetch('/index.html');
