@@ -255,6 +255,75 @@ PARCERIA E PATROCINIO
   color: #222; /* cinza */
 }
 
+#sponsors .container {
+  text-align: center;
+}
+
+/* Parágrafos principais com largura confortável */
+#sponsors > .container > p {
+  max-width: 820px;
+  margin: 18px auto;
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
+/* Títulos internos */
+#sponsors h3 {
+  margin-top: 70px;
+  margin-bottom: 25px;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+/* Cards centralizados */
+#sponsors .cards {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  flex-wrap: wrap;
+  margin-top: 35px;
+}
+
+/* Card padrão */
+#sponsors .card {
+  text-align: center;
+  padding: 28px;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 8px 28px rgba(0,0,0,.05);
+  max-width: 320px;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+/* Hover elegante */
+#sponsors .card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(0,0,0,.08);
+}
+
+/* Títulos dentro dos cards */
+#sponsors .card h3 {
+  margin-top: 0;
+  font-size: 1.2rem;
+}
+
+/* Texto dentro dos cards */
+#sponsors .card p {
+  margin: 6px 0;
+  line-height: 1.5;
+}
+
+/* Card DIAMANTE com destaque real */
+#sponsors .card:first-child {
+  border-left: 6px solid #00c2ff;
+  background: linear-gradient(180deg, #ffffff 0%, #f6fcff 100%);
+}
+
+/* Último bloco antes do final sem espaço exagerado */
+#sponsors .container > *:last-child {
+  margin-bottom: 0;
+}
+
 /* ==================================================
 ORGANOGRAMA
 ================================================== */
