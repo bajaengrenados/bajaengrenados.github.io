@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Engrenados Baja Uniube • Patrocinadores</title>
+
+<link rel="stylesheet" href="patrocinadores.css">
+
+</head>
+
+<body>
+
+<div class="slides">
+
+<!-- SLIDE 1 -->
+<section class="slide hero">
+
+<div class="content">
+<img src="/assets/img/logo.png" class="logo">
+
+<h1>Parceiros que impulsionam<br><strong>nossa engenharia</strong></h1>
+
+<p>
+Empresas que acreditam no desenvolvimento da engenharia e ajudam a
+transformar conhecimento em inovação.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- SLIDE 2 -->
+<section class="slide">
+
+<div class="content">
+
+<h2>Por que apoiar o Baja?</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Formação de Engenheiros</h3>
+<p>
+Os alunos desenvolvem um veículo off-road completo aplicando engenharia real.
+</p>
+</div>
+
+<div class="card">
+<h3>Inovação</h3>
+<p>
+Projetos mecânicos, eletrônicos e computacionais aplicados na prática.
+</p>
+</div>
+
+<div class="card">
+<h3>Visibilidade</h3>
+<p>
+Sua marca vinculada a tecnologia, inovação e engenharia.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- SLIDE 3 -->
+<section class="slide">
+
+<div class="content">
+
+<h2>Nossos patrocinadores</h2>
+
+<div class="sponsors">
+
+<img src="/assets/img/patrocinadores/p1.png">
+<img src="/assets/img/patrocinadores/p2.png">
+<img src="/assets/img/patrocinadores/p3.png">
+<img src="/assets/img/patrocinadores/p4.png">
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- SLIDE 4 -->
+<section class="slide">
+
+<div class="content">
+
+<h2>Seja um patrocinador</h2>
+
+<p>
+Apoie o desenvolvimento de novos engenheiros e faça parte da evolução
+tecnológica da nossa equipe.
+</p>
+
+<a class="btn" href="mailto:baja.engrenados@gmail.com">
+Entrar em contato
+</a>
+
+</div>
+
+</section>
+
+</div>
+
+
+<script>
+
+const slides = document.querySelectorAll(".slide")
+let current = 0
+
+function showSlide(index){
+
+slides.forEach((slide,i)=>{
+slide.style.transform = `translateY(${(i-index)*100}vh)`
+})
+
+}
+
+showSlide(current)
+
+
+window.addEventListener("wheel",(e)=>{
+
+if(e.deltaY > 0){
+current = Math.min(current+1, slides.length-1)
+}else{
+current = Math.max(current-1, 0)
+}
+
+showSlide(current)
+
+})
+
+
+window.addEventListener("keydown",(e)=>{
+
+if(e.key === "ArrowDown"){
+current = Math.min(current+1, slides.length-1)
+}
+
+if(e.key === "ArrowUp"){
+current = Math.max(current-1, 0)
+}
+
+showSlide(current)
+
+})
+
+</script>
+
+</body>
+</html>
