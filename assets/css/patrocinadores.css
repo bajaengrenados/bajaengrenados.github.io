@@ -1,0 +1,219 @@
+/* ==================================================
+VARIÁVEIS
+================================================== */
+
+:root {
+  --azul: #0000ff;
+  --azul-claro: #6699ff;
+  --azul-marinho: #090f34;
+  --cinza: #f4f6f8;
+  --amarelo: #ffd700;
+  --branco: #ffffff;
+}
+
+/* ==================================================
+RESET
+================================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", "Segoe UI", Arial, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--cinza);
+  color: #222;
+}
+
+body.apresentacao-mode {
+  overflow: hidden;
+}
+
+/* ==================================================
+ESTRUTURA SLIDES
+================================================== */
+
+section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px 24px;
+}
+
+.slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-height: 90vh;
+}
+
+/* ==================================================
+TIPOGRAFIA
+================================================== */
+
+h1 {
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: clamp(1.8rem, 3vw, 2.2rem);
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  color: var(--azul-marinho);
+}
+
+h3 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+  line-height: 1.7;
+  max-width: 900px;
+}
+
+/* ==================================================
+FUNDOS
+================================================== */
+
+.light {
+  background: var(--branco);
+}
+
+.soft {
+  background: var(--cinza);
+}
+
+.mid {
+  background: var(--azul-claro);
+}
+
+.dark {
+  background: var(--azul-marinho);
+  color: white;
+}
+
+.dark h2 {
+  color: var(--amarelo);
+}
+
+/* ==================================================
+CARDS
+================================================== */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.card {
+  background: white;
+  padding: 18px;
+  border-radius: 14px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+  font-size: 0.95rem;
+}
+
+.card.highlight {
+  border-left: 6px solid var(--amarelo);
+}
+
+/* ==================================================
+HERO
+================================================== */
+
+.hero {
+  background: var(--azul-marinho);
+  color: white;
+  text-align: center;
+}
+
+.hero-content {
+  align-items: center;
+  text-align: center;
+}
+
+.logo-apresentacao {
+  width: 320px;
+  max-width: 80%;
+  margin-bottom: 25px;
+}
+
+/* ==================================================
+FINAL
+================================================== */
+
+.final {
+  text-align: center;
+}
+
+.final p {
+  margin-top: 15px;
+}
+
+/* ==================================================
+ANIMAÇÃO
+================================================== */
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: all 0.8s ease;
+}
+
+.fade-up.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==================================================
+NOTEBOOKS (altura menor)
+================================================== */
+
+@media (max-height: 800px) {
+
+.container {
+  padding: 20px 24px;
+}
+
+.cards {
+  gap: 12px;
+}
+
+.card {
+  padding: 14px;
+}
+
+}
+
+/* ==================================================
+TABLET / MOBILE
+================================================== */
+
+@media (max-width: 900px) {
+
+.cards {
+  grid-template-columns: 1fr;
+}
+
+.logo-apresentacao {
+  width: 220px;
+}
+
+}
