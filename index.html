@@ -1275,14 +1275,15 @@ Object.values(mapa).forEach(s=>{
         }
       }
     }
-	if(cargo.includes("Projetista")){
+if(cargo.includes("Projetista")){
 
-      for(const k in mapa){
-        if(cargo.includes(k)){
-          estrutura.setores[mapa[k]].projetista.push(nome);
-        }
-      }
+  for(const k in mapa){
+    if(cargo.toLowerCase().includes(k.toLowerCase())){
+      estrutura.setores[mapa[k]].projetista.push(nome);
+      break;
     }
+  }
+}
   });
 
   Object.values(estrutura.setores).forEach(s=>{
