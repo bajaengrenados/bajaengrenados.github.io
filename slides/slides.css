@@ -472,7 +472,9 @@ CTA QR CODES
    font-weight:600;
 }
 
-/* PAREIROS */
+/* ==================================================
+PARCEIROS
+================================================== */
 
 .parceiros-carousel{
   width:100%;
@@ -502,6 +504,9 @@ CTA QR CODES
   justify-content: center;
 
   overflow: hidden;
+
+  transform: scale(0.8);
+  transform-origin: center;
 }
 
 .parceiro-logo img{
