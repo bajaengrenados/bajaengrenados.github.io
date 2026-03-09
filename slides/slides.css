@@ -319,45 +319,50 @@ h3 {
 }
 
 /* ==================================================
-ENGENHARIA REAL – TEXTO + MASCOTE LADO A LADO
+ENGENHARIA REAL – TEXTO + MASCOTE
 ================================================== */
 
-#engenharia-real {
-  display: flex;
-  align-items: center;
+#engenharia-real{
+  display:flex;
+  align-items:center;
 }
 
-.engenharia-layout {
-  display: grid;
-  grid-template-columns: 1.6fr 0.6fr; /* texto mais largo */
-  align-items: center;
-  gap: 20px;
+.engenharia-layout{
+  display:grid;
+  grid-template-columns: 65% 35%; /* texto bem maior */
+  align-items:center;
+  gap:40px;
 }
 
-.engenharia-texto {
-  z-index: 2;
-  max-width: 720px;
+/* TEXTO */
+
+.engenharia-texto{
+  max-width:750px;
+  z-index:2;
 }
 
-.engenharia-mascote {
-  display: flex;
-  justify-content: flex-end; /* empurra mascote para direita */
-  align-items: center;
+/* MASCOTE */
+
+.engenharia-mascote{
+  display:flex;
+  justify-content:flex-start; /* encosta na esquerda */
+  align-items:center;
 }
 
-.engenharia-mascote img {
-  width: 120%;          /* aumenta tamanho */
-  max-height: 95vh;     /* ocupa mais da tela */
-  object-fit: contain;
-  pointer-events: none;
-  transform: translateX(40px); /* joga mais para o canto */
+.engenharia-mascote img{
+  width:110%;
+  max-height:90vh;
+  object-fit:contain;
+  pointer-events:none;
 }
 
-.subtitulo-impacto {
-  font-size: 1.6rem;
-  margin-bottom: 25px;
-  font-weight: 600;
-  color: var(--amarelo);
+/* SUBTITULO */
+
+.subtitulo-impacto{
+  font-size:1.6rem;
+  margin-bottom:25px;
+  font-weight:600;
+  color:var(--amarelo);
 }
 
 
