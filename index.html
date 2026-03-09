@@ -1298,24 +1298,24 @@ function buildOrganogram(){
       }
     }
 
-    /* ESTAGIARIO */
+/* ESTAGIARIO */
 
-    if(cargoLower.includes("est")){
+if(cargoLower.startsWith("est.")){
 
-      for(const k in mapa){
+  for(const k in mapa){
 
-        if(cargoLower.includes(k.toLowerCase())){
+    if(cargoLower.includes(k.toLowerCase())){
 
-          const setor = mapa[k];
+      const setor = mapa[k];
 
-          if(!estrutura.setores[setor].est.includes(nome)){
-            estrutura.setores[setor].est.push(nome);
-          }
-
-          break;
-        }
+      if(!estrutura.setores[setor].est.includes(nome)){
+        estrutura.setores[setor].est.push(nome);
       }
+
+      break;
     }
+  }
+}
 
     /* PROJETISTA -> DESIGN */
 
