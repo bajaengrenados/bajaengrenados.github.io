@@ -329,20 +329,28 @@ ENGENHARIA REAL – TEXTO + MASCOTE LADO A LADO
 
 .engenharia-layout {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr; /* texto maior, mascote menor */
+  grid-template-columns: 1.6fr 0.6fr; /* texto mais largo */
   align-items: center;
-  gap: 40px;
+  gap: 20px;
 }
 
 .engenharia-texto {
   z-index: 2;
+  max-width: 720px;
+}
+
+.engenharia-mascote {
+  display: flex;
+  justify-content: flex-end; /* empurra mascote para direita */
+  align-items: center;
 }
 
 .engenharia-mascote img {
-  width: 100%;
-  max-height: 85vh;
+  width: 120%;          /* aumenta tamanho */
+  max-height: 95vh;     /* ocupa mais da tela */
   object-fit: contain;
   pointer-events: none;
+  transform: translateX(40px); /* joga mais para o canto */
 }
 
 .subtitulo-impacto {
@@ -351,6 +359,7 @@ ENGENHARIA REAL – TEXTO + MASCOTE LADO A LADO
   font-weight: 600;
   color: var(--amarelo);
 }
+
 
 /* ==================================================
    HERO
