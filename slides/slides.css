@@ -281,7 +281,7 @@ h3 {
    ORGANOGRAMA - VERSÃO COMPACTA
 ================================================== */
 #organograma {
-  transform: scale(1.2);
+  transform: scale(1.0);
   transform-origin: top center;
   padding: 20px 0;
 }
