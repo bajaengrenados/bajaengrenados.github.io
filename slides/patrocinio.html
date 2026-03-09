@@ -557,19 +557,27 @@ document.querySelectorAll(".fade-up").forEach(el => {
 /* ===============================
    ORGANOGRAMA
 ================================*/
-function buildOrganogram(){
-
-  const cards = document.querySelectorAll(".member");
-  const org = document.getElementById("organograma");
-
-  if(!cards.length || !org) return;
-
-  const estrutura = {
-    coord:null,
-    cap:null,
-    tes:null,
-    setores:{}
-  };
+         async function carregarMembros() {
+         
+         const response = await fetch('/index.html');
+         const html = await response.text();
+         
+         const parser = new DOMParser();
+         const doc = parser.parseFromString(html, 'text/html');
+         
+         return doc.querySelectorAll('.member');
+         }
+         
+         async function montarOrganograma() {
+         
+         const members = await carregarMembros();
+         
+         const estrutura = {
+           coordenador: null,
+           capitao: null,
+           tesoureiro: null,
+           setores: {}
+         };
 
   const mapa = {
     'Planejamento':'Planejamento',
