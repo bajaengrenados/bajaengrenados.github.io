@@ -145,7 +145,7 @@
             <div class="member" data-id="05">
 				<img src="/assets/membros/victor_felipe.png">
 				<h4>Victor Felipe</h4>
-				<h5>Sup. Eletrica</h5>
+				<h5>Sup. Elétrica</h5>
 				<span>Eng. de Controle e Autômação</span>
 			</div>
 			
@@ -247,14 +247,14 @@
 			
 			<!-- TI -->
 			
-            <div class="member" data-id="08.1">
+                        <div class="member" data-id="08.1">
 				<img src="/assets/membros/thiago_souza.png">
 				<h4>Thiago Fulgêncio</h4>
 				<h5>Aux. de TI</h5>
 				<span>Eng. de Computação</span>
 			</div>
 			
-		    <div class="member" data-id="08.2">
+		        <div class="member" data-id="08.2">
 				<img src="/assets/membros/thiago_henrique.png">
 				<h4>Thiago Henrique</h4>
 				<h5>Aux. de TI</h5>
@@ -262,8 +262,8 @@
 			</div>
 			
 			<div class="member" data-id="08.3">
-				<img src="/assets/membros/bruno_lempp.png">
-				<h4>Bruno Lempp</h4>
+				<img src="/assets/membros/perfil_masculino.png">
+				<h4>Nicolas Marrai</h4>
 				<h5>Aux. de TI</h5>
 				<span>Eng. de Computação</span>
 			</div>
@@ -1216,15 +1216,20 @@ function buildOrganogram(){
     'Relações Publicas':'Relações Públicas',
     'Marketing':'Marketing',
     'Estrutural':'Estrutural',
-    'PowerTrain':'Motor e Transmissão',
-    'Eletrica':'Elétrica',
+    'PowerTrain':'PowerTrain',
+    'Elétrica':'Elétrica',
     'TI':'TI',
-	'Projetos':'Projetos' 
+    'Projetos':'Projetos' 
   };
 
-  Object.values(mapa).forEach(s=>{
-    estrutura.setores[s]={sup:null,aux:[]};
-  });
+Object.values(mapa).forEach(s=>{
+  estrutura.setores[s]={
+    sup:null,
+    aux:[],
+    est:[],
+    projetista:[]
+  };
+});
 
   cards.forEach(c=>{
 
@@ -1274,7 +1279,7 @@ function buildOrganogram(){
 
       for(const k in mapa){
         if(cargo.includes(k)){
-          estrutura.setores[mapa[k]].Projetista.push(nome);
+          estrutura.setores[mapa[k]].projetista.push(nome);
         }
       }
     }
@@ -1328,11 +1333,19 @@ function buildOrganogram(){
 
     let html=`<strong>${n}</strong><br><br>`;
 
-    if(s.sup) html+=`${s.sup} (Sup.)<br>`;
+   if(s.sup) html+=`${s.sup} (Sup.)<br>`;
 
-    s.aux.forEach(a=>{
-      html+=`${a} (Aux.)<br>`;
-    });
+s.projetista.forEach(p=>{
+  html+=`${p} (Projetista)<br>`;
+});
+
+s.aux.forEach(a=>{
+  html+=`${a} (Aux.)<br>`;
+});
+
+s.est.forEach(e=>{
+  html+=`${e} (Est.)<br>`;
+});
 
     const box=document.createElement("div");
     box.className="org-box setor";
