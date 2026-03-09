@@ -1164,7 +1164,7 @@ function initForm(){
    POP-UP
 ================================*/
 
-const popupAtivo = true; // 🔥 Troque para true quando quiser ativar
+const popupAtivo = false; // 🔥 Troque para true quando quiser ativar
 
 window.onload = function() {
 
@@ -1216,79 +1216,125 @@ function buildOrganogram(){
     'Relações Publicas':'Relações Públicas',
     'Marketing':'Marketing',
     'Estrutural':'Estrutural',
+    'Powertrain':'Powertrain',
     'PowerTrain':'Powertrain',
     'Elétrica':'Elétrica',
+    'Eletrica':'Elétrica',
     'TI':'TI',
-    'Projetista':'Projetos' 
+    'Design':'Design'
   };
 
-Object.values(mapa).forEach(s=>{
-  estrutura.setores[s]={
-    sup:null,
-    aux:[],
-    est:[],
-    projetista:[]
-  };
-});
+  /* cria os setores */
+  Object.values(mapa).forEach(s=>{
+    if(!estrutura.setores[s]){
+      estrutura.setores[s]={
+        sup:null,
+        aux:[],
+        est:[],
+        projetista:[]
+      };
+    }
+  });
 
   cards.forEach(c=>{
 
     const nome = c.querySelector("h4")?.textContent.trim();
     const cargo = c.querySelector("h5")?.textContent.trim();
 
-    if(!nome || !cargo) return;
+    if(!nome || !cargo || nome === "-") return;
 
-    if(cargo.includes("Coordenador")){
-      estrutura.coord=nome; return;
+    const cargoLower = cargo.toLowerCase();
+
+    /* cargos principais */
+
+    if(cargoLower.includes("coordenador")){
+      estrutura.coord = nome;
+      return;
     }
 
-    if(cargo.includes("Capitão")){
-      estrutura.cap=nome; return;
+    if(cargoLower.includes("capitão")){
+      estrutura.cap = nome;
+      return;
     }
 
-    if(cargo.includes("Tesoureiro")){
-      estrutura.tes=nome; return;
+    if(cargoLower.includes("tesoureiro")){
+      estrutura.tes = nome;
+      return;
     }
 
-    if(cargo.includes("Sup.")){
+    /* SUPERVISOR */
+
+    if(cargoLower.includes("sup")){
 
       for(const k in mapa){
-        if(cargo.includes(k)){
-          estrutura.setores[mapa[k]].sup=nome;
+
+        if(cargoLower.includes(k.toLowerCase())){
+
+          const setor = mapa[k];
+
+          estrutura.setores[setor].sup = nome;
+
+          break;
         }
       }
     }
 
-    if(cargo.includes("Aux.")){
+    /* AUXILIAR */
+
+    if(cargoLower.includes("aux")){
 
       for(const k in mapa){
-        if(cargo.includes(k)){
-          estrutura.setores[mapa[k]].aux.push(nome);
+
+        if(cargoLower.includes(k.toLowerCase())){
+
+          const setor = mapa[k];
+
+          if(!estrutura.setores[setor].aux.includes(nome)){
+            estrutura.setores[setor].aux.push(nome);
+          }
+
+          break;
         }
       }
     }
-	if(cargo.includes("Est.")){
+
+    /* ESTAGIARIO */
+
+    if(cargoLower.includes("est")){
 
       for(const k in mapa){
-        if(cargo.includes(k)){
-          estrutura.setores[mapa[k]].est.push(nome);
+
+        if(cargoLower.includes(k.toLowerCase())){
+
+          const setor = mapa[k];
+
+          if(!estrutura.setores[setor].est.includes(nome)){
+            estrutura.setores[setor].est.push(nome);
+          }
+
+          break;
         }
       }
     }
-if(cargo.includes("Projetista")){
 
-  for(const k in mapa){
-    if(cargo.toLowerCase().includes(k.toLowerCase())){
-      estrutura.setores[mapa[k]].projetista.push(nome);
-      break;
+    /* PROJETISTA -> DESIGN */
+
+    if(cargoLower.includes("projetista")){
+
+      if(!estrutura.setores["Design"].projetista.includes(nome)){
+        estrutura.setores["Design"].projetista.push(nome);
+      }
     }
-  }
-}
+
   });
+
+  /* ordena auxiliares */
 
   Object.values(estrutura.setores).forEach(s=>{
     s.aux.sort((a,b)=>a.localeCompare(b,"pt-BR"));
   });
+
+  /* funções visuais */
 
   function nivel(html){
     const d=document.createElement("div");
@@ -1303,9 +1349,11 @@ if(cargo.includes("Projetista")){
     org.appendChild(l);
   }
 
+  /* topo */
+
   nivel(`
     <div class="org-box">
-      ${estrutura.coord||"A definir"}<br>
+      ${estrutura.coord || "A definir"}<br>
       <small>Coordenador</small>
     </div>`);
 
@@ -1313,7 +1361,7 @@ if(cargo.includes("Projetista")){
 
   nivel(`
     <div class="org-box">
-      ${estrutura.cap||"A definir"}<br>
+      ${estrutura.cap || "A definir"}<br>
       <small>Capitão</small>
     </div>`);
 
@@ -1321,11 +1369,13 @@ if(cargo.includes("Projetista")){
 
   nivel(`
     <div class="org-box">
-      ${estrutura.tes||"A definir"}<br>
+      ${estrutura.tes || "A definir"}<br>
       <small>Tesoureiro</small>
     </div>`);
 
   linha();
+
+  /* setores */
 
   const setores=document.createElement("div");
   setores.className="org-nivel org-setores";
@@ -1334,30 +1384,31 @@ if(cargo.includes("Projetista")){
 
     let html=`<strong>${n}</strong><br><br>`;
 
-   if(s.sup) html+=`${s.sup} (Sup.)<br>`;
+    if(s.sup) html+=`${s.sup} (Sup.)<br>`;
 
-s.projetista.forEach(p=>{
-  html+=`${p} (Projetista)<br>`;
-});
+    s.projetista.forEach(p=>{
+      html+=`${p} (Projetista)<br>`;
+    });
 
-s.aux.forEach(a=>{
-  html+=`${a} (Aux.)<br>`;
-});
+    s.aux.forEach(a=>{
+      html+=`${a} (Aux.)<br>`;
+    });
 
-s.est.forEach(e=>{
-  html+=`${e} (Est.)<br>`;
-});
+    s.est.forEach(e=>{
+      html+=`${e} (Est.)<br>`;
+    });
 
     const box=document.createElement("div");
     box.className="org-box setor";
     box.innerHTML=html;
 
     setores.appendChild(box);
+
   });
 
   org.appendChild(setores);
-}
 
+}
 	
 </script>
 
