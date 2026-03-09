@@ -1380,31 +1380,32 @@ if(cargoLower.startsWith("est.")){
   const setores=document.createElement("div");
   setores.className="org-nivel org-setores";
 
-  Object.entries(estrutura.setores).forEach(([n,s])=>{
+Object.entries(estrutura.setores).forEach(([n,s])=>{
 
-    let html=`<strong>${n}</strong><br><br>`;
+  const nomeVisual = (n === "Design") ? "Projetos" : n;
 
-    if(s.sup) html+=`${s.sup} (Sup.)<br>`;
+  let html=`<strong>${nomeVisual}</strong><br><br>`;
 
-    s.projetista.forEach(p=>{
-      html+=`${p} (Projetista)<br>`;
-    });
+  if(s.sup) html+=`${s.sup} (Sup.)<br>`;
 
-    s.aux.forEach(a=>{
-      html+=`${a} (Aux.)<br>`;
-    });
-
-    s.est.forEach(e=>{
-      html+=`${e} (Est.)<br>`;
-    });
-
-    const box=document.createElement("div");
-    box.className="org-box setor";
-    box.innerHTML=html;
-
-    setores.appendChild(box);
-
+  s.projetista.forEach(p=>{
+    html+=`${p} (Projetista)<br>`;
   });
+
+  s.aux.forEach(a=>{
+    html+=`${a} (Aux.)<br>`;
+  });
+
+  s.est.forEach(e=>{
+    html+=`${e} (Est.)<br>`;
+  });
+
+  const box=document.createElement("div");
+  box.className="org-box setor";
+  box.innerHTML=html;
+
+  setores.appendChild(box);
+});
 
   org.appendChild(setores);
 
