@@ -554,151 +554,223 @@ document.querySelectorAll(".fade-up").forEach(el => {
 });
 
 
-/* ==================================================
-ORGANOGRAMA
-================================================== */
-         async function carregarMembros() {
-         
-         const response = await fetch('/index.html');
-         const html = await response.text();
-         
-         const parser = new DOMParser();
-         const doc = parser.parseFromString(html, 'text/html');
-         
-         return doc.querySelectorAll('.member');
-         }
-         
-         async function montarOrganograma() {
-         
-         const members = await carregarMembros();
-         
-         const estrutura = {
-           coordenador: null,
-           capitao: null,
-           tesoureiro: null,
-           setores: {}
-         };
-         
-         const mapaSetores = {
-           'Projetos': 'Projetos',
-           'Relações Publicas': 'Relações Públicas',
-           'Marketing': 'Marketing',
-           'Chassis e Freio': 'Chassis e Freio',
-           'Motor e Transmissão': 'Motor e Transmissão',
-           'Suspensão e Direção': 'Suspensão e Direção',
-           'Eletrica': 'Elétrica',
-           'Elétrica': 'Elétrica',
-           'TI': 'TI'
-         };
-         
-         Object.values(mapaSetores).forEach(s => {
-           estrutura.setores[s] = { sup: null, aux: [] };
-         });
-         
-         members.forEach(member => {
-         
-           const nome = member.querySelector('h4')?.textContent.trim();
-           const cargo = member.querySelector('h5')?.textContent.trim();
-         
-           if (!nome || !cargo) return;
-         
-           if (cargo.includes('Coordenador')) estrutura.coordenador = nome;
-           else if (cargo.includes('Capitão')) estrutura.capitao = nome;
-           else if (cargo.includes('Tesoureiro')) estrutura.tesoureiro = nome;
-         
-           else if (cargo.includes('Sup.')) {
-         
-             Object.keys(mapaSetores).forEach(key => {
-               if (cargo.includes(key)) {
-                 estrutura.setores[mapaSetores[key]].sup = nome;
-               }
-             });
-         
-           }
-         
-           else if (cargo.includes('Aux.')) {
-         
-             Object.keys(mapaSetores).forEach(key => {
-               if (cargo.includes(key)) {
-                 estrutura.setores[mapaSetores[key]].aux.push(nome);
-               }
-             });
-         
-           }
-         
-         });
-         
-         Object.values(estrutura.setores).forEach(setor => {
-           setor.aux.sort((a,b)=>a.localeCompare(b,'pt-BR'));
-         });
-         
-         const org = document.getElementById('organograma');
-         org.innerHTML = '';
-         
-         function nivel(html){
-           const d=document.createElement('div');
-           d.className='org-nivel';
-           d.innerHTML=html;
-           org.appendChild(d);
-         }
-         
-         function linha(){
-           const l=document.createElement('div');
-           l.className='org-linha';
-           org.appendChild(l);
-         }
-         
-         nivel(`
-           <div class="org-box">
-             ${estrutura.coordenador || 'A definir'}<br>
-             <small>Coordenador</small>
-           </div>
-         `);
-         
-         linha();
-         
-         nivel(`
-           <div class="org-box">
-             ${estrutura.capitao || 'A definir'}<br>
-             <small>Capitão</small>
-           </div>
-         `);
-         
-         linha();
-         
-         nivel(`
-           <div class="org-box">
-             ${estrutura.tesoureiro || 'A definir'}<br>
-             <small>Tesoureiro</small>
-           </div>
-         `);
-         
-         linha();
-         
-         const setoresDiv=document.createElement('div');
-         setoresDiv.className='org-nivel org-setores';
-         
-         Object.entries(estrutura.setores).forEach(([nome,setor])=>{
-         
-           let html=`<strong>${nome}</strong><br><br>`;
-         
-           if(setor.sup) html+=`${setor.sup} (Sup.)<br>`;
-         
-           setor.aux.forEach(a=>{
-             html+=`${a} (Aux.)<br>`;
-           });
-         
-           const box=document.createElement('div');
-           box.className='org-box setor';
-           box.innerHTML=html;
-         
-           setoresDiv.appendChild(box);
-         });
-         
-         org.appendChild(setoresDiv);
-         }
-         
-         montarOrganograma();
+/* ===============================
+   ORGANOGRAMA
+================================*/
+function buildOrganogram(){
+
+  const cards = document.querySelectorAll(".member");
+  const org = document.getElementById("organograma");
+
+  if(!cards.length || !org) return;
+
+  const estrutura = {
+    coord:null,
+    cap:null,
+    tes:null,
+    setores:{}
+  };
+
+  const mapa = {
+    'Planejamento':'Planejamento',
+    'Relações Publicas':'Relações Públicas',
+    'Marketing':'Marketing',
+    'Estrutural':'Estrutural',
+    'Powertrain':'Powertrain',
+    'PowerTrain':'Powertrain',
+    'Elétrica':'Elétrica',
+    'Eletrica':'Elétrica',
+    'TI':'TI',
+    'Design':'Design'
+  };
+
+  /* cria os setores */
+  Object.values(mapa).forEach(s=>{
+    if(!estrutura.setores[s]){
+      estrutura.setores[s]={
+        sup:null,
+        aux:[],
+        est:[],
+        projetista:[]
+      };
+    }
+  });
+
+  cards.forEach(c=>{
+
+    const nome = c.querySelector("h4")?.textContent.trim();
+    const cargo = c.querySelector("h5")?.textContent.trim();
+
+    if(!nome || !cargo || nome === "-") return;
+
+    const cargoLower = cargo.toLowerCase();
+
+    /* cargos principais */
+
+    if(cargoLower.includes("coordenador")){
+      estrutura.coord = nome;
+      return;
+    }
+
+    if(cargoLower.includes("capitão")){
+      estrutura.cap = nome;
+      return;
+    }
+
+    if(cargoLower.includes("tesoureiro")){
+      estrutura.tes = nome;
+      return;
+    }
+
+    /* SUPERVISOR */
+
+    if(cargoLower.includes("sup")){
+
+      for(const k in mapa){
+
+        if(cargoLower.includes(k.toLowerCase())){
+
+          const setor = mapa[k];
+
+          estrutura.setores[setor].sup = nome;
+
+          break;
+        }
+      }
+    }
+
+    /* AUXILIAR */
+
+    if(cargoLower.includes("aux")){
+
+      for(const k in mapa){
+
+        if(cargoLower.includes(k.toLowerCase())){
+
+          const setor = mapa[k];
+
+          if(!estrutura.setores[setor].aux.includes(nome)){
+            estrutura.setores[setor].aux.push(nome);
+          }
+
+          break;
+        }
+      }
+    }
+
+/* ESTAGIARIO */
+
+if(cargoLower.startsWith("est.")){
+
+  for(const k in mapa){
+
+    if(cargoLower.includes(k.toLowerCase())){
+
+      const setor = mapa[k];
+
+      if(!estrutura.setores[setor].est.includes(nome)){
+        estrutura.setores[setor].est.push(nome);
+      }
+
+      break;
+    }
+  }
+}
+
+    /* PROJETISTA -> DESIGN */
+
+    if(cargoLower.includes("projetista")){
+
+      if(!estrutura.setores["Design"].projetista.includes(nome)){
+        estrutura.setores["Design"].projetista.push(nome);
+      }
+    }
+
+  });
+
+  /* ordena auxiliares */
+
+  Object.values(estrutura.setores).forEach(s=>{
+    s.aux.sort((a,b)=>a.localeCompare(b,"pt-BR"));
+  });
+
+  /* funções visuais */
+
+  function nivel(html){
+    const d=document.createElement("div");
+    d.className="org-nivel";
+    d.innerHTML=html;
+    org.appendChild(d);
+  }
+
+  function linha(){
+    const l=document.createElement("div");
+    l.className="org-linha";
+    org.appendChild(l);
+  }
+
+  /* topo */
+
+  nivel(`
+    <div class="org-box">
+      ${estrutura.coord || "A definir"}<br>
+      <small>Coordenador</small>
+    </div>`);
+
+  linha();
+
+  nivel(`
+    <div class="org-box">
+      ${estrutura.cap || "A definir"}<br>
+      <small>Capitão</small>
+    </div>`);
+
+  linha();
+
+  nivel(`
+    <div class="org-box">
+      ${estrutura.tes || "A definir"}<br>
+      <small>Tesoureiro</small>
+    </div>`);
+
+  linha();
+
+  /* setores */
+
+  const setores=document.createElement("div");
+  setores.className="org-nivel org-setores";
+
+Object.entries(estrutura.setores).forEach(([n,s])=>{
+
+  const nomeVisual = (n === "Design") ? "Projetos" : n;
+
+  let html=`<strong>${nomeVisual}</strong><br><br>`;
+
+  if(s.sup) html+=`${s.sup} (Sup.)<br>`;
+
+  s.projetista.forEach(p=>{
+    html+=`${p} (Projetista)<br>`;
+  });
+
+  s.aux.forEach(a=>{
+    html+=`${a} (Aux.)<br>`;
+  });
+
+  s.est.forEach(e=>{
+    html+=`${e} (Est.)<br>`;
+  });
+
+  const box=document.createElement("div");
+  box.className="org-box setor";
+  box.innerHTML=html;
+
+  setores.appendChild(box);
+});
+
+  org.appendChild(setores);
+
+}
+
 
 
 /* ==================================================
