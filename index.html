@@ -1418,26 +1418,53 @@ function buildOrganogram(){
   /* ===============================
      3º NIVEL (TESOUREIRO + PROJETOS)
   ================================*/
-  const nivel3 = document.createElement("div");
-  nivel3.className = "org-nivel org-duplo";
+const nivel3 = document.createElement("div");
+nivel3.className = "org-nivel org-duplo-linha";
 
-  const tesBox = document.createElement("div");
-  tesBox.className = "org-box";
-  tesBox.innerHTML = `
-    ${estrutura.tes || "A definir"}<br>
-    <small>Tesoureiro</small>
-  `;
+/* TESOUREIRO */
+const tesWrap = document.createElement("div");
+tesWrap.className = "org-item";
 
-  const projBox = document.createElement("div");
-  projBox.className = "org-box";
-  projBox.innerHTML = `
-    Projetos<br>
-    <small>Projetista</small>
-  `;
+const tesBox = document.createElement("div");
+tesBox.className = "org-box";
+tesBox.innerHTML = `
+  ${estrutura.tes || "A definir"}<br>
+  <small>Tesoureiro</small>
+`;
 
-  nivel3.appendChild(tesBox);
-  nivel3.appendChild(projBox);
-  org.appendChild(nivel3);
+const linhaTes = document.createElement("div");
+linhaTes.className = "linha-horizontal direita";
+
+tesWrap.appendChild(tesBox);
+tesWrap.appendChild(linhaTes);
+
+/* PROJETOS */
+const projWrap = document.createElement("div");
+projWrap.className = "org-item";
+
+const linhaProj = document.createElement("div");
+linhaProj.className = "linha-horizontal esquerda";
+
+const projBox = document.createElement("div");
+projBox.className = "org-box";
+projBox.innerHTML = `
+  Projetos<br>
+  <small>Projetista</small>
+`;
+
+projWrap.appendChild(linhaProj);
+projWrap.appendChild(projBox);
+
+/* LINHA CENTRAL */
+const linhaCentral = document.createElement("div");
+linhaCentral.className = "linha-vertical-central";
+
+/* MONTA */
+nivel3.appendChild(tesWrap);
+nivel3.appendChild(linhaCentral);
+nivel3.appendChild(projWrap);
+
+org.appendChild(nivel3);
 
   linha();
 
