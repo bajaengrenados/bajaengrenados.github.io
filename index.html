@@ -200,9 +200,9 @@
 			
 			<div class="member" data-id="03.2">
 				<img src="/assets/membros/perfil_masculino.png">
-				<h4>André Luiz</h4>
+				<h4> - </h4>
 				<h5>Aux. Estrutural </h5>
-				<span>Eng. Mecânica</span>
+				<span> - </span>
 			</div>
 			
 	        <div class="member" data-id="03.3">
@@ -224,10 +224,10 @@
 	        <!-- ELETRICA -->
 			
 		    <div class="member" data-id="05.1">
-				<img src="/assets/membros/julia_mazeto.png">
-				<h4>Júlia Mazeto</h4>
+				<img src="/assets/membros/perfil_masculino.png">
+				<h4> - </h4>
 				<h5>Aux. Elétrica </h5>
-				<span>Eng. Elétrica</span>
+				<span> - </span>
 			</div>
 			
 		    <div class="member" data-id="05.2">
@@ -587,6 +587,31 @@
           Ler matéria
         </a>
       </div>
+<div class="card">
+  <h3>
+    A equipe Engrenados Baja Uniube - NUPEIA foi destaque no MGTV, em matéria exibida pela TV Integração
+  </h3>
+
+  <p class="fonte-data">
+    Reportagem exibida no MGTV2 • 03/03/2026
+  </p>
+
+  <button class="btn-link" onclick="abrirModal()">
+    Assistir reportagem
+  </button>
+</div>
+
+<!-- Modal -->
+<div id="modalVideo" class="modal">
+  <div class="modal-content">
+    <span class="fechar" onclick="fecharModal()">&times;</span>
+
+    <video id="videoPlayer" controls>
+      <source src="/assets/media/reportagem_tv.mp4" type="video/mp4">
+      Seu navegador não suporta vídeo.
+    </video>
+  </div>
+</div>
 
     </div>
   </div>
@@ -1091,6 +1116,33 @@ function exitFullscreen(){
     document.exitFullscreen();
   }
 }
+
+
+/* ===============================
+   VIDEO MODAL
+================================*/
+
+  function abrirModal() {
+    document.getElementById("modalVideo").style.display = "block";
+  }
+
+  function fecharModal() {
+    const modal = document.getElementById("modalVideo");
+    const video = document.getElementById("videoPlayer");
+
+    modal.style.display = "none";
+    video.pause();
+    video.currentTime = 0;
+  }
+
+  // Fechar ao clicar fora
+  window.onclick = function(event) {
+    const modal = document.getElementById("modalVideo");
+    if (event.target == modal) {
+      fecharModal();
+    }
+  }
+
 
 
 /* ===============================
