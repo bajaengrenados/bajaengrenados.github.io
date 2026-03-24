@@ -1422,50 +1422,67 @@ if(cargoLower.startsWith("est.")){
       <small>Capitão</small>
     </div>`);
 
-  linha();
+linha();
 
-  nivel(`
-    <div class="org-box">
-      ${estrutura.tes || "A definir"}<br>
-      <small>Tesoureiro</small>
-    </div>`);
+/* NIVEL ABAIXO DO CAPITÃO */
 
-  linha();
+const nivelDireto = document.createElement("div");
+nivelDireto.className = "org-nivel org-direto";
 
-  /* setores */
+/* TESOUREIRO */
+const tesBox = document.createElement("div");
+tesBox.className = "org-box";
+tesBox.innerHTML = `
+  ${estrutura.tes || "A definir"}<br>
+  <small>Tesoureiro</small>
+`;
 
-  const setores=document.createElement("div");
-  setores.className="org-nivel org-setores";
+/* PROJETOS */
+const projBox = document.createElement("div");
+projBox.className = "org-box";
+projBox.innerHTML = `
+  Projetos<br>
+  <small>Projetista</small>
+`;
 
+/* SETORES (AGRUPADOS) */
+const setoresBox = document.createElement("div");
+setoresBox.className = "org-box setores-container";
+
+let htmlSetores = "";
+
+/* monta setores dentro */
 Object.entries(estrutura.setores).forEach(([n,s])=>{
 
   const nomeVisual = (n === "Design") ? "Projetos" : n;
 
-  let html=`<strong>${nomeVisual}</strong><br><br>`;
+  htmlSetores += `<strong>${nomeVisual}</strong><br>`;
 
   if(s.sup) html+=`${s.sup} (Sup.)<br>`;
 
   s.projetista.forEach(p=>{
-    html+=`${p} (Projetista)<br>`;
+    htmlSetores+=`${p} (Proj.)<br>`;
   });
 
   s.aux.forEach(a=>{
-    html+=`${a} (Aux.)<br>`;
+    htmlSetores+=`${a} (Aux.)<br>`;
   });
 
   s.est.forEach(e=>{
-    html+=`${e} (Est.)<br>`;
+    htmlSetores+=`${e} (Est.)<br>`;
   });
 
-  const box=document.createElement("div");
-  box.className="org-box setor";
-  box.innerHTML=html;
-
-  setores.appendChild(box);
+  htmlSetores += "<br>";
 });
 
-  org.appendChild(setores);
+setoresBox.innerHTML = htmlSetores;
 
+/* MONTAGEM */
+nivelDireto.appendChild(tesBox);
+nivelDireto.appendChild(projBox);
+nivelDireto.appendChild(setoresBox);
+
+org.appendChild(nivelDireto);
 }
 	
 </script>
