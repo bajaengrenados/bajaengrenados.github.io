@@ -1458,7 +1458,7 @@ Object.entries(estrutura.setores).forEach(([n,s])=>{
 
   htmlSetores += `<strong>${nomeVisual}</strong><br>`;
 
-  if(s.sup) html+=`${s.sup} (Sup.)<br>`;
+  if(s.sup) htmlSetores+=`${s.sup} (Sup.)<br>`;
 
   s.projetista.forEach(p=>{
     htmlSetores+=`${p} (Proj.)<br>`;
