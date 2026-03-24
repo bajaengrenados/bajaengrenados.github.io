@@ -836,40 +836,42 @@ section p{
   display:flex;
   justify-content:center;
   align-items:center;
-  gap:80px;
+  gap:120px; /* mais respiro */
   position:relative;
+  margin-top:10px;
 }
 
 /* cada lado */
 .org-item{
   display:flex;
   align-items:center;
-  gap:10px;
 }
 
-/* linha horizontal */
+/* linhas horizontais */
 .linha-horizontal{
   height:2px;
-  width:60px;
-  background:#ccc;
+  width:80px;
+  background:#999;
 }
 
-/* direções */
-.direita{
-  margin-left:10px;
-}
-
-.esquerda{
-  margin-right:10px;
-}
-
-/* linha vertical central */
+/* linha central mais longa */
 .linha-vertical-central{
   width:2px;
-  height:60px;
-  background:#ccc;
+  height:80px;
+  background:#999;
 }
 
+/* box mais elegante */
+.org-box{
+  padding:12px 18px;
+  border-radius:10px;
+  background:rgba(255,255,255,0.9);
+  backdrop-filter: blur(6px);
+  text-align:center;
+  min-width:160px;
+  font-weight:500;
+  box-shadow:0 4px 12px rgba(0,0,0,0.1);
+}
 /* ==================================================
    POP-UP
 ================================================== */
