@@ -801,6 +801,19 @@ section p{
   margin: 10px auto;
 }
 
+.org-direto{
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  gap:40px;
+  flex-wrap:wrap;
+}
+
+.setores-container{
+  max-width:300px;
+  text-align:left;
+}
+
 /* ==================================================
    POP-UP
 ================================================== */
