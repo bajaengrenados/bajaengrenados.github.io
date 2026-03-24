@@ -832,6 +832,44 @@ section p{
   margin:0 auto;
 }
 
+.org-duplo-linha{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:80px;
+  position:relative;
+}
+
+/* cada lado */
+.org-item{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+/* linha horizontal */
+.linha-horizontal{
+  height:2px;
+  width:60px;
+  background:#ccc;
+}
+
+/* direções */
+.direita{
+  margin-left:10px;
+}
+
+.esquerda{
+  margin-right:10px;
+}
+
+/* linha vertical central */
+.linha-vertical-central{
+  width:2px;
+  height:60px;
+  background:#ccc;
+}
+
 /* ==================================================
    POP-UP
 ================================================== */
