@@ -1,12 +1,15 @@
 /* ==================================================
-ORGANOGRAMA COMPLETO — VERSÃO FINAL
+ORGANOGRAMA — CSS FINAL PROFISSIONAL
 ================================================== */
 
+/* ===============================
+CONTAINER
+================================*/
 .organograma{
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 25px;
 }
 
 /* ===============================
@@ -25,26 +28,26 @@ NÍVEIS
 .org-nivel::before{
   content: '';
   position: absolute;
-  top: -20px;
+  top: -25px;
   left: 50%;
   width: 2px;
-  height: 20px;
+  height: 25px;
   background: #999;
   transform: translateX(-50%);
 }
 
-/* remove linha do topo */
+/* remove no primeiro nível */
 .organograma > .org-nivel:first-child::before{
   display: none;
 }
 
 /* ===============================
-BOXES (PADRÃO ÚNICO)
+BOXES
 ================================*/
 .org-box{
   position: relative;
 
-  background: #0a1f44; /* cor única */
+  background: #0a1f44;
   color: #fff;
 
   padding: 12px 18px;
@@ -59,7 +62,7 @@ BOXES (PADRÃO ÚNICO)
   border: 2px solid #fff;
   box-shadow: 0 6px 16px rgba(0,0,0,.15);
 
-  transition: 0.2s ease;
+  transition: .2s ease;
 }
 
 .org-box:hover{
@@ -67,49 +70,82 @@ BOXES (PADRÃO ÚNICO)
   box-shadow: 0 10px 22px rgba(0,0,0,.2);
 }
 
-/* remove variação antiga */
-.setor{
-  background: #0a1f44;
-}
-
 /* ===============================
-TESOUREIRO + PROJETOS
+NÍVEL 3 (TESOUREIRO + PROJETOS)
 ================================*/
 .org-duplo-linha{
   position: relative;
+  display: flex;
   justify-content: center;
+  align-items: flex-start;
   gap: 120px;
 }
 
-/* linha horizontal entre os dois */
+/* LINHA DE ENTRADA (VINDO DO CAPITÃO) */
 .org-duplo-linha::after{
   content: '';
   position: absolute;
-  top: 0;
+  top: -25px;
   left: 50%;
-  width: 200px;
+  width: 220px;
   height: 2px;
   background: #999;
   transform: translateX(-50%);
 }
 
-/* LINHA DESCENDO DO MEIO (IMPORTANTE 🔥) */
+/* LINHA DESCENDO DO CENTRO */
 .org-duplo-linha::before{
   content: '';
   position: absolute;
   top: 100%;
   left: 50%;
   width: 2px;
-  height: 30px;
+  height: 40px;
   background: #999;
   transform: translateX(-50%);
-  z-index: 1;
+  z-index: 2;
 }
 
 /* ===============================
-SETORES (GRID PERFEITO)
+ITENS INTERNOS (TES / PROJ)
+================================*/
+.org-item{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* linha vertical de entrada em cada box */
+.org-item::before{
+  content: '';
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  width: 2px;
+  height: 25px;
+  background: #999;
+  transform: translateX(-50%);
+}
+
+/* linha descendo de cada box */
+.org-item::after{
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 2px;
+  height: 20px;
+  background: #999;
+  transform: translateX(-50%);
+}
+
+/* ===============================
+SETORES (GRID)
 ================================*/
 .org-setores{
+  position: relative;
+
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
@@ -117,35 +153,53 @@ SETORES (GRID PERFEITO)
   width: 100%;
   max-width: 1000px;
 
-  margin-top: 30px;
-  position: relative;
+  margin-top: 40px;
 }
 
-/* linha vertical conectando com nível acima */
+/* linha vertical central */
 .org-setores::before{
   content: '';
   position: absolute;
-  top: -30px;
+  top: -40px;
   left: 50%;
   width: 2px;
-  height: 30px;
+  height: 40px;
   background: #999;
   transform: translateX(-50%);
 }
 
-/* linha horizontal ligando todos setores */
+/* linha horizontal principal */
 .org-setores::after{
   content: '';
   position: absolute;
-  top: -30px;
-  left: 10%;
-  width: 80%;
+  top: -40px;
+  left: 5%;
+  width: 90%;
   height: 2px;
   background: #999;
 }
 
 /* ===============================
-REMOVE LINHAS ANTIGAS DO JS
+LINHA INDIVIDUAL DOS SETORES
+================================*/
+.org-setores .org-box{
+  position: relative;
+}
+
+/* linha subindo de cada setor */
+.org-setores .org-box::before{
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  width: 2px;
+  height: 20px;
+  background: #999;
+  transform: translateX(-50%);
+}
+
+/* ===============================
+REMOVER LINHAS ANTIGAS (JS)
 ================================*/
 .linha-horizontal,
 .linha-vertical-central,
@@ -161,19 +215,18 @@ RESPONSIVO
   .org-nivel{
     flex-direction: column;
     align-items: center;
-    gap: 20px;
   }
 
   .org-duplo-linha{
-    gap: 20px;
+    gap: 30px;
   }
 
   .org-duplo-linha::after{
     display: none;
   }
 
-  .org-duplo-linha::before{
-    height: 20px;
+  .org-item::before{
+    display: none;
   }
 
   .org-setores{
