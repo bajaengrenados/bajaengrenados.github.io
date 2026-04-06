@@ -1279,7 +1279,7 @@ function buildOrganogram(){
     'Elétrica':'Elétrica',
     'Eletrica':'Elétrica',
     'TI':'TI',
-    'Design':'Design'
+    'Design':'Projetos'
   };
 
   /* ===============================
@@ -1362,7 +1362,7 @@ function buildOrganogram(){
 
     /* projetista */
     if(cargoLower.includes("projetista")){
-      estrutura.setores["Design"].projetista.push(nome);
+      estrutura.setores["Projetos"].projetista.push(nome);
     }
 
   });
@@ -1475,9 +1475,11 @@ org.appendChild(nivel3);
   const nivel4 = document.createElement("div");
   nivel4.className = "org-nivel org-setores";
 
-  Object.entries(estrutura.setores).forEach(([n,s])=>{
+  Object.entries(estrutura.setores)
+  .filter(([n]) => n !== "Projetos")
+  .forEach(([n,s])=>{
 
-    const nomeVisual = (n === "Design") ? "Projetos" : n;
+    const nomeVisual = n;
 
     let html = `<strong>${nomeVisual}</strong><br><br>`;
 
