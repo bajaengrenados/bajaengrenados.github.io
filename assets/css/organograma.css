@@ -1,5 +1,5 @@
 /* ==================================================
-ORGANOGRAMA — VERSÃO FINAL LIMPA E AJUSTADA
+ORGANOGRAMA — VERSÃO FINAL (LINHA CONTÍNUA CENTRAL)
 ================================================== */
 
 /* ===============================
@@ -22,7 +22,7 @@ NÍVEIS
   position: relative;
 }
 
-/* linha vertical entre níveis */
+/* linha vertical padrão (exceto capitão que será especial) */
 .org-nivel:not(:first-child)::before{
   content: '';
   position: absolute;
@@ -32,6 +32,24 @@ NÍVEIS
   height: 35px;
   background: #cbd5e1;
   transform: translateX(-50%);
+}
+
+/* ===============================
+🔥 LINHA PRINCIPAL CONTÍNUA
+(CAPITÃO → SETORES)
+================================*/
+.org-nivel:nth-child(2)::after{
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 2px;
+
+  height: 140px; /* 🔥 ajuste fino aqui */
+
+  background: #cbd5e1;
+  transform: translateX(-50%);
+  z-index: 1;
 }
 
 /* ===============================
@@ -52,6 +70,9 @@ BOXES
 
   box-shadow: 0 4px 12px rgba(0,0,0,.12);
   transition: .2s;
+
+  position: relative;
+  z-index: 2; /* 🔥 fica acima da linha */
 }
 
 .org-box:hover{
@@ -62,9 +83,10 @@ BOXES
 TESOUREIRO + PROJETOS
 ================================*/
 .org-duplo-linha{
-  position: relative;
   display: flex;
   gap: 120px;
+  position: relative;
+  z-index: 2;
 }
 
 /* linha horizontal entre eles */
@@ -78,18 +100,9 @@ TESOUREIRO + PROJETOS
   background: #cbd5e1;
 }
 
-/* 🔥 linha central (AJUSTADA) */
+/* REMOVE linha antiga */
 .org-duplo-linha::before{
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  width: 2px;
-
-  height: 60px; /* LINHA MAIS LONGA */
-
-  background: #cbd5e1;
-  transform: translateX(-50%);
+  display: none;
 }
 
 /* ===============================
@@ -104,23 +117,10 @@ SETORES
   max-width: 900px;
 
   position: relative;
-
-  margin-top: 60px; /* MAIS ESPAÇO */
+  margin-top: 60px;
 }
 
-/* linha vertical chegando */
-.org-setores::before{
-  content: '';
-  position: absolute;
-  top: -60px;
-  left: 50%;
-  width: 2px;
-  height: 60px;
-  background: #cbd5e1;
-  transform: translateX(-50%);
-}
-
-/* linha horizontal afastada */
+/* linha horizontal dos setores */
 .org-setores::after{
   content: '';
   position: absolute;
@@ -132,7 +132,7 @@ SETORES
 }
 
 /* ===============================
-REMOVER LINHAS ANTIGAS
+REMOVE LINHAS ANTIGAS DO JS
 ================================*/
 .linha-horizontal,
 .linha-vertical-central,
@@ -166,5 +166,10 @@ RESPONSIVO
 
   .org-setores::after{
     display: none;
+  }
+
+  /* reduz linha no mobile */
+  .org-nivel:nth-child(2)::after{
+    height: 100px;
   }
 }
