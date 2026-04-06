@@ -35,20 +35,28 @@ NÍVEIS
 }
 
 /* ===============================
-🔥 LINHA PRINCIPAL (CAPITÃO → SETORES)
+LINHA PRINCIPAL REAL (CAPITÃO → SETORES)
 ================================*/
+.org-nivel:nth-child(2){
+  position: relative;
+  z-index: 5; /* garante contexto */
+}
+
 .org-nivel:nth-child(2)::after{
   content: '';
   position: absolute;
-  top: 100%;
+
   left: 50%;
-  width: 2px;
-
-  height: 180px; /* 🔥 AQUI resolve o problema */
-
-  background: #cbd5e1;
   transform: translateX(-50%);
-  z-index: 1;
+
+  top: calc(100% + 0px); /* começa exatamente abaixo */
+
+  width: 3px; /* 🔥 aumenta espessura pra garantir visibilidade */
+  height: 200px;
+
+  background: red; /* 🔥 TEMPORÁRIO pra debug */
+
+  z-index: 10; /* 🔥 acima de tudo */
 }
 
 /* ===============================
