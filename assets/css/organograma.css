@@ -1,5 +1,5 @@
 /* ==================================================
-ORGANOGRAMA — VERSÃO FINAL (LINHA CONTÍNUA CENTRAL)
+ORGANOGRAMA — LINHA CONTÍNUA CONECTADA
 ================================================== */
 
 /* ===============================
@@ -22,7 +22,7 @@ NÍVEIS
   position: relative;
 }
 
-/* linha vertical padrão (exceto capitão que será especial) */
+/* linha padrão entre níveis */
 .org-nivel:not(:first-child)::before{
   content: '';
   position: absolute;
@@ -35,8 +35,7 @@ NÍVEIS
 }
 
 /* ===============================
-🔥 LINHA PRINCIPAL CONTÍNUA
-(CAPITÃO → SETORES)
+🔥 LINHA PRINCIPAL (CAPITÃO → SETORES)
 ================================*/
 .org-nivel:nth-child(2)::after{
   content: '';
@@ -45,7 +44,7 @@ NÍVEIS
   left: 50%;
   width: 2px;
 
-  height: 140px; /* 🔥 ajuste fino aqui */
+  height: 180px; /* 🔥 AQUI resolve o problema */
 
   background: #cbd5e1;
   transform: translateX(-50%);
@@ -69,14 +68,9 @@ BOXES
   font-weight: 500;
 
   box-shadow: 0 4px 12px rgba(0,0,0,.12);
-  transition: .2s;
 
   position: relative;
-  z-index: 2; /* 🔥 fica acima da linha */
-}
-
-.org-box:hover{
-  transform: translateY(-2px);
+  z-index: 2;
 }
 
 /* ===============================
@@ -86,7 +80,6 @@ TESOUREIRO + PROJETOS
   display: flex;
   gap: 120px;
   position: relative;
-  z-index: 2;
 }
 
 /* linha horizontal entre eles */
@@ -100,7 +93,7 @@ TESOUREIRO + PROJETOS
   background: #cbd5e1;
 }
 
-/* REMOVE linha antiga */
+/* remove linhas antigas */
 .org-duplo-linha::before{
   display: none;
 }
@@ -117,14 +110,14 @@ SETORES
   max-width: 900px;
 
   position: relative;
-  margin-top: 60px;
+  margin-top: 80px; /* 🔥 espaço controlado */
 }
 
 /* linha horizontal dos setores */
-.org-setores::after{
+.org-setores::before{
   content: '';
   position: absolute;
-  top: -60px;
+  top: -80px; /* 🔥 MESMO valor do margin-top */
   left: 10%;
   width: 80%;
   height: 2px;
@@ -132,7 +125,7 @@ SETORES
 }
 
 /* ===============================
-REMOVE LINHAS ANTIGAS DO JS
+REMOVE LIXO DO JS
 ================================*/
 .linha-horizontal,
 .linha-vertical-central,
@@ -164,12 +157,11 @@ RESPONSIVO
     grid-template-columns: 1fr;
   }
 
-  .org-setores::after{
+  .org-setores::before{
     display: none;
   }
 
-  /* reduz linha no mobile */
   .org-nivel:nth-child(2)::after{
-    height: 100px;
+    height: 120px;
   }
 }
