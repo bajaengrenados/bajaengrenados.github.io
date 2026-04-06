@@ -1,5 +1,5 @@
 /* ==================================================
-ORGANOGRAMA — CSS FINAL PROFISSIONAL
+ORGANOGRAMA — VERSÃO LIMPA E PROFISSIONAL
 ================================================== */
 
 /* ===============================
@@ -9,7 +9,7 @@ CONTAINER
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 25px;
+  gap: 35px;
 }
 
 /* ===============================
@@ -18,199 +18,129 @@ NÍVEIS
 .org-nivel{
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  gap: 40px;
+  gap: 60px;
   position: relative;
-  width: 100%;
 }
 
-/* linha vertical entre níveis */
-.org-nivel::before{
+/* linha vertical simples entre níveis */
+.org-nivel:not(:first-child)::before{
   content: '';
   position: absolute;
-  top: -25px;
+  top: -30px;
   left: 50%;
   width: 2px;
-  height: 25px;
-  background: #999;
+  height: 30px;
+  background: #cbd5e1; /* mais suave */
   transform: translateX(-50%);
-}
-
-/* remove no primeiro nível */
-.organograma > .org-nivel:first-child::before{
-  display: none;
 }
 
 /* ===============================
 BOXES
 ================================*/
 .org-box{
-  position: relative;
-
-  background: #0a1f44;
+  background: #1e293b;
   color: #fff;
 
-  padding: 12px 18px;
-  border-radius: 10px;
-
-  font-weight: 600;
-  font-size: 14px;
+  padding: 14px 20px;
+  border-radius: 12px;
 
   min-width: 160px;
   text-align: center;
 
-  border: 2px solid #fff;
-  box-shadow: 0 6px 16px rgba(0,0,0,.15);
+  font-size: 14px;
+  font-weight: 500;
 
-  transition: .2s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,.12);
+  transition: .2s;
 }
 
 .org-box:hover{
-  transform: translateY(-3px);
-  box-shadow: 0 10px 22px rgba(0,0,0,.2);
+  transform: translateY(-2px);
 }
 
 /* ===============================
-NÍVEL 3 (TESOUREIRO + PROJETOS)
+TESOUREIRO + PROJETOS
 ================================*/
 .org-duplo-linha{
   position: relative;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 120px;
+  gap: 100px;
 }
 
-/* LINHA DE ENTRADA (VINDO DO CAPITÃO) */
+/* linha horizontal elegante */
 .org-duplo-linha::after{
   content: '';
   position: absolute;
-  top: -25px;
-  left: 50%;
-  width: 220px;
+  top: -20px;
+  left: 25%;
+  width: 50%;
   height: 2px;
-  background: #999;
-  transform: translateX(-50%);
+  background: #cbd5e1;
 }
 
-/* LINHA DESCENDO DO CENTRO */
+/* linha descendo do meio */
 .org-duplo-linha::before{
   content: '';
   position: absolute;
   top: 100%;
   left: 50%;
   width: 2px;
-  height: 40px;
-  background: #999;
-  transform: translateX(-50%);
-  z-index: 2;
-}
-
-/* ===============================
-ITENS INTERNOS (TES / PROJ)
-================================*/
-.org-item{
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* linha vertical de entrada em cada box */
-.org-item::before{
-  content: '';
-  position: absolute;
-  top: -25px;
-  left: 50%;
-  width: 2px;
-  height: 25px;
-  background: #999;
-  transform: translateX(-50%);
-}
-
-/* linha descendo de cada box */
-.org-item::after{
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  width: 2px;
-  height: 20px;
-  background: #999;
+  height: 35px;
+  background: #cbd5e1;
   transform: translateX(-50%);
 }
 
 /* ===============================
-SETORES (GRID)
+SETORES
 ================================*/
 .org-setores{
-  position: relative;
-
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 20px;
 
   width: 100%;
-  max-width: 1000px;
-
-  margin-top: 40px;
+  max-width: 900px;
+  position: relative;
 }
 
 /* linha vertical central */
 .org-setores::before{
   content: '';
   position: absolute;
-  top: -40px;
+  top: -35px;
   left: 50%;
   width: 2px;
-  height: 40px;
-  background: #999;
+  height: 35px;
+  background: #cbd5e1;
   transform: translateX(-50%);
 }
 
-/* linha horizontal principal */
+/* linha horizontal suave */
 .org-setores::after{
   content: '';
   position: absolute;
-  top: -40px;
-  left: 5%;
-  width: 90%;
+  top: -35px;
+  left: 10%;
+  width: 80%;
   height: 2px;
-  background: #999;
+  background: #cbd5e1;
 }
 
 /* ===============================
-LINHA INDIVIDUAL DOS SETORES
-================================*/
-.org-setores .org-box{
-  position: relative;
-}
-
-/* linha subindo de cada setor */
-.org-setores .org-box::before{
-  content: '';
-  position: absolute;
-  top: -20px;
-  left: 50%;
-  width: 2px;
-  height: 20px;
-  background: #999;
-  transform: translateX(-50%);
-}
-
-/* ===============================
-REMOVER LINHAS ANTIGAS (JS)
+REMOVER LIXO ANTIGO
 ================================*/
 .linha-horizontal,
 .linha-vertical-central,
-.org-linha{
+.org-linha,
+.org-item::before,
+.org-item::after{
   display: none !important;
 }
 
 /* ===============================
 RESPONSIVO
 ================================*/
-@media (max-width: 900px){
+@media (max-width: 768px){
 
   .org-nivel{
     flex-direction: column;
@@ -222,10 +152,6 @@ RESPONSIVO
   }
 
   .org-duplo-linha::after{
-    display: none;
-  }
-
-  .org-item::before{
     display: none;
   }
 
