@@ -1,5 +1,5 @@
 /* ==================================================
-ORGANOGRAMA AUTOMÁTICO (COMPATÍVEL COM JS)
+ORGANOGRAMA COMPLETO — VERSÃO FINAL
 ================================================== */
 
 .organograma{
@@ -33,18 +33,18 @@ NÍVEIS
   transform: translateX(-50%);
 }
 
-/* remove do primeiro nível */
+/* remove linha do topo */
 .organograma > .org-nivel:first-child::before{
   display: none;
 }
 
 /* ===============================
-BOXES
+BOXES (PADRÃO ÚNICO)
 ================================*/
 .org-box{
   position: relative;
 
-  background: var(--azul-marinho);
+  background: #0a1f44; /* cor única */
   color: #fff;
 
   padding: 12px 18px;
@@ -58,17 +58,30 @@ BOXES
 
   border: 2px solid #fff;
   box-shadow: 0 6px 16px rgba(0,0,0,.15);
+
+  transition: 0.2s ease;
+}
+
+.org-box:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 10px 22px rgba(0,0,0,.2);
+}
+
+/* remove variação antiga */
+.setor{
+  background: #0a1f44;
 }
 
 /* ===============================
-NÍVEL DUPLO (TES + PROJETOS)
+TESOUREIRO + PROJETOS
 ================================*/
 .org-duplo-linha{
+  position: relative;
   justify-content: center;
   gap: 120px;
 }
 
-/* linha horizontal automática */
+/* linha horizontal entre os dois */
 .org-duplo-linha::after{
   content: '';
   position: absolute;
@@ -80,11 +93,17 @@ NÍVEL DUPLO (TES + PROJETOS)
   transform: translateX(-50%);
 }
 
-/* remove linhas manuais antigas */
-.linha-horizontal,
-.linha-vertical-central,
-.org-linha{
-  display: none !important;
+/* LINHA DESCENDO DO MEIO (IMPORTANTE 🔥) */
+.org-duplo-linha::before{
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 2px;
+  height: 30px;
+  background: #999;
+  transform: translateX(-50%);
+  z-index: 1;
 }
 
 /* ===============================
@@ -97,37 +116,41 @@ SETORES (GRID PERFEITO)
 
   width: 100%;
   max-width: 1000px;
-  margin-top: 10px;
+
+  margin-top: 30px;
+  position: relative;
 }
 
-/* linha vertical central descendo */
+/* linha vertical conectando com nível acima */
 .org-setores::before{
   content: '';
   position: absolute;
-  top: -20px;
+  top: -30px;
   left: 50%;
   width: 2px;
-  height: 20px;
+  height: 30px;
   background: #999;
   transform: translateX(-50%);
 }
 
-/* linha horizontal ligando setores */
+/* linha horizontal ligando todos setores */
 .org-setores::after{
   content: '';
   position: absolute;
-  top: -20px;
+  top: -30px;
   left: 10%;
   width: 80%;
   height: 2px;
   background: #999;
 }
 
-/* setores */
-.setor{
-  background: #0b3c5d;
-  font-size: 13px;
-  line-height: 1.5;
+/* ===============================
+REMOVE LINHAS ANTIGAS DO JS
+================================*/
+.linha-horizontal,
+.linha-vertical-central,
+.org-linha{
+  display: none !important;
 }
 
 /* ===============================
@@ -147,6 +170,10 @@ RESPONSIVO
 
   .org-duplo-linha::after{
     display: none;
+  }
+
+  .org-duplo-linha::before{
+    height: 20px;
   }
 
   .org-setores{
