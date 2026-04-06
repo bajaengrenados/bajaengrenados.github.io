@@ -1,5 +1,5 @@
 /* ==================================================
-ORGANOGRAMA — VERSÃO LIMPA E PROFISSIONAL
+ORGANOGRAMA — VERSÃO FINAL LIMPA E AJUSTADA
 ================================================== */
 
 /* ===============================
@@ -9,7 +9,7 @@ CONTAINER
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 35px;
+  gap: 40px;
 }
 
 /* ===============================
@@ -22,15 +22,15 @@ NÍVEIS
   position: relative;
 }
 
-/* linha vertical simples entre níveis */
+/* linha vertical entre níveis */
 .org-nivel:not(:first-child)::before{
   content: '';
   position: absolute;
-  top: -30px;
+  top: -35px;
   left: 50%;
   width: 2px;
-  height: 30px;
-  background: #cbd5e1; /* mais suave */
+  height: 35px;
+  background: #cbd5e1;
   transform: translateX(-50%);
 }
 
@@ -64,28 +64,30 @@ TESOUREIRO + PROJETOS
 .org-duplo-linha{
   position: relative;
   display: flex;
-  gap: 100px;
+  gap: 120px;
 }
 
-/* linha horizontal elegante */
+/* linha horizontal entre eles */
 .org-duplo-linha::after{
   content: '';
   position: absolute;
-  top: -20px;
+  top: -25px;
   left: 25%;
   width: 50%;
   height: 2px;
   background: #cbd5e1;
 }
 
-/* linha descendo do meio */
+/* 🔥 linha central (AJUSTADA) */
 .org-duplo-linha::before{
   content: '';
   position: absolute;
   top: 100%;
   left: 50%;
   width: 2px;
-  height: 35px;
+
+  height: 60px; /* LINHA MAIS LONGA */
+
   background: #cbd5e1;
   transform: translateX(-50%);
 }
@@ -100,26 +102,29 @@ SETORES
 
   width: 100%;
   max-width: 900px;
+
   position: relative;
+
+  margin-top: 60px; /* MAIS ESPAÇO */
 }
 
-/* linha vertical central */
+/* linha vertical chegando */
 .org-setores::before{
   content: '';
   position: absolute;
-  top: -35px;
+  top: -60px;
   left: 50%;
   width: 2px;
-  height: 35px;
+  height: 60px;
   background: #cbd5e1;
   transform: translateX(-50%);
 }
 
-/* linha horizontal suave */
+/* linha horizontal afastada */
 .org-setores::after{
   content: '';
   position: absolute;
-  top: -35px;
+  top: -60px;
   left: 10%;
   width: 80%;
   height: 2px;
@@ -127,7 +132,7 @@ SETORES
 }
 
 /* ===============================
-REMOVER LIXO ANTIGO
+REMOVER LINHAS ANTIGAS
 ================================*/
 .linha-horizontal,
 .linha-vertical-central,
@@ -148,7 +153,7 @@ RESPONSIVO
   }
 
   .org-duplo-linha{
-    gap: 30px;
+    gap: 40px;
   }
 
   .org-duplo-linha::after{
