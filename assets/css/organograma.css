@@ -1,66 +1,101 @@
-/* =====================================
-NÍVEIS
-===================================== */
+/* ==================================================
+ORGANOGRAMA — ESTILO PROFISSIONAL
+================================================== */
 
-.org-nivel{
-  display:flex;
-  justify-content:center;
-  align-items:flex-start;
-  gap:50px;
-
-  position:relative;
+:root{
+  --azul: #0000FF;
+  --azul-claro: #6699FF;
+  --azul-marinho: #090F34;
+  --cinza: #f4f6f8;
+  --amarelo: #ffd700;
+  --branco: #ffffff;
 }
 
 
-/* =====================================
+/* ==================================================
+CONTAINER
+================================================== */
+
+.organograma{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+
+  gap:40px;
+
+  padding:40px 20px;
+}
+
+
+/* ==================================================
+NÍVEIS
+================================================== */
+
+.org-nivel{
+  position:relative;
+
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+
+  gap:50px;
+}
+
+
+/* ==================================================
 LINHA:
 COORDENADOR → CAPITÃO
-===================================== */
+================================================== */
 
 .org-nivel:nth-child(2)::before{
   content:'';
 
   position:absolute;
 
-  top:-32px;
+  top:-40px;
   left:50%;
 
   width:2px;
-  height:32px;
+  height:40px;
 
-  background:rgba(255,255,255,.25);
+  background:rgba(255,255,255,.20);
 
   transform:translateX(-50%);
+
+  z-index:0;
 }
 
 
-/* =====================================
-CAPITÃO → TESOUREIRO/PROJETOS
-===================================== */
+/* ==================================================
+TESOUREIRO + PROJETOS
+================================================== */
 
 .org-duplo-linha{
   position:relative;
 
   display:flex;
+
   gap:100px;
 }
 
 
-/* linha vertical vindo do capitão */
+/* linha vertical */
 .org-duplo-linha::before{
   content:'';
 
   position:absolute;
 
-  top:-55px;
+  top:-60px;
   left:50%;
 
   width:2px;
-  height:55px;
+  height:60px;
 
-  background:rgba(255,255,255,.25);
+  background:rgba(255,255,255,.20);
 
   transform:translateX(-50%);
+
+  z-index:0;
 }
 
 
@@ -76,46 +111,40 @@ CAPITÃO → TESOUREIRO/PROJETOS
   width:50%;
   height:2px;
 
-  background:rgba(255,255,255,.25);
+  background:rgba(255,255,255,.20);
+
+  z-index:0;
 }
 
 
-/* =====================================
-LINHAS INDIVIDUAIS
-TESOUREIRO / PROJETOS
-===================================== */
-
-.org-duplo-linha .org-box{
-  position:relative;
-}
-
-
-/* linha vertical até o card */
+/* linhas individuais */
 .org-duplo-linha .org-box::after{
   content:'';
 
   position:absolute;
 
-  top:-22px;
+  top:-24px;
   left:50%;
 
   width:2px;
-  height:22px;
+  height:24px;
 
-  background:rgba(255,255,255,.25);
+  background:rgba(255,255,255,.20);
 
   transform:translateX(-50%);
+
+  z-index:0;
 }
 
 
-/* =====================================
+/* ==================================================
 SETORES
-===================================== */
+================================================== */
 
 .org-setores{
   position:relative;
 
-  display:grid;
+  display:grid !important;
 
   grid-template-columns:
     repeat(auto-fit,minmax(220px,1fr));
@@ -123,7 +152,7 @@ SETORES
   gap:24px;
 
   width:100%;
-  max-width:1100px;
+  max-width:1150px;
 
   padding-top:70px;
 }
@@ -141,13 +170,15 @@ SETORES
   width:2px;
   height:35px;
 
-  background:rgba(255,255,255,.25);
+  background:rgba(255,255,255,.20);
 
   transform:translateX(-50%);
+
+  z-index:0;
 }
 
 
-/* linha horizontal principal */
+/* linha horizontal */
 .org-setores::after{
   content:'';
 
@@ -159,20 +190,13 @@ SETORES
   width:84%;
   height:2px;
 
-  background:rgba(255,255,255,.25);
+  background:rgba(255,255,255,.20);
+
+  z-index:0;
 }
 
 
-/* =====================================
-CADA SETOR
-===================================== */
-
-.org-setores .org-box{
-  position:relative;
-}
-
-
-/* linha vertical ligando cada card */
+/* linhas individuais */
 .org-setores .org-box::after{
   content:'';
 
@@ -184,7 +208,198 @@ CADA SETOR
   width:2px;
   height:35px;
 
-  background:rgba(255,255,255,.25);
+  background:rgba(255,255,255,.20);
 
   transform:translateX(-50%);
+
+  z-index:0;
+}
+
+
+/* ==================================================
+CARDS
+================================================== */
+
+.org-box{
+  position:relative;
+
+  background:var(--azul-marinho);
+
+  border:
+    1px solid rgba(255,255,255,.08);
+
+  border-radius:22px;
+
+  padding:22px;
+
+  min-width:220px;
+
+  color:var(--branco);
+
+  text-align:center;
+
+  overflow:hidden;
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.30);
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    border-color .25s ease;
+
+  z-index:2;
+}
+
+
+/* ==================================================
+FAIXA AMARELA INTERNA
+================================================== */
+
+.org-box::before{
+  content:'';
+
+  position:absolute;
+
+  top:10px;
+  left:10px;
+
+  width:0%;
+
+  height:4px;
+
+  background:var(--amarelo);
+
+  border-radius:999px;
+
+  transition:width .45s ease;
+
+  z-index:1;
+}
+
+
+/* animação carregando */
+.org-box:hover::before{
+  width:calc(100% - 20px);
+}
+
+
+/* hover card */
+.org-box:hover{
+  transform:translateY(-6px);
+
+  border-color:rgba(255,215,0,.45);
+
+  box-shadow:
+    0 18px 40px rgba(0,0,0,.38);
+}
+
+
+/* ==================================================
+NOME
+================================================== */
+
+.org-box strong{
+  display:block;
+
+  margin-bottom:10px;
+
+  font-size:17px;
+  font-weight:700;
+
+  color:var(--amarelo);
+}
+
+
+/* ==================================================
+CARGO
+================================================== */
+
+.org-box small{
+  display:block;
+
+  margin-top:6px;
+
+  font-size:12px;
+
+  color:var(--azul-claro);
+
+  text-transform:uppercase;
+
+  letter-spacing:.8px;
+}
+
+
+/* ==================================================
+SETORES
+================================================== */
+
+.org-box.setor{
+  text-align:left;
+
+  line-height:1.8;
+
+  min-height:190px;
+}
+
+
+.org-box.setor strong{
+  text-align:center;
+
+  margin-bottom:18px;
+}
+
+
+/* ==================================================
+REMOVE LIXO ANTIGO
+================================================== */
+
+.linha-horizontal,
+.linha-vertical-central,
+.org-linha,
+.org-item::before,
+.org-item::after{
+  display:none !important;
+}
+
+
+/* ==================================================
+RESPONSIVO
+================================================== */
+
+@media(max-width:768px){
+
+  .organograma{
+    gap:20px;
+  }
+
+  .org-nivel{
+    flex-direction:column;
+    align-items:center;
+
+    gap:20px;
+  }
+
+  .org-setores{
+    grid-template-columns:1fr;
+
+    padding-top:0;
+  }
+
+  .org-box{
+    width:100%;
+    max-width:320px;
+  }
+
+  /* remove linhas mobile */
+
+  .org-nivel::before,
+  .org-nivel::after,
+  .org-duplo-linha::before,
+  .org-duplo-linha::after,
+  .org-setores::before,
+  .org-setores::after,
+  .org-box::after{
+    display:none !important;
+  }
 }
