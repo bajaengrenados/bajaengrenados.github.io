@@ -800,6 +800,21 @@
 
 </div>
 	
+	
+<!-- =====================================
+POPUP ORGANOGRAMA
+===================================== -->
+
+<div id="orgPopup" class="org-popup">
+  <div class="org-popup-content">
+    <button class="org-popup-close">
+      ×
+    </button>
+    <h3 id="popupTitulo"></h3>
+    <p id="popupTexto"></p>
+  </div>
+</div>
+	
 <!-- ------------------------------------------------------------------- -->
 <!-- ------------------------------------------------------------------- -->
 <!-- -------------------------- SCRIPT --------------------------------- -->
@@ -1401,11 +1416,96 @@ function buildOrganogram(){
     org.appendChild(l);
   }
 
+* =====================================
+POPUP ORGANOGRAMA
+===================================== */
+
+const infoSetores = {
+
+  "Coordenador":
+    "Responsável pela orientação técnica e supervisão geral da equipe.",
+
+  "Capitão":
+    "Responsável pela liderança da equipe, tomada de decisões e coordenação geral do projeto.",
+
+  "Tesoureiro":
+    "Responsável pela gestão financeira, controle de custos e orçamento da equipe.",
+
+  "Projetista":
+    "Responsável pelo desenvolvimento de projetos CAD, modelagem 3D e documentação técnica.",
+
+  "Estagiário":
+    "Auxilia diferentes setores da equipe adquirindo experiência prática no projeto.",
+
+  "Estrutural":
+    "Responsável pelo desenvolvimento do chassi, estrutura tubular e análise estrutural do veículo.",
+
+  "Powertrain":
+    "Responsável pelo sistema de transmissão, relação, motor e desempenho do veículo.",
+
+  "Elétrica":
+    "Responsável pelo sistema elétrico, sensores, iluminação e telemetria.",
+
+  "TI":
+    "Responsável pelos sistemas digitais, softwares, telemetria e desenvolvimento tecnológico.",
+
+  "Marketing":
+    "Gerencia divulgação, redes sociais e relacionamento com patrocinadores.",
+
+  "Planejamento":
+    "Coordena cronogramas, metas e organização interna da equipe.",
+
+  "Relações Públicas":
+    "Responsável pela comunicação institucional e representação da equipe."
+};
+
+
+/* elementos */
+const popup = document.getElementById("orgPopup");
+
+const titulo = document.getElementById("popupTitulo");
+
+const texto = document.getElementById("popupTexto");
+
+const fechar = document.querySelector(".org-popup-close");
+
+
+/* clique nos setores */
+document.addEventListener("click", e => {
+
+  const box = e.target.closest(".org-box.setor");
+
+  if(!box) return;
+
+  const setor = box.dataset.info;
+
+  titulo.textContent = setor;
+
+  texto.textContent =
+    infoSetores[setor] || "Informações em breve.";
+
+  popup.classList.add("active");
+});
+
+
+/* fechar */
+fechar.addEventListener("click", () => {
+  popup.classList.remove("active");
+});
+
+
+/* fechar fora */
+popup.addEventListener("click", e => {
+
+  if(e.target === popup){
+    popup.classList.remove("active");
+  }
+});
   /* ===============================
      1º NIVEL
   ================================*/
   nivel(`
-    <div class="org-box">
+  <div class="org-box" data-info="Coordenador">
       ${estrutura.coord || "A definir"}<br>
       <small>Coordenador</small>
     </div>
@@ -1417,7 +1517,7 @@ function buildOrganogram(){
      2º NIVEL
   ================================*/
   nivel(`
-    <div class="org-box">
+    <div class="org-box" data-info="Capitão">
       ${estrutura.cap || "A definir"}<br>
       <small>Capitão</small>
     </div>
@@ -1436,6 +1536,7 @@ const tesWrap = document.createElement("div");
 tesWrap.className = "org-item";
 
 const tesBox = document.createElement("div");
+tesBox.dataset.info = "Tesoureiro";
 tesBox.className = "org-box";
 tesBox.innerHTML = `
   ${estrutura.tes || "A definir"}<br>
@@ -1456,6 +1557,7 @@ const linhaProj = document.createElement("div");
 linhaProj.className = "linha-horizontal esquerda";
 
 const projBox = document.createElement("div");
+projBox.dataset.info = "Projetista";
 projBox.className = "org-box";
 projBox.innerHTML = `
   ${estrutura.setores["Projetos"].projetista[0] || "A definir"}<br>
@@ -1527,7 +1629,7 @@ setoresOrdenados.forEach(n => {
 if(n === "TI"){
 
   const estagiario = document.createElement("div");
-
+  estagiario.dataset.info = "Estagiário";
   estagiario.className = "org-box setor";
 
   estagiario.innerHTML = `
