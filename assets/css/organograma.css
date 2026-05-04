@@ -1,5 +1,5 @@
 /* ==================================================
-ORGANOGRAMA — LINHA CONTÍNUA CONECTADA
+ORGANOGRAMA — VISUAL MELHORADO
 ================================================== */
 
 /* ===============================
@@ -9,8 +9,9 @@ CONTAINER
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 40px;
+  gap: 28px;
 }
+
 
 /* ===============================
 NÍVEIS
@@ -18,30 +19,38 @@ NÍVEIS
 .org-nivel{
   display: flex;
   justify-content: center;
-  gap: 60px;
+  align-items: flex-start;
+  gap: 40px;
   position: relative;
 }
 
-/* linha padrão entre níveis */
+
+/* linha vertical padrão entre níveis */
 .org-nivel:not(:first-child)::before{
   content: '';
   position: absolute;
-  top: -35px;
+
+  top: -28px;
   left: 50%;
+
   width: 2px;
-  height: 35px;
+  height: 28px;
+
   background: #cbd5e1;
+
   transform: translateX(-50%);
 }
 
+
 /* ===============================
-LINHA PRINCIPAL REAL (CAPITÃO → SETORES)
+LINHA CENTRAL
+CAPITÃO → SETORES
 ================================*/
 .org-nivel:nth-child(2){
   position: relative;
-  z-index: 5; /* garante contexto */
 }
 
+/* linha vertical principal */
 .org-nivel:nth-child(2)::after{
   content: '';
   position: absolute;
@@ -49,15 +58,16 @@ LINHA PRINCIPAL REAL (CAPITÃO → SETORES)
   left: 50%;
   transform: translateX(-50%);
 
-  top: calc(100% + 0px); /* começa exatamente abaixo */
+  top: calc(100% + 2px);
 
-  width: 3px; /* 🔥 aumenta espessura pra garantir visibilidade */
-  height: 200px;
+  width: 2px;
+  height: 145px;
 
-  background: red; /* 🔥 TEMPORÁRIO pra debug */
+  background: #cbd5e1;
 
-  z-index: 10; /* 🔥 acima de tudo */
+  z-index: 0;
 }
+
 
 /* ===============================
 BOXES
@@ -66,74 +76,133 @@ BOXES
   background: #1e293b;
   color: #fff;
 
-  padding: 14px 20px;
-  border-radius: 12px;
+  padding: 16px 22px;
 
-  min-width: 160px;
+  border-radius: 14px;
+
+  min-width: 180px;
+
   text-align: center;
 
   font-size: 14px;
+  line-height: 1.5;
   font-weight: 500;
 
-  box-shadow: 0 4px 12px rgba(0,0,0,.12);
+  box-shadow:
+    0 4px 12px rgba(0,0,0,.20);
+
+  backdrop-filter: blur(4px);
 
   position: relative;
   z-index: 2;
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease;
 }
+
+.org-box:hover{
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 10px 24px rgba(0,0,0,.28);
+}
+
+.org-box strong{
+  display: block;
+
+  margin-bottom: 8px;
+
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.org-box small{
+  opacity: .85;
+  font-size: 12px;
+}
+
 
 /* ===============================
 TESOUREIRO + PROJETOS
 ================================*/
 .org-duplo-linha{
   display: flex;
-  gap: 120px;
+  align-items: center;
+  gap: 90px;
+
   position: relative;
 }
 
-/* linha horizontal entre eles */
+
+/* linha horizontal */
 .org-duplo-linha::after{
   content: '';
+
   position: absolute;
-  top: -25px;
+
+  top: -22px;
+
   left: 25%;
   width: 50%;
+
   height: 2px;
+
   background: #cbd5e1;
 }
 
-/* remove linhas antigas */
-.org-duplo-linha::before{
-  display: none;
-}
 
 /* ===============================
 SETORES
 ================================*/
 .org-setores{
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 20px;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(190px, 1fr));
+
+  gap: 22px;
 
   width: 100%;
-  max-width: 900px;
+  max-width: 950px;
 
   position: relative;
-  margin-top: 80px; /* 🔥 espaço controlado */
+
+  padding-top: 60px;
 }
 
-/* linha horizontal dos setores */
+
+/* linha horizontal superior */
 .org-setores::before{
   content: '';
+
   position: absolute;
-  top: -80px; /* 🔥 MESMO valor do margin-top */
+
+  top: 0;
+
   left: 10%;
   width: 80%;
+
   height: 2px;
+
   background: #cbd5e1;
 }
 
+
 /* ===============================
-REMOVE LIXO DO JS
+CARDS DOS SETORES
+================================*/
+.org-box.setor{
+  min-height: 170px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+
+/* ===============================
+REMOVE ELEMENTOS ANTIGOS
 ================================*/
 .linha-horizontal,
 .linha-vertical-central,
@@ -143,18 +212,32 @@ REMOVE LIXO DO JS
   display: none !important;
 }
 
+
 /* ===============================
 RESPONSIVO
 ================================*/
 @media (max-width: 768px){
 
+  .organograma{
+    gap: 20px;
+  }
+
   .org-nivel{
     flex-direction: column;
     align-items: center;
+    gap: 20px;
+  }
+
+  .org-nivel:not(:first-child)::before{
+    display: none;
+  }
+
+  .org-nivel:nth-child(2)::after{
+    display: none;
   }
 
   .org-duplo-linha{
-    gap: 40px;
+    gap: 20px;
   }
 
   .org-duplo-linha::after{
@@ -163,13 +246,15 @@ RESPONSIVO
 
   .org-setores{
     grid-template-columns: 1fr;
+    padding-top: 20px;
   }
 
   .org-setores::before{
     display: none;
   }
 
-  .org-nivel:nth-child(2)::after{
-    height: 120px;
+  .org-box{
+    width: 100%;
+    max-width: 320px;
   }
 }
