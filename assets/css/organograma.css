@@ -362,6 +362,120 @@ REMOVE LIXO ANTIGO
   display:none !important;
 }
 
+/* =====================================
+POPUP
+===================================== */
+
+.org-popup{
+  position:fixed;
+
+  inset:0;
+
+  background:rgba(0,0,0,.65);
+
+  display:flex;
+
+  justify-content:center;
+  align-items:center;
+
+  opacity:0;
+  visibility:hidden;
+
+  transition:.25s ease;
+
+  z-index:9999;
+}
+
+
+/* abrir */
+.org-popup.active{
+  opacity:1;
+  visibility:visible;
+}
+
+
+/* caixa */
+.org-popup-content{
+  width:90%;
+  max-width:500px;
+
+  background:var(--azul-marinho);
+
+  border:
+    1px solid rgba(255,255,255,.08);
+
+  border-radius:24px;
+
+  padding:30px;
+
+  color:white;
+
+  position:relative;
+
+  transform:translateY(20px);
+
+  transition:.25s ease;
+
+  box-shadow:
+    0 20px 50px rgba(0,0,0,.45);
+}
+
+
+/* animação */
+.org-popup.active .org-popup-content{
+  transform:translateY(0);
+}
+
+
+/* botão fechar */
+.org-popup-close{
+  position:absolute;
+
+  top:15px;
+  right:15px;
+
+  width:40px;
+  height:40px;
+
+  border:none;
+
+  border-radius:50%;
+
+  background:rgba(255,255,255,.08);
+
+  color:white;
+
+  font-size:22px;
+
+  cursor:pointer;
+
+  transition:.2s;
+}
+
+
+.org-popup-close:hover{
+  background:var(--amarelo);
+
+  color:black;
+}
+
+
+/* título */
+#popupTitulo{
+  color:var(--amarelo);
+
+  margin-bottom:20px;
+
+  font-size:24px;
+}
+
+
+/* texto */
+#popupTexto{
+  line-height:1.8;
+
+  color:#dbe4ff;
+}
 
 /* ==================================================
 RESPONSIVO
