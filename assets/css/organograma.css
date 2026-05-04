@@ -1,6 +1,20 @@
 /* ==================================================
-ORGANOGRAMA — MODERNO
+ORGANOGRAMA — VISUAL MODERNO
 ================================================== */
+
+:root {
+  --azul: #0000FF;
+  --azul-claro: #6699FF;
+  --azul-marinho: #090F34;
+  --cinza: #f4f6f8;
+  --amarelo: #ffd700;
+  --branco: #ffffff;
+}
+
+
+/* =====================================
+CONTAINER
+===================================== */
 
 .organograma{
   display:flex;
@@ -45,7 +59,7 @@ NÍVEIS
 
 
 /* =====================================
-CAPITÃO → SETORES
+LINHA CENTRAL
 ===================================== */
 
 .org-nivel:nth-child(2)::after{
@@ -66,7 +80,7 @@ CAPITÃO → SETORES
 
 
 /* =====================================
-LINHA HORIZONTAL SETORES
+SETORES
 ===================================== */
 
 .org-setores{
@@ -75,7 +89,7 @@ LINHA HORIZONTAL SETORES
   display:grid;
 
   grid-template-columns:
-    repeat(auto-fit,minmax(210px,1fr));
+    repeat(auto-fit,minmax(220px,1fr));
 
   gap:24px;
 
@@ -86,6 +100,7 @@ LINHA HORIZONTAL SETORES
 }
 
 
+/* linha horizontal */
 .org-setores::before{
   content:'';
 
@@ -109,41 +124,64 @@ CARDS
   position:relative;
 
   background:
-    rgba(15,23,42,.78);
+    linear-gradient(
+      145deg,
+      rgba(9,15,52,.96),
+      rgba(0,0,255,.75)
+    );
 
   border:
-    1px solid rgba(255,255,255,.08);
+    1px solid rgba(102,153,255,.25);
 
   backdrop-filter:blur(10px);
 
-  border-radius:20px;
+  border-radius:22px;
 
-  padding:20px;
+  padding:22px;
 
-  min-width:210px;
+  min-width:220px;
 
   text-align:center;
 
-  color:white;
+  color:var(--branco);
 
   box-shadow:
-    0 10px 30px rgba(0,0,0,.30);
+    0 10px 35px rgba(0,0,0,.35);
 
   transition:
     transform .25s ease,
-    border .25s ease,
-    box-shadow .25s ease;
+    box-shadow .25s ease,
+    border .25s ease;
 }
 
 
+/* hover */
 .org-box:hover{
-  transform:translateY(-5px);
+  transform:translateY(-6px);
 
-  border-color:
-    rgba(255,255,255,.18);
+  border-color:var(--azul-claro);
 
   box-shadow:
-    0 18px 40px rgba(0,0,0,.35);
+    0 18px 45px rgba(0,0,255,.25);
+}
+
+
+/* detalhe topo */
+.org-box::before{
+  content:'';
+
+  position:absolute;
+
+  top:0;
+  left:0;
+
+  width:100%;
+  height:4px;
+
+  background:var(--amarelo);
+
+  border-radius:
+    22px 22px 0 0;
 }
 
 
@@ -154,10 +192,12 @@ NOME
 .org-box strong{
   display:block;
 
-  font-size:16px;
+  font-size:17px;
   font-weight:700;
 
-  margin-bottom:6px;
+  color:var(--branco);
+
+  margin-bottom:8px;
 }
 
 
@@ -170,9 +210,9 @@ CARGO
 
   font-size:12px;
 
-  opacity:.7;
+  color:var(--azul-claro);
 
-  letter-spacing:.5px;
+  letter-spacing:.8px;
 
   text-transform:uppercase;
 }
@@ -185,25 +225,27 @@ SETORES
 .org-box.setor{
   text-align:left;
 
-  min-height:180px;
+  min-height:190px;
 }
 
 
 .org-box.setor strong{
   text-align:center;
 
-  margin-bottom:14px;
+  margin-bottom:18px;
 
-  font-size:17px;
+  color:var(--amarelo);
+
+  font-size:18px;
 }
 
 
 /* =====================================
-LISTAS INTERNAS
+TEXTOS INTERNOS
 ===================================== */
 
-.org-box.setor br{
-  line-height:2;
+.org-box.setor{
+  line-height:1.9;
 }
 
 
@@ -236,7 +278,7 @@ TESOUREIRO + PROJETOS
 
 
 /* =====================================
-REMOVE LIXO ANTIGO
+REMOVE ELEMENTOS ANTIGOS
 ===================================== */
 
 .linha-horizontal,
