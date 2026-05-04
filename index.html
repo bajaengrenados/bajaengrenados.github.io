@@ -1484,9 +1484,21 @@ org.appendChild(nivel3);
   const nivel4 = document.createElement("div");
   nivel4.className = "org-nivel org-setores";
 
-  Object.entries(estrutura.setores)
-  .filter(([n]) => n !== "Projetos")
-  .forEach(([n,s])=>{
+const setoresOrdenados = [
+  "Planejamento",
+  "Relações Públicas",
+  "Marketing",
+  "Estrutural",
+  "Powertrain",
+  "Elétrica",
+  "TI"
+];
+
+setoresOrdenados.forEach(n => {
+
+  const s = estrutura.setores[n];
+
+  if(!s) return;
 
     const nomeVisual = n;
 
@@ -1511,6 +1523,20 @@ org.appendChild(nivel3);
     box.innerHTML = html;
 
     nivel4.appendChild(box);
+/* ESTAGIÁRIO APÓS TI */
+if(n === "TI"){
+
+  const estagiario = document.createElement("div");
+
+  estagiario.className = "org-box setor";
+
+  estagiario.innerHTML = `
+    <strong>Estagiário</strong>
+    João
+  `;
+
+  nivel4.appendChild(estagiario);
+}
   });
 
   org.appendChild(nivel4);
