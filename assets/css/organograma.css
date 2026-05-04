@@ -1,260 +1,284 @@
 /* ==================================================
-ORGANOGRAMA — VISUAL MELHORADO
+ORGANOGRAMA — MODERNO
 ================================================== */
 
-/* ===============================
-CONTAINER
-================================*/
 .organograma{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 28px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:32px;
+
+  padding:40px 20px;
 }
 
 
-/* ===============================
+/* =====================================
 NÍVEIS
-================================*/
+===================================== */
+
 .org-nivel{
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 40px;
-  position: relative;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  gap:50px;
+
+  position:relative;
 }
 
 
-/* linha vertical padrão entre níveis */
+/* linha vertical */
 .org-nivel:not(:first-child)::before{
-  content: '';
-  position: absolute;
+  content:'';
 
-  top: -28px;
-  left: 50%;
+  position:absolute;
 
-  width: 2px;
-  height: 28px;
+  top:-32px;
+  left:50%;
 
-  background: #cbd5e1;
+  width:2px;
+  height:32px;
 
-  transform: translateX(-50%);
+  background:rgba(255,255,255,.25);
+
+  transform:translateX(-50%);
 }
 
 
-/* ===============================
-LINHA CENTRAL
+/* =====================================
 CAPITÃO → SETORES
-================================*/
-.org-nivel:nth-child(2){
-  position: relative;
-}
+===================================== */
 
-/* linha vertical principal */
 .org-nivel:nth-child(2)::after{
-  content: '';
-  position: absolute;
+  content:'';
 
-  left: 50%;
-  transform: translateX(-50%);
+  position:absolute;
 
-  top: calc(100% + 2px);
+  top:100%;
+  left:50%;
 
-  width: 2px;
-  height: 145px;
+  width:2px;
+  height:130px;
 
-  background: #cbd5e1;
+  background:rgba(255,255,255,.25);
 
-  z-index: 0;
+  transform:translateX(-50%);
 }
 
 
-/* ===============================
-BOXES
-================================*/
+/* =====================================
+LINHA HORIZONTAL SETORES
+===================================== */
+
+.org-setores{
+  position:relative;
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(auto-fit,minmax(210px,1fr));
+
+  gap:24px;
+
+  width:100%;
+  max-width:1100px;
+
+  padding-top:60px;
+}
+
+
+.org-setores::before{
+  content:'';
+
+  position:absolute;
+
+  top:0;
+  left:8%;
+
+  width:84%;
+  height:2px;
+
+  background:rgba(255,255,255,.25);
+}
+
+
+/* =====================================
+CARDS
+===================================== */
+
 .org-box{
-  background: #1e293b;
-  color: #fff;
+  position:relative;
 
-  padding: 16px 22px;
+  background:
+    rgba(15,23,42,.78);
 
-  border-radius: 14px;
+  border:
+    1px solid rgba(255,255,255,.08);
 
-  min-width: 180px;
+  backdrop-filter:blur(10px);
 
-  text-align: center;
+  border-radius:20px;
 
-  font-size: 14px;
-  line-height: 1.5;
-  font-weight: 500;
+  padding:20px;
+
+  min-width:210px;
+
+  text-align:center;
+
+  color:white;
 
   box-shadow:
-    0 4px 12px rgba(0,0,0,.20);
-
-  backdrop-filter: blur(4px);
-
-  position: relative;
-  z-index: 2;
+    0 10px 30px rgba(0,0,0,.30);
 
   transition:
     transform .25s ease,
+    border .25s ease,
     box-shadow .25s ease;
 }
 
+
 .org-box:hover{
-  transform: translateY(-4px);
+  transform:translateY(-5px);
+
+  border-color:
+    rgba(255,255,255,.18);
 
   box-shadow:
-    0 10px 24px rgba(0,0,0,.28);
+    0 18px 40px rgba(0,0,0,.35);
 }
+
+
+/* =====================================
+NOME
+===================================== */
 
 .org-box strong{
-  display: block;
+  display:block;
 
-  margin-bottom: 8px;
+  font-size:16px;
+  font-weight:700;
 
-  font-size: 15px;
-  font-weight: 700;
+  margin-bottom:6px;
 }
+
+
+/* =====================================
+CARGO
+===================================== */
 
 .org-box small{
-  opacity: .85;
-  font-size: 12px;
+  display:block;
+
+  font-size:12px;
+
+  opacity:.7;
+
+  letter-spacing:.5px;
+
+  text-transform:uppercase;
 }
 
 
-/* ===============================
-TESOUREIRO + PROJETOS
-================================*/
-.org-duplo-linha{
-  display: flex;
-  align-items: center;
-  gap: 90px;
-
-  position: relative;
-}
-
-
-/* linha horizontal */
-.org-duplo-linha::after{
-  content: '';
-
-  position: absolute;
-
-  top: -22px;
-
-  left: 25%;
-  width: 50%;
-
-  height: 2px;
-
-  background: #cbd5e1;
-}
-
-
-/* ===============================
+/* =====================================
 SETORES
-================================*/
-.org-setores{
-  display: grid;
+===================================== */
 
-  grid-template-columns:
-    repeat(auto-fit, minmax(190px, 1fr));
-
-  gap: 22px;
-
-  width: 100%;
-  max-width: 950px;
-
-  position: relative;
-
-  padding-top: 60px;
-}
-
-
-/* linha horizontal superior */
-.org-setores::before{
-  content: '';
-
-  position: absolute;
-
-  top: 0;
-
-  left: 10%;
-  width: 80%;
-
-  height: 2px;
-
-  background: #cbd5e1;
-}
-
-
-/* ===============================
-CARDS DOS SETORES
-================================*/
 .org-box.setor{
-  min-height: 170px;
+  text-align:left;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  min-height:180px;
 }
 
 
-/* ===============================
-REMOVE ELEMENTOS ANTIGOS
-================================*/
+.org-box.setor strong{
+  text-align:center;
+
+  margin-bottom:14px;
+
+  font-size:17px;
+}
+
+
+/* =====================================
+LISTAS INTERNAS
+===================================== */
+
+.org-box.setor br{
+  line-height:2;
+}
+
+
+/* =====================================
+TESOUREIRO + PROJETOS
+===================================== */
+
+.org-duplo-linha{
+  position:relative;
+
+  display:flex;
+
+  gap:100px;
+}
+
+
+.org-duplo-linha::after{
+  content:'';
+
+  position:absolute;
+
+  top:-24px;
+  left:25%;
+
+  width:50%;
+  height:2px;
+
+  background:rgba(255,255,255,.25);
+}
+
+
+/* =====================================
+REMOVE LIXO ANTIGO
+===================================== */
+
 .linha-horizontal,
 .linha-vertical-central,
 .org-linha,
 .org-item::before,
 .org-item::after{
-  display: none !important;
+  display:none !important;
 }
 
 
-/* ===============================
+/* =====================================
 RESPONSIVO
-================================*/
-@media (max-width: 768px){
+===================================== */
+
+@media(max-width:768px){
 
   .organograma{
-    gap: 20px;
+    gap:20px;
   }
 
   .org-nivel{
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
+    flex-direction:column;
+    align-items:center;
+    gap:20px;
   }
 
-  .org-nivel:not(:first-child)::before{
-    display: none;
-  }
-
-  .org-nivel:nth-child(2)::after{
-    display: none;
-  }
-
-  .org-duplo-linha{
-    gap: 20px;
-  }
-
+  .org-nivel::before,
+  .org-nivel::after,
+  .org-setores::before,
   .org-duplo-linha::after{
-    display: none;
+    display:none;
   }
 
   .org-setores{
-    grid-template-columns: 1fr;
-    padding-top: 20px;
-  }
+    grid-template-columns:1fr;
 
-  .org-setores::before{
-    display: none;
+    padding-top:0;
   }
 
   .org-box{
-    width: 100%;
-    max-width: 320px;
+    width:100%;
+    max-width:320px;
   }
 }
