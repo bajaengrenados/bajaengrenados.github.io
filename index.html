@@ -1458,7 +1458,7 @@ linhaProj.className = "linha-horizontal esquerda";
 const projBox = document.createElement("div");
 projBox.className = "org-box";
 projBox.innerHTML = `
-  Projetos<br>
+  ${estrutura.setores["Projetos"].projetista[0] || "A definir"}<br>
   <small>Projetista</small>
 `;
 
