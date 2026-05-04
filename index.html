@@ -1286,6 +1286,8 @@ function buildOrganogram(){
 
   if(!cards.length || !org) return;
 
+  org.innerHTML = ""; // limpa antes de montar
+
   const estrutura = {
     coord:null,
     cap:null,
@@ -1332,7 +1334,6 @@ function buildOrganogram(){
 
     const cargoLower = cargo.toLowerCase();
 
-    /* cargos principais */
     if(cargoLower.includes("coordenador")){
       estrutura.coord = nome;
       return;
@@ -1348,7 +1349,6 @@ function buildOrganogram(){
       return;
     }
 
-    /* supervisor */
     if(cargoLower.includes("sup")){
       for(const k in mapa){
         if(cargoLower.includes(k.toLowerCase())){
@@ -1358,7 +1358,6 @@ function buildOrganogram(){
       }
     }
 
-    /* auxiliar */
     if(cargoLower.includes("aux")){
       for(const k in mapa){
         if(cargoLower.includes(k.toLowerCase())){
@@ -1371,7 +1370,6 @@ function buildOrganogram(){
       }
     }
 
-    /* estagiário */
     if(cargoLower.startsWith("est.")){
       for(const k in mapa){
         if(cargoLower.includes(k.toLowerCase())){
@@ -1384,7 +1382,6 @@ function buildOrganogram(){
       }
     }
 
-    /* projetista */
     if(cargoLower.includes("projetista")){
       estrutura.setores["Projetos"].projetista.push(nome);
     }
@@ -1401,111 +1398,26 @@ function buildOrganogram(){
   });
 
   /* ===============================
-     FUNÇÕES VISUAIS
+     FUNÇÕES AUXILIARES
   ================================*/
   function nivel(html){
-    const d=document.createElement("div");
-    d.className="org-nivel";
-    d.innerHTML=html;
+    const d = document.createElement("div");
+    d.className = "org-nivel";
+    d.innerHTML = html;
     org.appendChild(d);
   }
 
   function linha(){
-    const l=document.createElement("div");
-    l.className="org-linha";
+    const l = document.createElement("div");
+    l.className = "org-linha";
     org.appendChild(l);
   }
 
-* =====================================
-POPUP ORGANOGRAMA
-===================================== */
-
-const infoSetores = {
-
-  "Coordenador":
-    "Responsável pela orientação técnica e supervisão geral da equipe.",
-
-  "Capitão":
-    "Responsável pela liderança da equipe, tomada de decisões e coordenação geral do projeto.",
-
-  "Tesoureiro":
-    "Responsável pela gestão financeira, controle de custos e orçamento da equipe.",
-
-  "Projetista":
-    "Responsável pelo desenvolvimento de projetos CAD, modelagem 3D e documentação técnica.",
-
-  "Estagiário":
-    "Auxilia diferentes setores da equipe adquirindo experiência prática no projeto.",
-
-  "Estrutural":
-    "Responsável pelo desenvolvimento do chassi, estrutura tubular e análise estrutural do veículo.",
-
-  "Powertrain":
-    "Responsável pelo sistema de transmissão, relação, motor e desempenho do veículo.",
-
-  "Elétrica":
-    "Responsável pelo sistema elétrico, sensores, iluminação e telemetria.",
-
-  "TI":
-    "Responsável pelos sistemas digitais, softwares, telemetria e desenvolvimento tecnológico.",
-
-  "Marketing":
-    "Gerencia divulgação, redes sociais e relacionamento com patrocinadores.",
-
-  "Planejamento":
-    "Coordena cronogramas, metas e organização interna da equipe.",
-
-  "Relações Públicas":
-    "Responsável pela comunicação institucional e representação da equipe."
-};
-
-
-/* elementos */
-const popup = document.getElementById("orgPopup");
-
-const titulo = document.getElementById("popupTitulo");
-
-const texto = document.getElementById("popupTexto");
-
-const fechar = document.querySelector(".org-popup-close");
-
-
-/* clique nos setores */
-document.addEventListener("click", e => {
-
-  const box = e.target.closest(".org-box.setor");
-
-  if(!box) return;
-
-  const setor = box.dataset.info;
-
-  titulo.textContent = setor;
-
-  texto.textContent =
-    infoSetores[setor] || "Informações em breve.";
-
-  popup.classList.add("active");
-});
-
-
-/* fechar */
-fechar.addEventListener("click", () => {
-  popup.classList.remove("active");
-});
-
-
-/* fechar fora */
-popup.addEventListener("click", e => {
-
-  if(e.target === popup){
-    popup.classList.remove("active");
-  }
-});
   /* ===============================
      1º NIVEL
   ================================*/
   nivel(`
-  <div class="org-box" data-info="Coordenador">
+    <div class="org-box" data-info="Coordenador">
       ${estrutura.coord || "A definir"}<br>
       <small>Coordenador</small>
     </div>
@@ -1526,85 +1438,56 @@ popup.addEventListener("click", e => {
   linha();
 
   /* ===============================
-     3º NIVEL (TESOUREIRO + PROJETOS)
+     3º NIVEL
   ================================*/
-const nivel3 = document.createElement("div");
-nivel3.className = "org-nivel org-duplo-linha";
+  const nivel3 = document.createElement("div");
+  nivel3.className = "org-nivel org-duplo-linha";
 
-/* TESOUREIRO */
-const tesWrap = document.createElement("div");
-tesWrap.className = "org-item";
+  const tesBox = document.createElement("div");
+  tesBox.className = "org-box";
+  tesBox.dataset.info = "Tesoureiro";
+  tesBox.innerHTML = `
+    ${estrutura.tes || "A definir"}<br>
+    <small>Tesoureiro</small>
+  `;
 
-const tesBox = document.createElement("div");
-tesBox.dataset.info = "Tesoureiro";
-tesBox.className = "org-box";
-tesBox.innerHTML = `
-  ${estrutura.tes || "A definir"}<br>
-  <small>Tesoureiro</small>
-`;
+  const projBox = document.createElement("div");
+  projBox.className = "org-box";
+  projBox.dataset.info = "Projetista";
+  projBox.innerHTML = `
+    ${estrutura.setores["Projetos"].projetista[0] || "A definir"}<br>
+    <small>Projetista</small>
+  `;
 
-const linhaTes = document.createElement("div");
-linhaTes.className = "linha-horizontal direita";
+  nivel3.appendChild(tesBox);
+  nivel3.appendChild(projBox);
 
-tesWrap.appendChild(tesBox);
-tesWrap.appendChild(linhaTes);
-
-/* PROJETOS */
-const projWrap = document.createElement("div");
-projWrap.className = "org-item";
-
-const linhaProj = document.createElement("div");
-linhaProj.className = "linha-horizontal esquerda";
-
-const projBox = document.createElement("div");
-projBox.dataset.info = "Projetista";
-projBox.className = "org-box";
-projBox.innerHTML = `
-  ${estrutura.setores["Projetos"].projetista[0] || "A definir"}<br>
-  <small>Projetista</small>
-`;
-
-projWrap.appendChild(linhaProj);
-projWrap.appendChild(projBox);
-
-/* LINHA CENTRAL */
-const linhaCentral = document.createElement("div");
-linhaCentral.className = "linha-vertical-central";
-
-/* MONTA */
-nivel3.appendChild(tesWrap);
-nivel3.appendChild(linhaCentral);
-nivel3.appendChild(projWrap);
-
-org.appendChild(nivel3);
+  org.appendChild(nivel3);
 
   linha();
 
   /* ===============================
-     4º NIVEL (SETORES)
+     4º NIVEL
   ================================*/
   const nivel4 = document.createElement("div");
   nivel4.className = "org-nivel org-setores";
 
-const setoresOrdenados = [
-  "Planejamento",
-  "Relações Públicas",
-  "Marketing",
-  "Estrutural",
-  "Powertrain",
-  "Elétrica",
-  "TI"
-];
+  const setoresOrdenados = [
+    "Planejamento",
+    "Relações Públicas",
+    "Marketing",
+    "Estrutural",
+    "Powertrain",
+    "Elétrica",
+    "TI"
+  ];
 
-setoresOrdenados.forEach(n => {
+  setoresOrdenados.forEach(n => {
 
-  const s = estrutura.setores[n];
+    const s = estrutura.setores[n];
+    if(!s) return;
 
-  if(!s) return;
-
-    const nomeVisual = n;
-
-    let html = `<strong>${nomeVisual}</strong>`;
+    let html = `<strong>${n}</strong>`;
 
     if(s.sup) html += `${s.sup} (Sup.)<br>`;
 
@@ -1622,24 +1505,108 @@ setoresOrdenados.forEach(n => {
 
     const box = document.createElement("div");
     box.className = "org-box setor";
+    box.dataset.info = n;
     box.innerHTML = html;
 
     nivel4.appendChild(box);
-/* ESTAGIÁRIO APÓS TI */
-if(n === "TI"){
 
-  const estagiario = document.createElement("div");
-  estagiario.dataset.info = "Estagiário";
-  estagiario.className = "org-box setor";
+    /* ESTAGIÁRIO APÓS TI */
+    if(n === "TI"){
+      const estagiario = document.createElement("div");
+      estagiario.className = "org-box setor";
+      estagiario.dataset.info = "Estagiário";
+      estagiario.innerHTML = `
+        <strong>Estagiário</strong>
+        João
+      `;
+      nivel4.appendChild(estagiario);
+    }
 
-  estagiario.innerHTML = `
-    <strong>Estagiário</strong>
-    João
-  `;
-
-  nivel4.appendChild(estagiario);
-}
   });
+
+  org.appendChild(nivel4);
+}
+
+
+/* =====================================
+INICIA
+===================================== */
+buildOrganogram();
+
+
+/* =====================================
+POPUP
+===================================== */
+
+const infoSetores = {
+
+  "Coordenador":
+    "Responsável pela orientação técnica e supervisão geral da equipe.",
+
+  "Capitão":
+    "Responsável pela liderança da equipe e coordenação geral do projeto.",
+
+  "Tesoureiro":
+    "Responsável pela gestão financeira e controle de custos.",
+
+  "Projetista":
+    "Responsável por modelagem CAD e desenvolvimento técnico.",
+
+  "Estagiário":
+    "Auxilia os setores adquirindo experiência prática.",
+
+  "Estrutural":
+    "Desenvolvimento do chassi e análise estrutural.",
+
+  "Powertrain":
+    "Sistema de transmissão e desempenho do veículo.",
+
+  "Elétrica":
+    "Sistema elétrico, sensores e telemetria.",
+
+  "TI":
+    "Sistemas, software e tecnologia da equipe.",
+
+  "Marketing":
+    "Divulgação e relacionamento com patrocinadores.",
+
+  "Planejamento":
+    "Organização e cronogramas.",
+
+  "Relações Públicas":
+    "Comunicação institucional da equipe."
+};
+
+const popup = document.getElementById("orgPopup");
+const titulo = document.getElementById("popupTitulo");
+const texto = document.getElementById("popupTexto");
+const fechar = document.querySelector(".org-popup-close");
+
+
+document.addEventListener("click", e => {
+
+  const box = e.target.closest(".org-box");
+  if(!box) return;
+
+  const setor = box.dataset.info;
+  if(!setor) return;
+
+  titulo.textContent = setor;
+  texto.textContent = infoSetores[setor] || "Informações em breve.";
+
+  popup.classList.add("active");
+});
+
+
+fechar.addEventListener("click", () => {
+  popup.classList.remove("active");
+});
+
+popup.addEventListener("click", e => {
+  if(e.target === popup){
+    popup.classList.remove("active");
+  }
+});
 
   org.appendChild(nivel4);
 }	
